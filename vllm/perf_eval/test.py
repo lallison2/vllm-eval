@@ -26,14 +26,11 @@ os.environ["VLLM_USE_V1"] = "1"
 
 ###################################################################
 prompts = [
-    "<|start_of_role|>user<|end_of_role|>What is MIT?<|end_of_text|>",#\n<|start_of_role|>assistant<|end_of_role|>",
-    "What is MIT?",
-    "<|start_of_role|>user<|end_of_role|>What is the capital of Massachusetts?<|end_of_text|>\n",#<|start_of_role|>assistant<|end_of_role|>",
-    "<|start_of_role|>user<|end_of_role|>What is MIT?<|end_of_text|>",
-    "<|start_of_role|>user<|end_of_role|>What is the capital of Massachusetts?<|end_of_text|>\n",#<|start_of_role|>assistant<|end_of_role|>",
-    "<|start_of_role|>user<|end_of_role|>What is MIT?<|end_of_text|>",# + invocation_string,
+    (
+        "<|start_of_role|>user<|end_of_role|>What is MIT?<|end_of_text|>\n"
+        "<|start_of_role|>assistant<|end_of_role|>"
+    ),
 ]
-
 # Base model call
 outputs_base = client.completions.create(model=BASE_NAME,
                                          prompt=prompts,  
@@ -64,5 +61,5 @@ for i in range(len(prompts_alora)):
     print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
 
 # # Get current Prometheus metrics
-# metrics = requests.get("http://localhost:8000/metrics").text
-# print(metrics)
+metrics = requests.get("http://localhost:8000/metrics").text
+print(metrics)
