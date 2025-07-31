@@ -13,12 +13,8 @@ client = OpenAI(
     base_url=openai_api_base,
 )
 
-# BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
-# ALORA_NAME = "new_alora" #"ibm-granite/granite-3.2-8b-alora-uncertainty"
-# invocation_string = "<|start_of_role|>certainty<|end_of_role|>"
-
 BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
-ALORA_NAME = "ibm-granite/granite-3.2-8b-alora-uncertainty"
+ALORA_NAME = "new_alora" #"ibm-granite/granite-3.2-8b-alora-uncertainty"
 invocation_string = "<|start_of_role|>certainty<|end_of_role|>"
 
 os.environ["VLLM_USE_V1"] = "1"
