@@ -19,10 +19,10 @@ invocation_string = "<|start_of_role|>certainty<|end_of_role|>"
 
 os.environ["VLLM_USE_V1"] = "1"
 
-# download your LoRA adapter to ~/.cache/huggingface/…
-alora_path = snapshot_download(repo_id=ALORA_NAME)
+# # download your LoRA adapter to ~/.cache/huggingface/…
+# alora_path = snapshot_download(repo_id=ALORA_NAME)
 
-print(alora_path)
+# print(alora_path)
 
 ###################################################################
 prompts = [
