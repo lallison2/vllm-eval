@@ -8,7 +8,7 @@ export VLLM_USE_V1="1"
 # Note: Can load in multiple intrinsics here for easier testing later on.
 vllm serve ibm-granite/granite-3.2-8b-instruct \
     --enable-lora \
-    --lora-modules '{"name": "new_alora", "path": "/proj/dmfexp/statllm/users/kgreenewald/.cache/huggingface/models/hub/models--ibm-granite--granite-3.2-8b-alora-uncertainty/snapshots/6109ad88201426003e696d023ec67c19e7f3d444", "base_model_name": "ibm-granite/granite-3.2-8b-instruct"}' \
+    --lora-modules '{"name": "new_alora", "path": "/nobackup/users/lallison/hf_cache/hub/models--ibm-granite--granite-3.2-8b-alora-uncertainty/snapshots/0d8ce48cdd4280a1e8fc37aa1de07537670ecf21", "base_model_name": "ibm-granite/granite-3.2-8b-instruct"}' \
     --dtype bfloat16 \
     --max-lora-rank 64 \
     --enable-prefix-caching
