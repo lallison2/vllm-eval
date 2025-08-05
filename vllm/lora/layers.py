@@ -386,6 +386,13 @@ class BaseLinearLayerWithLoRA(BaseLayerWithLoRA):
         assert (len(self.lora_a_stacked) == len(self.lora_b_stacked) ==
                 self.n_slices == 1)
 
+
+
+        # TODO: some check here for compression toggle and whether or not to compute A-prime here
+        # if compressed:
+        # compute A-prime, pass it in regularly as A
+
+
         self.reset_lora(index)
         if self.tp_size > 1:
             lora_a = self.slice_lora_a(lora_a)

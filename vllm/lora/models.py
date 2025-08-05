@@ -426,6 +426,10 @@ class LoRAModelManager(AdapterModelManager):
                     raise ValueError(
                         f"Adapter bias cannot be used for {module_name}"
                         " without --enable-lora-bias.")
+                
+                # TODO: add check for compressed lora or not and set_lora with appropriate number of parameters 
+                # (need to include sigma if compressed)
+                
                 module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
                                 module_lora.embeddings_tensor,
                                 module_lora.bias)
