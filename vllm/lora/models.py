@@ -215,6 +215,10 @@ class LoRAModel(AdapterModel):
         Returns:
             Loaded LoRA Model.
         """
+
+        # TODO: update this to support new compressed form as well
+
+
         lora_tensor_path = os.path.join(lora_dir, "adapter_model.safetensors")
         lora_bin_file_path = os.path.join(lora_dir, "adapter_model.bin")
         new_embeddings_tensor_path = os.path.join(
@@ -427,8 +431,10 @@ class LoRAModelManager(AdapterModelManager):
                         f"Adapter bias cannot be used for {module_name}"
                         " without --enable-lora-bias.")
                 
+
                 # TODO: add check for compressed lora or not and set_lora with appropriate number of parameters 
                 # (need to include sigma if compressed)
+
                 
                 module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
                                 module_lora.embeddings_tensor,
