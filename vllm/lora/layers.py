@@ -391,8 +391,9 @@ class BaseLinearLayerWithLoRA(BaseLayerWithLoRA):
         # TODO: some check here for compression toggle and whether or not to compute A-prime here
         # if compressed:
         # compute A-prime, pass it in regularly as A
-        
 
+        # is this called every time??
+        
 
         self.reset_lora(index)
         if self.tp_size > 1:

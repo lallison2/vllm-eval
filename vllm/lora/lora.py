@@ -16,7 +16,7 @@ class LoRALayerWeights:
 
 
     # TODO: probably need to expand LoRALayerWeights and PackedLoRALayerWeights to 
-    # optionally hold 3 matrices (compressed lora)
+    # optionally hold sigma ID (compressed lora)
 
 
     def __init__(

@@ -216,8 +216,8 @@ class LoRAModel(AdapterModel):
             Loaded LoRA Model.
         """
 
-        # TODO: update this to support new compressed form as well
-
+        # TODO: update this to support new compressed form (include sigma)
+        #
 
         lora_tensor_path = os.path.join(lora_dir, "adapter_model.safetensors")
         lora_bin_file_path = os.path.join(lora_dir, "adapter_model.bin")
@@ -434,6 +434,7 @@ class LoRAModelManager(AdapterModelManager):
 
                 # TODO: add check for compressed lora or not and set_lora with appropriate number of parameters 
                 # (need to include sigma if compressed)
+                # is this called per token or per request
 
                 
                 module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
