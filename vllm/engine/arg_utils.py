@@ -356,6 +356,7 @@ class EngineArgs:
     enable_lora: bool = False
     enable_lora_bias: bool = LoRAConfig.bias_enabled
     enable_activated_lora: bool = LoRAConfig.activated_lora_enabled
+    enable_joint_compress: bool = LoRAConfig.joint_compress_enabled
     max_loras: int = LoRAConfig.max_loras
     max_lora_rank: int = LoRAConfig.max_lora_rank
     fully_sharded_loras: bool = LoRAConfig.fully_sharded_loras
@@ -736,6 +737,8 @@ class EngineArgs:
                                 **lora_kwargs["bias_enabled"])
         lora_group.add_argument("--enable-activated-lora",
                                 **lora_kwargs["activated_lora_enabled"])
+        lora_group.add_argument("--enable-joint-compress-lora",
+                                **lora_kwargs["joint_compress_enabled"])
         lora_group.add_argument("--max-loras", **lora_kwargs["max_loras"])
         lora_group.add_argument("--max-lora-rank",
                                 **lora_kwargs["max_lora_rank"])
@@ -1195,6 +1198,7 @@ class EngineArgs:
         lora_config = LoRAConfig(
             bias_enabled=self.enable_lora_bias,
             activated_lora_enabled=self.enable_activated_lora,
+            joint_compress_enabled=self.enable_joint_compress,
             max_lora_rank=self.max_lora_rank,
             max_loras=self.max_loras,
             fully_sharded_loras=self.fully_sharded_loras,

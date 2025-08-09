@@ -115,6 +115,7 @@ class BaseLayerWithLoRA(nn.Module):
         lora_b: torch.Tensor,
         embeddings_tensor: Optional[torch.Tensor],
         bias: Optional[torch.Tensor] = None,
+        lora_sigma: Optional[torch.Tensor] = None, # New
     ):
         """Overwrites lora tensors at index."""
         ...
@@ -214,8 +215,15 @@ class VocabParallelEmbeddingWithLoRA(BaseLayerWithLoRA):
         lora_b: torch.Tensor,
         embeddings_tensor: Optional[torch.Tensor],
         bias: Optional[torch.Tensor] = None,
+        lora_sigma: Optional[torch.Tensor] = None,
     ):
         self.reset_lora(index)
+
+        # TODO: if lora_sigma exists, compute A-prime, pass it in regularly as lora_a
+        # this is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
+
+        # ...
+
         self.lora_a_stacked[index, :lora_a.shape[0], :lora_a.shape[1]].copy_(
             lora_a, non_blocking=True)
         self.lora_b_stacked[index,
@@ -378,6 +386,7 @@ class BaseLinearLayerWithLoRA(BaseLayerWithLoRA):
         lora_b: torch.Tensor,
         embeddings_tensor: Optional[torch.Tensor],
         lora_bias: Optional[torch.Tensor] = None,
+        lora_sigma: Optional[torch.Tensor] = None,
     ):
         # Except for QKVParallelLinearWithLoRA and
         # MergedColumnParallelLinearWithLoRA, all other linear LoRA layers
@@ -386,16 +395,15 @@ class BaseLinearLayerWithLoRA(BaseLayerWithLoRA):
         assert (len(self.lora_a_stacked) == len(self.lora_b_stacked) ==
                 self.n_slices == 1)
 
-
+        self.reset_lora(index)
 
         # TODO: some check here for compression toggle and whether or not to compute A-prime here
-        # if compressed:
-        # compute A-prime, pass it in regularly as A
+        # if compressed, compute A-prime, pass it in regularly as A
+        # this is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
 
-        # is this called every time??
-        
+        # ...
 
-        self.reset_lora(index)
+
         if self.tp_size > 1:
             lora_a = self.slice_lora_a(lora_a)
             lora_b = self.slice_lora_b(lora_b)
@@ -716,8 +724,17 @@ class MergedColumnParallelLinearWithLoRA(ColumnParallelLinearWithLoRA):
         lora_b: torch.Tensor,
         embeddings_tensor: Optional[torch.Tensor],
         lora_bias: Optional[torch.Tensor] = None,
+        lora_sigma: Optional[torch.Tensor] = None,
     ):
         self.reset_lora(index)
+
+        # TODO: some check here for compression toggle and whether or not to compute A-prime here
+        # if compressed, compute A-prime, pass it in regularly as A
+        # this is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
+
+        # ...
+
+        
 
         if self.tp_size > 1:
             lora_a = self.slice_lora_a(lora_a)
@@ -1094,8 +1111,17 @@ class LogitsProcessorWithLoRA(BaseLayerWithLoRA):
         lora_b: torch.Tensor,
         embeddings_tensor: Optional[torch.Tensor],
         bias: Optional[torch.Tensor] = None,
+        lora_sigma: Optional[torch.Tensor] = None,
     ):
         self.reset_lora(index)
+
+        # TODO: some check here for compression toggle and whether or not to compute A-prime here
+        # if compressed, compute A-prime, pass it in regularly as A
+        # this is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
+
+        # ...
+
+        
         self.lora_a_stacked[index,
                             0, :lora_a.shape[1], :lora_a.shape[0]].copy_(
                                 lora_a.T, non_blocking=True)
@@ -1260,6 +1286,7 @@ class LinearScalingRotaryEmbeddingWithLoRA(BaseLayerWithLoRA):
         lora_b: torch.Tensor,
         embeddings_tensor: Optional[torch.Tensor],
         bias: Optional[torch.Tensor] = None,
+        lora_sigma: Optional[torch.Tensor] = None,
     ):
         ...
 

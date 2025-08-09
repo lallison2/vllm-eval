@@ -432,14 +432,17 @@ class LoRAModelManager(AdapterModelManager):
                         " without --enable-lora-bias.")
                 
 
-                # TODO: add check for compressed lora or not and set_lora with appropriate number of parameters 
-                # (need to include sigma if compressed)
-                # is this called per token or per request
-
-                
-                module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
+                # Add check for compressed lora and set_lora with appropriate number of parameters 
+                # is this called per token or per request?
+                if self.lora_config.joint_compress_enabled:
+                    module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
                                 module_lora.embeddings_tensor,
-                                module_lora.bias)
+                                module_lora.bias,
+                                module_lora.lora_sigma) # TODO: add support for this
+                else:
+                    module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
+                                    module_lora.embeddings_tensor,
+                                    module_lora.bias)
             else:
                 module.reset_lora(index)
         return True

@@ -2879,6 +2879,11 @@ class LoRAConfig:
     activated_lora_enabled: bool = False
     """Enable Activated LoRA."""
 
+    ### new
+    joint_compress_enabled: bool = False
+    """Enable LoRA Joint Compression."""
+    ###
+
     def compute_hash(self) -> str:
         """
         WARNING: Whenever a new field is added to this config,

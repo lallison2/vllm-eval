@@ -14,11 +14,6 @@ from vllm.utils import is_pin_memory_available
 class LoRALayerWeights:
     """LoRA weights for a layer composed of two low rank matrixes."""
 
-
-    # TODO: probably need to expand LoRALayerWeights and PackedLoRALayerWeights to 
-    # optionally hold sigma ID (compressed lora)
-
-
     def __init__(
         self,
         module_name: str,
@@ -29,6 +24,7 @@ class LoRALayerWeights:
         bias: Optional[torch.Tensor] = None,
         embeddings_tensor: Optional[torch.Tensor] = None,
         scaling: Optional[float] = None,
+        lora_sigma: Optional[torch.Torch] = None,
     ) -> None:
         self.module_name = module_name
         self.rank = rank
@@ -37,6 +33,7 @@ class LoRALayerWeights:
         self.lora_b = lora_b
         self.bias = bias
         self.embeddings_tensor = embeddings_tensor
+        self.lora_sigma = lora_sigma
 
         if scaling is None:
             self.scaling = self.lora_alpha / self.rank
@@ -89,16 +86,36 @@ class LoRALayerWeights:
             dtype: torch.dtype,
             device: torch.types.Device,
             embeddings_tensor_dim: Optional[int] = None,
-            bias_enabled: Optional[bool] = False) -> "LoRALayerWeights":
+            bias_enabled: Optional[bool] = False,
+            joint_compress_enabled: Optional[bool] = False,) -> "LoRALayerWeights":
         pin_memory = str(device) == "cpu" and is_pin_memory_available()
-        lora_a = torch.zeros([input_dim, rank],
-                             dtype=dtype,
-                             device=device,
-                             pin_memory=pin_memory)
-        lora_b = torch.zeros([rank, output_dim],
-                             dtype=dtype,
-                             device=device,
-                             pin_memory=pin_memory)
+
+        ###
+        if not joint_compress_enabled:
+            lora_a = torch.zeros([input_dim, rank],
+                                dtype=dtype,
+                                device=device,
+                                pin_memory=pin_memory)
+            lora_b = torch.zeros([rank, output_dim],
+                                dtype=dtype,
+                                device=device,
+                                pin_memory=pin_memory)
+            lora_sigma = None
+        else:
+            lora_sigma = torch.zeros([FILL IN], # TODO: fill this in
+                                     dtype=dtype,
+                                     device=device,
+                                     pin_memory=pin_memory)
+            lora_a = torch.zeros([input_dim, SIGMA_DIM], # TODO: fill this in
+                                dtype=dtype,
+                                device=device,
+                                pin_memory=pin_memory)
+            lora_b = torch.zeros([SIGMA_DIM, output_dim], # TODO: fill this in
+                                dtype=dtype,
+                                device=device,
+                                pin_memory=pin_memory)
+        ###
+
         if bias_enabled:
             bias = torch.zeros([output_dim],
                                dtype=dtype,
@@ -121,11 +138,14 @@ class LoRALayerWeights:
             lora_b=lora_b,
             bias=bias,
             embeddings_tensor=embeddings_tensor,
+            lora_sigma=lora_sigma,
         )
 
 
 class PackedLoRALayerWeights(LoRALayerWeights):
     """LoRA used for packed layers (eg. qkv_proj)."""
+
+    # TODO: fill this one in similar to the above class
 
     def __init__(
         self,
