@@ -386,6 +386,10 @@ class LoRAModelManager(AdapterModelManager):
         self.model.lora_manager = self
         self.adapter_type = 'LoRA'
 
+        # TODO: fill in dimensions
+        self.lora_u_list = [torch.zero([FILL_IN, FILL_IN])] # pad with zero matrix as first element
+        self.lora_v_list = [torch.zero([FILL_IN, FILL_IN])] # pad with zero matrix as first element
+
     @property
     def capacity(self) -> int:
         return self.lora_config.max_cpu_loras
@@ -435,6 +439,7 @@ class LoRAModelManager(AdapterModelManager):
                 # Add check for compressed lora and set_lora with appropriate number of parameters 
                 # is this called per token or per request?
                 if self.lora_config.joint_compress_enabled:
+                    # TODO: pull out lora_a and lora_b from dictionaries at this point to pass in
                     module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
                                 module_lora.embeddings_tensor,
                                 module_lora.bias,
