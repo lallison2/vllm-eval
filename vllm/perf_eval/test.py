@@ -62,4 +62,7 @@ for i in range(len(prompts_alora)):
 
 # Get current Prometheus metrics
 metrics = requests.get("http://localhost:8000/metrics/vllm:num_requests_running").text
-print(metrics)
+for line in metrics.splitlines():
+    if line.startswith("vllm:num_requests_running"):
+        value_str = line.split("}")[-1].strip()
+        print(value_str)
