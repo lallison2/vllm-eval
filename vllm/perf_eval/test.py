@@ -60,6 +60,6 @@ for i in range(len(prompts_alora)):
     generated_text = alora_outputs.choices[i].text
     print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
 
-# # Get current Prometheus metrics
-metrics = requests.get("http://localhost:8000/metrics").text
+# Get current Prometheus metrics
+metrics = requests.get("http://localhost:8000/metrics/vllm:num_requests_running").text
 print(metrics)
