@@ -180,8 +180,8 @@ async def main():
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
     t = time.time() -t0
-    print(f"Time: {t}") # for alora, currently around 0.19846653938293457s
-                        # for lora, currently around ?s
+    print(f"Time: {t}") # for alora, currently around 0.19846653938293457s?
+                        # for lora, currently around 
 
     # Get current Prometheus metrics
     adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
