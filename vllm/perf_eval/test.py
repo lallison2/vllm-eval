@@ -127,15 +127,19 @@ def save_metrics(stats, histograms, adapter_name):
 
 async def main():
 
-    random_prompt = [gen_rnd_tokens(256)]
-    with open("random_prompt.csv", "w", newline="") as csvfile:
-        csvwriter = csv.writer(csvfile)
-        csvwriter.writerows(random_prompt)
+    random_prompts = [gen_rnd_tokens(256)]
+    with open("random_prompt.txt", 'w') as f:
+        for prompt in random_prompts:
+            line = ','.join(map(str, prompt))
+            f.write(line+'\n')
     
-    with open('random_prompt.csv', 'r', newline='') as csvfile:
-        csvreader = csv.reader(csvfile)
-        read_random_prompt = list(csvreader)
-    print(read_random_prompt)
+    read_random_prompts = []
+    with open('random_prompt.txt', 'r') as f:
+        for line in f:
+            prompt_strings = line.strip().split(',')
+            prompt_tokens = [int(p) for p in prompt_strings]
+            read_random_prompts.append(prompt_tokens)
+    print(read_random_prompts)
 
     # print("warm up the inference engine")
     # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
