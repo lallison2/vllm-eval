@@ -74,6 +74,26 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None):
 
 ###################################################################
 
+async def save_metrics(stats, histograms, adapter_name):
+    # Get current Prometheus metrics
+
+    f = open("/home/lallison/vllm-eval/vllm/perf_eval/" + adapter_name + ".txt","w")
+
+    metrics = requests.get("http://localhost:8000/metrics/vllm:num_requests_running").text
+    for line in metrics.splitlines():
+        for stat in stats:
+            if line.startswith(stat):
+                # stat_vals[stat] = line.split("}")[-1].strip()
+                f.write(line)
+                f.flush()
+                break
+        for hist in histograms:
+            if line.startswith(hist):
+                f.write(line)
+                f.flush()
+                break
+    f.close()
+
 async def main():
 
     print("warm up the inference engine")
@@ -81,8 +101,26 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
 
+    stats = ["vllm:kv_cache_usage",
+            "vllm:prefix_cache_queries",
+            "vllm:prefix_cache_hits",
+            "vllm:prompt_tokens",
+            ]
+
+    histograms = ["vllm:iteration_tokens_total",
+                "vllm:time_to_first_token_seconds",
+                "vllm:time_per_output_token_seconds",
+                "vllm:e2e_request_latency_seconds",
+                "vllm:request_queue_time_seconds",
+                "vllm:request_inference_time_seconds",
+                "vllm:request_prefill_time_seconds",
+                "vllm:request_decode_time_seconds",
+                ]
+
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=ALORA_NAME)
     print(_)
+    await save_metrics(stats, histograms, ALORA_NAME)
+
     # _ = await send(warmup_prompts, use_adapter_name=LORA_NAME, ntokens=250)
     # print(_)
 
@@ -120,37 +158,7 @@ async def main():
     #     prompt = prompts_alora[i]
     #     generated_text = alora_outputs.choices[i].text
     #     print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
-
-
-    # stats = ["vllm:kv_cache_usage",
-    #         "vllm:prefix_cache_queries",
-    #         "vllm:prefix_cache_hits",
-    #         "vllm:prompt_tokens",
-    #         ]
-
-    # histograms = ["vllm:iteration_tokens_total",
-    #             "vllm:time_to_first_token_seconds",
-    #             "vllm:time_per_output_token_seconds",
-    #             "vllm:e2e_request_latency_seconds",
-    #             "vllm:request_queue_time_seconds",
-    #             "vllm:request_inference_time_seconds",
-    #             "vllm:request_prefill_time_seconds",
-    #             "vllm:request_decode_time_seconds",
-    #             ]
-
-    # stat_vals = {}
-    # histogram_vals = {}
-
-    # # Get current Prometheus metrics
-    # metrics = requests.get("http://localhost:8000/metrics/vllm:num_requests_running").text
-    # for line in metrics.splitlines():
-    #     for stat in stats:
-    #         if line.startswith(stat):
-    #             stat_vals[stat] = line.split("}")[-1].strip()
-    #             break
-
-    # for stat in stats:
-    #     print(stat, stat_vals[stat])
+    
 
 if __name__ == '__main__':
     asyncio.run(main())
