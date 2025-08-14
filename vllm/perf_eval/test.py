@@ -79,6 +79,7 @@ async def main():
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    print(_)
     print("done warming up!!")
 
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=ALORA_NAME)
