@@ -33,6 +33,7 @@ os.environ["VLLM_USE_V1"] = "1"
 # get a tokenizer and figure out the vocabulary size
 tokenizer = AutoTokenizer.from_pretrained(BASE_NAME)
 vocab_size = tokenizer.vocab_size
+invocation_sequence = tokenizer(invocation_string)["input_ids"]
 
 ###################################################################
 
@@ -43,8 +44,10 @@ def gen_rnd_tokens(shape):
 ###################################################################
 
 async def send(prompt_tokens, ntokens, use_adapter_name=None):
-    if use_adapter_name is not None:
-        prefix, suffix, model = [], tokenizer(invocation_string)["input_ids"], use_adapter_name
+    if use_adapter_name == ALORA_NAME:
+        prefix, suffix, model = [], invocation_sequence, use_adapter_name
+    elif use_adapter_name == LORA_NAME:
+        prefix, suffix, model = [], [], use_adapter_name
     else:
         prefix = []
         suffix = []
@@ -127,48 +130,54 @@ def save_metrics(stats, histograms, adapter_name):
 
 async def main():
 
-    random_prompts = [gen_rnd_tokens(256)]
-    with open("random_prompt.txt", 'w') as f:
-        for prompt in random_prompts:
-            line = ','.join(map(str, prompt))
-            f.write(line+'\n')
+    # # Generate random prompt tokens (run once)
+    # random_prompts = [gen_rnd_tokens(256)]
+    # with open("random_prompt.txt", 'w') as f:
+    #     for prompt in random_prompts:
+    #         line = ','.join(map(str, prompt))
+    #         f.write(line+'\n')
     
-    read_random_prompts = []
+    random_prompts = []
     with open('random_prompt.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
             prompt_tokens = [int(p) for p in prompt_strings]
-            read_random_prompts.append(prompt_tokens)
-    print(read_random_prompts)
+            random_prompts.append(prompt_tokens)
+    # print(random_prompts)
 
-    # print("warm up the inference engine")
-    # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    # warmup_stat_vals, warmup_hist_vals = await get_metrics(stats, histograms)
-    # print("done warming up!!")
+    print("warm up the inference engine")
+    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    warmup_stat_vals, warmup_hist_vals = await get_metrics(stats, histograms)
+    print("done warming up!!")
 
-    # stats = ["vllm:kv_cache_usage",
-    #         "vllm:prefix_cache_queries",
-    #         "vllm:prefix_cache_hits",
-    #         "vllm:prompt_tokens",
-    #         ]
+    stats = ["vllm:kv_cache_usage",
+            "vllm:prefix_cache_queries",
+            "vllm:prefix_cache_hits",
+            "vllm:prompt_tokens",
+            ]
 
-    # histograms = ["vllm:iteration_tokens_total",
-    #             "vllm:time_to_first_token_seconds",
-    #             "vllm:time_per_output_token_seconds",
-    #             "vllm:e2e_request_latency_seconds",
-    #             "vllm:request_queue_time_seconds",
-    #             "vllm:request_inference_time_seconds",
-    #             "vllm:request_prefill_time_seconds",
-    #             "vllm:request_decode_time_seconds",
-    #             ]
+    histograms = ["vllm:iteration_tokens_total",
+                "vllm:time_to_first_token_seconds",
+                "vllm:time_per_output_token_seconds",
+                "vllm:e2e_request_latency_seconds",
+                "vllm:request_queue_time_seconds",
+                "vllm:request_inference_time_seconds",
+                "vllm:request_prefill_time_seconds",
+                "vllm:request_decode_time_seconds",
+                ]
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME to test random lora
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME to test random lora
 
-    # # Call the base model
-    # # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=ADAPTER_NAME)
+    # Call the base model
+    base_generation_tokens = await send(random_prompts, ntokens=16, use_adapter_name=BASE_NAME)
 
-    # # Call the adapter model
+    # # Call the adapter model (make sure it is loaded in at server startup)
+    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + tokenizer(invocation_string)["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+    t0 = time.time()
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
+    t = time.time() -t0
+    print(f"Time: {t}")
 
     # # Get current Prometheus metrics
     # alora_stat_vals, alora_hist_vals = await get_metrics(stats, histograms)
@@ -176,6 +185,11 @@ async def main():
     # # Subtract the metrics from the warmup call
     # final_stat_vals, final_hist_vals = subtract_warmup_metrics(alora_stat_vals, alora_hist_vals, warmup_stat_vals, warmup_hist_vals)
     # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME)
+
+
+
+
+
 
 
 
