@@ -43,7 +43,7 @@ def gen_rnd_tokens(shape):
 
 async def send(prompt_tokens, ntokens, use_adapter_name=None):
     if use_adapter_name is not None:
-        prefix, suffix, model = [], invocation_string, use_adapter_name
+        prefix, suffix, model = [], [invocation_string], use_adapter_name
     else:
         prefix = []
         suffix = []
@@ -81,7 +81,6 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
 
-    print(warmup_prompts)
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=ALORA_NAME)
     print(_)
     # _ = await send(warmup_prompts, use_adapter_name=LORA_NAME, ntokens=250)
