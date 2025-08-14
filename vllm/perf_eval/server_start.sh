@@ -13,6 +13,7 @@ vllm serve ibm-granite/granite-3.2-8b-instruct \
     --max-lora-rank 64 \
     --enable-prefix-caching
     --port 8000
+    --gpu-memory-utilization 0.7
 #--no-enable-prefix-caching
 
 # Check that the lora model is listed along with other models.
