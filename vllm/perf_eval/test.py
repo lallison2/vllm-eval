@@ -60,9 +60,34 @@ for i in range(len(prompts_alora)):
     generated_text = alora_outputs.choices[i].text
     print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
 
+###################################################################
+
+stats = ["vllm:kv_cache_usage",
+        #  "vllm:prefix_cache_queries",
+        #  "vllm:prefix_cache_hits",
+        #  "vllm:prompt_tokens",
+         ]
+
+histograms = ["vllm:iteration_tokens_total",
+              "vllm:time_to_first_token_seconds",
+              "vllm:time_per_output_token_seconds",
+              "vllm:e2e_request_latency_seconds",
+              "vllm:request_queue_time_seconds",
+              "vllm:request_inference_time_seconds",
+              "vllm:request_prefill_time_seconds",
+              "vllm:request_decode_time_seconds",
+              ]
+
+stat_vals = {}
+histogram_vals = {}
+
 # Get current Prometheus metrics
 metrics = requests.get("http://localhost:8000/metrics/vllm:num_requests_running").text
 for line in metrics.splitlines():
-    if line.startswith("vllm:num_requests_running"):
-        value_str = line.split("}")[-1].strip()
-        print(value_str)
+    for stat in stats:
+        if line.startswith(stat):
+            stat_vals[stat] = line.split("}")[-1].strip()
+            break
+
+for stat in stats:
+    print(stat, stat_vals[stat])
