@@ -8,6 +8,7 @@ from huggingface_hub import snapshot_download
 from transformers import AutoTokenizer
 import numpy as np
 import asyncio
+import csv
 
 BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
 ALORA_NAME = "random_alora"
@@ -74,55 +75,106 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None):
 
 ###################################################################
 
-async def save_metrics(stats, histograms, adapter_name):
-    # Get current Prometheus metrics
+async def get_metrics(stats, histograms):
 
-    f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+".txt","w")
+    # Get current Prometheus metrics
+    stat_vals = {}
+    hist_vals = {}
 
     metrics = requests.get("http://localhost:8000/metrics/vllm:num_requests_running").text
     for line in metrics.splitlines():
         for stat in stats:
             if line.startswith(stat):
-                # stat_vals[stat] = line.split("}")[-1].strip()
-                f.write(line+"\n")
-                f.flush()
+                split_line = line.split("}")
+                stat_name = split_line[0]
+                stat_vals[stat_name] = split_line[1].strip()
                 break
         for hist in histograms:
             if line.startswith(hist):
-                f.write(line+"\n")
-                f.flush()
+                split_line = line.split("}")
+                hist_name = split_line[0]
+                hist_vals[hist_name] = split_line[1].strip()
                 break
+
+    return stat_vals, hist_vals
+
+###################################################################
+
+def subtract_warmup_metrics(stats, histograms, warmup_stats, warmup_histograms):
+
+    final_stat_vals = {}
+    final_hist_vals = {}
+    for stat in stats:
+        final_stat_vals[stat] = stats[stat] - warmup_stats[stat]
+    for hist in histograms:
+        final_hist_vals[hist] = histograms[hist] - warmup_histograms[hist]
+    return final_stat_vals, final_hist_vals
+
+###################################################################
+
+def save_metrics(stats, histograms, adapter_name):
+
+    f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+".txt","w")
+    for stat in stats:
+        f.write(stat+" "+stats[stat]+"\n")
+        f.flush()
+    for hist in histograms:
+        f.write(hist+" "+histograms[hist]+"\n")
+        f.flush()
     f.close()
+
+###################################################################
 
 async def main():
 
-    print("warm up the inference engine")
-    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    print("done warming up!!")
+    random_prompt = gen_rnd_tokens(256)
+    with open("random_prompt.csv", "w", newline="") as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerows(random_prompt)
+    
+    with open('random_prompt.csv', 'r', newline='') as csvfile:
+        csvreader = csv.reader(csvfile)
+        read_random_prompt = list(csvreader)
+    print(read_random_prompt)
 
-    stats = ["vllm:kv_cache_usage",
-            "vllm:prefix_cache_queries",
-            "vllm:prefix_cache_hits",
-            "vllm:prompt_tokens",
-            ]
+    # print("warm up the inference engine")
+    # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    # warmup_stat_vals, warmup_hist_vals = await get_metrics(stats, histograms)
+    # print("done warming up!!")
 
-    histograms = ["vllm:iteration_tokens_total",
-                "vllm:time_to_first_token_seconds",
-                "vllm:time_per_output_token_seconds",
-                "vllm:e2e_request_latency_seconds",
-                "vllm:request_queue_time_seconds",
-                "vllm:request_inference_time_seconds",
-                "vllm:request_prefill_time_seconds",
-                "vllm:request_decode_time_seconds",
-                ]
+    # stats = ["vllm:kv_cache_usage",
+    #         "vllm:prefix_cache_queries",
+    #         "vllm:prefix_cache_hits",
+    #         "vllm:prompt_tokens",
+    #         ]
 
-    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=ALORA_NAME)
-    print(_)
-    await save_metrics(stats, histograms, ALORA_NAME)
+    # histograms = ["vllm:iteration_tokens_total",
+    #             "vllm:time_to_first_token_seconds",
+    #             "vllm:time_per_output_token_seconds",
+    #             "vllm:e2e_request_latency_seconds",
+    #             "vllm:request_queue_time_seconds",
+    #             "vllm:request_inference_time_seconds",
+    #             "vllm:request_prefill_time_seconds",
+    #             "vllm:request_decode_time_seconds",
+    #             ]
+    
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME to test random lora
 
-    # _ = await send(warmup_prompts, use_adapter_name=LORA_NAME, ntokens=250)
-    # print(_)
+    # # Call the base model
+    # # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=ADAPTER_NAME)
+
+    # # Call the adapter model
+
+    # # Get current Prometheus metrics
+    # alora_stat_vals, alora_hist_vals = await get_metrics(stats, histograms)
+    
+    # # Subtract the metrics from the warmup call
+    # final_stat_vals, final_hist_vals = subtract_warmup_metrics(alora_stat_vals, alora_hist_vals, warmup_stat_vals, warmup_hist_vals)
+    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME)
+
+
+
 
     # prompts = [
     #     (
