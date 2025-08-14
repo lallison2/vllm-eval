@@ -136,20 +136,6 @@ async def main():
     #     for prompt in random_prompts:
     #         line = ','.join(map(str, prompt))
     #         f.write(line+'\n')
-    
-    random_prompts = []
-    with open('random_prompt.txt', 'r') as f:
-        for line in f:
-            prompt_strings = line.strip().split(',')
-            prompt_tokens = [int(p) for p in prompt_strings]
-            random_prompts.append(prompt_tokens)
-    # print(random_prompts)
-
-    print("warm up the inference engine")
-    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    warmup_stat_vals, warmup_hist_vals = await get_metrics(stats, histograms)
-    print("done warming up!!")
 
     stats = ["vllm:kv_cache_usage",
             "vllm:prefix_cache_queries",
@@ -166,6 +152,20 @@ async def main():
                 "vllm:request_prefill_time_seconds",
                 "vllm:request_decode_time_seconds",
                 ]
+    
+    random_prompts = []
+    with open('random_prompt.txt', 'r') as f:
+        for line in f:
+            prompt_strings = line.strip().split(',')
+            prompt_tokens = [int(p) for p in prompt_strings]
+            random_prompts.append(prompt_tokens)
+    # print(random_prompts)
+
+    print("warm up the inference engine")
+    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    warmup_stat_vals, warmup_hist_vals = await get_metrics(stats, histograms)
+    print("done warming up!!")
     
     ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME to test random lora
 
