@@ -9,6 +9,7 @@ from transformers import AutoTokenizer
 import numpy as np
 import asyncio
 import csv
+from decimal import Decimal
 
 BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
 ALORA_NAME = "random_alora"
@@ -89,13 +90,13 @@ async def get_metrics(stats, histograms):
             if line.startswith(stat):
                 split_line = line.split("}")
                 stat_name = split_line[0]
-                stat_vals[stat_name] = split_line[1].strip()
+                stat_vals[stat_name] = Decimal(split_line[1].strip())
                 break
         for hist in histograms:
             if line.startswith(hist):
                 split_line = line.split("}")
                 hist_name = split_line[0]
-                hist_vals[hist_name] = split_line[1].strip()
+                hist_vals[hist_name] = Decimal(split_line[1].strip())
                 break
 
     return stat_vals, hist_vals
@@ -107,9 +108,9 @@ def subtract_warmup_metrics(stats, histograms, warmup_stats, warmup_histograms):
     final_stat_vals = {}
     final_hist_vals = {}
     for stat in stats:
-        final_stat_vals[stat] = float(stats[stat]) - float(warmup_stats[stat])
+        final_stat_vals[stat] = stats[stat] - warmup_stats[stat]
     for hist in histograms:
-        final_hist_vals[hist] = float(histograms[hist]) - float(warmup_histograms[hist])
+        final_hist_vals[hist] = histograms[hist] - warmup_histograms[hist]
     return final_stat_vals, final_hist_vals
 
 ###################################################################
@@ -118,10 +119,10 @@ def save_metrics(stats, histograms, adapter_name):
 
     f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+"_metrics.txt","w")
     for stat in stats:
-        f.write(stat+" "+str(stats[stat])+"\n")
+        f.write(stat+"} "+f"{stats[stat]:.6f}"+"\n")
         f.flush()
     for hist in histograms:
-        f.write(hist+" "+str(histograms[hist])+"\n")
+        f.write(hist+"} "+f"{histograms[hist]:.6f}"+"\n")
         f.flush()
     f.close()
 
