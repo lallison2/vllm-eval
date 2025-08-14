@@ -31,7 +31,7 @@ alora_model.save_pretrained(alora_save_path)
 
 #####################################################################
 
-alora_model.unload()
+base_model.unload()
 lora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8"
 
 lora_config = LoraConfig(
