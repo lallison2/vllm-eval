@@ -63,9 +63,9 @@ for i in range(len(prompts_alora)):
 ###################################################################
 
 stats = ["vllm:kv_cache_usage",
-        #  "vllm:prefix_cache_queries",
-        #  "vllm:prefix_cache_hits",
-        #  "vllm:prompt_tokens",
+         "vllm:prefix_cache_queries",
+         "vllm:prefix_cache_hits",
+         "vllm:prompt_tokens",
          ]
 
 histograms = ["vllm:iteration_tokens_total",
