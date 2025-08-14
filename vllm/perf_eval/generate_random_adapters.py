@@ -2,11 +2,16 @@ import torch
 from transformers import AutoModelForCausalLM
 from peft import get_peft_model, LoraConfig, TaskType
 
+class ALoraConfig(LoraConfig):
+    def __init__(self, invocation_string=None, **kwargs):
+        super().__init__(**kwargs)
+        self.invocation_string = invocation_string
+
 base_model_name = "ibm-granite/granite-3.2-8b-instruct"
 alora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32"
 
 base_model = AutoModelForCausalLM.from_pretrained(base_model_name, torch_dtype=torch.float16)
-alora_config = LoraConfig(
+alora_config = ALoraConfig(
     r=32,
     lora_alpha=32,
     lora_dropout=0.05,
