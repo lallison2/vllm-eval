@@ -167,24 +167,26 @@ async def main():
     warmup_stat_vals, warmup_hist_vals = await get_metrics(stats, histograms)
     print("done warming up!!")
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME to test random lora
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    if ADAPTER_NAME == LORA_NAME:
+        invocation_sequence = []
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=16, use_adapter_name=BASE_NAME)
 
-    # # Call the adapter model (make sure it is loaded in at server startup)
-    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + tokenizer(invocation_string)["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+    # # Call the adapter model
+    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + invocation_sequence for x,y in zip(random_prompts, base_generation_tokens)]
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
     t = time.time() -t0
     print(f"Time: {t}")
 
-    # # Get current Prometheus metrics
-    # alora_stat_vals, alora_hist_vals = await get_metrics(stats, histograms)
+    # Get current Prometheus metrics
+    adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
     
-    # # Subtract the metrics from the warmup call
-    # final_stat_vals, final_hist_vals = subtract_warmup_metrics(alora_stat_vals, alora_hist_vals, warmup_stat_vals, warmup_hist_vals)
-    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME)
+    # Subtract the metrics from the warmup call
+    final_stat_vals, final_hist_vals = subtract_warmup_metrics(adapter_stat_vals, adapter_hist_vals, warmup_stat_vals, warmup_hist_vals)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME)
 
 
 
