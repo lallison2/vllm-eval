@@ -1,5 +1,6 @@
 import requests
-from openai import OpenAI
+# from openai import OpenAI
+from openai import AsyncOpenAI
 import time
 import os
 import torch
@@ -15,7 +16,7 @@ invocation_string = "<|start_of_role|>certainty<|end_of_role|>"
 # Modify OpenAI's API key and API base to use vLLM's API server.
 openai_api_key = "EMPTY"
 openai_api_base = "http://localhost:8000/v1"
-client = OpenAI(
+client = AsyncOpenAI(
     api_key=openai_api_key,
     base_url=openai_api_base,
 )
