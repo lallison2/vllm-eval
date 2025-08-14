@@ -31,7 +31,8 @@ alora_model.save_pretrained(alora_save_path)
 
 #####################################################################
 
-base_model.unload()
+alora_model.unload()
+base_model = AutoModelForCausalLM.from_pretrained(base_model_name, torch_dtype=torch.float16)
 lora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8"
 
 lora_config = LoraConfig(
