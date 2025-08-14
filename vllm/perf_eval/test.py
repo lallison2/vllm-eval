@@ -117,7 +117,7 @@ def subtract_warmup_metrics(stats, histograms, warmup_stats, warmup_histograms):
 
 def save_metrics(stats, histograms, adapter_name):
 
-    f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+".txt","w")
+    f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+"_metrics.txt","w")
     for stat in stats:
         f.write(stat+" "+stats[stat]+"\n")
         f.flush()
