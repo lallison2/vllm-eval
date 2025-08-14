@@ -79,7 +79,7 @@ async def save_metrics(stats, histograms, adapter_name):
 
     f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+".txt","w")
 
-    metrics = await requests.get("http://localhost:8000/metrics/vllm:num_requests_running").text
+    metrics = requests.get("http://localhost:8000/metrics/vllm:num_requests_running").text
     for line in metrics.splitlines():
         for stat in stats:
             if line.startswith(stat):
