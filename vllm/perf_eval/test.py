@@ -73,13 +73,17 @@ async def send(prompt_tokens, use_alora, ntokens):
 
 ###################################################################
 
+def create_random_adapter(rank, invocation_string=None):
+    
+
+###################################################################
+
 async def main():
 
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
     _ = await send(warmup_prompts, use_alora=False, ntokens=250)
     print("done warming up!!")
-    print(_)
 
     # prompts = [
     #     (

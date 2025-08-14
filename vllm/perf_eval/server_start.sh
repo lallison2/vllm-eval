@@ -8,12 +8,13 @@ export VLLM_USE_V1="1"
 # Note: Can load in multiple intrinsics here for easier testing later on.
 vllm serve ibm-granite/granite-3.2-8b-instruct \
     --enable-lora \
+    --enable-activated-lora \
     --lora-modules '{"name": "new_alora", "path": "/nobackup/users/lallison/hf_cache/hub/models--ibm-granite--granite-3.2-8b-alora-uncertainty/snapshots/0d8ce48cdd4280a1e8fc37aa1de07537670ecf21", "base_model_name": "ibm-granite/granite-3.2-8b-instruct"}' \
     --dtype bfloat16 \
     --max-lora-rank 64 \
     --enable-prefix-caching
     --port 8000
-    --gpu-memory-utilization 0.7
+    # --gpu-memory-utilization 0.7
 #--no-enable-prefix-caching
 
 # Check that the lora model is listed along with other models.
