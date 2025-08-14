@@ -127,8 +127,7 @@ def save_metrics(stats, histograms, adapter_name):
 
 async def main():
 
-    random_prompt = gen_rnd_tokens(256)
-    print(random_prompt)
+    random_prompt = [gen_rnd_tokens(256)]
     with open("random_prompt.csv", "w", newline="") as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerows(random_prompt)
