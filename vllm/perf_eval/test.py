@@ -43,7 +43,7 @@ def gen_rnd_tokens(shape):
 
 async def send(prompt_tokens, ntokens, use_adapter_name=None):
     if use_adapter_name is not None:
-        prefix, suffix, model = [], [invocation_string], use_adapter_name
+        prefix, suffix, model = [], tokenizer(invocation_string)["input_ids"], use_adapter_name
     else:
         prefix = []
         suffix = []
@@ -79,7 +79,6 @@ async def main():
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    print(_)
     print("done warming up!!")
 
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=ALORA_NAME)
