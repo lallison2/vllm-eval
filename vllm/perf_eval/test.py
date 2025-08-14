@@ -10,7 +10,8 @@ import numpy as np
 import asyncio
 
 BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
-ALORA_NAME = "new_alora" #"ibm-granite/granite-3.2-8b-alora-uncertainty"
+ALORA_NAME = "random_alora"
+LORA_NAME = "random_lora"
 invocation_string = "<|start_of_role|>certainty<|end_of_role|>"
 
 # Modify OpenAI's API key and API base to use vLLM's API server.
@@ -40,9 +41,9 @@ def gen_rnd_tokens(shape):
 
 ###################################################################
 
-async def send(prompt_tokens, use_alora, ntokens):
-    if use_alora:
-        prefix, suffix, model = [], invocation_string, ALORA_NAME
+async def send(prompt_tokens, use_adapter_name=None, ntokens):
+    if use_adapter_name is not None:
+        prefix, suffix, model = [], invocation_string, use_adapter_name
     else:
         prefix = []
         suffix = []
@@ -73,17 +74,17 @@ async def send(prompt_tokens, use_alora, ntokens):
 
 ###################################################################
 
-def create_random_adapter(rank, invocation_string=None):
-    
-
-###################################################################
-
 async def main():
 
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    _ = await send(warmup_prompts, use_alora=False, ntokens=250)
+    _ = await send(warmup_prompts, use_adapter_name=None, ntokens=250)
     print("done warming up!!")
+
+    _ = await send(warmup_prompts, use_adapter_name=ALORA_NAME, ntokens=250)
+    print(_)
+    # _ = await send(warmup_prompts, use_adapter_name=LORA_NAME, ntokens=250)
+    # print(_)
 
     # prompts = [
     #     (
