@@ -33,7 +33,6 @@ os.environ["VLLM_USE_V1"] = "1"
 # get a tokenizer and figure out the vocabulary size
 tokenizer = AutoTokenizer.from_pretrained(BASE_NAME)
 vocab_size = tokenizer.vocab_size
-invocation_sequence = tokenizer(invocation_string)["input_ids"]
 
 ###################################################################
 
@@ -45,7 +44,7 @@ def gen_rnd_tokens(shape):
 
 async def send(prompt_tokens, ntokens, use_adapter_name=None):
     if use_adapter_name == ALORA_NAME:
-        prefix, suffix, model = [], invocation_sequence, use_adapter_name
+        prefix, suffix, model = [], tokenizer(invocation_string)["input_ids"], use_adapter_name
     elif use_adapter_name == LORA_NAME:
         prefix, suffix, model = [], [], use_adapter_name
     else:
@@ -175,7 +174,7 @@ async def main():
     base_generation_tokens = await send(random_prompts, ntokens=16, use_adapter_name=BASE_NAME)
 
     # # Call the adapter model
-    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + invocation_sequence for x,y in zip(random_prompts, base_generation_tokens)]
+    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + tokenizer(invocation_string)["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
     t = time.time() -t0
