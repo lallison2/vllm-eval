@@ -6,6 +6,7 @@ import torch
 from huggingface_hub import snapshot_download
 from transformers import AutoTokenizer
 import numpy as np
+import asyncio
 
 BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
 ALORA_NAME = "new_alora" #"ibm-granite/granite-3.2-8b-alora-uncertainty"
@@ -144,3 +145,6 @@ async def main():
 
     # for stat in stats:
     #     print(stat, stat_vals[stat])
+
+if __name__ == '__main__':
+    asyncio.run(main())
