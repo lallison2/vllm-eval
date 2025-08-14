@@ -13,7 +13,6 @@ vllm serve ibm-granite/granite-3.2-8b-instruct \
     --dtype bfloat16 \
     --max-lora-rank 64 \
     --enable-prefix-caching \
-    --port 8000 \
     # --lora-modules '{"name": "random_lora", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8", "base_model_name": "ibm-granite/granite-3.2-8b-instruct"}' \
     # --gpu-memory-utilization 0.7
 #--no-enable-prefix-caching
