@@ -81,6 +81,7 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
 
+    print(warmup_prompts)
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=ALORA_NAME)
     print(_)
     # _ = await send(warmup_prompts, use_adapter_name=LORA_NAME, ntokens=250)
