@@ -107,9 +107,9 @@ def subtract_warmup_metrics(stats, histograms, warmup_stats, warmup_histograms):
     final_stat_vals = {}
     final_hist_vals = {}
     for stat in stats:
-        final_stat_vals[stat] = stats[stat] - warmup_stats[stat]
+        final_stat_vals[stat] = float(stats[stat]) - float(warmup_stats[stat])
     for hist in histograms:
-        final_hist_vals[hist] = histograms[hist] - warmup_histograms[hist]
+        final_hist_vals[hist] = float(histograms[hist]) - float(warmup_histograms[hist])
     return final_stat_vals, final_hist_vals
 
 ###################################################################
@@ -118,10 +118,10 @@ def save_metrics(stats, histograms, adapter_name):
 
     f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+"_metrics.txt","w")
     for stat in stats:
-        f.write(stat+" "+stats[stat]+"\n")
+        f.write(stat+" "+str(stats[stat])+"\n")
         f.flush()
     for hist in histograms:
-        f.write(hist+" "+histograms[hist]+"\n")
+        f.write(hist+" "+str(histograms[hist])+"\n")
         f.flush()
     f.close()
 
