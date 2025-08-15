@@ -29,7 +29,7 @@ llm = LLM(
     enable_activated_lora=True,
     dtype=torch.bfloat16,
     max_lora_rank=64,
-    gpu_memory_utilization=0.7,
+    # gpu_memory_utilization=0.7,
 )
 
 prompts = [
