@@ -329,7 +329,7 @@ class Processor:
             else:
                 sorted_mm_inputs = orig_sorted_mm_inputs
 
-        inv_toks = [] # DELETE THIS
+        inv_toks = self.lora_config.activated_lora_enabled # DELETE THIS
         detected_toks = False # DELETE
 
         # Tokenize aLoRA invocation sequence if applicable.
@@ -341,6 +341,8 @@ class Processor:
             peft_helper = PEFTHelper.from_local_dir(
                 lora_request.lora_path, text_config.max_position_embeddings,
                 lora_request.tensorizer_config_dict)
+            
+            inv_toks = peft_helper.invocation_string
 
             if peft_helper.invocation_string is not None:
 
