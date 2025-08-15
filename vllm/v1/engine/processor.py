@@ -345,6 +345,8 @@ class Processor:
                     peft_helper.invocation_string,
                     lora_request=lora_request,
                     tokenization_kwargs=tokenization_kwargs)
+                
+                print("searching for invocation tokens: ", invocation_tokens)
 
                 invocation_start = -1
                 n = len(invocation_tokens)
@@ -357,6 +359,7 @@ class Processor:
                         if token_ids[idx:idx + n] == invocation_tokens:
                             # weights activated 1 token after start
                             invocation_start = idx + 1
+                            print("detected invocation tokens!")
                             break
 
                 if invocation_start == -1:

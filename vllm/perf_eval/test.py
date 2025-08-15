@@ -26,11 +26,6 @@ client = AsyncOpenAI(
 
 os.environ["VLLM_USE_V1"] = "1"
 
-# # download your LoRA adapter to ~/.cache/huggingface/…
-# alora_path = snapshot_download(repo_id=ALORA_NAME)
-
-# print(alora_path)
-
 # get a tokenizer and figure out the vocabulary size
 tokenizer = AutoTokenizer.from_pretrained(BASE_NAME)
 vocab_size = tokenizer.vocab_size
@@ -47,7 +42,7 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None):
     if use_adapter_name == ALORA_NAME:
         prefix, suffix, model = [], tokenizer(invocation_string)["input_ids"], use_adapter_name
     elif use_adapter_name == LORA_NAME:
-        prefix, suffix, model = [], [], use_adapter_name
+        prefix, suffix, model = [], tokenizer(invocation_string)["input_ids"], use_adapter_name
     else:
         prefix = []
         suffix = []
@@ -167,19 +162,17 @@ async def main():
     earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
     print("done warming up!!")
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    ADAPTER_NAME = LORA_NAME
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
     # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
-
-    print(random_prompts)
+    # print(random_prompts)
 
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
-
-    print(adapter_prompts)
+    print("adapter prompts: ", adapter_prompts)
 
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
