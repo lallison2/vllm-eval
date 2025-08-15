@@ -167,8 +167,8 @@ async def main():
     warmup_stat_vals, warmup_hist_vals = await get_metrics(stats, histograms)
     print("done warming up!!")
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    ADAPTER_NAME = LORA_NAME
     if ADAPTER_NAME == ALORA_NAME:
         invocation_sequence = tokenizer(invocation_string)["input_ids"]
     else:
