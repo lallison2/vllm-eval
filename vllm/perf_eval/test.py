@@ -178,8 +178,12 @@ async def main():
     base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
     # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
 
+    print(random_prompts)
+
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + invocation_sequence for x,y in zip(random_prompts, base_generation_tokens)]
+
+    print(adapter_prompts)
 
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
