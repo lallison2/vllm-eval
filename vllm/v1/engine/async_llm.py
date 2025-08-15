@@ -233,9 +233,9 @@ class AsyncLLM(EngineClient):
         # Create a new output collector for the request.
         queue = RequestOutputCollector(output_kind=params.output_kind)
 
-        if self.stat_loggers: # DELETE THIS
-            for stat_logger in self.stat_loggers[0]:
-                stat_logger.log_msg("PROCESSING REQUEST")
+        # if self.stat_loggers: # DELETE THIS
+        #     for stat_logger in self.stat_loggers[0]:
+        #         stat_logger.log_msg("PROCESSING REQUEST")
 
         # Convert Input --> Request.
         prompt_str, request, inv_toks, detected_toks = self.processor.process_inputs(
@@ -243,10 +243,10 @@ class AsyncLLM(EngineClient):
             tokenization_kwargs, trace_headers, prompt_adapter_request,
             priority, data_parallel_rank,)
         
-        if self.stat_loggers: # DELETE THIS SECTION
-            for stat_logger in self.stat_loggers[0]:
-                stat_logger.log_msg("inv_toks: ", str(inv_toks))
-                stat_logger.log_msg("detected?: ", str(detected_toks))
+        # if self.stat_loggers: # DELETE THIS SECTION
+        #     for stat_logger in self.stat_loggers[0]:
+        #         stat_logger.log_msg("inv_toks: ", str(inv_toks))
+        #         stat_logger.log_msg("detected?: ", str(detected_toks))
 
         if is_pooling or params.n == 1:
             await self._add_request(request, prompt_str, None, 0, queue)
