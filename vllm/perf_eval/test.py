@@ -173,7 +173,7 @@ async def main():
         invocation_sequence = []
 
     # Call the base model
-    base_generation_tokens = await send(random_prompts, ntokens=16, use_adapter_name=BASE_NAME)
+    base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
 
     # # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + tokenizer(invocation_string)["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
