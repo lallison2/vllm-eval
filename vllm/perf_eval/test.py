@@ -169,19 +169,23 @@ async def main():
     
     ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     # ADAPTER_NAME = LORA_NAME
-    if ADAPTER_NAME == LORA_NAME:
+    if ADAPTER_NAME == ALORA_NAME:
+        invocation_sequence = tokenizer(invocation_string)["input_ids"]
+    else:
         invocation_sequence = []
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
+    # print(base_generation_tokens)
 
-    # # Call the adapter model
-    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + tokenizer(invocation_string)["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+    # Call the adapter model
+    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + invocation_sequence for x,y in zip(random_prompts, base_generation_tokens)]
+    # print(adapter_prompts)
+
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
     t = time.time() -t0
-    print(f"Time: {t}") # for alora, currently around 0.19846653938293457s?
-                        # for lora, currently around 
+    print(f"Time: {t}")
 
     # Get current Prometheus metrics
     adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
