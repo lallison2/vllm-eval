@@ -233,16 +233,11 @@ class AsyncLLM(EngineClient):
         # Create a new output collector for the request.
         queue = RequestOutputCollector(output_kind=params.output_kind)
 
-        print("PROCESSING REQUEST")
-
         # Convert Input --> Request.
         prompt_str, request, inv_toks, detected_toks = self.processor.process_inputs(
             request_id, prompt, params, arrival_time, lora_request,
             tokenization_kwargs, trace_headers, prompt_adapter_request,
             priority, data_parallel_rank,)
-        
-        print("inv toks: ", inv_toks)
-        print("detected toks?", detected_toks)
 
         if is_pooling or params.n == 1:
             await self._add_request(request, prompt_str, None, 0, queue)
