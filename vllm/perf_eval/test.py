@@ -169,10 +169,6 @@ async def main():
     
     ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     # ADAPTER_NAME = LORA_NAME
-    if ADAPTER_NAME == ALORA_NAME:
-        invocation_sequence = tokenizer(invocation_string)["input_ids"]
-    else:
-        invocation_sequence = []
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
@@ -181,7 +177,7 @@ async def main():
     print(random_prompts)
 
     # Call the adapter model
-    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + invocation_sequence for x,y in zip(random_prompts, base_generation_tokens)]
+    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
     print(adapter_prompts)
 
