@@ -236,6 +236,7 @@ class AsyncLLM(EngineClient):
         # if self.stat_loggers: # DELETE THIS
         #     for stat_logger in self.stat_loggers[0]:
         #         stat_logger.log_msg("PROCESSING REQUEST")
+        print("PROCESSING REQUEST")
 
         # Convert Input --> Request.
         prompt_str, request, inv_toks, detected_toks = self.processor.process_inputs(
