@@ -164,7 +164,7 @@ async def main():
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    # warmup_stat_vals, warmup_hist_vals = await get_metrics(stats, histograms)
+    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
     print("done warming up!!")
     
     ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
@@ -176,7 +176,7 @@ async def main():
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
-    warmup_and_base_stat_vals, warmup_and_base_hist_vals = await get_metrics(stats, histograms)
+    # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
 
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] + invocation_sequence for x,y in zip(random_prompts, base_generation_tokens)]
@@ -190,7 +190,7 @@ async def main():
     adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
     
     # Subtract the metrics from the warmup call
-    final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, warmup_and_base_stat_vals, warmup_and_base_hist_vals)
+    final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
     save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME)
 
 
