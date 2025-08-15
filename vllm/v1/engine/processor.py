@@ -341,8 +341,6 @@ class Processor:
             peft_helper = PEFTHelper.from_local_dir(
                 lora_request.lora_path, text_config.max_position_embeddings,
                 lora_request.tensorizer_config_dict)
-            
-            inv_toks = peft_helper.invocation_string
 
             if peft_helper.invocation_string is not None:
 
