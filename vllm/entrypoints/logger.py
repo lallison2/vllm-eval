@@ -41,7 +41,7 @@ class RequestLogger:
                 prompt_token_ids = prompt_token_ids[:max_log_len]
 
         logger.info(
-            "Received request %s: prompt: %r, "
+            "TESTING Received request %s: prompt: %r, "
             "params: %s, prompt_token_ids: %s, "
             "prompt_embeds shape: %s, "
             "lora_request: %s, prompt_adapter_request: %s.", request_id,
