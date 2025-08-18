@@ -372,8 +372,8 @@ class Scheduler(SchedulerInterface):
                     print("request num tokens: ", request.num_tokens) # DELETE
 
                     # DELETE SECTION
-                    for kv_group in len(new_computed_blocks.blocks):
-                        for block in kv_group:
+                    for kv_group in range(len(new_computed_blocks.blocks)):
+                        for block in new_computed_blocks.blocks[kv_group]:
                             temp_token_ids = block._block_hash.block_hash.token_ids
                             print("Hashed token ids: ", temp_token_ids)
 
