@@ -369,7 +369,7 @@ class Scheduler(SchedulerInterface):
                             request)
 
                     print("already cached tokens: ", num_new_local_computed_tokens) # DELETE
-                    print("lora request: ", request.lora_request)
+                    print("request num tokens: ", request.num_tokens)
 
                     # Get externally-cached tokens if using a KVConnector.
                     if self.connector is not None:
