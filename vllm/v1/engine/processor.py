@@ -329,9 +329,6 @@ class Processor:
             else:
                 sorted_mm_inputs = orig_sorted_mm_inputs
 
-        inv_toks = self.lora_config.activated_lora_enabled # DELETE THIS
-        detected_toks = False # DELETE
-
         # Tokenize aLoRA invocation sequence if applicable.
         if (self.lora_config and self.lora_config.activated_lora_enabled
                 and lora_request is not None):
@@ -348,8 +345,6 @@ class Processor:
                     peft_helper.invocation_string,
                     lora_request=lora_request,
                     tokenization_kwargs=tokenization_kwargs)
-                
-                inv_toks = invocation_tokens # DELETE
 
                 invocation_start = -1
                 n = len(invocation_tokens)
@@ -362,7 +357,6 @@ class Processor:
                         if token_ids[idx:idx + n] == invocation_tokens:
                             # weights activated 1 token after start
                             invocation_start = idx + 1
-                            detected_toks = True
                             break
 
                 if invocation_start == -1:
@@ -386,7 +380,7 @@ class Processor:
             lora_request=lora_request,
             cache_salt=decoder_inputs.get("cache_salt"),
             data_parallel_rank=data_parallel_rank,
-        ), inv_toks, detected_toks
+        )
 
     def _validate_model_inputs(self,
                                inputs: ProcessorInputs,

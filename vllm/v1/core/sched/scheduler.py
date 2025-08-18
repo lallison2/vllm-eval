@@ -368,6 +368,8 @@ class Scheduler(SchedulerInterface):
                         self.kv_cache_manager.get_computed_blocks(
                             request)
 
+                    print("already cached tokens: ", num_new_local_computed_tokens) # DELETE
+
                     # Get externally-cached tokens if using a KVConnector.
                     if self.connector is not None:
                         num_external_computed_tokens, load_kv_async = (
