@@ -173,9 +173,11 @@ async def main():
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
     # print("adapter prompts: ", adapter_prompts)
-    print("base generation: ", base_generation_tokens)
-    print("end of text: ", tokenizer("<|end_of_text|>\n")["input_ids"])
-    print("invocaation seq: ", tokenizer(invocation_string)["input_ids"])
+    # print("base generation: ", base_generation_tokens)
+    for token in base_generation_tokens[0]:
+        print("token ID: ", token, "decoded: ", tokenizer.decode(token))
+    # print("end of text: ", tokenizer("<|end_of_text|>\n")["input_ids"])
+    # print("invocaation seq: ", tokenizer(invocation_string)["input_ids"])
 
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
