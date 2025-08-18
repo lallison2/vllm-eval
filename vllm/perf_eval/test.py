@@ -162,8 +162,8 @@ async def main():
     earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
     print("done warming up!!")
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    ADAPTER_NAME = LORA_NAME # alora: 0.21s, lora: 0.24s
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME # alora: 0.21s, lora: 0.24s
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
@@ -172,8 +172,8 @@ async def main():
 
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
-    print("adapter prompts: ", adapter_prompts)
-    
+    # print("adapter prompts: ", adapter_prompts)
+
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
     t = time.time() - t0
