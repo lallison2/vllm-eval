@@ -181,7 +181,7 @@ async def main():
 
     t0 = time.time()
     # adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
-    adapter_generation_tokens = await send([x + y for x,y in zip(random_prompts, base_generation_tokens)]ompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
+    adapter_generation_tokens = await send([x + y for x,y in zip(random_prompts, base_generation_tokens)], ntokens=16, use_adapter_name=ADAPTER_NAME) 
     t = time.time() - t0
     print(f"Time: {t}")
 
