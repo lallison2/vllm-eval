@@ -166,7 +166,7 @@ async def main():
     # ADAPTER_NAME = LORA_NAME # alora: 0.21s, lora: 0.24s
 
     # Call the base model
-    base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
+    base_generation_tokens = await send(random_prompts, ntokens=64, use_adapter_name=BASE_NAME)
     # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
     # print(random_prompts)
 
@@ -180,8 +180,7 @@ async def main():
     # print("invocaation seq: ", tokenizer(invocation_string)["input_ids"])
 
     t0 = time.time()
-    # adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
-    adapter_generation_tokens = await send([x + y for x,y in zip(random_prompts, base_generation_tokens)], ntokens=16, use_adapter_name=ADAPTER_NAME) 
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
     t = time.time() - t0
     print(f"Time: {t}")
 
