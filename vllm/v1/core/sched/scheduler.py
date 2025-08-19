@@ -370,7 +370,6 @@ class Scheduler(SchedulerInterface):
 
                     print("already cached tokens: ", num_new_local_computed_tokens) # DELETE
                     print("request num tokens: ", request.num_tokens) # DELETE
-                    print("request.num_tokens - 1: ", request.num_tokens - 1) # DELETE
                     temp_block_size = self.kv_cache_manager.coordinator.kv_cache_spec.block_size # DELETE
                     print("block size: ", temp_block_size) # DELETE
                     print("final max length: ", temp_block_size * ((request.num_tokens - 1) // temp_block_size))
@@ -1052,6 +1051,7 @@ class Scheduler(SchedulerInterface):
             num_computed_tokens -= 1
         # This will cache the blocks iff caching is enabled.
         self.kv_cache_manager.cache_blocks(request, num_computed_tokens)
+        print("CACHE BLOCKS")
 
         # Update the request state for scheduling.
         request.num_computed_tokens = num_computed_tokens
