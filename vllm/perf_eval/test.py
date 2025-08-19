@@ -166,7 +166,7 @@ async def main():
     # ADAPTER_NAME = LORA_NAME # alora: 0.21s, lora: 0.24s
 
     # Call the base model
-    base_generation_tokens = await send(random_prompts, ntokens=32, use_adapter_name=BASE_NAME)
+    base_generation_tokens = await send(random_prompts, ntokens=17, use_adapter_name=BASE_NAME)
     # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
     # print(random_prompts)
 
