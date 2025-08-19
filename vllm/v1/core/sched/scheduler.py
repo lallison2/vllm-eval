@@ -325,6 +325,7 @@ class Scheduler(SchedulerInterface):
 
                 # KVTransfer: skip request if still waiting for remote kvs.
                 if request.status == RequestStatus.WAITING_FOR_REMOTE_KVS:
+                    print("going into update_waiting_for_remote_kv")
                     is_ready = self._update_waiting_for_remote_kv(request)
                     if is_ready:
                         request.status = RequestStatus.WAITING
