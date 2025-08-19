@@ -325,7 +325,6 @@ class Scheduler(SchedulerInterface):
 
                 # KVTransfer: skip request if still waiting for remote kvs.
                 if request.status == RequestStatus.WAITING_FOR_REMOTE_KVS:
-                    print("going into update_waiting_for_remote_kv")
                     is_ready = self._update_waiting_for_remote_kv(request)
                     if is_ready:
                         request.status = RequestStatus.WAITING
@@ -1052,7 +1051,6 @@ class Scheduler(SchedulerInterface):
             num_computed_tokens -= 1
         # This will cache the blocks iff caching is enabled.
         self.kv_cache_manager.cache_blocks(request, num_computed_tokens)
-        print("CACHE BLOCKS")
 
         # Update the request state for scheduling.
         request.num_computed_tokens = num_computed_tokens

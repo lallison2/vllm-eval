@@ -385,7 +385,6 @@ class KVCacheManager:
         """Cache the blocks for the request, if enabled."""
         if self.enable_caching:
             block_hashes = self.req_to_block_hashes[request.request_id]
-            print("CACHING BLOCK HASHES: ", block_hashes)
             self.coordinator.cache_blocks(request, block_hashes,
                                           num_computed_tokens)
 
