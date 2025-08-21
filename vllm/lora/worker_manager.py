@@ -116,6 +116,10 @@ class WorkerLoRAManager(AbstractWorkerManager):
                     and model.hf_to_vllm_mapper is not None):
                 hf_to_vllm_mapper = model.hf_to_vllm_mapper
 
+
+            # TODO: check if model is compressed or regular, set self._lora_model_cls, and call from_local_checkpoint() normally
+            # if compressed, set _lora_model_cls to type[CompressedLoRAModelCluster] to read in whole cluster at once
+              
             lora = self._lora_model_cls.from_local_checkpoint(
                 lora_path,
                 expected_lora_modules,

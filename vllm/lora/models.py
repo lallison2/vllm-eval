@@ -216,9 +216,6 @@ class LoRAModel(AdapterModel):
             Loaded LoRA Model.
         """
 
-        # TODO: update this to support new compressed form (include sigma)
-        #
-
         lora_tensor_path = os.path.join(lora_dir, "adapter_model.safetensors")
         lora_bin_file_path = os.path.join(lora_dir, "adapter_model.bin")
         new_embeddings_tensor_path = os.path.join(
@@ -321,7 +318,7 @@ class LoRAModel(AdapterModel):
             weights_mapper=weights_mapper)
 
 
-class CompressedLoRAModel(AdapterModel):
+class CompressedLoRAModel(LoRAModel):
     """A LoRA fine-tuned model with joint compression."""
 
     def __init__(
@@ -340,34 +337,35 @@ class CompressedLoRAModel(AdapterModel):
             scaling_factor: Scaling factor to support long context lora model.
                 None if the lora is not tuned for long context support.
         """
-        self.id = lora_model_id
-        # Scaling factor for long context lora model. None if it is not
-        # fine tuned for the long context.
-        self.scaling_factor = scaling_factor
-        assert (
-            lora_model_id
-            > 0), f"a valid lora id should be greater than 0, got {self.id}"
-        self.rank = rank
+        super().__init__(lora_model_id, rank, loras, scaling_factor)
         self.loras: dict[str, LoRALayerWeightsWithCompression] = loras
         self.cluster_id = cluster_id
 
     @property
     def get_cluster_id(self) -> int:
         return self.cluster_id
-    
-    def get_lora(self, module_name: str) -> Optional[LoRALayerWeightsWithCompression]:
-        """Get LoRA for a given module by name"""
-        return self.loras.get(module_name, None)
 
-    def check_lora_name(self, lora_name: str) -> bool:
-        return lora_name in self.loras
-
+    @classmethod
     def from_lora_tensors() -> "CompressedLoRAModel":
-        # make instance from tensors
+        # make CompressedLoRAModel instance from tensors
         pass
 
-    def from_local_checkpoint(cls, model_dir, model_id=None, **kwargs) -> "CompressedLoRAModel":
-        # make instance from tensors (called by cluster)
+    @classmethod
+    def from_local_checkpoint(cls,
+                              lora_dir: str,
+                              expected_lora_modules: list[str],
+                              peft_helper: PEFTHelper,
+                              *,
+                              lora_model_id: Optional[int] = None,
+                              device: str = "cuda",
+                              dtype: Optional[torch.dtype] = None,
+                              target_embedding_padding: Optional[int] = None,
+                              embedding_modules: Optional[dict[str, str]] = None,
+                              embedding_padding_modules: Optional[list[str]] = None,
+                              weights_mapper: Optional[WeightsMapper] = None,
+                              tensorizer_config_dict: Optional[dict] = None) -> "CompressedLoRAModel":
+        # directly call from_lora_tensors()
+        # called by cluster's from_local_checkpoint() when cluster is being read in
         pass
 
 
@@ -386,8 +384,9 @@ class CompressedLoRAModelCluster():
         
     @classmethod
     def from_local_checkpoint(cls, model_dir, model_id=None, **kwargs) -> "CompressedLoRAModelCluster":
-        # read in safetensors files and call from_local_checkpoint() on each CompressedLoRAModel, assigning cluster_id to this one
-        # return a cluster
+        # read in safetensors files 
+        # call CompressedLoRAModel.from_local_checkpoint() on each safetensors file, assigning their cluster IDs to this cluster
+        # return the cluster
         pass
 
 
@@ -506,11 +505,10 @@ class LoRAModelManager(AdapterModelManager):
                         " without --enable-lora-bias.")
                 
 
-                # Add check for compressed lora and set_lora with appropriate number of parameters 
-                # is this called per token or per request?
+                # TODO: Add check for compressed lora and set_lora with appropriate number of parameters
                 if self.lora_config.joint_compress_enabled:
-                    # TODO: pull out lora_a and lora_b from dictionaries at this point to pass in
-                    module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
+                    # TODO: pull out lora_u and lora_v from associated parent cluster at this point to pass in
+                    module.set_lora(index, module_lora.lora_u, module_lora.lora_v,
                                 module_lora.embeddings_tensor,
                                 module_lora.bias,
                                 module_lora.lora_sigma) # TODO: add support for this

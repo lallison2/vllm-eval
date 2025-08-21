@@ -209,8 +209,8 @@ class LoRALayerWeightsWithCompression(LoRALayerWeights):
         module_name: str,
         rank: int,
         lora_alpha: int,
-        lora_a_idx: int,
-        lora_b_idx: int,
+        lora_u_idx: int,
+        lora_v_idx: int,
         lora_sigma: Optional[torch.Torch] = None,
         bias: Optional[torch.Tensor] = None,
         embeddings_tensor: Optional[torch.Tensor] = None,
@@ -219,8 +219,8 @@ class LoRALayerWeightsWithCompression(LoRALayerWeights):
         self.module_name = module_name
         self.rank = rank
         self.lora_alpha = lora_alpha
-        self.lora_a_idx = lora_a_idx
-        self.lora_b_idx = lora_b_idx
+        self.lora_u_idx = lora_u_idx
+        self.lora_v_idx = lora_v_idx
         self.lora_sigma = lora_sigma
         self.bias = bias
         self.embeddings_tensor = embeddings_tensor
@@ -232,7 +232,6 @@ class LoRALayerWeightsWithCompression(LoRALayerWeights):
 
     def optimize(self) -> "LoRALayerWeights":
         """Optimize the LoRA by merging the scaling into lora_sigma."""
-        # I think this can just scale sigma?
         if self.scaling == 1:
             return self
         self.lora_sigma *= self.scaling
@@ -271,8 +270,8 @@ class LoRALayerWeightsWithCompression(LoRALayerWeights):
             bias_enabled: Optional[bool] = False) -> "LoRALayerWeights":
         pin_memory = str(device) == "cpu" and is_pin_memory_available()
 
-        lora_a_idx = 0
-        lora_b_idx = 0
+        lora_u_idx = 0
+        lora_v_idx = 0
         lora_sigma = torch.zeros([FILL_IN, FILL_IN], # TODO: fill in with sigma dimensions
                             dtype=dtype,
                             device=device,
@@ -296,8 +295,8 @@ class LoRALayerWeightsWithCompression(LoRALayerWeights):
             module_name,
             rank=rank,
             lora_alpha=1,
-            lora_a_idx=lora_a_idx,
-            lora_b_idx=lora_b_idx,
+            lora_u_idx=lora_u_idx,
+            lora_v_idx=lora_v_idx,
             lora_sigma=lora_sigma,
             bias=bias,
             embeddings_tensor=embeddings_tensor,
@@ -311,8 +310,8 @@ class PackedLoRALayerWeightsWithCompression(LoRALayerWeightsWithCompression):
         module_name: str,
         rank: int,
         lora_alphas: list[Optional[int]],
-        lora_a_idx: list[Optional[int]],
-        lora_b_idx: list[Optional[int]],
+        lora_u_idx: list[Optional[int]],
+        lora_v_idx: list[Optional[int]],
         lora_sigma: list[Optional[torch.Tensor]],
         bias: Optional[list[Optional[torch.Tensor]]] = None,
         scaling: Optional[list[float]] = None,
@@ -321,8 +320,8 @@ class PackedLoRALayerWeightsWithCompression(LoRALayerWeightsWithCompression):
             module_name=module_name,
             rank=rank,
             lora_alpha=0,
-            lora_a_idx=lora_a_idx,
-            lora_b_idx=lora_b_idx,
+            lora_u_idx=lora_u_idx,
+            lora_v_idx=lora_v_idx,
             lora_sigma=lora_sigma,
             bias=bias,
             scaling=scaling,
@@ -354,8 +353,8 @@ class PackedLoRALayerWeightsWithCompression(LoRALayerWeightsWithCompression):
             module_name,
             rank,
             [lora.lora_alpha if lora is not None else None for lora in loras],
-            [lora.lora_a_idx if lora is not None else None for lora in loras],
-            [lora.lora_b_idx if lora is not None else None for lora in loras],
+            [lora.lora_u_idx if lora is not None else None for lora in loras],
+            [lora.lora_v_idx if lora is not None else None for lora in loras],
             [lora.lora_sigma if lora is not None else None for lora in loras],
             [lora.bias if lora is not None else None for lora in loras],
             scaling=[
@@ -365,7 +364,7 @@ class PackedLoRALayerWeightsWithCompression(LoRALayerWeightsWithCompression):
         return obj
 
     def optimize(self) -> "PackedLoRALayerWeights":
-        """Optimize the LoRA by merging the scaling into lora_b."""
+        """Optimize the LoRA by merging the scaling into lora_sigma."""
         for i in range(len(self.lora_b)):
             if self.scaling[i] == 1 or self.lora_sigma[i] is None:  # type: ignore
                 continue
