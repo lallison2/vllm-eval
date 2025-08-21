@@ -166,7 +166,7 @@ async def main():
     # ADAPTER_NAME = LORA_NAME # alora: 0.21s, lora: 0.24s
 
     # Call the base model
-    base_generation_tokens = await send(random_prompts, ntokens=65, use_adapter_name=BASE_NAME)
+    base_generation_tokens = await send(random_prompts, ntokens=512, use_adapter_name=BASE_NAME)
     # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
     # print(random_prompts)
 
@@ -179,7 +179,7 @@ async def main():
     # print("end of text: ", tokenizer("<|end_of_text|>\n")["input_ids"])
     # print("invocaation seq: ", tokenizer(invocation_string)["input_ids"])
 
-    _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME)
+    _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
 
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
@@ -192,49 +192,6 @@ async def main():
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
     save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME)
-
-
-
-
-
-
-
-
-
-    # prompts = [
-    #     (
-    #         "<|start_of_role|>user<|end_of_role|>What is MIT?<|end_of_text|>\n"
-    #         "<|start_of_role|>assistant<|end_of_role|>"
-    #     ),
-    # ]
-    # # Base model call
-    # outputs_base = client.completions.create(model=BASE_NAME,
-    #                                         prompt=prompts,  
-    #                                         temperature=0, 
-    #                                         max_tokens=600)
-
-    # choices = outputs_base.choices
-    # generated_text = []
-    # for i in range(len(prompts)):
-    #     prompt = prompts[i]
-
-    #     generated_text += [outputs_base.choices[i].text]
-    #     print(f"Prompt: {prompt!r}, Generated text: {generated_text[-1]!r}")
-
-    # prompts_alora = [x + y + "<|end_of_text|>\n"+ invocation_string for x,y in zip(prompts, generated_text)] 
-
-    # # Base model with aLoRA call
-    # t0 = time.time()
-    # alora_outputs = client.completions.create(model=ALORA_NAME,
-    #                                         prompt=prompts_alora, 
-    #                                         temperature=0, 
-    #                                         max_tokens=10)
-    # t = time.time() -t0
-    # print(f"Time: {t}")
-    # for i in range(len(prompts_alora)):
-    #     prompt = prompts_alora[i]
-    #     generated_text = alora_outputs.choices[i].text
-    #     print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
     
 
 if __name__ == '__main__':
