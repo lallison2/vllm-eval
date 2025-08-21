@@ -22,7 +22,7 @@ from vllm.logger import init_logger
 from vllm.lora.layers import (BaseLayerWithLoRA,
                               LinearScalingRotaryEmbeddingWithLoRA,
                               LoRAMapping)
-from vllm.lora.lora import LoRALayerWeights, PackedLoRALayerWeights
+from vllm.lora.lora import LoRALayerWeights, PackedLoRALayerWeights, LoRALayerWeightsWithCompression, PackedLoRALayerWeightsWithCompression
 from vllm.lora.peft_helper import PEFTHelper
 from vllm.lora.punica_wrapper import get_punica_wrapper
 from vllm.lora.utils import (from_layer, from_layer_logits_processor,
@@ -319,6 +319,76 @@ class LoRAModel(AdapterModel):
             embedding_modules=embedding_modules,
             embedding_padding_modules=embedding_padding_modules,
             weights_mapper=weights_mapper)
+
+
+class CompressedLoRAModel(AdapterModel):
+    """A LoRA fine-tuned model with joint compression."""
+
+    def __init__(
+        self,
+        lora_model_id: int,
+        cluster_id: int,
+        rank: int,
+        loras: dict[str, LoRALayerWeightsWithCompression],
+        scaling_factor: Optional[float] = None,
+    ) -> None:
+        """
+        Args:
+            lora_model_id: The integer id for the lora model.
+            rank: lora rank.
+            loras: module name -> weights for lora-replaced layers.
+            scaling_factor: Scaling factor to support long context lora model.
+                None if the lora is not tuned for long context support.
+        """
+        self.id = lora_model_id
+        # Scaling factor for long context lora model. None if it is not
+        # fine tuned for the long context.
+        self.scaling_factor = scaling_factor
+        assert (
+            lora_model_id
+            > 0), f"a valid lora id should be greater than 0, got {self.id}"
+        self.rank = rank
+        self.loras: dict[str, LoRALayerWeightsWithCompression] = loras
+        self.cluster_id = cluster_id
+
+    @property
+    def get_cluster_id(self) -> int:
+        return self.cluster_id
+    
+    def get_lora(self, module_name: str) -> Optional[LoRALayerWeightsWithCompression]:
+        """Get LoRA for a given module by name"""
+        return self.loras.get(module_name, None)
+
+    def check_lora_name(self, lora_name: str) -> bool:
+        return lora_name in self.loras
+
+    def from_lora_tensors() -> "CompressedLoRAModel":
+        # make instance from tensors
+        pass
+
+    def from_local_checkpoint(cls, model_dir, model_id=None, **kwargs) -> "CompressedLoRAModel":
+        # make instance from tensors (called by cluster)
+        pass
+
+
+class CompressedLoRAModelCluster():
+    def __init__(
+        self,
+        cluster_id: int,
+        lora_u: torch.Tensor,
+        lora_v: torch.Tensor,
+        compressed_loras: list[CompressedLoRAModel],
+    ) -> None:
+        self.id = cluster_id
+        self.lora_u = lora_u
+        self.lora_v  = lora_v
+        self.compressed_loras: list[CompressedLoRAModel] = compressed_loras
+        
+    @classmethod
+    def from_local_checkpoint(cls, model_dir, model_id=None, **kwargs) -> "CompressedLoRAModelCluster":
+        # read in safetensors files and call from_local_checkpoint() on each CompressedLoRAModel, assigning cluster_id to this one
+        # return a cluster
+        pass
 
 
 class LoRAModelManager(AdapterModelManager):

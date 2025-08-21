@@ -100,6 +100,9 @@ class PEFTHelper:
             tensorizer_config_dict: Optional[dict] = None) -> "PEFTHelper":
         lora_config_path = os.path.join(lora_path, "adapter_config.json")
 
+        # TODO: check if directory is for a regular lora or for a cluster
+        
+
         if tensorizer_config_dict:
             tensorizer_config = TensorizerConfig(**tensorizer_config_dict)
             tensorizer_args = tensorizer_config._construct_tensorizer_args()
