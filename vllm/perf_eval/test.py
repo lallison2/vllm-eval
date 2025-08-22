@@ -179,10 +179,11 @@ async def main():
     # print("end of text: ", tokenizer("<|end_of_text|>\n")["input_ids"])
     # print("invocaation seq: ", tokenizer(invocation_string)["input_ids"])
 
-    _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
+    # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
 
     t0 = time.time()
-    adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
+    # adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=BASE_NAME) 
     t = time.time() - t0
     print(f"Time: {t}")
 
