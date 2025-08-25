@@ -346,7 +346,19 @@ class CompressedLoRAModel(LoRAModel):
         return self.cluster_id
 
     @classmethod
-    def from_lora_tensors() -> "CompressedLoRAModel":
+    def from_lora_tensors(
+        cls,
+        lora_model_id: int,
+        tensors: dict[str, torch.Tensor],
+        peft_helper: PEFTHelper,
+        device: str = "cuda",
+        dtype: Optional[torch.dtype] = None,
+        embeddings: Optional[dict[str, torch.Tensor]] = None,
+        target_embedding_padding: Optional[int] = None,
+        embedding_modules: Optional[dict[str, str]] = None,
+        embedding_padding_modules: Optional[list[str]] = None,
+        weights_mapper: Optional[WeightsMapper] = None,
+    ) -> "CompressedLoRAModel":
         # make CompressedLoRAModel instance from tensors
         pass
 
@@ -383,11 +395,142 @@ class CompressedLoRAModelCluster():
         self.compressed_loras: list[CompressedLoRAModel] = compressed_loras
         
     @classmethod
-    def from_local_checkpoint(cls, model_dir, model_id=None, **kwargs) -> "CompressedLoRAModelCluster":
+    def from_local_checkpoint(
+        cls,
+            lora_dir: str,
+            expected_lora_modules: list[str],
+            peft_helper: PEFTHelper,
+            *,
+            lora_model_ids: Optional[list[int]] = None,
+            device: str = "cuda",
+            dtype: Optional[torch.dtype] = None,
+            target_embedding_padding: Optional[int] = None,
+            embedding_modules: Optional[dict[str, str]] = None,
+            embedding_padding_modules: Optional[list[str]] = None,
+            weights_mapper: Optional[WeightsMapper] = None,
+            tensorizer_config_dict: Optional[dict] = None
+    ) -> "CompressedLoRAModelCluster":
         # read in safetensors files 
         # call CompressedLoRAModel.from_local_checkpoint() on each safetensors file, assigning their cluster IDs to this cluster
         # return the cluster
-        pass
+        """Create a CompressedLoRAModelCluster from a local checkpoint.
+
+        Args:
+            lora_dir: The local path that has data of all compressed loras in this cluster.
+            expected_lora_modules: Name of modules that are expected to be
+                replaced by lora.
+            peft_helper: Loaded lora configuration information.
+            lora_model_ids: list of LoRA model ids corresponding to compressed loras in cluster. If not given, automatically set by
+                a global counter.
+            device: Device where the lora models are loaded.
+            dtype: dtype of the lora model weights.
+
+        Returns:
+            Loaded CompressedLoRAModelCluster.
+        """
+        
+        # TODO: modify the below to work for cluster instead of single lora
+
+        lora_tensor_path = os.path.join(lora_dir, "adapter_model.safetensors")
+        lora_bin_file_path = os.path.join(lora_dir, "adapter_model.bin")
+        new_embeddings_tensor_path = os.path.join(
+            lora_dir, "new_embeddings.safetensors")
+        new_embeddings_bin_file_path = os.path.join(lora_dir,
+                                                    "new_embeddings.bin")
+        tensors: dict[str, torch.Tensor] = {}
+        unexpected_modules: list[Union[list[str], str]] = []
+
+        def check_unexpected_modules(modules: dict):
+            for lora_module in modules.keys():  # noqa
+                module_name, _, _ = parse_fine_tuned_lora_name(
+                    lora_module, weights_mapper)
+                part_name = module_name.split(".")[-1]
+                if part_name not in expected_lora_modules:
+                    unexpected_modules.append(module_name)
+            if unexpected_modules:
+                raise ValueError(
+                    f"While loading {lora_dir}, expected"
+                    f" target modules in {expected_lora_modules}"
+                    f" but received {unexpected_modules}."
+                    f" Please verify that the loaded LoRA module is correct")
+
+        if tensorizer_config_dict:
+            from tensorizer import TensorDeserializer
+
+            tensorizer_config = TensorizerConfig(**tensorizer_config_dict)
+            lora_tensor_path = os.path.join(tensorizer_config.tensorizer_dir,
+                                            "adapter_model.tensors")
+            tensorizer_args = tensorizer_config._construct_tensorizer_args()
+            tensors = TensorDeserializer(lora_tensor_path,
+                                         dtype=tensorizer_config.dtype,
+                                         **tensorizer_args.deserializer_params)
+            check_unexpected_modules(tensors)
+
+        elif os.path.isfile(lora_tensor_path):
+            # Find unexpected modules.
+            # Use safetensor key as a source of truth to find expected modules.
+            # in peft if you have target_modules A, B, C and C does not exist
+            # in the model it won’t error and model will be trained with A, B
+            # loraified. C won’t exist in the safetensor but it will exist in
+            # the target_modules of the adapter_config.json.
+            unexpected_modules = []
+            with safetensors.safe_open(lora_tensor_path,
+                                       framework="pt") as f:  # type: ignore
+                # Load tensors if there are only expected modules.
+                check_unexpected_modules(f)
+                for module in f.keys():  # noqa
+                    tensors[module] = f.get_tensor(module)
+        elif os.path.isfile(lora_bin_file_path):
+            # When a bin file is provided, we rely on config to find unexpected
+            # modules.
+            unexpected_modules = []
+            target_modules = peft_helper.target_modules
+            if not isinstance(target_modules, list):
+                target_modules = [target_modules]
+            for module in target_modules:
+                # Compatible with more modules,
+                # such as:layers.11.self_attn.k_proj
+                part_name = module.split(".")[-1]
+                if part_name not in expected_lora_modules:
+                    unexpected_modules.append(module)
+            # loaded lora's target modules must be a subset of
+            # expected_lora_modules. It is not reliable. See
+            # https://github.com/vllm-project/vllm/pull/5909. But there's no
+            # other better mechanism.
+            if unexpected_modules and not is_regex_target_modules(
+                    peft_helper.target_modules, expected_lora_modules):
+                raise ValueError(
+                    f"While loading {lora_dir}, expected"
+                    f" target modules in {expected_lora_modules}"
+                    f" but received {unexpected_modules}."
+                    f" Please verify that the loaded LoRA module is correct")
+            tensors = torch.load(lora_bin_file_path,
+                                 map_location=device,
+                                 weights_only=True)
+        else:
+            raise ValueError(f"{lora_dir} doesn't contain tensors")
+
+        embeddings = None
+        if os.path.isfile(new_embeddings_tensor_path):
+            embeddings = safetensors.torch.load_file(
+                new_embeddings_tensor_path)
+        elif os.path.isfile(new_embeddings_bin_file_path):
+            embeddings = torch.load(new_embeddings_bin_file_path,
+                                    map_location=device,
+                                    weights_only=True)
+
+        return cls.from_lora_tensors(
+            lora_model_id=get_lora_id()
+            if lora_model_ids is None else lora_model_ids,
+            tensors=tensors,
+            peft_helper=peft_helper,
+            device=device,
+            dtype=dtype,
+            embeddings=embeddings,
+            target_embedding_padding=target_embedding_padding,
+            embedding_modules=embedding_modules,
+            embedding_padding_modules=embedding_padding_modules,
+            weights_mapper=weights_mapper)
 
 
 class LoRAModelManager(AdapterModelManager):
