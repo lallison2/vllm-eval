@@ -219,8 +219,8 @@ class LoRALayerWeightsWithCompression(LoRALayerWeights):
         self.module_name = module_name
         self.rank = rank
         self.lora_alpha = lora_alpha
-        self.lora_u_idx = lora_u_idx
-        self.lora_v_idx = lora_v_idx
+        # self.lora_u_idx = lora_u_idx
+        # self.lora_v_idx = lora_v_idx
         self.lora_sigma = lora_sigma
         self.bias = bias
         self.embeddings_tensor = embeddings_tensor

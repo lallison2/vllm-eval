@@ -111,7 +111,7 @@ def parse_fine_tuned_lora_name(
         weights_mapper: maps the name of weight, e.g.
             `model.` -> `language_model.model.`,
     return:
-        tuple(module_name, is_lora_a):
+        tuple(module_name, is_lora_a, is_bias):
             module_name: the name of the module, e.g. model.dense1,
             is_lora_a whether the tensor is lora_a or lora_b.
             is_bias whether the tensor is lora bias.
@@ -139,6 +139,14 @@ def parse_fine_tuned_lora_name(
         new_name = ".".join(parts[start_index:-2])
         return new_name, parts[-2] == "lora_A", False
 
+    ##### FOR COMPRESSED LORA #####
+    if parts[-1] == "weight" and parts[-2] == "lora_sigma":
+        new_name = ".".join(parts[start_index:-2])
+        return new_name, False, False
+    ###############################
+
+
+    # TODO: edit accordingly based on whether or not compressed lora also compresses embedding layers? or just weight matrices?
     if parts[-1] == "lora_embedding_A" or parts[-1] == "lora_embedding_B":
         new_name = ".".join(parts[start_index:-1])
         return new_name, parts[-1] == "lora_embedding_A", False
