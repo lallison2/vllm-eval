@@ -14,7 +14,7 @@ from vllm.adapter_commons.worker_manager import AbstractWorkerManager
 from vllm.config import LoRAConfig
 from vllm.logger import init_logger
 from vllm.lora.models import (LoRAModel, LoRAModelManager,
-                              LRUCacheLoRAModelManager, create_lora_manager)
+                              LRUCacheLoRAModelManager, create_lora_manager, CompressedLoRAModel, CompressedLoRAModelCluster)
 from vllm.lora.peft_helper import PEFTHelper
 from vllm.lora.request import LoRARequest
 from vllm.lora.utils import get_adapter_absolute_path
@@ -119,7 +119,9 @@ class WorkerLoRAManager(AbstractWorkerManager):
 
             # TODO: check if model is compressed or regular, set self._lora_model_cls, and call from_local_checkpoint() normally
             # if compressed, set _lora_model_cls to type[CompressedLoRAModelCluster] to read in whole cluster at once
-              
+            if (compressed): #TODO
+                self._lora_model_cls = type[CompressedLoRAModelCluster]
+
             lora = self._lora_model_cls.from_local_checkpoint(
                 lora_path,
                 expected_lora_modules,

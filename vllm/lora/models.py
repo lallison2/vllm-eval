@@ -373,8 +373,7 @@ class CompressedLoRAModel(LoRAModel):
         for tensor_name, tensor in tensors.items():
             module_name, _, is_bias = parse_fine_tuned_lora_name(
                 tensor_name, weights_mapper)
-            
-            # TODO: check what this if statement
+        
             if module_name not in loras:
                 lora_embeddings_tensor = None
                 if embeddings:
@@ -673,8 +672,9 @@ class LoRAModelManager(AdapterModelManager):
         self.adapter_type = 'LoRA'
 
         # TODO: fill in dimensions
-        self.lora_u_list = [torch.zero([FILL_IN, FILL_IN])] # pad with zero matrix as first element
-        self.lora_v_list = [torch.zero([FILL_IN, FILL_IN])] # pad with zero matrix as first element
+        # self.lora_u_list = [torch.zero([FILL_IN, FILL_IN])] # pad with zero matrix as first element
+        # self.lora_v_list = [torch.zero([FILL_IN, FILL_IN])] # pad with zero matrix as first element
+        self.clusters: list[CompressedLoRAModelCluster] = []
 
     @property
     def capacity(self) -> int:
@@ -706,6 +706,7 @@ class LoRAModelManager(AdapterModelManager):
         logger.debug("Activating LoRA. int id: %d, slot index: %d",
                      lora_model.id, index)
         self.lora_index_to_id[index] = lora_model.id
+
         for module_name, module in self.modules.items():
             module_lora = self._get_lora_layer_weights(lora_model, module_name)
             if module_lora:
@@ -720,15 +721,17 @@ class LoRAModelManager(AdapterModelManager):
                     raise ValueError(
                         f"Adapter bias cannot be used for {module_name}"
                         " without --enable-lora-bias.")
-                
 
                 # TODO: Add check for compressed lora and set_lora with appropriate number of parameters
                 if self.lora_config.joint_compress_enabled:
-                    # TODO: pull out lora_u and lora_v from associated parent cluster at this point to pass in
-                    module.set_lora(index, module_lora.lora_u, module_lora.lora_v,
+                    # Pull out lora_u and lora_v from associated parent cluster to pass in
+                    cluster_id = lora_model.get_cluster_id()
+                    lora_u = self.clusters[cluster_id].lora_u
+                    lora_v = self.clusters[cluster_id].lora_v
+                    lora_u_sigma = lora_u @ module_lora.sigma # TODO: replace this with faster mat mult
+                    module.set_lora(index, lora_u_sigma, lora_v,
                                 module_lora.embeddings_tensor,
-                                module_lora.bias,
-                                module_lora.lora_sigma) # TODO: add support for this
+                                module_lora.bias)
                 else:
                     module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
                                     module_lora.embeddings_tensor,

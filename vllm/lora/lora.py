@@ -209,8 +209,8 @@ class LoRALayerWeightsWithCompression(LoRALayerWeights):
         module_name: str,
         rank: int,
         lora_alpha: int,
-        lora_u_idx: int,
-        lora_v_idx: int,
+        # lora_u_idx: int,
+        # lora_v_idx: int,
         lora_sigma: Optional[torch.Torch] = None,
         bias: Optional[torch.Tensor] = None,
         embeddings_tensor: Optional[torch.Tensor] = None,
@@ -272,7 +272,7 @@ class LoRALayerWeightsWithCompression(LoRALayerWeights):
 
         lora_u_idx = 0
         lora_v_idx = 0
-        lora_sigma = torch.zeros([FILL_IN, FILL_IN], # TODO: fill in with sigma dimensions
+        lora_sigma = torch.zeros([8, 8], # Temporary, random testing lora has rank 8
                             dtype=dtype,
                             device=device,
                             pin_memory=pin_memory)

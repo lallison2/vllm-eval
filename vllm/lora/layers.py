@@ -215,20 +215,14 @@ class VocabParallelEmbeddingWithLoRA(BaseLayerWithLoRA):
         lora_b: torch.Tensor,
         embeddings_tensor: Optional[torch.Tensor],
         bias: Optional[torch.Tensor] = None,
-        lora_sigma: Optional[torch.Tensor] = None,
     ):
         self.reset_lora(index)
 
-        # TODO: if lora_sigma exists, compute A-prime, pass it in regularly as lora_a
-        # this is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
+        # If using compression, `lora_a`` here is passed in as a-prime (u @ sigma)
+        # This function is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
 
-        ###
-        if lora_sigma is not None: # compute A-prime = sigma
-            
-        else:
-            self.lora_a_stacked[index, :lora_a.shape[0], :lora_a.shape[1]].copy_(
+        self.lora_a_stacked[index, :lora_a.shape[0], :lora_a.shape[1]].copy_(
             lora_a, non_blocking=True)
-        ###
 
         self.lora_b_stacked[index,
                             0, :lora_b.shape[1], :lora_b.shape[0]].copy_(
