@@ -288,3 +288,84 @@ class PunicaWrapperGPU(PunicaWrapperBase):
                     *self.prompt_mapping_meta.meta_args(buffer.size(0)),
                     add_inputs=True)
         y = y.view_as(y_org)
+
+    def add_lora_linear_compressed(self,
+                        y: torch.Tensor,
+                        x: torch.Tensor,
+                        lora_a_stacked: tuple[torch.Tensor, ...],
+                        lora_sigma_stacked: tuple[torch.Tensor, ...],
+                        lora_b_stacked: tuple[torch.Tensor, ...],
+                        lora_bias_stacked: Optional[tuple[torch.Tensor, ...]],
+                        scale: float,
+                        output_slices: tuple[int, ...],
+                        *,
+                        buffer: Optional[torch.Tensor] = None,
+                        **kwargs) -> None:
+        """
+        Applicable to compressed linear-related lora. 
+
+        Semantics:
+            for i in range(len(lora_a_stacked)):
+                y[i] += (
+                    x[i].unsqueeze(0)
+                    @ lora_a_stacked[indices[i], layer_idx, :, :]
+                    @ lora_sigma_stacked[indices[i], layer_idx, :, :]
+                    @ lora_b_stacked[indices[i], layer_idx, :, :]
+                    * scale
+                    ).squeeze(0)+lora_bias_stacked[i]
+
+        Args:
+            y (torch.Tensor): Output tensor. Will be changed in-place.
+            x (torch.Tensor): Input tensor
+            lora_a_stacked (tuple[torch.Tensor, ...]): lora_a's weight.
+            lora_sigma_stacked (tuple[torch.Tensor, ...]): lora_sigma's weight.
+            lora_b_stacked (tuple[torch.Tensor, ...]): lora_b's weight.
+            lora_bias_stacked (Optional[tuple[torch.Tensor, ...]]): lora's bias.
+            scale (float): Scaling factor.
+            output_slices (tuple[int, ...]): Every slice's size.
+            buffer (Optional[torch.Tensor]): Defaults to None.
+        """
+        # TODO: edit the following to work for compressed lora
+
+        assert len(lora_a_stacked) == len(lora_sigma_stacked) == len(lora_b_stacked) == len(output_slices)
+        if lora_bias_stacked is not None:
+            assert len(lora_bias_stacked) == len(output_slices)
+            token_lora_indices = torch.narrow(self._token_lora_indices, 0, 0,
+                                            y.size(0))
+            y = self._apply_bias(token_lora_indices, y, output_slices,
+                                lora_bias_stacked)
+
+        if buffer is None:
+            r = lora_b_stacked[0].size(-1)
+            # We set the buffer to be float32 by default, refer to:
+            # https://github.com/triton-lang/triton/issues/1387
+            buffer = torch.zeros(  # type: ignore
+                (len(output_slices), x.size(0), r),
+                dtype=torch.float32,
+                device=x.device,
+            )
+        
+        # TODO: create buffer_2
+        # ...
+
+
+        self.add_shrink(
+            buffer,  # type: ignore
+            x,
+            lora_a_stacked,
+            scale,
+            **kwargs)
+        self.add_shrink(
+            buffer_2,  # type: ignore
+            buffer,
+            lora_sigma_stacked,
+            scale,
+            **kwargs)
+        self.add_expand(
+            y,
+            buffer,  # type: ignore
+            lora_b_stacked,
+            None,
+            output_slices,
+            add_inputs=True,
+            **kwargs)

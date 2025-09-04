@@ -395,13 +395,6 @@ class BaseLinearLayerWithLoRA(BaseLayerWithLoRA):
 
         self.reset_lora(index)
 
-        # TODO: some check here for compression toggle and whether or not to compute A-prime here
-        # if compressed, compute A-prime, pass it in regularly as A
-        # this is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
-
-        # ...
-
-
         if self.tp_size > 1:
             lora_a = self.slice_lora_a(lora_a)
             lora_b = self.slice_lora_b(lora_b)
@@ -434,10 +427,18 @@ class BaseLinearLayerWithLoRA(BaseLayerWithLoRA):
             output = output.flatten(0, 1)
             x = x.flatten(0, 1)
 
-        lora_output: Optional[
-            torch.Tensor] = self.punica_wrapper.add_lora_linear(
-                output, x, self.lora_a_stacked, self.lora_b_stacked,
+
+        # TODO: if compressed lora, pass in additional sigma field
+        if (compressed):
+            lora_output: Optional[
+            torch.Tensor] = self.punica_wrapper.add_lora_linear_compressed(
+                output, x, self.lora_a_stacked, self.lora_sigma_stacked, self.lora_b_stacked,
                 self.lora_bias_stacked, 1.0, self.output_slices)
+        else:
+            lora_output: Optional[
+                torch.Tensor] = self.punica_wrapper.add_lora_linear(
+                    output, x, self.lora_a_stacked, self.lora_b_stacked,
+                    self.lora_bias_stacked, 1.0, self.output_slices)
         if not current_platform.can_update_inplace():
             output = lora_output
 
@@ -726,13 +727,11 @@ class MergedColumnParallelLinearWithLoRA(ColumnParallelLinearWithLoRA):
     ):
         self.reset_lora(index)
 
-        # TODO: some check here for compression toggle and whether or not to compute A-prime here
-        # if compressed, compute A-prime, pass it in regularly as A
-        # this is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
-
-        # ...
-
-        
+        # TODO: finish this part
+        # this function is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
+        if (compressed):
+            # set self.lora_sigma_stacked
+            # this will be used later in apply()
 
         if self.tp_size > 1:
             lora_a = self.slice_lora_a(lora_a)
@@ -1112,13 +1111,6 @@ class LogitsProcessorWithLoRA(BaseLayerWithLoRA):
         lora_sigma: Optional[torch.Tensor] = None,
     ):
         self.reset_lora(index)
-
-        # TODO: some check here for compression toggle and whether or not to compute A-prime here
-        # if compressed, compute A-prime, pass it in regularly as A
-        # this is called every time by set_active_loras() in gpu_model_runner.py's _prepare_inputs()
-
-        # ...
-
         
         self.lora_a_stacked[index,
                             0, :lora_a.shape[1], :lora_a.shape[0]].copy_(

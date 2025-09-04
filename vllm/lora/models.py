@@ -728,10 +728,9 @@ class LoRAModelManager(AdapterModelManager):
                     cluster_id = lora_model.get_cluster_id()
                     lora_u = self.clusters[cluster_id].lora_u
                     lora_v = self.clusters[cluster_id].lora_v
-                    lora_u_sigma = lora_u @ module_lora.sigma # TODO: replace this with faster mat mult
-                    module.set_lora(index, lora_u_sigma, lora_v,
+                    module.set_lora(index, lora_v, lora_u,
                                 module_lora.embeddings_tensor,
-                                module_lora.bias)
+                                module_lora.bias, module_lora.sigma) 
                 else:
                     module.set_lora(index, module_lora.lora_a, module_lora.lora_b,
                                     module_lora.embeddings_tensor,
