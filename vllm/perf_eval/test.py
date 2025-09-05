@@ -182,7 +182,7 @@ async def main():
     # print("end of text: ", tokenizer("<|end_of_text|>\n")["input_ids"])
     # print("invocaation seq: ", tokenizer(invocation_string)["input_ids"])
 
-    _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
+    # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
 
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
@@ -194,7 +194,7 @@ async def main():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, "with_extra_call.txt")
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME)
     
 
 if __name__ == '__main__':
