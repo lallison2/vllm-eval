@@ -46,7 +46,7 @@ vllm:time_to_first_token_seconds_bucket{engine="0",le="640.0",model_name="ibm-gr
 vllm:time_to_first_token_seconds_bucket{engine="0",le="2560.0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:time_to_first_token_seconds_bucket{engine="0",le="+Inf",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:time_to_first_token_seconds_count{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
-vllm:time_to_first_token_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.053851
+vllm:time_to_first_token_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.053653
 vllm:time_to_first_token_seconds_created{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000000
 vllm:time_per_output_token_seconds_bucket{engine="0",le="0.01",model_name="ibm-granite/granite-3.2-8b-instruct"} 511.000000
 vllm:time_per_output_token_seconds_bucket{engine="0",le="0.025",model_name="ibm-granite/granite-3.2-8b-instruct"} 541.000000
@@ -69,7 +69,7 @@ vllm:time_per_output_token_seconds_bucket{engine="0",le="40.0",model_name="ibm-g
 vllm:time_per_output_token_seconds_bucket{engine="0",le="80.0",model_name="ibm-granite/granite-3.2-8b-instruct"} 541.000000
 vllm:time_per_output_token_seconds_bucket{engine="0",le="+Inf",model_name="ibm-granite/granite-3.2-8b-instruct"} 541.000000
 vllm:time_per_output_token_seconds_count{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 541.000000
-vllm:time_per_output_token_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 4.971537
+vllm:time_per_output_token_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 5.005716
 vllm:time_per_output_token_seconds_created{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000000
 vllm:e2e_request_latency_seconds_bucket{engine="0",le="0.3",model_name="ibm-granite/granite-3.2-8b-instruct"} 2.000000
 vllm:e2e_request_latency_seconds_bucket{engine="0",le="0.5",model_name="ibm-granite/granite-3.2-8b-instruct"} 2.000000
@@ -94,7 +94,7 @@ vllm:e2e_request_latency_seconds_bucket{engine="0",le="1920.0",model_name="ibm-g
 vllm:e2e_request_latency_seconds_bucket{engine="0",le="7680.0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:e2e_request_latency_seconds_bucket{engine="0",le="+Inf",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:e2e_request_latency_seconds_count{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
-vllm:e2e_request_latency_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 5.025050
+vllm:e2e_request_latency_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 5.059310
 vllm:e2e_request_latency_seconds_created{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000000
 vllm:request_queue_time_seconds_bucket{engine="0",le="0.3",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_queue_time_seconds_bucket{engine="0",le="0.5",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
@@ -119,7 +119,7 @@ vllm:request_queue_time_seconds_bucket{engine="0",le="1920.0",model_name="ibm-gr
 vllm:request_queue_time_seconds_bucket{engine="0",le="7680.0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_queue_time_seconds_bucket{engine="0",le="+Inf",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_queue_time_seconds_count{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
-vllm:request_queue_time_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000117
+vllm:request_queue_time_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000110
 vllm:request_queue_time_seconds_created{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000000
 vllm:request_inference_time_seconds_bucket{engine="0",le="0.3",model_name="ibm-granite/granite-3.2-8b-instruct"} 2.000000
 vllm:request_inference_time_seconds_bucket{engine="0",le="0.5",model_name="ibm-granite/granite-3.2-8b-instruct"} 2.000000
@@ -144,7 +144,7 @@ vllm:request_inference_time_seconds_bucket{engine="0",le="1920.0",model_name="ib
 vllm:request_inference_time_seconds_bucket{engine="0",le="7680.0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_inference_time_seconds_bucket{engine="0",le="+Inf",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_inference_time_seconds_count{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
-vllm:request_inference_time_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 5.020502
+vllm:request_inference_time_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 5.054810
 vllm:request_inference_time_seconds_created{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000000
 vllm:request_prefill_time_seconds_bucket{engine="0",le="0.3",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_prefill_time_seconds_bucket{engine="0",le="0.5",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
@@ -169,7 +169,7 @@ vllm:request_prefill_time_seconds_bucket{engine="0",le="1920.0",model_name="ibm-
 vllm:request_prefill_time_seconds_bucket{engine="0",le="7680.0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_prefill_time_seconds_bucket{engine="0",le="+Inf",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_prefill_time_seconds_count{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
-vllm:request_prefill_time_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.048965
+vllm:request_prefill_time_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.049094
 vllm:request_prefill_time_seconds_created{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000000
 vllm:request_decode_time_seconds_bucket{engine="0",le="0.3",model_name="ibm-granite/granite-3.2-8b-instruct"} 2.000000
 vllm:request_decode_time_seconds_bucket{engine="0",le="0.5",model_name="ibm-granite/granite-3.2-8b-instruct"} 2.000000
@@ -194,5 +194,5 @@ vllm:request_decode_time_seconds_bucket{engine="0",le="1920.0",model_name="ibm-g
 vllm:request_decode_time_seconds_bucket{engine="0",le="7680.0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_decode_time_seconds_bucket{engine="0",le="+Inf",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
 vllm:request_decode_time_seconds_count{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 3.000000
-vllm:request_decode_time_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 4.971537
+vllm:request_decode_time_seconds_sum{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 5.005716
 vllm:request_decode_time_seconds_created{engine="0",model_name="ibm-granite/granite-3.2-8b-instruct"} 0.000000
