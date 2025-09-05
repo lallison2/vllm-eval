@@ -110,9 +110,13 @@ def subtract_metrics(stats, histograms, earlier_stats, earlier_histograms):
 
 ###################################################################
 
-def save_metrics(stats, histograms, adapter_name):
+def save_metrics(stats, histograms, adapter_name, file_name=None):
 
-    f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+"_metrics.txt","w")
+    if file_name is not None:
+        f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+file_name,"w")
+    else:
+        f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+"_metrics.txt","w")
+
     for stat in stats:
         f.write(stat+"} "+f"{stats[stat]:.6f}"+"\n")
         f.flush()
@@ -163,19 +167,18 @@ async def main():
     print("done warming up!!")
     
     ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME # alora: 0.21s, lora: 0.24s
+    # ADAPTER_NAME = LORA_NAME
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=512, use_adapter_name=BASE_NAME)
     # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
-    # print(random_prompts)
 
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
     # print("adapter prompts: ", adapter_prompts)
     # print("base generation: ", base_generation_tokens)
-    for token in base_generation_tokens[0]:
-        print("token ID: ", token, "decoded: ", tokenizer.decode(token))
+    # for token in base_generation_tokens[0]:
+    #     print("token ID: ", token, "decoded: ", tokenizer.decode(token))
     # print("end of text: ", tokenizer("<|end_of_text|>\n")["input_ids"])
     # print("invocaation seq: ", tokenizer(invocation_string)["input_ids"])
 
@@ -183,7 +186,6 @@ async def main():
 
     t0 = time.time()
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
-    # adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=BASE_NAME) 
     t = time.time() - t0
     print(f"Time: {t}")
 
