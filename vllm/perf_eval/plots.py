@@ -30,13 +30,12 @@ if __name__ == '__main__':
 
     fig, ax = plt.subplots()
 
-    ax.set_yscale('log')
-    ax.set_xscale('log', base=2)
     from matplotlib.ticker import LogFormatterExponent, LogLocator
-    ax.yaxis.set_major_formatter(LogFormatterExponent(base=10))
-
-    ax.set_xticks(prompt_lens)
-    ax.set_xticklabels([str(i) for i in prompt_lens])
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterExponent(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterExponent(base=10.0))
 
     ax.plot(prompt_lens, alora_metric_vals, label='aLoRA')
     ax.plot(prompt_lens, lora_metric_vals, label='LoRA')
