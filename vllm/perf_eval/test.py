@@ -179,7 +179,7 @@ async def main():
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
     # Optional extra call
-    # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
+    _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
 
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
 
@@ -188,8 +188,8 @@ async def main():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_without_call.txt")
-    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_with_call.txt")
+    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_without_call.txt")
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_with_call.txt")
     
 
 if __name__ == '__main__':

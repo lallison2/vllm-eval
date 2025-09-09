@@ -368,17 +368,17 @@ class Scheduler(SchedulerInterface):
                         self.kv_cache_manager.get_computed_blocks(
                             request)
 
-                    print("already cached tokens: ", num_new_local_computed_tokens) # DELETE
-                    print("request num tokens: ", request.num_tokens) # DELETE
-                    temp_block_size = self.kv_cache_manager.coordinator.kv_cache_spec.block_size # DELETE
-                    print("block size: ", temp_block_size) # DELETE
-                    print("final max length: ", temp_block_size * ((request.num_tokens - 1) // temp_block_size))
+                    # print("already cached tokens: ", num_new_local_computed_tokens) # DELETE
+                    # print("request num tokens: ", request.num_tokens) # DELETE
+                    # temp_block_size = self.kv_cache_manager.coordinator.kv_cache_spec.block_size # DELETE
+                    # print("block size: ", temp_block_size) # DELETE
+                    # print("final max length: ", temp_block_size * ((request.num_tokens - 1) // temp_block_size))
 
-                    # DELETE SECTION
-                    for kv_group in range(len(new_computed_blocks.blocks)):
-                        for block in new_computed_blocks.blocks[kv_group]:
-                            temp_token_ids = block._block_hash.block_hash.token_ids
-                            print("Hashed token ids: ", temp_token_ids)
+                    # # DELETE SECTION
+                    # for kv_group in range(len(new_computed_blocks.blocks)):
+                    #     for block in new_computed_blocks.blocks[kv_group]:
+                    #         temp_token_ids = block._block_hash.block_hash.token_ids
+                    #         print("Hashed token ids: ", temp_token_ids)
 
                     # Get externally-cached tokens if using a KVConnector.
                     if self.connector is not None:
