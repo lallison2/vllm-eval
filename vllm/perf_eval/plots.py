@@ -39,4 +39,4 @@ if __name__ == '__main__':
     ax.set_title("Evaluation Latency Comparison")
 
     # Display the plot
-    plt.save_fig("latency_prompt_len.png")
+    plt.savefig("latency_prompt_len.png")
