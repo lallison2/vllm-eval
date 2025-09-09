@@ -152,7 +152,7 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[3]
+    current_prompt_len = prompt_lens[4]
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
