@@ -31,9 +31,10 @@ if __name__ == '__main__':
     fig, ax = plt.subplots()
 
     ax.set_yscale('log')
-    # Format y-ticks in scientific notation (10^x style)
+    ax.set_xscale('log')
     from matplotlib.ticker import LogFormatterExponent
     ax.yaxis.set_major_formatter(LogFormatterExponent(base=10))
+    ax.xaxis.set_major_formatter(LogFormatterExponent(base=10))
 
     ax.plot(prompt_lens, alora_metric_vals, label='aLoRA')
     ax.plot(prompt_lens, lora_metric_vals, label='LoRA')
