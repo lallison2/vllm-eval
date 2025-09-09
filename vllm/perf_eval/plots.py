@@ -89,8 +89,8 @@ if __name__ == '__main__':
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_yscale('log')
-    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
     ax.set_xscale('log')
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
