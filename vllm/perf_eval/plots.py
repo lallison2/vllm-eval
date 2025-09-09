@@ -29,6 +29,12 @@ if __name__ == '__main__':
     #     print(f"prompt len: {p_len}, alora metric val: {alora_metric_vals[i]}, lora metric val: {lora_metric_vals[i]}")
 
     fig, ax = plt.subplots()
+
+    ax.yscale('log')
+    # Format y-ticks in scientific notation (10^x style)
+    from matplotlib.ticker import LogFormatterExponent
+    ax.gca().yaxis.set_major_formatter(LogFormatterExponent(base=10))
+
     ax.plot(prompt_lens, alora_metric_vals, label='aLoRA')
     ax.plot(prompt_lens, lora_metric_vals, label='LoRA')
 
@@ -40,3 +46,4 @@ if __name__ == '__main__':
 
     # Display the plot
     plt.savefig("latency_prompt_len.png")
+    plt.show()
