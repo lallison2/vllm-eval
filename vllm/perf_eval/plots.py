@@ -43,19 +43,29 @@ if __name__ == '__main__':
             marker='o', 
             markersize=4,
             linestyle='-',
-            color='navy',
-            markerfacecolor='red',
-            markeredgecolor='black',)
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
     ax.plot(prompt_lens, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='o', 
             markersize=4,
             linestyle='-',
-            color='green',
-            markerfacecolor='green',
-            markeredgecolor='green',
+            color='#f4c5b5',
+            markerfacecolor='#f4c5b5',
+            markeredgecolor='#f4c5b5',
             )
+    
+    ax.grid(
+        True,
+        which='both',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
