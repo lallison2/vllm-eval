@@ -155,7 +155,8 @@ async def main():
     #             ]
     
     # random_prompts = []
-    # with open('random_prompt.txt', 'r') as f:
+    # current_prompt_len = prompt_lens[0]
+    # with open(f'random_prompt_len_{current_prompt_len}.txt', 'r') as f:
     #     for line in f:
     #         prompt_strings = line.strip().split(',')
     #         prompt_tokens = [int(p) for p in prompt_strings]
@@ -172,22 +173,23 @@ async def main():
     # # ADAPTER_NAME = LORA_NAME
 
     # # Call the base model
-    # base_generation_tokens = await send(random_prompts, ntokens=512, use_adapter_name=BASE_NAME)
+    # base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
 
     # # Call the adapter model
     # adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
-    # t0 = time.time()
+    # # Optional extra call
+    # # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
+
     # adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
-    # t = time.time() - t0
-    # print(f"Time: {t}")
 
     # # Get current Prometheus metrics
     # adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
     
     # # Subtract the metrics from the warmup call
     # final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME)
+    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_without_call.txt")
+    # # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_with_call.txt")
     
 
 if __name__ == '__main__':
