@@ -7,7 +7,7 @@ if __name__ == '__main__':
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     metric_vals = []
     for p_len in prompt_lens:
-        with open(f'prompts/alora_prompt_len_{p_len}.txt', 'r') as f:
+        with open(f'results/alora_prompt_len_{p_len}.txt', 'r') as f:
             for line in f:
                 prompt_strings = line.strip().split(' ')
                 assert len(prompt_strings) == 2, "formatting error reading in results data"
