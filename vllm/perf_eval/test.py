@@ -110,12 +110,9 @@ def subtract_metrics(stats, histograms, earlier_stats, earlier_histograms):
 
 ###################################################################
 
-def save_metrics(stats, histograms, adapter_name, file_name=None):
+def save_metrics(stats, histograms, adapter_name, file_name):
 
-    if file_name is not None:
-        f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+file_name,"w")
-    else:
-        f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+adapter_name+"_metrics.txt","w")
+    f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+file_name,"w")
 
     for stat in stats:
         f.write(stat+"} "+f"{stats[stat]:.6f}"+"\n")
@@ -155,13 +152,12 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[5]
+    current_prompt_len = prompt_lens[0]
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
-    # print(random_prompts)
 
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
@@ -178,8 +174,8 @@ async def main():
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
-    # Optional extra call
-    _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
+    # # Optional extra call (increases prefix cache hit rate but increases latency)
+    # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
 
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
 
@@ -188,8 +184,7 @@ async def main():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_without_call.txt")
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_with_call.txt")
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}.txt")
     
 
 if __name__ == '__main__':
