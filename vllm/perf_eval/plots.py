@@ -30,12 +30,12 @@ if __name__ == '__main__':
 
     fig, ax = plt.subplots()
 
-    from matplotlib.ticker import LogFormatterExponent, LogLocator
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_yscale('log')
-    # ax.yaxis.set_major_formatter(LogFormatterExponent(base=10))
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
     ax.set_xscale('log')
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterExponent(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
     ax.plot(prompt_lens, alora_metric_vals, label='aLoRA')
     ax.plot(prompt_lens, lora_metric_vals, label='LoRA')
@@ -45,6 +45,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title("Evaluation Latency Comparison")
+    ax.legend()
 
     # Display the plot
     plt.savefig("latency_prompt_len.png")
