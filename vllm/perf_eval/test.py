@@ -133,7 +133,7 @@ async def main():
     # Generate random prompt tokens (run once)
     for p_len in prompt_lens:
         random_prompts = [gen_rnd_tokens(p_len)]
-        with open(f"random_prompt_len_{str(p_len)}.txt", 'w') as f:
+        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
             for prompt in random_prompts:
                 line = ','.join(map(str, prompt))
                 f.write(line+'\n')
@@ -156,7 +156,7 @@ async def main():
     
     # random_prompts = []
     # current_prompt_len = prompt_lens[0]
-    # with open(f'random_prompt_len_{current_prompt_len}.txt', 'r') as f:
+    # with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
     #     for line in f:
     #         prompt_strings = line.strip().split(',')
     #         prompt_tokens = [int(p) for p in prompt_strings]
