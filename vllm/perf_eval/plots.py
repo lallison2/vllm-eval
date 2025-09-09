@@ -25,10 +25,7 @@ if __name__ == '__main__':
     alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
     lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
 
-    # for i, p_len in enumerate(prompt_lens):
-    #     print(f"prompt len: {p_len}, alora metric val: {alora_metric_vals[i]}, lora metric val: {lora_metric_vals[i]}")
-
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_yscale('log')
