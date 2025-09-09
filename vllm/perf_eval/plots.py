@@ -12,7 +12,7 @@ if __name__ == '__main__':
                 prompt_strings = line.strip().split(' ')
                 assert len(prompt_strings) == 2, "formatting error reading in results data"
                 if prompt_strings[0].startswith(target_metric):
-                    value = int(prompt_strings[1])
+                    value = float(prompt_strings[1])
                     metric_vals.append(value)
                     break
     
