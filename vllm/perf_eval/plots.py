@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # for i, p_len in enumerate(prompt_lens):
     #     print(f"prompt len: {p_len}, alora metric val: {alora_metric_vals[i]}, lora metric val: {lora_metric_vals[i]}")
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_yscale('log')
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     ax.plot(prompt_lens, 
             alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='o', 
+            marker='D', 
             markersize=4,
             linestyle='-',
             color="#6675A9",
@@ -50,17 +50,25 @@ if __name__ == '__main__':
     ax.plot(prompt_lens, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='o', 
+            marker='D', 
             markersize=4,
             linestyle='-',
-            color='#f4c5b5',
+            color="#cdb38f",
             markerfacecolor='#f4c5b5',
             markeredgecolor='#f4c5b5',
             )
     
     ax.grid(
-        True,
-        which='both',
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
         linestyle='-',
         linewidth=0.5,
         color='gray',
@@ -70,7 +78,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title("End-to-end Latency Comparison")
-    ax.legend()
+    ax.legend(fontsize=8, markerscale=0.7)
 
     # Display the plot
     plt.savefig("e2e_latency_prompt_len.png")
