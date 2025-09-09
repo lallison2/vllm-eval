@@ -24,5 +24,19 @@ if __name__ == '__main__':
     target_metric = "vllm:e2e_request_latency_seconds_sum"
     alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
     lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
-    for i, p_len in enumerate(prompt_lens):
-        print(f"prompt len: {p_len}, alora metric val: {alora_metric_vals[i]}, lora metric val: {lora_metric_vals[i]}")
+
+    # for i, p_len in enumerate(prompt_lens):
+    #     print(f"prompt len: {p_len}, alora metric val: {alora_metric_vals[i]}, lora metric val: {lora_metric_vals[i]}")
+
+    fig, ax = plt.subplots()
+    ax.plot(prompt_lens, alora_metric_vals, label='aLoRA')
+    ax.plot(prompt_lens, lora_metric_vals, label='LoRA')
+
+    ax.set_aspect('equal', adjustable='box')
+
+    ax.set_xlabel("Prompt Length")
+    ax.set_ylabel("Latency (s)")
+    ax.set_title("Evaluation Latency Comparison")
+
+    # Display the plot
+    plt.save_fig("latency_prompt_len.png")
