@@ -130,66 +130,66 @@ def save_metrics(stats, histograms, adapter_name, file_name=None):
 async def main():
 
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    # Generate random prompt tokens (run once)
-    for p_len in prompt_lens:
-        random_prompts = [gen_rnd_tokens(p_len)]
-        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-            for prompt in random_prompts:
-                line = ','.join(map(str, prompt))
-                f.write(line+'\n')
+    # # Generate random prompt tokens (run once)
+    # for p_len in prompt_lens:
+    #     random_prompts = [gen_rnd_tokens(p_len)]
+    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+    #         for prompt in random_prompts:
+    #             line = ','.join(map(str, prompt))
+    #             f.write(line+'\n')
 
-    # stats = ["vllm:kv_cache_usage",
-    #         "vllm:prefix_cache_queries",
-    #         "vllm:prefix_cache_hits",
-    #         "vllm:prompt_tokens",
-    #         ]
+    stats = ["vllm:kv_cache_usage",
+            "vllm:prefix_cache_queries",
+            "vllm:prefix_cache_hits",
+            "vllm:prompt_tokens",
+            ]
 
-    # histograms = ["vllm:iteration_tokens_total",
-    #             "vllm:time_to_first_token_seconds",
-    #             "vllm:time_per_output_token_seconds",
-    #             "vllm:e2e_request_latency_seconds",
-    #             "vllm:request_queue_time_seconds",
-    #             "vllm:request_inference_time_seconds",
-    #             "vllm:request_prefill_time_seconds",
-    #             "vllm:request_decode_time_seconds",
-    #             ]
+    histograms = ["vllm:iteration_tokens_total",
+                "vllm:time_to_first_token_seconds",
+                "vllm:time_per_output_token_seconds",
+                "vllm:e2e_request_latency_seconds",
+                "vllm:request_queue_time_seconds",
+                "vllm:request_inference_time_seconds",
+                "vllm:request_prefill_time_seconds",
+                "vllm:request_decode_time_seconds",
+                ]
     
-    # random_prompts = []
-    # current_prompt_len = prompt_lens[0]
-    # with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
-    #     for line in f:
-    #         prompt_strings = line.strip().split(',')
-    #         prompt_tokens = [int(p) for p in prompt_strings]
-    #         random_prompts.append(prompt_tokens)
-    # # print(random_prompts)
+    random_prompts = []
+    current_prompt_len = prompt_lens[5]
+    with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
+        for line in f:
+            prompt_strings = line.strip().split(',')
+            prompt_tokens = [int(p) for p in prompt_strings]
+            random_prompts.append(prompt_tokens)
+    # print(random_prompts)
 
-    # print("warm up the inference engine")
-    # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
-    # print("done warming up!!")
+    print("warm up the inference engine")
+    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
+    print("done warming up!!")
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # # ADAPTER_NAME = LORA_NAME
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME
 
-    # # Call the base model
-    # base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
+    # Call the base model
+    base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
 
-    # # Call the adapter model
-    # adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+    # Call the adapter model
+    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
-    # # Optional extra call
-    # # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
+    # Optional extra call
+    # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
 
-    # adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
 
-    # # Get current Prometheus metrics
-    # adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
+    # Get current Prometheus metrics
+    adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
     
-    # # Subtract the metrics from the warmup call
-    # final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_without_call.txt")
-    # # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_with_call.txt")
+    # Subtract the metrics from the warmup call
+    final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_without_call.txt")
+    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name="testing_alora_with_call.txt")
     
 
 if __name__ == '__main__':
