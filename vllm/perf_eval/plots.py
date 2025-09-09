@@ -37,13 +37,30 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens, alora_metric_vals, label='aLoRA')
-    ax.plot(prompt_lens, lora_metric_vals, label='LoRA')
+    ax.plot(prompt_lens, 
+            alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='o', 
+            markersize=4,
+            linestyle='-',
+            color='navy',
+            markerfacecolor='red',
+            markeredgecolor='black',)
+    ax.plot(prompt_lens, 
+            lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='o', 
+            markersize=4,
+            linestyle='-',
+            color='green',
+            markerfacecolor='green',
+            markeredgecolor='green',
+            )
 
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
-    ax.set_title("Evaluation Latency Comparison")
+    ax.set_title("End-to-end Latency Comparison")
     ax.legend()
 
     # Display the plot
-    plt.savefig("latency_prompt_len.png")
+    plt.savefig("e2e_latency_prompt_len.png")
