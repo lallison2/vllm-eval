@@ -40,8 +40,6 @@ if __name__ == '__main__':
     ax.plot(prompt_lens, alora_metric_vals, label='aLoRA')
     ax.plot(prompt_lens, lora_metric_vals, label='LoRA')
 
-    ax.set_aspect('equal', adjustable='box')
-
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title("Evaluation Latency Comparison")
