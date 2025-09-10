@@ -162,8 +162,8 @@ async def main():
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms)
     print("done warming up!!")
+    # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for generation + evaluation calls
     
     # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     ADAPTER_NAME = LORA_NAME
@@ -175,8 +175,9 @@ async def main():
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
     # # Optional extra call (increases prefix cache hit rate but increases latency)
-    # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME) # added
+    # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME)
 
+    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for evaluation call only
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
 
     # Get current Prometheus metrics
