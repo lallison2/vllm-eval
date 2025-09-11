@@ -77,7 +77,7 @@ if __name__ == '__main__':
     # ax.set_title("End-to-end Latency Comparison")
     # ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/e2e_latency_prompt_len.png")
+    # plt.savefig("plots/e2e_latency_prompt_len_gen-eval.png")
 
     ###############################################
 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     # ax.set_title("Time-to-first-token Latency Comparison")
     # ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/ttft_latency_prompt_len.png")
+    # plt.savefig("plots/ttft_latency_prompt_len_gen-eval.png")
 
     ###############################################
 
@@ -197,7 +197,7 @@ if __name__ == '__main__':
     # ax.set_title("Request Queue Time Comparison")
     # ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/queue_time_prompt_len.png")
+    # plt.savefig("plots/queue_time_prompt_len_gen-eval.png")
 
     ###############################################
 
@@ -257,7 +257,7 @@ if __name__ == '__main__':
     # ax.set_title("Request Inference Time Comparison")
     # ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/inference_time_prompt_len.png")
+    # plt.savefig("plots/inference_time_prompt_len_gen-eval.png")
 
     ###############################################
 
@@ -317,7 +317,7 @@ if __name__ == '__main__':
     # ax.set_title("Request Prefill Time Comparison")
     # ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/prefill_time_prompt_len.png")
+    # plt.savefig("plots/prefill_time_prompt_len_gen-eval.png")
 
     ###############################################
 
@@ -377,4 +377,4 @@ if __name__ == '__main__':
     ax.set_title("Request Decode Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/decode_time_prompt_len.png")
+    plt.savefig("plots/decode_time_prompt_len_gen-eval.png")

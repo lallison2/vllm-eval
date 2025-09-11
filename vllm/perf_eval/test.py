@@ -185,7 +185,7 @@ async def main():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_prompt_len_{current_prompt_len}.txt")
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_prompt_len_{current_prompt_len}_gen.txt")
     
 
 if __name__ == '__main__':
