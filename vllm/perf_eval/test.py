@@ -163,10 +163,10 @@ async def main():
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
-    # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for generation + evaluation calls
+    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for generation + evaluation calls
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    ADAPTER_NAME = LORA_NAME
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
@@ -177,7 +177,7 @@ async def main():
     # # Optional extra call (increases prefix cache hit rate but increases latency)
     # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME)
 
-    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for evaluation call only
+    # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for evaluation call only
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
 
     # Get current Prometheus metrics
@@ -185,7 +185,7 @@ async def main():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_prompt_len_{current_prompt_len}_gen.txt")
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_gen.txt")
     
 
 if __name__ == '__main__':
