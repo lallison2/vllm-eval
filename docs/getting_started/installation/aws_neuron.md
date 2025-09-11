@@ -26,7 +26,7 @@ The easiest way to launch a Trainium or Inferentia instance with pre-installed N
 - After launching the instance, follow the instructions in [Connect to your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) to connect to the instance
 - Once inside your instance, activate the pre-installed virtual environment for inference by running
 
-```console
+```bash
 source /opt/aws_neuronx_venv_pytorch_2_6_nxd_inference/bin/activate
 ```
 
@@ -47,7 +47,7 @@ Currently, there are no pre-built Neuron wheels.
 
 To build and install vLLM from source, run:
 
-```console
+```bash
 git clone https://github.com/vllm-project/vllm.git
 cd vllm
 pip install -U -r requirements/neuron.txt
@@ -66,7 +66,7 @@ Refer to [vLLM User Guide for NxD Inference](https://awsdocs-neuron.readthedocs-
 
 To install the AWS Neuron fork, run the following:
 
-```console
+```bash
 git clone -b neuron-2.23-vllm-v0.7.2 https://github.com/aws-neuron/upstreaming-to-vllm.git
 cd upstreaming-to-vllm
 pip install -r requirements/neuron.txt
@@ -100,7 +100,7 @@ to perform most of the heavy lifting which includes PyTorch model initialization
 To configure NxD Inference features through the vLLM entrypoint, use the `override_neuron_config` setting. Provide the configs you want to override
 as a dictionary (or JSON object when starting vLLM from the CLI). For example, to disable auto bucketing, include
 
-```console
+```python
 override_neuron_config={
     "enable_bucketing":False,
 }
@@ -108,7 +108,7 @@ override_neuron_config={
 
 or when launching vLLM from the CLI, pass
 
-```console
+```bash
 --override-neuron-config "{\"enable_bucketing\":false}"
 ```
 
@@ -140,8 +140,8 @@ Alternatively, users can directly call the NxDI library to trace and compile you
 
 - `NEURON_COMPILED_ARTIFACTS`: set this environment variable to point to your pre-compiled model artifacts directory to avoid
   compilation time upon server initialization. If this variable is not set, the Neuron module will perform compilation and save the
-  artifacts under `neuron-compiled-artifacts/{unique_hash}/` sub-directory in the model path. If this environment variable is set,
-  but the directory does not exist, or the contents are invalid, Neuron will also fallback to a new compilation and store the artifacts
+  artifacts under `neuron-compiled-artifacts/{unique_hash}/` subdirectory in the model path. If this environment variable is set,
+  but the directory does not exist, or the contents are invalid, Neuron will also fall back to a new compilation and store the artifacts
   under this specified path.
 - `NEURON_CONTEXT_LENGTH_BUCKETS`: Bucket sizes for context encoding. (Only applicable to `transformers-neuronx` backend).
 - `NEURON_TOKEN_GEN_BUCKETS`: Bucket sizes for token generation. (Only applicable to `transformers-neuronx` backend).

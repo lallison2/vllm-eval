@@ -1,22 +1,17 @@
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
-import importlib.util
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 import torch
 import torch.distributed as dist
 
 from vllm.forward_context import get_forward_context
 from vllm.logger import init_logger
+from vllm.utils import has_deep_ep, has_pplx
 
 from .base_device_communicator import All2AllManagerBase, Cache
 
 logger = init_logger(__name__)
-
-if TYPE_CHECKING:
-    from vllm.model_executor.layers.fused_moe.layer import FusedMoE
-else:
-    FusedMoE = None
 
 
 class NaiveAll2AllManager(All2AllManagerBase):
@@ -80,8 +75,8 @@ class PPLXAll2AllManager(All2AllManagerBase):
     """
 
     def __init__(self, cpu_group):
-        has_pplx = importlib.util.find_spec("pplx_kernels") is not None
-        assert has_pplx, "pplx_kernels not found. Please follow https://github.com/vllm-project/vllm/blob/main/tools/ep_kernels/README.md to install pplx_kernels."  # noqa
+        assert has_pplx(
+        ), "pplx_kernels not found. Please follow https://github.com/vllm-project/vllm/blob/main/tools/ep_kernels/README.md to install pplx_kernels."  # noqa
         super().__init__(cpu_group)
 
         if self.internode:
@@ -133,8 +128,8 @@ class DeepEPAll2AllManagerBase(All2AllManagerBase):
     """
 
     def __init__(self, cpu_group):
-        has_deepep = importlib.util.find_spec("deep_ep") is not None
-        assert has_deepep, "DeepEP kernels not found. Please follow https://github.com/vllm-project/vllm/blob/main/tools/ep_kernels/README.md to install DeepEP kernels."  # noqa
+        assert has_deep_ep(
+        ), "DeepEP kernels not found. Please follow https://github.com/vllm-project/vllm/blob/main/tools/ep_kernels/README.md to install DeepEP kernels."  # noqa
         super().__init__(cpu_group)
         self.handle_cache = Cache()
 

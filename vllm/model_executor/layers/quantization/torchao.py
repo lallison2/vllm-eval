@@ -44,17 +44,18 @@ class TorchAOConfig(QuantizationConfig):
         """
         # TorchAO quantization relies on tensor subclasses. In order,
         # to enable proper caching this needs standalone compile
-        if is_torch_equal_or_newer("2.8.0a"):
+        if is_torch_equal_or_newer("2.8.0.dev"):
             os.environ["VLLM_TEST_STANDALONE_COMPILE"] = "1"
             logger.info(
                 "Using TorchAO: Setting VLLM_TEST_STANDALONE_COMPILE=1")
 
         # TODO: remove after the torch dependency is updated to 2.8
         if is_torch_equal_or_newer(
-                "2.7.0") and not is_torch_equal_or_newer("2.8.0a"):
+                "2.7.0") and not is_torch_equal_or_newer("2.8.0.dev"):
             os.environ["VLLM_DISABLE_COMPILE_CACHE"] = "1"
             logger.info("Using TorchAO: Setting VLLM_DISABLE_COMPILE_CACHE=1")
         """
+        super().__init__()
         self.torchao_config = torchao_config
         self.skip_modules = skip_modules or []
 
@@ -151,18 +152,20 @@ def torchao_quantize_param_data(param: torch.Tensor,
     from torchao.quantization import quantize_
 
     assert isinstance(torchao_config, AOBaseConfig), f"{torchao_config}"
-    """ 
-    Avoid real weight allocation for faster load, since we will 
+    """
+    Avoid real weight allocation for faster load, since we will
     end up setting it to param.
     """
     with torch.device("meta"):
-        dummy_linear = torch.nn.Linear(param.shape[1],
-                                       param.shape[0],
-                                       bias=False)
+        # linear can't be top level module since quantize_ is inplace
+        # while some of our configs need to do module swap, and only non-top
+        # level modules support module swap
+        dummy_linear = torch.nn.Sequential(
+            torch.nn.Linear(param.shape[1], param.shape[0], bias=False))
 
-    dummy_linear.weight = param
+    dummy_linear[0].weight = param
     quantize_(dummy_linear, torchao_config)
-    return dummy_linear.weight
+    return dummy_linear[0].weight
 
 
 class TorchAOLinearMethod(LinearMethodBase):

@@ -13,7 +13,7 @@ from ...registry import HF_EXAMPLE_MODELS
 from ...utils import check_logprobs_close
 
 # These have unsupported head_dim for FA. We do not
-# not have a clean way to fall back, so we fail with
+# have a clean way to fall back, so we fail with
 # a clear msg when it happens.
 # https://github.com/vllm-project/vllm/issues/14524
 REQUIRES_V0 = ["microsoft/phi-2", "stabilityai/stablelm-3b-4e1t"]
@@ -39,7 +39,7 @@ AITER_MODEL_LIST = [
     [
         pytest.param(
             "bigscience/bloom-560m",  # bloom - testing alibi slopes
-            marks=[pytest.mark.core_model, pytest.mark.cpu_model],
+            marks=[pytest.mark.core_model],
         ),
         pytest.param(
             "openai-community/gpt2",  # gpt2
@@ -53,7 +53,7 @@ AITER_MODEL_LIST = [
             marks=[pytest.mark.core_model, pytest.mark.cpu_model],
         ),
         pytest.param(
-            "THUDM/chatglm3-6b",  # chatglm (text-only)
+            "zai-org/chatglm3-6b",  # chatglm (text-only)
         ),
         pytest.param(
             "meta-llama/Llama-3.2-1B-Instruct",  # llama
@@ -78,7 +78,7 @@ AITER_MODEL_LIST = [
         ),
         pytest.param(
             "Qwen/Qwen2.5-0.5B-Instruct",  # qwen2
-            marks=[pytest.mark.core_model],
+            marks=[pytest.mark.core_model, pytest.mark.cpu_model],
         ),
         pytest.param(
             "Qwen/Qwen3-8B",  # qwen (text-only)
@@ -87,7 +87,13 @@ AITER_MODEL_LIST = [
         pytest.param("bigcode/starcoder2-3b"),  # starcoder2
         pytest.param(
             "TitanML/tiny-mixtral",  # mixtral
-        )
+            marks=[pytest.mark.core_model],
+        ),
+        pytest.param(
+            "allenai/OLMoE-1B-7B-0924-Instruct",
+            marks=[pytest.mark.cpu_model],
+        ),
+        pytest.param("swiss-ai/Apertus-8B-2509"),  # apertus
     ])
 @pytest.mark.parametrize("max_tokens", [32])
 @pytest.mark.parametrize("num_logprobs", [5])
