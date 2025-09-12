@@ -10,6 +10,7 @@ import numpy as np
 import asyncio
 import csv
 from decimal import Decimal
+import random
 
 BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
 ALORA_NAME = "random_alora"
@@ -161,8 +162,9 @@ async def main():
     
     batch_size = (351104 // (current_prompt_len + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
                                                                      # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
+    random.seed(42)
     for i in range(1, batch_size):
-        random_prompts.append(prompt_tokens[i + 10:] + prompt_tokens[:i + 10]) # permute to avoid accidental cache hits
+        random_prompts.append(random.shuffle(prompt_tokens)) # permute to avoid accidental cache hits
 
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
