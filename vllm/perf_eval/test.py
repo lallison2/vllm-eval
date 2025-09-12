@@ -127,15 +127,9 @@ def save_metrics(stats, histograms, adapter_name, file_name):
 async def main():
 
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-
     # Generate random prompt tokens (run once)
     for p_len in prompt_lens:
-        random_prompts = []
-        batch_size = (351104 // (p_len + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
-                                                                     # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
-        for i in range(1, batch_size):
-            random_prompts.append(gen_rnd_tokens(p_len))
-
+        random_prompts = [gen_rnd_tokens(p_len)]
         with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
             for prompt in random_prompts:
                 line = ','.join(map(str, prompt))
@@ -158,13 +152,17 @@ async def main():
     #             ]
     
     # random_prompts = []
-    # current_prompt_len = prompt_lens[0] # max 9
+    
     # with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
     #     for line in f:
     #         prompt_strings = line.strip().split(',')
     #         prompt_tokens = [int(p) for p in prompt_strings]
     #         random_prompts.append(prompt_tokens)
-
+    
+    # batch_size = (351104 // (current_prompt_len + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
+    #                                                                  # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
+    # for i in range(1, batch_size):
+    #     random_prompts.append(prompt_tokens[i:] + prompt_tokens[:i]) # permute to avoid accidental cache hits
 
     # print("warm up the inference engine")
     # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
