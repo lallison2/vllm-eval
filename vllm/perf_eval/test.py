@@ -127,7 +127,6 @@ def save_metrics(stats, histograms, adapter_name, file_name):
 async def main():
 
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    current_prompt_len = prompt_lens[0] # max 9
 
     # Generate random prompt tokens (run once)
     for p_len in prompt_lens:
@@ -159,6 +158,7 @@ async def main():
     #             ]
     
     # random_prompts = []
+    # current_prompt_len = prompt_lens[0] # max 9
     # with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
     #     for line in f:
     #         prompt_strings = line.strip().split(',')
