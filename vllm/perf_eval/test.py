@@ -152,7 +152,7 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[2] # max 9
+    current_prompt_len = prompt_lens[3] # max 9
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
@@ -175,13 +175,9 @@ async def main():
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
-    # print(f"base tokens: {base_generation_tokens}")
 
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
-
-    # # Optional extra call (increases prefix cache hit rate but increases latency)
-    # _ = await send(adapter_prompts, ntokens=0, use_adapter_name=ADAPTER_NAME)
 
     earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for evaluation call only
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
