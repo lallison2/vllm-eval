@@ -152,7 +152,7 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[1] # max 9
+    current_prompt_len = prompt_lens[0] # max 9
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
@@ -161,8 +161,8 @@ async def main():
     
     batch_size = (351104 // (current_prompt_len + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
                                                                      # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
-    for i in range(1, batch_size):
-        random_prompts.append(prompt_tokens[i:] + prompt_tokens[:i]) # permute to avoid accidental cache hits
+    # for i in range(1, batch_size):
+    #     random_prompts.append(prompt_tokens[i:] + prompt_tokens[:i]) # permute to avoid accidental cache hits
 
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
