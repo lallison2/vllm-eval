@@ -164,7 +164,7 @@ async def main():
                                                                      # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
     random.seed(42)
     for i in range(1, batch_size):
-        random_prompts.append(random.shuffle(prompt_tokens)) # permute to avoid accidental cache hits
+        random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # permute to avoid accidental cache hits
 
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
