@@ -128,10 +128,11 @@ async def main():
 
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     current_prompt_len = prompt_lens[0] # max 9
+
     # Generate random prompt tokens (run once)
     for p_len in prompt_lens:
         random_prompts = []
-        batch_size = (351104 // (current_prompt_len + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
+        batch_size = (351104 // (p_len + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
                                                                      # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
         for i in range(1, batch_size):
             random_prompts.append(gen_rnd_tokens(p_len))
