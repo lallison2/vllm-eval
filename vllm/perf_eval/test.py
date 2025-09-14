@@ -153,7 +153,7 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[0] # max 9
+    current_prompt_len = prompt_lens[1] # max 9
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
@@ -164,7 +164,7 @@ async def main():
                                                                      # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
     random.seed(42)
     for i in range(1, batch_size):
-        random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # permute to avoid accidental cache hits
+        random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
