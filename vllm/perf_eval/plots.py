@@ -15,7 +15,8 @@ def extract_metrics_from_files(target_metric, is_alora=False):
                 assert len(prompt_strings) == 2, "formatting error reading in results data"
                 if prompt_strings[0].startswith(target_metric):
                     value = float(prompt_strings[1])
-                    metric_vals.append(value / batch_size)
+                    # metric_vals.append(value / batch_size)
+                    metric_vals.append(value)
                     break
     return metric_vals
     
