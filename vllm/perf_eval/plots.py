@@ -8,13 +8,14 @@ def extract_metrics_from_files(target_metric, is_alora=False):
     for p_len in prompt_lens:
         file_name = f'results/alora_prompt_len_{p_len}_eval.txt' if is_alora else f'results/lora_prompt_len_{p_len}_eval.txt'
 
+        batch_size = (351104 // (p_len + 2 + 256 + 4 + 16))
         with open(file_name, 'r') as f:
             for line in f:
                 prompt_strings = line.strip().split(' ')
                 assert len(prompt_strings) == 2, "formatting error reading in results data"
                 if prompt_strings[0].startswith(target_metric):
                     value = float(prompt_strings[1])
-                    metric_vals.append(value)
+                    metric_vals.append(value / batch_size)
                     break
     return metric_vals
     
