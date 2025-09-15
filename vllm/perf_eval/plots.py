@@ -397,7 +397,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
     ax.plot(prompt_lens, 
-            lora_metric_vals / alora_metric_vals, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
             markersize=4,
@@ -445,7 +445,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
     ax.plot(prompt_lens, 
-            lora_metric_vals / alora_metric_vals, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
             markersize=4,
@@ -493,7 +493,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
     ax.plot(prompt_lens, 
-            lora_metric_vals / alora_metric_vals, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
             markersize=4,
@@ -541,7 +541,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
     ax.plot(prompt_lens, 
-            lora_metric_vals / alora_metric_vals, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
             markersize=4,
@@ -589,7 +589,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
     ax.plot(prompt_lens, 
-            lora_metric_vals / alora_metric_vals, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
             markersize=4,
@@ -637,7 +637,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
     ax.plot(prompt_lens, 
-            lora_metric_vals / alora_metric_vals, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
             markersize=4,
