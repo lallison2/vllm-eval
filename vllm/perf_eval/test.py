@@ -11,6 +11,7 @@ import asyncio
 import csv
 from decimal import Decimal
 import random
+import math
 
 BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
 ALORA_NAME = "random_alora"
@@ -161,7 +162,7 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    batch_size = (351104 * 0.75) // (current_prompt_len + 2 + 256 + 4 + 16) # batch size chosen to saturate GPU memory
+    batch_size = math.floor(351104 * 0.75) // (current_prompt_len + 2 + 256 + 4 + 16) # batch size chosen to saturate GPU memory
                                                                  # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
                                                                  # can set prompt_len to maximum to have a fixed batch size across trials
                                                                  # to vary batch size, replace prompt_lens[?] with current_prompt_len
