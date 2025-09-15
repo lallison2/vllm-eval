@@ -153,15 +153,16 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[9] # max 9
+    current_prompt_len = prompt_lens[0] # max 9
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    batch_size = (351104 // (current_prompt_len + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
-                                                                     # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
+    batch_size = (351104 // (prompt_lens[9] + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
+                                                                 # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
+                                                                 # can set prompt_len to maximum to have a fixed batch size across trials
     random.seed(42)
     for i in range(1, batch_size):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
