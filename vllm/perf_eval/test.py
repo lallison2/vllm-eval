@@ -128,7 +128,7 @@ def save_metrics(stats, histograms, adapter_name, file_name):
 
 async def main():
 
-    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
     gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     # # Generate random prompt tokens (run once)
     # for p_len in prompt_lens:
@@ -157,7 +157,7 @@ async def main():
     random_prompts = []
     # current_prompt_len = prompt_lens[9] # max 9
     current_prompt_len = 256
-    current_gen_len = gen_lens[9] # max 9
+    current_gen_len = gen_lens[0] # max 7
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
@@ -178,8 +178,8 @@ async def main():
     print("done warming up!!")
     # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for generation + evaluation calls
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    ADAPTER_NAME = LORA_NAME
 
     # Call the base model
     base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
@@ -195,7 +195,7 @@ async def main():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval.txt")
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_eval.txt")
     
 
 if __name__ == '__main__':
