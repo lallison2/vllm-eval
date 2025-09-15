@@ -128,6 +128,7 @@ def save_metrics(stats, histograms, adapter_name, file_name):
 async def main():
 
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     # # Generate random prompt tokens (run once)
     # for p_len in prompt_lens:
     #     random_prompts = [gen_rnd_tokens(p_len)]
@@ -160,9 +161,10 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    batch_size = (351104 // (prompt_lens[9] + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
+    batch_size = (351104 * 0.75 // (current_prompt_len + 2 + 256 + 4 + 16)) # batch size chosen to saturate GPU memory
                                                                  # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
                                                                  # can set prompt_len to maximum to have a fixed batch size across trials
+                                                                 # to vary batch size, replace prompt_lens[?] with current_prompt_len
     random.seed(42)
     for i in range(1, batch_size):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
