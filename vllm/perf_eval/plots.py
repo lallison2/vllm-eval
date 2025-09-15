@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
 
 def extract_metrics_from_files(target_metric, is_alora=False):
-    metric_vals = [], 
+    metric_vals = []
     for p_len in prompt_lens:
         file_name = f'results/alora_prompt_len_{p_len}_eval.txt' if is_alora else f'results/lora_prompt_len_{p_len}_eval.txt'
 
