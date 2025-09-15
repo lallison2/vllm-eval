@@ -157,7 +157,7 @@ async def main():
     random_prompts = []
     # current_prompt_len = prompt_lens[9] # max 9
     current_prompt_len = 256
-    current_gen_len = gen_lens[2] # max 9
+    current_gen_len = gen_lens[0] # max 9
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
@@ -195,7 +195,7 @@ async def main():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_prompt_len}_eval.txt")
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval.txt")
     
 
 if __name__ == '__main__':
