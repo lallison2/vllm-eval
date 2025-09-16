@@ -387,288 +387,288 @@ if __name__ == '__main__':
     ###############################################
     ###############################################
 
-    # target_metric = "vllm:e2e_request_latency_seconds_sum"
-    # alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
-    # lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
+    target_metric = "vllm:e2e_request_latency_seconds_sum"
+    alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
+    lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
 
-    # fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(gen_lens, 
-    #         [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#87C39F",
-    #         markerfacecolor='#87C39F',
-    #         markeredgecolor='#87C39F',
-    #         )
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#87C39F",
+            markerfacecolor='#87C39F',
+            markeredgecolor='#87C39F',
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Generation Length")
-    # ax.set_ylabel("Speedup")
-    # ax.set_title("Speedup of End-to-end Latency (LoRA / aLoRA)")
-    # ax.legend(fontsize=8, markerscale=0.7)
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of End-to-end Latency (LoRA / aLoRA)")
+    ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/e2e_latency_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/e2e_latency_speedup_factor_gen_len_eval.png")
 
-    # ###############################################
+    ###############################################
 
-    # target_metric = "vllm:time_to_first_token_seconds_sum"
-    # alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
-    # lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
+    target_metric = "vllm:time_to_first_token_seconds_sum"
+    alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
+    lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
 
-    # fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(gen_lens, 
-    #         [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#87C39F",
-    #         markerfacecolor='#87C39F',
-    #         markeredgecolor='#87C39F',
-    #         )
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#87C39F",
+            markerfacecolor='#87C39F',
+            markeredgecolor='#87C39F',
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Generation Length")
-    # ax.set_ylabel("Speedup")
-    # ax.set_title("Speedup of Time-to-first-token Latency")
-    # ax.legend(fontsize=8, markerscale=0.7)
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of Time-to-first-token Latency")
+    ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/ttft_latency_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/ttft_latency_speedup_factor_gen_len_eval.png")
 
-    # ###############################################
+    ###############################################
 
-    # target_metric = "vllm:request_queue_time_seconds_sum"
-    # alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
-    # lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
+    target_metric = "vllm:request_queue_time_seconds_sum"
+    alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
+    lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
 
-    # fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(gen_lens, 
-    #         [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#87C39F",
-    #         markerfacecolor='#87C39F',
-    #         markeredgecolor='#87C39F',
-    #         )
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#87C39F",
+            markerfacecolor='#87C39F',
+            markeredgecolor='#87C39F',
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Generation Length")
-    # ax.set_ylabel("Speedup")
-    # ax.set_title("Speedup of Request Queue Time")
-    # ax.legend(fontsize=8, markerscale=0.7)
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of Request Queue Time")
+    ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/queue_time_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/queue_time_speedup_factor_gen_len_eval.png")
 
-    # ###############################################
+    ###############################################
 
-    # target_metric = "vllm:request_inference_time_seconds_sum"
-    # alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
-    # lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
+    target_metric = "vllm:request_inference_time_seconds_sum"
+    alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
+    lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
 
-    # fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(gen_lens, 
-    #         [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#87C39F",
-    #         markerfacecolor='#87C39F',
-    #         markeredgecolor='#87C39F',
-    #         )
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#87C39F",
+            markerfacecolor='#87C39F',
+            markeredgecolor='#87C39F',
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Generation Length")
-    # ax.set_ylabel("Speedup")
-    # ax.set_title("Speedup of Request Inference Time")
-    # ax.legend(fontsize=8, markerscale=0.7)
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of Request Inference Time")
+    ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/inference_time_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/inference_time_speedup_factor_gen_len_eval.png")
 
-    # ###############################################
+    ###############################################
 
-    # target_metric = "vllm:request_prefill_time_seconds_sum"
-    # alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
-    # lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
+    target_metric = "vllm:request_prefill_time_seconds_sum"
+    alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
+    lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
 
-    # fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(gen_lens, 
-    #         [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#87C39F",
-    #         markerfacecolor='#87C39F',
-    #         markeredgecolor='#87C39F',
-    #         )
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#87C39F",
+            markerfacecolor='#87C39F',
+            markeredgecolor='#87C39F',
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Generation Length")
-    # ax.set_ylabel("Speedup")
-    # ax.set_title("Speedup of Request Prefill Time")
-    # ax.legend(fontsize=8, markerscale=0.7)
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of Request Prefill Time")
+    ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/prefill_time_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/prefill_time_speedup_factor_gen_len_eval.png")
 
-    # ###############################################
+    ###############################################
 
-    # target_metric = "vllm:request_decode_time_seconds_sum"
-    # alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
-    # lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
+    target_metric = "vllm:request_decode_time_seconds_sum"
+    alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
+    lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
 
-    # fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(gen_lens, 
-    #         [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#87C39F",
-    #         markerfacecolor='#87C39F',
-    #         markeredgecolor='#87C39F',
-    #         )
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#87C39F",
+            markerfacecolor='#87C39F',
+            markeredgecolor='#87C39F',
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Generation Length")
-    # ax.set_ylabel("Speedup")
-    # ax.set_title("Speedup of Request Decode Time")
-    # ax.legend(fontsize=8, markerscale=0.7)
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of Request Decode Time")
+    ax.legend(fontsize=8, markerscale=0.7)
 
-    # plt.savefig("plots/decode_time_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/decode_time_speedup_factor_gen_len_eval.png")
