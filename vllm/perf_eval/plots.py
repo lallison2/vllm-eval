@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 
 def extract_metrics_from_files(target_metric, is_alora=False):
     metric_vals = []
@@ -136,7 +136,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length")
+    ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title("Time-to-first-token Latency Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
@@ -196,7 +196,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length")
+    ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title("Request Queue Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
@@ -256,7 +256,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length")
+    ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title("Request Inference Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
@@ -316,7 +316,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length")
+    ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title("Request Prefill Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
@@ -376,7 +376,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length")
+    ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title("Request Decode Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
@@ -426,7 +426,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length")
+    # ax.set_xlabel("Generation Length")
     # ax.set_ylabel("Speedup")
     # ax.set_title("Speedup of End-to-end Latency (LoRA / aLoRA)")
     # ax.legend(fontsize=8, markerscale=0.7)
@@ -474,7 +474,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length")
+    # ax.set_xlabel("Generation Length")
     # ax.set_ylabel("Speedup")
     # ax.set_title("Speedup of Time-to-first-token Latency")
     # ax.legend(fontsize=8, markerscale=0.7)
@@ -522,7 +522,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length")
+    # ax.set_xlabel("Generation Length")
     # ax.set_ylabel("Speedup")
     # ax.set_title("Speedup of Request Queue Time")
     # ax.legend(fontsize=8, markerscale=0.7)
@@ -570,7 +570,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length")
+    # ax.set_xlabel("Generation Length")
     # ax.set_ylabel("Speedup")
     # ax.set_title("Speedup of Request Inference Time")
     # ax.legend(fontsize=8, markerscale=0.7)
@@ -618,7 +618,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length")
+    # ax.set_xlabel("Generation Length")
     # ax.set_ylabel("Speedup")
     # ax.set_title("Speedup of Request Prefill Time")
     # ax.legend(fontsize=8, markerscale=0.7)
@@ -666,7 +666,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length")
+    # ax.set_xlabel("Generation Length")
     # ax.set_ylabel("Speedup")
     # ax.set_title("Speedup of Request Decode Time")
     # ax.legend(fontsize=8, markerscale=0.7)
