@@ -40,7 +40,7 @@ def gen_rnd_tokens(shape):
 
 ###################################################################
 
-async def send(prompt_tokens, ntokens, use_adapter_name=None):
+async def send(prompt_tokens, ntokens, use_adapter_name=None, manually_time=False):
     if use_adapter_name == ALORA_NAME:
         prefix, suffix, model = [], tokenizer(invocation_string)["input_ids"], use_adapter_name
     elif use_adapter_name == LORA_NAME: # for fairness, add invocation tokens to lora prompt as well
@@ -53,19 +53,22 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None):
     # prepare the list of prompts
     full_prompt_tokens = [ prefix + p + suffix for p in prompt_tokens ]
 
-    # if we are being given an exact number of tokens to produce
-    # then the completion request reflects as much
+
     if ntokens > 0:
-        # execute the completions for all of the prompts 
+        if manually_time:
+            start = time.perf_counter()
         completion = await client.completions.create(
-            model = model,   # note that this is either the base model if no intrinsic is used, or the actual intrinsic to be invoked
+            model = model,
             prompt = full_prompt_tokens,
             max_tokens = ntokens,
             extra_body = {
                 "min_tokens" : ntokens
             })
+        if manually_time:
+            end = time.perf_counter()
+            manually_measured_latency = end - start
+            return [tokenizer.convert_tokens_to_ids(tokenizer.tokenize(completion.choices[i].text)) for i in range(len(completion.choices))], manually_measured_latency
     else:
-        # otherwise let the model determine when to stop
         completion = await client.completions.create(
             model = model,
             prompt = full_prompt_tokens
@@ -112,7 +115,7 @@ def subtract_metrics(stats, histograms, earlier_stats, earlier_histograms):
 
 ###################################################################
 
-def save_metrics(stats, histograms, adapter_name, file_name):
+def save_metrics(stats, histograms, adapter_name, file_name, manually_timed_eval_latencies=None):
 
     f = open("/home/lallison/vllm-eval/vllm/perf_eval/"+file_name,"w")
 
@@ -122,6 +125,9 @@ def save_metrics(stats, histograms, adapter_name, file_name):
     for hist in histograms:
         f.write(hist+"} "+f"{histograms[hist]:.6f}"+"\n")
         f.flush()
+    if manually_timed_eval_latencies is not None:
+        f.write("manually_timed_eval_latency_sum "+f"{sum(manually_timed_eval_latencies):.6f}"+"\n")
+        f.write("manually_timed_eval_latency_avg "+f"{(sum(manually_timed_eval_latencies) / len(manually_timed_eval_latencies)):.6f}"+"\n")
     f.close()
 
 ###################################################################
@@ -176,7 +182,6 @@ async def main():
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
-    # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for generation + evaluation calls
     
     # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     ADAPTER_NAME = LORA_NAME
@@ -197,6 +202,88 @@ async def main():
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
     save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_eval.txt")
     
+###################################################################
+
+async def main_poisson():
+
+    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
+    stats = ["vllm:kv_cache_usage",
+            "vllm:prefix_cache_queries",
+            "vllm:prefix_cache_hits",
+            "vllm:prompt_tokens",
+            ]
+
+    histograms = ["vllm:iteration_tokens_total",
+                "vllm:time_to_first_token_seconds",
+                "vllm:time_per_output_token_seconds",
+                "vllm:e2e_request_latency_seconds",
+                "vllm:request_queue_time_seconds",
+                "vllm:request_inference_time_seconds",
+                "vllm:request_prefill_time_seconds",
+                "vllm:request_decode_time_seconds",
+                ]
+    
+    random_prompts = []
+    current_prompt_len = prompt_lens[0] # max 9
+    current_gen_len = 256
+    with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
+        for line in f:
+            prompt_strings = line.strip().split(',')
+            prompt_tokens = [int(p) for p in prompt_strings]
+            random_prompts.append(prompt_tokens)
+    
+    LAMBDA = 100  # requests per second
+    TOTAL_REQUESTS = 100 # chosen based on vllm internal serving benchmarks
+    random.seed(42)
+    for i in range(1, TOTAL_REQUESTS):
+        random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
+
+    # generate inter-arrival times according to poisson dist
+    inter_arrival_times = np.random.exponential(1 / LAMBDA, size=TOTAL_REQUESTS)
+
+    print("warm up the inference engine")
+    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    print("done warming up!!")
+    
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    ADAPTER_NAME = LORA_NAME
+
+    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # for async, can only use Prometheus to 
+                                                                                # record metrics for generation + evaluation
+    tasks = []
+    eval_latencies = []
+    for i, delay in enumerate(inter_arrival_times):
+        await asyncio.sleep(delay)
+
+        async def gen_eval_send(prompts, gen_len, eval_len):
+            """
+            Asynchronous function to call base model with prompt p to get generation g, then call adaptor model with prompt (p + g).
+
+            Returns: Latency of evaluation task (manually timed using time.perf_counter())
+            """
+            # Call the base model
+            base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
+
+            # Call the adapter model
+            adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+            adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME, manually_time=True) 
+
+            return eval_latency
+        
+        task = asyncio.create_task(gen_eval_send(prompts=[random_prompts[i]], gen_len=current_gen_len, eval_len=16))
+        tasks.append(task)
+
+    eval_latencies = await asyncio.gather(*tasks) # wait until all requests have finished
+
+    # Get current Prometheus metrics
+    adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
+    
+    # Subtract the metrics from the warmup call
+    final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_prompt_len_{current_prompt_len}_eval_async.txt", manually_timed_eval_latencies=eval_latencies)
+
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    # asyncio.run(main())
+    asyncio.run(main_poisson())
