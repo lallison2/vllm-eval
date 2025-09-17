@@ -170,7 +170,8 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    batch_size = math.floor(351104) // (current_prompt_len + 2 + gen_lens[9] + 4 + 16) # batch size chosen to saturate GPU memory
+    batch_size = math.floor(351104) // (current_prompt_len + 2 + gen_lens[9] + 4 + 16) 
+                                                                 # batch size chosen to saturate GPU memory
                                                                  # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
                                                                  # can set prompt_len to maximum to have a fixed batch size across trials
                                                                  # to vary batch size, replace prompt_lens[?] with current_prompt_len
@@ -232,8 +233,8 @@ async def main_poisson():
             random_prompts.append(prompt_tokens)
     
     lambdas = [50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
-    LAMBDA = lambdas[7] # max 7
-    TOTAL_REQUESTS = 500 # reasonably large value
+    LAMBDA = lambdas[0] # max 7
+    TOTAL_REQUESTS = 2000 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
