@@ -3,15 +3,16 @@ import matplotlib.pyplot as plt
 
 prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
 gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
+lambdas = [50, 100, 500, 1000, 5000, 10000]
 
 def extract_metrics_from_files(target_metric, is_alora=False):
     metric_vals = []
     # for p_len in prompt_lens:
-    for g_len in gen_lens:
-        file_name = f'results/alora_gen_len_{g_len}_eval.txt' if is_alora else f'results/lora_gen_len_{g_len}_eval.txt'
+    # for g_len in gen_lens:
+    for LAMBDA in lambdas:
+        # file_name = f'results/alora_gen_len_{g_len}_eval.txt' if is_alora else f'results/lora_gen_len_{g_len}_eval.txt'
+        file_name = f'results/alora_async_poisson_{LAMBDA}rps.txt' if is_alora else f'results/lora_async_poisson_{LAMBDA}rps.txt'
 
-        # batch_size = (351104 // (p_len + 2 + 256 + 4 + 16))
-        batch_size = (351104 // (256 + 2 + g_len + 4 + 16))
         with open(file_name, 'r') as f:
             for line in f:
                 prompt_strings = line.strip().split(' ')
@@ -81,7 +82,7 @@ if __name__ == '__main__':
     ax.set_title("End-to-end Latency Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/e2e_latency_gen_len_eval.png")
+    plt.savefig("plots/e2e_latency_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -141,7 +142,7 @@ if __name__ == '__main__':
     ax.set_title("Time-to-first-token Latency Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/ttft_latency_gen_len_eval.png")
+    plt.savefig("plots/ttft_latency_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -201,7 +202,7 @@ if __name__ == '__main__':
     ax.set_title("Request Queue Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/queue_time_gen_len_eval.png")
+    plt.savefig("plots/queue_time_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -261,7 +262,7 @@ if __name__ == '__main__':
     ax.set_title("Request Inference Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/inference_time_gen_len_eval.png")
+    plt.savefig("plots/inference_time_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -321,7 +322,7 @@ if __name__ == '__main__':
     ax.set_title("Request Prefill Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/prefill_time_gen_len_eval.png")
+    plt.savefig("plots/prefill_time_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -381,7 +382,7 @@ if __name__ == '__main__':
     ax.set_title("Request Decode Time Comparison")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/decode_time_gen_len_eval.png")
+    plt.savefig("plots/decode_time_async_poisson_gen-eval.png")
 
     ###############################################
     ###############################################
@@ -431,7 +432,7 @@ if __name__ == '__main__':
     ax.set_title("Speedup of End-to-end Latency (LoRA / aLoRA)")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/e2e_latency_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/e2e_latency_speedup_factor_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -479,7 +480,7 @@ if __name__ == '__main__':
     ax.set_title("Speedup of Time-to-first-token Latency")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/ttft_latency_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/ttft_latency_speedup_factor_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -527,7 +528,7 @@ if __name__ == '__main__':
     ax.set_title("Speedup of Request Queue Time")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/queue_time_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/queue_time_speedup_factor_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -575,7 +576,7 @@ if __name__ == '__main__':
     ax.set_title("Speedup of Request Inference Time")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/inference_time_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/inference_time_speedup_factor_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -623,7 +624,7 @@ if __name__ == '__main__':
     ax.set_title("Speedup of Request Prefill Time")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/prefill_time_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/prefill_time_speedup_factor_async_poisson_gen-eval.png")
 
     ###############################################
 
@@ -671,4 +672,4 @@ if __name__ == '__main__':
     ax.set_title("Speedup of Request Decode Time")
     ax.legend(fontsize=8, markerscale=0.7)
 
-    plt.savefig("plots/decode_time_speedup_factor_gen_len_eval.png")
+    plt.savefig("plots/decode_time_speedup_factor_async_poisson_gen-eval.png")
