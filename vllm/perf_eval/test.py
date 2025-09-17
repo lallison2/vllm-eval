@@ -266,10 +266,10 @@ async def main_poisson():
             Returns: Latency of evaluation task (manually timed using time.perf_counter())
             """
             # Call the base model
-            base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
+            base_generation_tokens = await send(prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
             # Call the adapter model
-            adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+            adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
             adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME, manually_time=True) 
 
             return eval_latency
