@@ -134,8 +134,8 @@ def save_metrics(stats, histograms, adapter_name, file_name, manually_timed_eval
 
 async def main():
 
-    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
-    gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
     # # Generate random prompt tokens (run once)
     # for p_len in prompt_lens:
     #     random_prompts = [gen_rnd_tokens(p_len)]
@@ -231,8 +231,8 @@ async def main_poisson():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    lambdas = [50, 100, 500, 1000, 5000, 10000] # requests per second
-    LAMBDA = lambdas[5] # max 5
+    lambdas = [50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
+    LAMBDA = lambdas[6] # max 7
     TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
