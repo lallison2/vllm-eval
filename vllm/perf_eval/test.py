@@ -239,7 +239,9 @@ async def main_poisson():
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
     # generate inter-arrival times according to poisson dist
+    np.random.seed(42)
     inter_arrival_times = np.random.exponential(1 / LAMBDA, size=TOTAL_REQUESTS)
+    print(f"max interarrival time: {max(inter_arrival_times)}")
 
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
@@ -249,8 +251,9 @@ async def main_poisson():
     # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     ADAPTER_NAME = LORA_NAME
 
-    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # for async, can only use Prometheus to 
-                                                                                # record metrics for generation + evaluation
+    # Get starting Prometheus metrics. For async, can only use Prometheus to record metrics for gen + eval
+    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) 
+
     tasks = []
     eval_latencies = []
     for i, delay in enumerate(inter_arrival_times):
