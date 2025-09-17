@@ -161,16 +161,16 @@ async def main():
                 ]
     
     random_prompts = []
-    # current_prompt_len = prompt_lens[9] # max 9
-    current_prompt_len = 256
-    current_gen_len = gen_lens[7] # max 7
+    current_prompt_len = prompt_lens[0] # max 9
+    # current_gen_len = gen_lens[7] # max 7
+    current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    batch_size = math.floor(351104) // (current_prompt_len + 2 + gen_lens[9] + 4 + 16) 
+    batch_size = math.floor(351104) // (prompt_lens[9] + 2 + current_gen_len + 4 + 16) 
                                                                  # batch size chosen to saturate GPU memory
                                                                  # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
                                                                  # can set prompt_len to maximum to have a fixed batch size across trials
@@ -201,7 +201,7 @@ async def main():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_eval.txt")
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_prompt_len_{current_prompt_len}_eval.txt")
     
 ###################################################################
 
@@ -289,5 +289,5 @@ async def main_poisson():
 
 
 if __name__ == '__main__':
-    # asyncio.run(main())
-    asyncio.run(main_poisson())
+    asyncio.run(main())
+    # asyncio.run(main_poisson())
