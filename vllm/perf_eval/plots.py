@@ -735,3 +735,51 @@ if __name__ == '__main__':
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig("plots/e2e_latency_async_poisson_eval.png")
+
+    ###############################################
+
+    target_metric = "manually_timed_eval_latency_avg"
+    alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True)
+    lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False)
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#87C39F",
+            markerfacecolor='#87C39F',
+            markeredgecolor='#87C39F',
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Arrival Rate (requests / s)")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of Average End-to-end Latency (Evaluation only)")
+    ax.legend(fontsize=8, markerscale=0.7)
+
+    plt.savefig("plots/e2e_latency_speedup_factor_async_poisson_eval.png")
