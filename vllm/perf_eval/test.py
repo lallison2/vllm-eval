@@ -206,7 +206,6 @@ async def main():
 
 async def main_poisson():
 
-    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
     stats = ["vllm:kv_cache_usage",
             "vllm:prefix_cache_queries",
             "vllm:prefix_cache_hits",
@@ -224,7 +223,7 @@ async def main_poisson():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[0] # max 9
+    current_prompt_len = 256
     current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -232,8 +231,9 @@ async def main_poisson():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    LAMBDA = 100  # requests per second
-    TOTAL_REQUESTS = 100 # chosen based on vllm internal serving benchmarks
+    lambdas = [50, 100, 500, 1000, 5000, 10000] # requests per second
+    LAMBDA = lambdas[0] # max 5
+    TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
@@ -281,7 +281,7 @@ async def main_poisson():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_prompt_len_{current_prompt_len}_eval_async.txt", manually_timed_eval_latencies=eval_latencies)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 if __name__ == '__main__':
