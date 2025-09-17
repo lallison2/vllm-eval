@@ -39,7 +39,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
@@ -49,7 +49,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
@@ -99,7 +99,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
@@ -109,7 +109,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
@@ -159,7 +159,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
@@ -169,7 +169,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
@@ -219,7 +219,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
@@ -229,7 +229,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
@@ -279,7 +279,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
@@ -289,7 +289,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
@@ -339,7 +339,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
@@ -349,7 +349,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
@@ -399,7 +399,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
@@ -447,7 +447,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
@@ -495,7 +495,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
@@ -543,7 +543,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
@@ -591,7 +591,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
@@ -639,7 +639,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             [a / b for a, b in zip(lora_metric_vals, alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
@@ -691,7 +691,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
@@ -701,7 +701,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(gen_lens, 
+    ax.plot(lambdas, 
             lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
