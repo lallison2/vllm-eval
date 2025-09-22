@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
 gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 # lambdas = [50, 100, 500, 1000, 5000, 10000, 20000, 50000]
-lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000]
+lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000]
 
 def extract_metrics_from_files(target_metric, is_alora=False):
     metric_vals = []

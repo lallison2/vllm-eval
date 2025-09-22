@@ -288,6 +288,8 @@ async def main_poisson():
     save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_async_poisson_{LAMBDA}rps.txt", manually_timed_eval_latencies=eval_latencies)
 
 
+###################################################################
+
 if __name__ == '__main__':
     # asyncio.run(main())
     asyncio.run(main_poisson())
