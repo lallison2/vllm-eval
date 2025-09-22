@@ -233,7 +233,7 @@ async def main_poisson():
             random_prompts.append(prompt_tokens)
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000] # requests per second
-    LAMBDA = lambdas[7] # max 7
+    LAMBDA = lambdas[6] # max 7
     TOTAL_REQUESTS = 300 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
@@ -249,8 +249,8 @@ async def main_poisson():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    ADAPTER_NAME = LORA_NAME
 
     # Get starting Prometheus metrics. For async, can only use Prometheus to record metrics for gen + eval
     earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) 
@@ -285,7 +285,7 @@ async def main_poisson():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_async_poisson_{LAMBDA}rps.txt", manually_timed_eval_latencies=eval_latencies)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 if __name__ == '__main__':
