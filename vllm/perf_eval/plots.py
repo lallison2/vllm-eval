@@ -6,8 +6,8 @@ gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 # lambdas = [50, 100, 500, 1000, 5000, 10000, 20000, 50000]
 lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000]
 
-component = "eval"
-# component = "gen_1"
+# component = "eval"
+component = "gen_1"
 # component = "gen_2"
 
 component_title = {'eval': 'Evaluation', 'gen_1': 'First Generation', 'gen_2': 'Second Generation'}
