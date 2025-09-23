@@ -161,18 +161,19 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[9] # max 9
-    # current_gen_len = gen_lens[7] # max 7
-    current_gen_len = 256
+    # current_prompt_len = prompt_lens[9] # max 9
+    current_prompt_len = 256
+    current_gen_len = gen_lens[0] # max 7
+    # current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
             prompt_strings = line.strip().split(',')
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    batch_size = math.floor(351104) // (prompt_lens[9] + 2 + current_gen_len + 4 + 16) 
+    batch_size = math.floor(351104) // (current_prompt_len + gen_lens[7] + 2 + 4 + 16 + 2 + 16) 
                                                                  # batch size chosen to saturate GPU memory
-                                                                 # kv cache size in tokens // prompt_len + eot + generation + activation + evaluation
+                                                                 # kv cache size in tokens // prompt_len + generation + eot + activation + evaluation (optional: + eot + second generation)
                                                                  # can set prompt_len to maximum to have a fixed batch size across trials
                                                                  # to vary batch size, replace prompt_lens[?] with current_prompt_len
     random.seed(42)
@@ -188,20 +189,30 @@ async def main():
     # ADAPTER_NAME = LORA_NAME
 
     # Call the base model
+    base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
     base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
-    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) # record metrics for evaluation call only
+    adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
     adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
 
-    # Get current Prometheus metrics
-    adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
+    # Call the base model again
+    base_2_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(adapter_prompts, adapter_generation_tokens)]
+
+    base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
+    base_2_generation_tokens = await send(base_2_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
+
+    base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
     
     # Subtract the metrics from the warmup call
-    final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_eval.txt")
+    base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
+    save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_1.txt")
+    adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval.txt")
+    base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
+    save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2.txt")
     
 ###################################################################
 
@@ -291,5 +302,5 @@ async def main_poisson():
 ###################################################################
 
 if __name__ == '__main__':
-    # asyncio.run(main())
-    asyncio.run(main_poisson())
+    asyncio.run(main())
+    # asyncio.run(main_poisson())
