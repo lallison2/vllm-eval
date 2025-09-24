@@ -28,13 +28,13 @@ export VLLM_USE_V1="1"
 #     # --gpu-memory-utilization 0.7
 
 #### Start server with random alora,  ####
-llm serve [model] \
+llm serve openai/gpt-oss-120b \
     --enable-lora \
     --dtype bfloat16 \
     --max-lora-rank 64 \
     --enable-prefix-caching \
     --enable-activated-lora \
-    --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "ibm-granite/granite-3.2-8b-instruct"}' 
+    --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "openai/gpt-oss-120b"}' 
     # --gpu-memory-utilization 0.7
 
 # Check that the lora model is listed along with other models.

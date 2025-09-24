@@ -13,7 +13,9 @@ from decimal import Decimal
 import random
 import math
 
-BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
+# BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
+BASE_NAME = "openai/gpt-oss-120b"
+
 ALORA_NAME = "random_alora"
 LORA_NAME = "random_lora"
 invocation_string = "<|start_of_role|>certainty<|end_of_role|>"
@@ -29,8 +31,8 @@ client = AsyncOpenAI(
 os.environ["VLLM_USE_V1"] = "1"
 
 # get a tokenizer and figure out the vocabulary size
-# tokenizer = AutoTokenizer.from_pretrained(BASE_NAME)
-# vocab_size = tokenizer.vocab_size
+tokenizer = AutoTokenizer.from_pretrained(BASE_NAME)
+vocab_size = tokenizer.vocab_size
 
 ###################################################################
 
@@ -134,11 +136,14 @@ def save_metrics(stats, histograms, adapter_name, file_name, manually_timed_eval
 
 async def main():
 
-    model_name = "openai/gpt-oss-120b"
+    # # Downloading models to hf_cache (run once)
+    # model_name = "openai/gpt-oss-120b"
     # model_name = "meta-llama/Llama-3.3-70B-Instruct"
     # model_name = "mistralai/Mistral-Large-Instruct-2407"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModel.from_pretrained(model_name)
+    # tokenizer = AutoTokenizer.from_pretrained(model_name)
+    # model = AutoModel.from_pretrained(model_name)
+
+    print(tokenizer(invocation_string)["input_ids"])
 
     # prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     # gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
