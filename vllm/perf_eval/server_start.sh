@@ -28,7 +28,7 @@ export VLLM_USE_V1="1"
 #     # --gpu-memory-utilization 0.7
 
 #### Start server with random alora, gpt-oss-120b ####
-vllm serve openai/gpt-oss-120b \
+vllm serve /nobackup/users/lallison/hf_cache/models--openai--gpt-oss-120b/snapshots/b5c939de8f754692c1647ca79fbf85e8c1e70f8a \
     --enable-lora \
     --dtype bfloat16 \
     --max-lora-rank 64 \
