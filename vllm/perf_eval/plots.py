@@ -18,7 +18,7 @@ def extract_metrics_from_files(target_metric, is_alora=False):
     for g_len in gen_lens:
     # for LAMBDA in lambdas:
         # file_name = f'results/alora_prompt_len_{p_len}_{component}.txt' if is_alora else f'results/lora_prompt_len_{p_len}_{component}.txt'
-        file_name = f'results/alora_gen_len_{g_len}_{component}-alora-base.txt' if is_alora else f'results/lora_gen_len_{g_len}_{component}-alora-base.txt'
+        file_name = f'results/alora_gen_len_{g_len}_{component}_alora-base.txt' if is_alora else f'results/lora_gen_len_{g_len}_{component}_alora-base.txt'
         # file_name = f'results/alora_async_poisson_{LAMBDA}rps.txt' if is_alora else f'results/lora_async_poisson_{LAMBDA}rps.txt'
 
         with open(file_name, 'r') as f:
