@@ -27,7 +27,7 @@ export VLLM_USE_V1="1"
 #     --lora-modules '{"name": "random_lora", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8", "base_model_name": "ibm-granite/granite-3.2-8b-instruct"}' 
 #     # --gpu-memory-utilization 0.7
 
-#### Start server with random alora, mistral-large-instruct-2407 ####
+#### Start server with random alora, meta-llama/Llama-3.3-70B-Instruct ####
 vllm serve /nobackup/users/lallison/hf_cache/models--?/snapshots/? \
     --enable-lora \
     --dtype bfloat16 \

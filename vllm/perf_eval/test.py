@@ -14,7 +14,8 @@ import random
 import math
 
 # BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
-BASE_NAME = "mistralai/Mistral-Large-Instruct-2407"
+BASE_NAME = "meta-llama/Llama-3.3-70B-Instruct"
+# BASE_NAME = "mistralai/Mistral-Large-Instruct-2407"
 
 ALORA_NAME = "random_alora"
 LORA_NAME = "random_lora"
@@ -136,8 +137,8 @@ def save_metrics(stats, histograms, adapter_name, file_name, manually_timed_eval
 async def main():
 
     # Downloading models to hf_cache (run once)
-    # model_name = "meta-llama/Llama-3.3-70B-Instruct"
-    model_name = "mistralai/Mistral-Large-Instruct-2407"
+    model_name = "meta-llama/Llama-3.3-70B-Instruct"
+    # model_name = "mistralai/Mistral-Large-Instruct-2407"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModel.from_pretrained(model_name)
 
