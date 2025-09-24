@@ -6,9 +6,9 @@ gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 # lambdas = [50, 100, 500, 1000, 5000, 10000, 20000, 50000]
 lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000]
 
-# component = "eval"
+component = "eval"
 # component = "gen_1"
-component = "gen_2"
+# component = "gen_2"
 
 component_title = {'eval': 'Evaluation', 'gen_1': 'First Generation', 'gen_2': 'Second Generation'}
 
@@ -18,7 +18,7 @@ def extract_metrics_from_files(target_metric, is_alora=False):
     for g_len in gen_lens:
     # for LAMBDA in lambdas:
         # file_name = f'results/alora_prompt_len_{p_len}_{component}.txt' if is_alora else f'results/lora_prompt_len_{p_len}_{component}.txt'
-        file_name = f'results/alora_gen_len_{g_len}_{component}.txt' if is_alora else f'results/lora_gen_len_{g_len}_{component}.txt'
+        file_name = f'results/alora_gen_len_{g_len}_{component}-alora-base.txt' if is_alora else f'results/lora_gen_len_{g_len}_{component}-alora-base.txt'
         # file_name = f'results/alora_async_poisson_{LAMBDA}rps.txt' if is_alora else f'results/lora_async_poisson_{LAMBDA}rps.txt'
 
         with open(file_name, 'r') as f:
@@ -87,7 +87,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"End-to-end Latency Comparison ({component_title[component]})")
+    ax.set_title(f"End-to-end Latency Comparison (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/e2e_latency_gen_len-{component}.png")
@@ -147,7 +147,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Time-to-first-token Latency Comparison ({component_title[component]})")
+    ax.set_title(f"Time-to-first-token Latency Comparison (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/ttft_latency_gen_len-{component}.png")
@@ -207,7 +207,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Request Queue Time Comparison ({component_title[component]})")
+    ax.set_title(f"Request Queue Time Comparison (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/queue_time_gen_len-{component}.png")
@@ -267,7 +267,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Request Inference Time Comparison ({component_title[component]})")
+    ax.set_title(f"Request Inference Time Comparison (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/inference_time_gen_len-{component}.png")
@@ -327,7 +327,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Request Prefill Time Comparison ({component_title[component]})")
+    ax.set_title(f"Request Prefill Time Comparison (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/prefill_time_gen_len-{component}.png")
@@ -387,7 +387,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Request Decode Time Comparison ({component_title[component]})")
+    ax.set_title(f"Request Decode Time Comparison (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/decode_time_gen_len-{component}.png")
@@ -437,7 +437,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of End-to-end Latency (LoRA / aLoRA) ({component_title[component]})")
+    ax.set_title(f"Speedup of End-to-end Latency (LoRA / aLoRA) (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/e2e_latency_speedup_factor_gen_len-{component}.png")
@@ -485,7 +485,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Time-to-first-token Latency (LoRA / aLoRA) ({component_title[component]})")
+    ax.set_title(f"Speedup of Time-to-first-token Latency (LoRA / aLoRA) (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/ttft_latency_speedup_factor_gen_len-{component}.png")
@@ -533,7 +533,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Queue Time (LoRA / aLoRA) ({component_title[component]})")
+    ax.set_title(f"Speedup of Request Queue Time (LoRA / aLoRA) (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/queue_time_speedup_factor_gen_len-{component}.png")
@@ -581,7 +581,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Inference Time (LoRA / aLoRA) ({component_title[component]})")
+    ax.set_title(f"Speedup of Request Inference Time (LoRA / aLoRA) (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/inference_time_speedup_factor_gen_len-{component}.png")
@@ -629,7 +629,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Prefill Time (LoRA / aLoRA) ({component_title[component]})")
+    ax.set_title(f"Speedup of Request Prefill Time (LoRA / aLoRA) (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/prefill_time_speedup_factor_gen_len-{component}.png")
@@ -677,7 +677,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Decode Time (LoRA / aLoRA) ({component_title[component]})")
+    ax.set_title(f"Speedup of Request Decode Time (LoRA / aLoRA) (Adapter-Base)")
     ax.legend(fontsize=8, markerscale=0.7)
 
     plt.savefig(f"plots/decode_time_speedup_factor_gen_len-{component}.png")
