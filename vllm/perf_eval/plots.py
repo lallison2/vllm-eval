@@ -113,7 +113,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title(f"End-to-end Latency Comparison")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/e2e_latency_prompt_len-{component}.png")
 
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title(f"Time-to-first-token Latency Comparison")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/ttft_latency_prompt_len-{component}.png")
 
@@ -283,7 +283,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title(f"Request Queue Time Comparison")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/queue_time_prompt_len-{component}.png")
 
@@ -368,7 +368,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title(f"Request Inference Time Comparison")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/inference_time_prompt_len-{component}.png")
 
@@ -453,7 +453,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title(f"Request Prefill Time Comparison")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/prefill_time_prompt_len-{component}.png")
 
@@ -538,7 +538,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Latency (s)")
     ax.set_title(f"Request Decode Time Comparison")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/decode_time_prompt_len-{component}.png")
 
@@ -603,7 +603,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Speedup")
     ax.set_title(f"Speedup of End-to-end Latency (LoRA / aLoRA)")
-    ax.legend(fontsize=8, markerscale=0.9)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/e2e_latency_speedup_factor_prompt_len-{component}.png")
 
@@ -666,7 +666,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Speedup")
     ax.set_title(f"Speedup of Time-to-first-token Latency (LoRA / aLoRA)")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/ttft_latency_speedup_factor_prompt_len-{component}.png")
 
@@ -729,7 +729,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Speedup")
     ax.set_title(f"Speedup of Request Queue Time (LoRA / aLoRA)")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/queue_time_speedup_factor_prompt_len-{component}.png")
 
@@ -792,7 +792,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Speedup")
     ax.set_title(f"Speedup of Request Inference Time (LoRA / aLoRA)")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/inference_time_speedup_factor_prompt_len-{component}.png")
 
@@ -855,7 +855,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Speedup")
     ax.set_title(f"Speedup of Request Prefill Time (LoRA / aLoRA)")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/prefill_time_speedup_factor_prompt_len-{component}.png")
 
@@ -918,7 +918,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Speedup")
     ax.set_title(f"Speedup of Request Decode Time (LoRA / aLoRA)")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/decode_time_speedup_factor_prompt_len-{component}.png")
 
@@ -980,7 +980,7 @@ if __name__ == '__main__':
     # ax.set_xlabel("Arrival Rate (requests / s)")
     # ax.set_ylabel("Latency (s)")
     # ax.set_title("Average End-to-end Latency Comparison (Evaluation only) (TOTAL_REQS = 300)")
-    # ax.legend(fontsize=8, markerscale=0.7)
+    # ax.legend(fontsize=8, markerscale=1.0)
 
     # plt.savefig("plots/e2e_latency_async_poisson_eval.png")
 
@@ -1028,6 +1028,6 @@ if __name__ == '__main__':
     # ax.set_xlabel("Arrival Rate (requests / s)")
     # ax.set_ylabel("Speedup")
     # ax.set_title("Speedup of Average End-to-end Latency (Evaluation only) (LoRA / aLoRA) (TOTAL_REQS = 300)")
-    # ax.legend(fontsize=8, markerscale=0.7)
+    # ax.legend(fontsize=8, markerscale=1.0)
 
     # plt.savefig("plots/e2e_latency_speedup_factor_async_poisson_eval.png")
