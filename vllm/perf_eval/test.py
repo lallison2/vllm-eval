@@ -205,12 +205,13 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # # ADAPTER_NAME = LORA_NAME
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME
 
-    # # Call the base model
-    # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
-    # base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
+    # Call the base model
+    print("total_tokens_random_prompts: ", sum([len(random_prompts[i]) for i in range(batch_size)]))
+    base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
+    base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
     # # Call the adapter model
     # adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
