@@ -39,8 +39,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -124,8 +124,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -209,8 +209,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -294,8 +294,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -379,8 +379,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -464,8 +464,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -551,8 +551,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -614,8 +614,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -677,8 +677,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -740,8 +740,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -803,8 +803,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -866,8 +866,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu_llama_3.3_70b/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu_llama_3.3_70b/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
