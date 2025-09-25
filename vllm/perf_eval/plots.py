@@ -603,7 +603,7 @@ if __name__ == '__main__':
     ax.set_xlabel("Prompt Length")
     ax.set_ylabel("Speedup")
     ax.set_title(f"Speedup of End-to-end Latency (LoRA / aLoRA)")
-    ax.legend(fontsize=8, markerscale=0.7)
+    ax.legend(fontsize=8, markerscale=0.9)
 
     plt.savefig(f"plots/e2e_latency_speedup_factor_prompt_len-{component}.png")
 
