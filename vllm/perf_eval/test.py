@@ -172,7 +172,7 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[9] # max 9
+    current_prompt_len = prompt_lens[0] # max 9
     # current_prompt_len = 256
     # current_gen_len = gen_lens[7] # max 7
     current_gen_len = 256
@@ -183,13 +183,15 @@ async def main():
             random_prompts.append(prompt_tokens)
     
     # kv_cache_size = 351104 # granite
-    num_gpu = 4
     kv_cache_size = 407984 # llama
-    batch_size = math.floor(kv_cache_size * num_gpu) // (prompt_lens[9] + current_gen_len + 2 + 4 + 16) 
+    num_gpu = 4
+    cache_percentage = 1.0
+    num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
+    num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
+    num_eval_tokens = 16
+    batch_size = math.floor(kv_cache_size * num_gpu * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens) 
                                                                  # batch size chosen to saturate GPU memory
-                                                                 # kv cache size in tokens // prompt_len + generation + eot + activation + evaluation (optional: + eot + second generation)
-                                                                 # can set prompt_len to maximum to have a fixed batch size across trials
-                                                                 # to vary batch size, replace prompt_lens[?] with current_prompt_len
+                                                                 # fix batch size based on longest length
     random.seed(42)
     for i in range(1, batch_size):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
@@ -210,13 +212,13 @@ async def main():
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
-    adapter_generation_tokens = await send(adapter_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
 
     # # Call the base model again
     # base_2_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(adapter_prompts, adapter_generation_tokens)]
 
     base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
-    # base_2_generation_tokens = await send(base_2_prompts, ntokens=16, use_adapter_name=ADAPTER_NAME) 
+    # base_2_generation_tokens = await send(base_2_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
 
     # base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
     
