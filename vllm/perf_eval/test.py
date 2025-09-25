@@ -172,7 +172,7 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[4] # max 9
+    current_prompt_len = prompt_lens[5] # max 9
     # current_prompt_len = 256
     # current_gen_len = gen_lens[7] # max 7
     current_gen_len = 256
@@ -182,8 +182,8 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    # kv_cache_size = 351104 # granite
-    kv_cache_size = 407984 # llama
+    # kv_cache_size = 351104 
+    kv_cache_size = 407984 # per gpu
     num_gpu = 4
     cache_percentage = 1.0
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
