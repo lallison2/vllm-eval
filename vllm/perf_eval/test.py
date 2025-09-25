@@ -196,6 +196,8 @@ async def main():
     batch_size = math.floor(kv_cache_size * num_gpu * cache_percentage) // (math.ceil((prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens) / BLOCK_SIZE) * BLOCK_SIZE) 
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
+    print(f"batch size: {batch_size}")
+    
     random.seed(42)
     for i in range(1, batch_size):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
