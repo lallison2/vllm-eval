@@ -29,9 +29,9 @@ client = AsyncOpenAI(
 
 os.environ["VLLM_USE_V1"] = "1"
 
-# get a tokenizer and figure out the vocabulary size
-tokenizer = AutoTokenizer.from_pretrained(BASE_NAME)
-vocab_size = tokenizer.vocab_size
+# # get a tokenizer and figure out the vocabulary size
+# tokenizer = AutoTokenizer.from_pretrained(BASE_NAME)
+# vocab_size = tokenizer.vocab_size
 
 ###################################################################
 
