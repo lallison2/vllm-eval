@@ -172,7 +172,7 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[4] # max 9
+    current_prompt_len = prompt_lens[3] # max 9
     # current_prompt_len = 256
     # current_gen_len = gen_lens[7] # max 7
     current_gen_len = 256
