@@ -171,16 +171,16 @@ async def main():
                 "vllm:request_decode_time_seconds",
                 ]
     
-    random_prompts = []
-    current_prompt_len = prompt_lens[9] # max 9
-    # current_prompt_len = 256
-    # current_gen_len = gen_lens[7] # max 7
-    current_gen_len = 256
-    with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
-        for line in f:
-            prompt_strings = line.strip().split(',')
-            prompt_tokens = [int(p) for p in prompt_strings]
-            random_prompts.append(prompt_tokens)
+    # random_prompts = []
+    # current_prompt_len = prompt_lens[9] # max 9
+    # # current_prompt_len = 256
+    # # current_gen_len = gen_lens[7] # max 7
+    # current_gen_len = 256
+    # with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
+    #     for line in f:
+    #         prompt_strings = line.strip().split(',')
+    #         prompt_tokens = [int(p) for p in prompt_strings]
+    #         random_prompts.append(prompt_tokens)
     
     # # kv_cache_size = 351104 
     # kv_cache_size = 407984 # per gpu
