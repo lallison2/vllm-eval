@@ -2,6 +2,7 @@
 
 # More documentation: https://docs.vllm.ai/en/v0.8.3/serving/openai_compatible_server.html#vllm-serve
 export VLLM_USE_V1="1"
+export VLLM_LOG_LEVEL=debug
 
 # Specify base model (and optionally loras/aloras) to load in when starting the server.
 # If aLoRA, the invocation string field should exist.
