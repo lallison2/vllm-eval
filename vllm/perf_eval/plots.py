@@ -88,7 +88,7 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='--',
-            color="#",
+            color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
             )
@@ -173,7 +173,7 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='--',
-            color="#",
+            color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
             )
@@ -258,7 +258,7 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='--',
-            color="#",
+            color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
             )
@@ -343,7 +343,7 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='--',
-            color="#",
+            color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
             )
@@ -428,7 +428,7 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='--',
-            color="#",
+            color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
             )
@@ -513,7 +513,7 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='--',
-            color="#",
+            color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
             )
