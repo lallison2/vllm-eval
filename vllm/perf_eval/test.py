@@ -30,9 +30,7 @@ client = AsyncOpenAI(
 os.environ["VLLM_USE_V1"] = "1"
 
 # get a tokenizer and figure out the vocabulary size
-# tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-3.2-8b-instruct")
-tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.3-70B-Instruct")
-# tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-Large-Instruct-2407")
+tokenizer = AutoTokenizer.from_pretrained(BASE_NAME)
 vocab_size = tokenizer.vocab_size
 
 ###################################################################
