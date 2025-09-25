@@ -187,12 +187,13 @@ async def main():
     # kv_cache_size = 351104 
     kv_cache_size = 407984 # per gpu
     num_gpu = 4
-    cache_percentage = 0.40
+    cache_percentage = 0.1
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
+    BLOCK_SIZE = 16
     print(f"num_act_tokens: {num_activation_tokens}, num_eot_tokens: {num_eot_tokens}")
-    batch_size = math.floor(kv_cache_size * num_gpu * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens) 
+    batch_size = math.floor(kv_cache_size * num_gpu * cache_percentage) // (math.ceil((prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens) / BLOCK_SIZE) * BLOCK_SIZE) 
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
     random.seed(42)
