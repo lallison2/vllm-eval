@@ -182,28 +182,28 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    # kv_cache_size = 351104 
-    kv_cache_size = 407984 # per gpu
-    num_gpu = 4
-    cache_percentage = 1.0
-    num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
-    num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
-    num_eval_tokens = 16
-    BLOCK_SIZE = 16
-    print(f"num_act_tokens: {num_activation_tokens}, num_eot_tokens: {num_eot_tokens}")
-    batch_size = math.floor(kv_cache_size * num_gpu * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
-                                                                 # batch size chosen to saturate GPU memory
-                                                                 # fix batch size based on longest length
-    print(f"batch size: {batch_size}")
+    # # kv_cache_size = 351104 
+    # kv_cache_size = 407984 # per gpu
+    # num_gpu = 4
+    # cache_percentage = 1.0
+    # num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
+    # num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
+    # num_eval_tokens = 16
+    # BLOCK_SIZE = 16
+    # print(f"num_act_tokens: {num_activation_tokens}, num_eot_tokens: {num_eot_tokens}")
+    # batch_size = math.floor(kv_cache_size * num_gpu * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    #                                                              # batch size chosen to saturate GPU memory
+    #                                                              # fix batch size based on longest length
+    # print(f"batch size: {batch_size}")
     
-    random.seed(42)
-    for i in range(1, batch_size):
-        random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
+    # random.seed(42)
+    # for i in range(1, batch_size):
+    #     random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
-    print("warm up the inference engine")
-    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    print("done warming up!!")
+    # print("warm up the inference engine")
+    # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    # print("done warming up!!")
     
     # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     # # ADAPTER_NAME = LORA_NAME
