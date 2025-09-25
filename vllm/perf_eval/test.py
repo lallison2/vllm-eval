@@ -172,7 +172,7 @@ async def main():
                 ]
     
     random_prompts = []
-    current_prompt_len = prompt_lens[9] # max 9
+    current_prompt_len = prompt_lens[8] # max 9
     # current_prompt_len = 256
     # current_gen_len = gen_lens[7] # max 7
     current_gen_len = 256
@@ -188,11 +188,9 @@ async def main():
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
-    print(f"num_act_tokens: {num_activation_tokens}, num_eot_tokens: {num_eot_tokens}")
     batch_size = math.floor(kv_cache_size * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
-    print(f"batch size: {batch_size}")
     
     random.seed(42)
     for i in range(1, batch_size):
@@ -207,15 +205,11 @@ async def main():
     # ADAPTER_NAME = LORA_NAME
 
     # Call the base model
-    print("total_tokens_random_prompts: ", sum([len(random_prompts[i]) for i in range(batch_size)]))
     base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
     base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
-
-    print(f"final length: {len(adapter_prompts[0]) + num_activation_tokens + num_eval_tokens}")
-    print(f"manually calc length: {(prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)}")
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
     adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
