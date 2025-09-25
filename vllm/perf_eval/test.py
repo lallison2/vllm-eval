@@ -13,7 +13,7 @@ from decimal import Decimal
 import random
 import math
 
-BASE_NAME = "model"
+BASE_NAME = "/nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b"
 
 ALORA_NAME = "random_alora"
 LORA_NAME = "random_lora"
@@ -182,7 +182,10 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    batch_size = math.floor(351104) // (prompt_lens[9] + current_gen_len + 2 + 4 + 16) 
+    # kv_cache_size = 351104 # granite
+    num_gpu = 4
+    kv_cache_size = 407984 # llama
+    batch_size = math.floor(kv_cache_size * num_gpu) // (prompt_lens[9] + current_gen_len + 2 + 4 + 16) 
                                                                  # batch size chosen to saturate GPU memory
                                                                  # kv cache size in tokens // prompt_len + generation + eot + activation + evaluation (optional: + eot + second generation)
                                                                  # can set prompt_len to maximum to have a fixed batch size across trials
