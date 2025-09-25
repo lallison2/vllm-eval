@@ -205,37 +205,37 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # # ADAPTER_NAME = LORA_NAME
 
-    # Call the base model
-    base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
-    base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
+    # # Call the base model
+    # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
+    # base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
-    # Call the adapter model
-    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+    # # Call the adapter model
+    # adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
-    print(f"final length: {len(adapter_prompts[0]) + num_activation_tokens + num_eval_tokens}")
-    print(f"manually calc length: {(prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)}")
+    # print(f"final length: {len(adapter_prompts[0]) + num_activation_tokens + num_eval_tokens}")
+    # print(f"manually calc length: {(prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)}")
 
-    adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
-    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
+    # adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
+    # adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
 
-    # # Call the base model again
-    # base_2_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(adapter_prompts, adapter_generation_tokens)]
+    # # # Call the base model again
+    # # base_2_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(adapter_prompts, adapter_generation_tokens)]
 
-    base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
-    # base_2_generation_tokens = await send(base_2_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
+    # base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
+    # # base_2_generation_tokens = await send(base_2_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
 
-    # base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
+    # # base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
     
-    # Subtract the metrics from the warmup call
-    # base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
-    # save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_1.txt")
-    adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_eval.txt")
-    # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
-    # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_2.txt")
+    # # Subtract the metrics from the warmup call
+    # # base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
+    # # save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_1.txt")
+    # adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
+    # save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_eval.txt")
+    # # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
+    # # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_2.txt")
     
 ###################################################################
 
