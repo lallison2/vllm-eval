@@ -29,6 +29,7 @@ export VLLM_USE_V1="1"
 
 #### Start server with random alora, meta-llama/Llama-3.3-70B-Instruct ####
 vllm serve /nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b \
+    --tensor-parallel-size 4 \
     --enable-lora \
     --dtype bfloat16 \
     --max-lora-rank 64 \
