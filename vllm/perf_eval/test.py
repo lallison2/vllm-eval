@@ -146,14 +146,14 @@ async def main():
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 
-    # # Generate random prompt tokens (run once)
-    np.random.seed(420)
-    for p_len in prompt_lens:
-        random_prompts = [gen_rnd_tokens(p_len)]
-        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-            for prompt in random_prompts:
-                line = ','.join(map(str, prompt))
-                f.write(line+'\n')
+    # # # Generate random prompt tokens (run once)
+    # np.random.seed(420)
+    # for p_len in prompt_lens:
+    #     random_prompts = [gen_rnd_tokens(p_len)]
+    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+    #         for prompt in random_prompts:
+    #             line = ','.join(map(str, prompt))
+    #             f.write(line+'\n')
 
     stats = ["vllm:kv_cache_usage",
             "vllm:prefix_cache_queries",
@@ -191,7 +191,7 @@ async def main():
     num_eval_tokens = 16
     BLOCK_SIZE = 16
     print(f"num_act_tokens: {num_activation_tokens}, num_eot_tokens: {num_eot_tokens}")
-    batch_size = math.floor(kv_cache_size * num_gpu * cache_percentage) // (math.ceil((prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens) / BLOCK_SIZE) * BLOCK_SIZE) 
+    batch_size = math.floor(kv_cache_size * num_gpu * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
     print(f"batch size: {batch_size}")
