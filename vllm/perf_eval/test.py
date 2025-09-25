@@ -185,7 +185,7 @@ async def main():
     # kv_cache_size = 351104 
     kv_cache_size = 407984 # per gpu
     num_gpu = 4
-    cache_percentage = 1.0
+    cache_percentage = 0.75
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
