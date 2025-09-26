@@ -1,0 +1,221 @@
+---
+language:
+- en
+library_name: transformers
+license: apache-2.0
+pipeline_tag: text-generation
+---
+
+# Granite 3.2 8B Instruct - Uncertainty aLoRA
+
+Welcome to Granite Experiments!
+
+Think of Experiments as a preview of what's to come. These projects are still under development, but we wanted to let the open-source community take them for spin! Use them, break them, and help us build what's next for Granite – we'll keep an eye out for feedback and questions in the [Community section](https://huggingface.co/ibm-granite/granite-uncertainty-3.0-8b-lora/discussions). Happy exploring!
+
+This repository contains aLoRA weights for one of the models used in [Activated LoRA: Fine-tuned LLMs for Intrinsics](https://huggingface.co/papers/2504.12397).
+
+## Model Summary
+
+**Granite 3.2 8b Instruct - Uncertainty** is an Activated LoRA (aLoRA) adapter for [ibm-granite/granite-3.2-8b-instruct](https://huggingface.co/ibm-granite/granite-3.2-8b-instruct), 
+adding the capability to provide calibrated certainty scores when answering questions when prompted, in addition to retaining the full abilities of the [ibm-granite/granite-3.2-8b-instruct](https://huggingface.co/ibm-granite/granite-3.2-8b-instruct) model. 
+
+- **Developer:** IBM Research
+- **Model type:** Activated LoRA adapter for [ibm-granite/granite-3.2-8b-instruct](https://huggingface.co/ibm-granite/granite-3.2-8b-instruct)
+- **License:** [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+## Activated LoRA
+Activated LoRA (aLoRA) is a new low rank adapter architecture that allows for reusing existing base model KV cache for more efficient inference. 
+
+[Paper](https://arxiv.org/abs/2504.12397)
+
+[IBM Research Blogpost](https://research.ibm.com/blog/inference-friendly-aloras)
+
+[Github - needed to run inference](https://github.com/IBM/activated-lora)
+
+
+### Model Sources
+
+<!-- Provide the basic links for the model. -->
+
+
+- **UQ method** The **Granite Uncertainty 3.2 8b** model is finetuned to provide certainty scores mimicking the output of a calibrator trained via the method in [[Shen et al. ICML 2024] Thermometer: Towards Universal Calibration for Large Language Models](https://arxiv.org/abs/2403.08819)
+
+
+## Usage
+
+<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
+
+### Intended use
+
+This is an experimental LoRA testing new functionality being developed for IBM's Granite LLM family.  We are welcoming the community to test it out and give us feedback, but we are NOT recommending this model be used for real deployments at this time.  Stay tuned for more updates on the Granite roadmap.
+
+
+**Certainty score definition** The model will respond with a certainty percentage, quantized to 10 possible values (i.e. 5%, 15%, 25%,...95%). 
+This percentage is *calibrated* in the following sense: given a set of answers assigned a certainty score of X%, approximately X% of these answers should be correct. See the eval experiment below for out-of-distribution verification of this behavior.
+
+**Certainty score interpretation** Certainty scores calibrated as defined above may at times seem biased towards moderate certainty scores for the following reasons. Firstly, as humans we tend to be overconfident in
+our evaluation of what we know and don't know - in contrast, a calibrated model is less likely to output very high or very low confidence scores, as these imply certainty of correctness or incorrectness.
+Examples where you might see very low confidence scores might be on answers where the model's response was something to the effect of "I don't know", which is easy to evaluate as not 
+being the correct answer to the question (though it is the appropriate one). Secondly, remember that the model 
+is evaluating itself - correctness/incorrectness that may be obvious to us or to larger models may be less obvious to an 8b model. Finally, teaching a model every fact it knows
+and doesn't know is not possible, hence it must generalize to questions of wildly varying difficulty (some of which may be trick questions!) and to settings where it has not had its outputs judged. 
+Intuitively, it does this by extrapolating based on related questions
+it has been evaluated on in training - this is an inherently inexact process and leads to some hedging.
+
+**Possible downstream use cases (not implemented)** 
+* Human usage: Certainty scores give human users an indication of when to trust answers from the model (which should be augmented by their own knowledge).
+* Model routing/guards: If the model has low certainty (below a chosen threshold), it may be worth sending the request to a larger, more capable model or simply choosing not to show the response to the user.
+* RAG: **Granite Uncertainty 3.2 8b** is calibrated on document-based question answering datasets, hence it can be applied to giving certainty scores for answers created using RAG. This certainty will be a prediction of overall correctness based on both the documents given and the model's own knowledge (e.g. if the model is correct but the answer is not in the documents, the certainty can still be high). 
+
+**Important note** Certainty is inherently an intrinsic property of a model and its abilitities. **Granite Uncertainty 3.2 8b** is not intended to predict the certainty of responses generated by any other models besides itself or [ibm-granite/granite-3.2-8b-instruct](https://huggingface.co/ibm-granite/granite-3.2-8b-instruct). 
+Additionally, certainty scores are *distributional* quantities, and so will do well on realistic questions in aggregate, but in principle may have surprising scores on individual
+red-teamed examples.
+
+**Usage steps** There are two supported usage scenarios.
+
+Scenario 1. Answering a question and obtaining a certainty score proceeds as follows. Given a user query written in the `user` role:
+
+1. Use the base model to generate a response as normal (via the `assistant` role).
+2. Prompt the model to generate a certainty score by generating in the `certainty` role (use "certainty" as the role in the chat template, or simply append `<|start_of_role|>certainty<|end_of_role|>` and continue generating), see examples below.
+3. The model will respond with a certainty percentage, quantized with steps of 10% (i.e. 05%, 15%, 25%,...95%).  Note, any additional text after the score and % can be ignored.  You can curb additional generation by setting "max token length" = 3 when using this role.
+
+Scenario 2. Predicting the certainty score from the question only, *prior* to generating an answer. Given a user query written in the `user` role:
+
+1. Prompt the model to generate a certainty score by generating in the `certainty` role (use "certainty" as the role in the chat template, or simply append `<|start_of_role|>certainty<|end_of_role|>` and continue generating), see examples below.
+2. The model will respond with a certainty percentage, quantized with steps of 10% (i.e. 05%, 15%, 25%,...95%).  Note, any additional text after the score and % can be ignored.  You can curb additional generation by setting "max token length" = 3 when using this role.
+3. Remove the generated certainty string, and if desired, use the base model to generate a response as normal (via the `assistant` role).
+
+### Quickstart Example
+
+The following code describes how to use the Granite Uncertainty model to answer questions and obtain intrinsic calibrated certainty scores. Note that no system prompt is used.
+
+The code required for Activated LoRA is on [Github](https://github.com/IBM/activated-lora) 
+
+Prior to running the code below, either clone the repo or install as
+
+```
+pip install git+ssh://git@github.com:IBM/activated-lora.git
+```
+
+Note that two generation options are shown - one illustrating the KV cache reuse ability of aLoRA (faster), and another showing the simplest generation call (slower).
+```python
+import torch,os
+from transformers import AutoTokenizer,  AutoModelForCausalLM, DynamicCache
+from alora.peft_model_alora import aLoRAPeftModelForCausalLM
+from alora.config import aLoraConfig
+from alora.tokenize_alora import tokenize_alora
+
+REUSE_CACHE = False  
+
+token = os.getenv("HF_MISTRAL_TOKEN")
+BASE_NAME = "ibm-granite/granite-3.2-8b-instruct"
+LORA_NAME = "ibm-granite/granite-3.2-8b-alora-uncertainty"
+device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+# Load model
+tokenizer = AutoTokenizer.from_pretrained(BASE_NAME,padding_side='left',trust_remote_code=True, token=token)
+model_base = AutoModelForCausalLM.from_pretrained(BASE_NAME,device_map="auto")
+model_UQ = aLoRAPeftModelForCausalLM.from_pretrained(model_base, LORA_NAME)
+
+question = "What is IBM Research?"
+print("Question:" + question)
+question_chat = [
+    {
+        "role": "user",
+        "content": question
+    },
+]
+
+# Generate answer with base model
+input_text = tokenizer.apply_chat_template(question_chat,tokenize=False,add_generation_prompt=True)
+# Remove default system prompt
+len_sys = len(input_text.split("<|start_of_role|>user")[0])
+input_text = input_text[len_sys:]
+
+#tokenize
+inputs = tokenizer(input_text, return_tensors="pt")
+if REUSE_CACHE: #save KV cache for future aLoRA call
+    prompt_cache = DynamicCache()
+    with model_UQ.disable_adapter():
+        output_dict = model_base.generate(inputs["input_ids"].to(device), attention_mask=inputs["attention_mask"].to(device), max_new_tokens=600,past_key_values = prompt_cache, return_dict_in_generate=True)
+    answer_cache = output_dict.past_key_values
+    output = output_dict.sequences
+else: #simplest call
+    with model_UQ.disable_adapter():
+        output = model_UQ.generate(inputs["input_ids"].to(device), attention_mask=inputs["attention_mask"].to(device), max_new_tokens=600)
+output_text = tokenizer.decode(output[0])
+answer = output_text.split("assistant<|end_of_role|>")[1]
+print("Answer: " + answer)
+
+# Generate certainty score
+uq_generation_prompt = "<|start_of_role|>certainty<|end_of_role|>"
+uq_chat = question_chat + [
+    {
+        "role": "assistant",
+        "content": answer
+    },
+]
+
+uq_text = tokenizer.apply_chat_template(uq_chat,tokenize=False) 
+uq_text = uq_text[len_sys:]
+# tokenize and generate
+inputs, alora_offsets = tokenize_alora(tokenizer,uq_text, uq_generation_prompt)
+
+if REUSE_CACHE: #reuse KV cache from earlier answer generation 
+    output = model_UQ.generate(inputs["input_ids"].to(device), attention_mask=inputs["attention_mask"].to(device), max_new_tokens=1,alora_offsets=alora_offsets,past_key_values=answer_cache)
+else: #simplest call
+    output = model_UQ.generate(inputs["input_ids"].to(device), attention_mask=inputs["attention_mask"].to(device), max_new_tokens=1,alora_offsets=alora_offsets)
+output_text = tokenizer.decode(output[0])
+
+# Extract score
+uq_score = int(output_text[-1])
+print("Certainty: " + str(5 + uq_score * 10) + "%")
+```
+
+
+## Evaluation
+
+The model was evaluated on the [MMLU](https://huggingface.co/datasets/cais/mmlu) datasets (not used in training). Shown are the [Expected Calibration Error (ECE)](https://towardsdatascience.com/expected-calibration-error-ece-a-step-by-step-visual-explanation-with-python-code-c3e9aa12937d) for each task, for the base model (Granite-3.2-8b-instruct) and Granite-Uncertainty-3.2-8b.
+The average ECE across tasks for our method is 0.064 (out of 1) and is consistently low across tasks (maximum task ECE 0.10), compared to the base model average ECE of 0.20 and maximum task ECE of 0.60. Note that our ECE of 0.064 is smaller than the gap between the quantized certainty outputs (10% quantization steps). Additionally, the zero-shot performance on the MMLU tasks does not degrade, averaging at 89%.
+<!-- This section describes the evaluation protocols and provides the results. -->
+
+
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/6602ffd971410cf02bf42c06/2MwP7DRZlNBtWSKWFvXOI.png)
+
+
+
+## Training Details
+The **Granite Uncertainty 3.2 8b** model is an aLoRA adapter finetuned to provide certainty scores mimicking the output of a calibrator trained via the method in [[Shen et al. ICML 2024] Thermometer: Towards Universal Calibration for Large Language Models](https://arxiv.org/abs/2403.08819).
+
+
+
+### Training Data
+The following datasets were used for calibration and/or finetuning. 
+
+* [BigBench](https://huggingface.co/datasets/tasksource/bigbench)
+* [MRQA](https://huggingface.co/datasets/mrqa-workshop/mrqa)
+* [newsqa](https://huggingface.co/datasets/lucadiliello/newsqa)
+* [trivia_qa](https://huggingface.co/datasets/mandarjoshi/trivia_qa)
+* [search_qa](https://huggingface.co/datasets/lucadiliello/searchqa)
+* [openbookqa](https://huggingface.co/datasets/allenai/openbookqa)
+* [web_questions](https://huggingface.co/datasets/Stanford/web_questions)
+* [smiles-qa](https://huggingface.co/datasets/alxfgh/ChEMBL_Drug_Instruction_Tuning)
+* [orca-math](https://huggingface.co/datasets/microsoft/orca-math-word-problems-200k)
+* [ARC-Easy](https://huggingface.co/datasets/allenai/ai2_arc)
+* [commonsense_qa](https://huggingface.co/datasets/tau/commonsense_qa)
+* [social_i_qa](https://huggingface.co/datasets/allenai/social_i_qa)
+* [super_glue](https://huggingface.co/datasets/aps/super_glue)
+* [figqa](https://huggingface.co/datasets/nightingal3/fig-qa)
+* [riddle_sense](https://huggingface.co/datasets/INK-USC/riddle_sense)
+* [ag_news](https://huggingface.co/datasets/fancyzhx/ag_news)
+* [medmcqa](https://huggingface.co/datasets/openlifescienceai/medmcqa)
+* [dream](https://huggingface.co/datasets/dataset-org/dream)
+* [codah](https://huggingface.co/datasets/jaredfern/codah)
+* [piqa](https://huggingface.co/datasets/ybisk/piqa)
+
+
+
+## Model Card Authors 
+
+Kristjan Greenewald
