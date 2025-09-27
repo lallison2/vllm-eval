@@ -11,14 +11,14 @@ component = "eval"
 
 component_title = {'eval': 'Evaluation', 'gen_1': 'First Generation', 'gen_2': 'Second Generation'}
 
-def extract_metrics_from_files(target_metric, is_alora=False, path_prefix=""):
+def extract_metrics_from_files(target_metric, is_alora=False, path_prefix="", path_suffix=""):
     metric_vals = []
     # for p_len in prompt_lens:
-    for g_len in gen_lens:
-    # for LAMBDA in lambdas:
+    # for g_len in gen_lens:
+    for LAMBDA in lambdas:
         # file_name = path_prefix + f'alora_prompt_len_{p_len}_{component}.txt' if is_alora else path_prefix + f'lora_prompt_len_{p_len}_{component}.txt'
-        file_name = path_prefix + f'alora_gen_len_{g_len}_{component}.txt' if is_alora else path_prefix + f'lora_gen_len_{g_len}_{component}.txt'
-        # file_name = f'results/alora_async_poisson_{LAMBDA}rps.txt' if is_alora else f'results/lora_async_poisson_{LAMBDA}rps.txt'
+        # file_name = path_prefix + f'alora_gen_len_{g_len}_{component}.txt' if is_alora else path_prefix + f'lora_gen_len_{g_len}_{component}.txt'
+        file_name = f'results/alora_async_poisson_{LAMBDA}rps{path_suffix}.txt' if is_alora else f'results/lora_async_poisson_{LAMBDA}rps{path_suffix}.txt'
 
         with open(file_name, 'r') as f:
             for line in f:
@@ -35,11 +35,11 @@ if __name__ == '__main__':
     
     target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/")
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/", path_suffix="_llama")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/", path_suffix="_llama")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -50,26 +50,26 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
-            granite_alora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(gen_lens, 
-            granite_lora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=4,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='none',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(gen_lens, 
+    #         granite_alora_metric_vals, 
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+    # ax.plot(gen_lens, 
+    #         granite_lora_metric_vals, 
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='none',
+    #         markeredgecolor='#6675A9',
+    #         )
 
     ax.plot(gen_lens, 
             llama_alora_metric_vals, 
@@ -120,8 +120,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:time_to_first_token_seconds_sum"
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/")
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/")
@@ -135,26 +135,26 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(gen_lens, 
-            granite_alora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(gen_lens, 
-            granite_lora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=4,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='none',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(gen_lens, 
+    #         granite_alora_metric_vals, 
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+    # ax.plot(gen_lens, 
+    #         granite_lora_metric_vals, 
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='none',
+    #         markeredgecolor='#6675A9',
+    #         )
 
     ax.plot(gen_lens, 
             llama_alora_metric_vals, 
