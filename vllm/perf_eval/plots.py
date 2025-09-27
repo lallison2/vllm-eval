@@ -941,22 +941,22 @@ if __name__ == '__main__':
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(lambdas, 
-            llama_lora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
             marker='D', 
             markersize=4,
             linestyle='-',
             color="#cdb38f",
-            markerfacecolor='#f4c5b5',
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
+            )
+    ax.plot(lambdas, 
+            llama_lora_metric_vals, 
+            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#f4c5b5",
+            markerfacecolor='none',
             markeredgecolor='#f4c5b5',
             )
     
@@ -999,13 +999,13 @@ if __name__ == '__main__':
 
     ax.plot(lambdas, 
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
-            label='ibm-granite/granite-3.2-8b-instruct', 
+            label='meta-llama/Llama-3.3-70B-Instruct', 
             marker='D', 
             markersize=4,
             linestyle='-',
-            color="#87C39F",
-            markerfacecolor='#87C39F',
-            markeredgecolor='#87C39F',
+            color="#f4c5b5",
+            markerfacecolor='#f4c5b5',
+            markeredgecolor='#f4c5b5',
             )
     
     ax.grid(
