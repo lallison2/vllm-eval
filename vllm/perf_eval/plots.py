@@ -19,7 +19,7 @@ def extract_metrics_from_files(target_metric, is_alora=False, path_prefix="", pa
     for LAMBDA in lambdas:
         # file_name = path_prefix + f'alora_prompt_len_{p_len}_{component}.txt' if is_alora else path_prefix + f'lora_prompt_len_{p_len}_{component}.txt'
         # file_name = path_prefix + f'alora_gen_len_{g_len}_{component}.txt' if is_alora else path_prefix + f'lora_gen_len_{g_len}_{component}.txt'
-        file_name = f'results/alora_async_poisson_{LAMBDA}rps{path_suffix}.txt' if is_alora else f'results/lora_async_poisson_{LAMBDA}rps{path_suffix}.txt'
+        file_name = path_prefix + f'alora_async_poisson_{LAMBDA}rps{path_suffix}.txt' if is_alora else path_prefix + f'lora_async_poisson_{LAMBDA}rps{path_suffix}.txt'
 
         with open(file_name, 'r') as f:
             for line in f:
