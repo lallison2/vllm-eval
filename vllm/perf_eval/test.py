@@ -183,8 +183,9 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    # kv_cache_size = 351104 
-    kv_cache_size = 407984
+    # kv_cache_size = 351104 # granite 3.2
+    #kv_cache_size = 407984 # llama 70b (4 gpu)
+    kv_cache_size = 912688 # mistral large (8 gpu)
     cache_percentage = 1.0
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
@@ -250,8 +251,6 @@ async def main_poisson():
                 "vllm:request_prefill_time_seconds",
                 "vllm:request_decode_time_seconds",
                 ]
-    
-    print(tokenizer(invocation_string)["input_ids"])
 
     random_prompts = []
     current_prompt_len = 256
@@ -263,7 +262,7 @@ async def main_poisson():
             random_prompts.append(prompt_tokens)
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
-    LAMBDA = lambdas[0] # max 11
+    LAMBDA = lambdas[11] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
@@ -279,43 +278,43 @@ async def main_poisson():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # # ADAPTER_NAME = LORA_NAME
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME
 
-    # # Get starting Prometheus metrics. For async, can only use Prometheus to record metrics for gen + eval
-    # earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) 
+    # Get starting Prometheus metrics. For async, can only use Prometheus to record metrics for gen + eval
+    earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) 
 
-    # tasks = []
-    # eval_latencies = []
-    # for i, delay in enumerate(inter_arrival_times):
-    #     await asyncio.sleep(delay)
+    tasks = []
+    eval_latencies = []
+    for i, delay in enumerate(inter_arrival_times):
+        await asyncio.sleep(delay)
 
-    #     async def gen_eval_send(prompts, gen_len, eval_len):
-    #         """
-    #         Asynchronous function to call base model with prompt p to get generation g, then call adaptor model with prompt (p + g).
+        async def gen_eval_send(prompts, gen_len, eval_len):
+            """
+            Asynchronous function to call base model with prompt p to get generation g, then call adaptor model with prompt (p + g).
 
-    #         Returns: Latency of evaluation task (manually timed using time.perf_counter())
-    #         """
-    #         # Call the base model
-    #         base_generation_tokens = await send(prompts, ntokens=gen_len, use_adapter_name=BASE_NAME)
+            Returns: Latency of evaluation task (manually timed using time.perf_counter())
+            """
+            # Call the base model
+            base_generation_tokens = await send(prompts, ntokens=gen_len, use_adapter_name=BASE_NAME)
 
-    #         # Call the adapter model
-    #         adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
-    #         adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
+            # Call the adapter model
+            adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
+            adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
 
-    #         return eval_latency
+            return eval_latency
         
-    #     task = asyncio.create_task(gen_eval_send(prompts=[random_prompts[i]], gen_len=current_gen_len, eval_len=16))
-    #     tasks.append(task)
+        task = asyncio.create_task(gen_eval_send(prompts=[random_prompts[i]], gen_len=current_gen_len, eval_len=16))
+        tasks.append(task)
 
-    # eval_latencies = await asyncio.gather(*tasks) # wait until all requests have finished
+    eval_latencies = await asyncio.gather(*tasks) # wait until all requests have finished
 
-    # # Get current Prometheus metrics
-    # adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
+    # Get current Prometheus metrics
+    adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
     
-    # # Subtract the metrics from the warmup call
-    # final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_async_poisson_{LAMBDA}rps_llama.txt", manually_timed_eval_latencies=eval_latencies)
+    # Subtract the metrics from the warmup call
+    final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_async_poisson_{LAMBDA}rps_mistral.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 ###################################################################
