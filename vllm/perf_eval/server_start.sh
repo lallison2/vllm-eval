@@ -60,7 +60,7 @@ export VLLM_LOG_LEVEL=debug
 
 # ### Start server with random alora, mistralai/Mistral-Large-Instruct-2407 ####
 vllm serve /nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc \
-    --tensor-parallel-size 4 \
+    --tensor-parallel-size 8 \
     --port 8000 \
     --enable-lora \
     --dtype bfloat16 \
@@ -71,7 +71,7 @@ vllm serve /nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-In
 
 ## Start server with random lora, mistralai/Mistral-Large-Instruct-2407 ####
 # vllm serve /nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc \
-#     --tensor-parallel-size 4 \
+#     --tensor-parallel-size 8 \
 #     --port 8000 \
 #     --enable-lora \
 #     --dtype bfloat16 \
