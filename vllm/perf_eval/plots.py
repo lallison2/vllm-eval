@@ -42,6 +42,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -91,6 +94,27 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            mistral_alora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
+    ax.plot(lambdas, 
+            mistral_lora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#77a988",
+            markerfacecolor='none',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -127,6 +151,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -176,6 +203,27 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            mistral_alora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
+    ax.plot(lambdas, 
+            mistral_lora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#77a988",
+            markerfacecolor='none',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -212,6 +260,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -261,6 +312,27 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            mistral_alora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
+    ax.plot(lambdas, 
+            mistral_lora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#77a988",
+            markerfacecolor='none',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -297,6 +369,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -346,6 +421,27 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            mistral_alora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
+    ax.plot(lambdas, 
+            mistral_lora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#77a988",
+            markerfacecolor='none',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -382,6 +478,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -431,6 +530,27 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='none',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            mistral_alora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
+    ax.plot(lambdas, 
+            mistral_lora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#77a988",
+            markerfacecolor='none',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -467,6 +587,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -518,6 +641,27 @@ if __name__ == '__main__':
             markeredgecolor='#f4c5b5',
             )
     
+    ax.plot(lambdas, 
+            mistral_alora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
+    ax.plot(lambdas, 
+            mistral_lora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#77a988",
+            markerfacecolor='none',
+            markeredgecolor='#77a988',
+            )
+
     ax.grid(
         axis='x',
         which='major',
@@ -554,6 +698,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -581,6 +728,17 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+            label='mistralai/Mistral-Large-Instruct-2407', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -617,6 +775,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -644,6 +805,17 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+            label='mistralai/Mistral-Large-Instruct-2407', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -680,6 +852,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -707,6 +882,17 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+            label='mistralai/Mistral-Large-Instruct-2407', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -743,6 +929,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -770,6 +959,17 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+            label='mistralai/Mistral-Large-Instruct-2407', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -806,6 +1006,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -833,6 +1036,17 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+            label='mistralai/Mistral-Large-Instruct-2407', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -869,6 +1083,9 @@ if __name__ == '__main__':
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+
     fig, ax = plt.subplots(figsize=(8, 6))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
@@ -896,6 +1113,17 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+            label='mistralai/Mistral-Large-Instruct-2407', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
@@ -927,8 +1155,12 @@ if __name__ == '__main__':
     ###############################################
 
     target_metric = "manually_timed_eval_latency_avg"
+
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
+
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -960,6 +1192,27 @@ if __name__ == '__main__':
             markeredgecolor='#f4c5b5',
             )
     
+    ax.plot(lambdas, 
+            mistral_alora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
+    ax.plot(lambdas, 
+            mistral_lora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#77a988",
+            markerfacecolor='none',
+            markeredgecolor='#77a988',
+            )
+    
     ax.grid(
         axis='x',
         which='major',
@@ -987,8 +1240,12 @@ if __name__ == '__main__':
     ###############################################
 
     target_metric = "manually_timed_eval_latency_avg"
+
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
+
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -1006,6 +1263,17 @@ if __name__ == '__main__':
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
             markeredgecolor='#f4c5b5',
+            )
+    
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+            label='mistralai/Mistral-Large-Instruct-2407', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
             )
     
     ax.grid(
