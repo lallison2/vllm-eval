@@ -175,7 +175,7 @@ async def main():
     random_prompts = []
     # current_prompt_len = prompt_lens[9] # max 9
     current_prompt_len = 256
-    current_gen_len = gen_lens[4] # max 7
+    current_gen_len = gen_lens[0] # max 7
     # current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -190,7 +190,7 @@ async def main():
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
-    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_gen_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
     
