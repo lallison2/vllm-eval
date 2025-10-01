@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"End-to-end Latency Comparison (TOTAL_REQS = 300)")
+    ax.set_title(f"End-to-end Latency Comparison (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/e2e_latency_arrival_rate_poisson-{component}.png")
@@ -245,7 +245,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Time-to-first-token Latency Comparison (TOTAL_REQS = 300)")
+    ax.set_title(f"Time-to-first-token Latency Comparison (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/ttft_latency_arrival_rate_poisson-{component}.png")
@@ -354,7 +354,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Request Queue Time Comparison (TOTAL_REQS = 300)")
+    ax.set_title(f"Request Queue Time Comparison (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/queue_time_arrival_rate_poisson-{component}.png")
@@ -463,7 +463,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Request Inference Time Comparison (TOTAL_REQS = 300)")
+    ax.set_title(f"Request Inference Time Comparison (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/inference_time_arrival_rate_poisson-{component}.png")
@@ -572,7 +572,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Request Prefill Time Comparison (TOTAL_REQS = 300)")
+    ax.set_title(f"Request Prefill Time Comparison (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/prefill_time_arrival_rate_poisson-{component}.png")
@@ -681,7 +681,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Latency (s)")
-    ax.set_title(f"Request Decode Time Comparison (TOTAL_REQS = 300)")
+    ax.set_title(f"Request Decode Time Comparison (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/decode_time_arrival_rate_poisson-{component}.png")
@@ -760,7 +760,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of End-to-end Latency (LoRA / aLoRA) (TOTAL_REQS = 300)")
+    ax.set_title(f"Speedup of End-to-end Latency (LoRA / aLoRA) (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/e2e_latency_speedup_factor_arrival_rate_poisson-{component}.png")
@@ -837,7 +837,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Time-to-first-token Latency (LoRA / aLoRA) (TOTAL_REQS = 300)")
+    ax.set_title(f"Speedup of Time-to-first-token Latency (LoRA / aLoRA) (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/ttft_latency_speedup_factor_arrival_rate_poisson-{component}.png")
@@ -914,7 +914,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Queue Time (LoRA / aLoRA) (TOTAL_REQS = 300)")
+    ax.set_title(f"Speedup of Request Queue Time (LoRA / aLoRA) (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/queue_time_speedup_factor_arrival_rate_poisson-{component}.png")
@@ -991,7 +991,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Inference Time (LoRA / aLoRA) (TOTAL_REQS = 300)")
+    ax.set_title(f"Speedup of Request Inference Time (LoRA / aLoRA) (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/inference_time_speedup_factor_arrival_rate_poisson-{component}.png")
@@ -1068,7 +1068,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Prefill Time (LoRA / aLoRA) (TOTAL_REQS = 300)")
+    ax.set_title(f"Speedup of Request Prefill Time (LoRA / aLoRA) (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/prefill_time_speedup_factor_arrival_rate_poisson-{component}.png")
@@ -1145,7 +1145,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Decode Time (LoRA / aLoRA) (TOTAL_REQS = 300)")
+    ax.set_title(f"Speedup of Request Decode Time (LoRA / aLoRA) (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig(f"plots/decode_time_speedup_factor_arrival_rate_poisson-{component}.png")
@@ -1256,7 +1256,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (requests / s)")
     ax.set_ylabel("Latency (s)")
-    ax.set_title("Average End-to-end Latency Comparison (Evaluation only) (TOTAL_REQS = 300)")
+    ax.set_title("Average End-to-end Latency Comparison (Evaluation only) (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig("plots/e2e_latency_arrival_rate_poisson-eval.png")
@@ -1333,7 +1333,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (requests / s)")
     ax.set_ylabel("Speedup")
-    ax.set_title("Speedup of Average End-to-end Latency (Evaluation only) (LoRA / aLoRA) (TOTAL_REQS = 300)")
+    ax.set_title("Speedup of Average End-to-end Latency (Evaluation only) (LoRA / aLoRA) (TOTAL_REQS = 500)")
     ax.legend(fontsize=8, markerscale=1.0)
 
     plt.savefig("plots/e2e_latency_speedup_factor_arrival_rate_poisson-eval.png")
