@@ -36,8 +36,8 @@ if __name__ == '__main__':
     
     target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -54,26 +54,26 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         granite_alora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
-    # ax.plot(lambdas, 
-    #         granite_lora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(lambdas, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
@@ -145,8 +145,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:time_to_first_token_seconds_sum"
 
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -163,26 +163,26 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         granite_alora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
-    # ax.plot(lambdas, 
-    #         granite_lora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(lambdas, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
@@ -254,8 +254,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:request_queue_time_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -272,26 +272,26 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         granite_alora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
-    # ax.plot(lambdas, 
-    #         granite_lora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(lambdas, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
@@ -363,8 +363,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:request_inference_time_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -381,26 +381,26 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         granite_alora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
-    # ax.plot(lambdas, 
-    #         granite_lora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(lambdas, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
@@ -472,8 +472,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:request_prefill_time_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -490,26 +490,26 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         granite_alora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
-    # ax.plot(lambdas, 
-    #         granite_lora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(lambdas, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
@@ -581,8 +581,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:request_decode_time_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -599,26 +599,26 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         granite_alora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
-    # ax.plot(lambdas, 
-    #         granite_lora_metric_vals, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(lambdas, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
@@ -692,8 +692,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -708,16 +708,16 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
     
     ax.plot(lambdas, 
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
@@ -769,8 +769,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:time_to_first_token_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -785,16 +785,16 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
     
     ax.plot(lambdas, 
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
@@ -846,8 +846,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:request_queue_time_seconds_sum"
 
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -862,16 +862,16 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
     
     ax.plot(lambdas, 
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
@@ -923,8 +923,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:request_inference_time_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -939,16 +939,16 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
     
     ax.plot(lambdas, 
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
@@ -1000,8 +1000,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:request_prefill_time_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -1016,16 +1016,16 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
     
     ax.plot(lambdas, 
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
@@ -1077,8 +1077,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:request_decode_time_seconds_sum"
     
-    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
-    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/fixed_batch_size/")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -1093,16 +1093,16 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(lambdas, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-    #         label='ibm-granite/granite-3.2-8b-instruct', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
     
     ax.plot(lambdas, 
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
@@ -1156,6 +1156,9 @@ if __name__ == '__main__':
 
     target_metric = "manually_timed_eval_latency_avg"
 
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
@@ -1170,6 +1173,27 @@ if __name__ == '__main__':
     ax.set_xscale('log')
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(lambdas, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(lambdas, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
@@ -1241,6 +1265,9 @@ if __name__ == '__main__':
 
     target_metric = "manually_timed_eval_latency_avg"
 
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+
     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
@@ -1253,6 +1280,17 @@ if __name__ == '__main__':
     ax.set_xscale('log')
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
 
     ax.plot(lambdas, 
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
