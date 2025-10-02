@@ -191,10 +191,10 @@ async def main():
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
-    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens + (num_eot_tokens + 16))
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
-    
+    # batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + 256  + num_eot_tokens + num_activation_tokens + gen_lens[7] + num_eot_tokens + 16)
     random.seed(42)
     for i in range(1, batch_size):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
@@ -209,30 +209,29 @@ async def main():
 
     # Call the base model
     base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
-    base_generation_tokens = await send(random_prompts, ntokens=256, use_adapter_name=BASE_NAME)
+    base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
     # Call the adapter model
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
-    adapter_generation_tokens = await send(adapter_prompts, ntokens=current_gen_len, use_adapter_name=ADAPTER_NAME) 
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
 
-    # # Call the base model again
+    # Call the base model again
     base_2_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(adapter_prompts, adapter_generation_tokens)]
 
-    base_2_gen_len = 16
     base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
-    base_2_generation_tokens = await send(base_2_prompts, ntokens=base_2_gen_len, use_adapter_name=ADAPTER_NAME) 
+    base_2_generation_tokens = await send(base_2_prompts, ntokens=16, use_adapter_name=BASE_NAME) 
 
     base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
     
     # Subtract the metrics from the warmup call
     base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
-    save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_eval_len_{current_gen_len}_gen_1.txt")
+    save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_1.txt")
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_eval_len_{current_gen_len}_eval.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval.txt")
     base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
-    save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_eval_len_{current_gen_len}_gen_2.txt")
+    save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2.txt")
     
 ###################################################################
 
