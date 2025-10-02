@@ -44,8 +44,8 @@ if __name__ == '__main__':
     granite_alora_metric_vals_gen_2 = extract_metrics_from_files(target_metric_gen_2, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/", component="gen_2")
     granite_lora_metric_vals_gen_2 = extract_metrics_from_files(target_metric_gen_2, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/", component="gen_2")
 
-    granite_alora_metric_vals = granite_alora_metric_vals_gen_2 + granite_alora_metric_vals_eval
-    granite_lora_metric_vals = granite_lora_metric_vals_eval + granite_lora_metric_vals_gen_2
+    granite_alora_metric_vals = [a + b for a, b in zip(granite_alora_metric_vals_gen_2, granite_alora_metric_vals_eval)]
+    granite_lora_metric_vals = [a + b for a, b in zip(granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
 
 #     llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/")
 #     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/")
