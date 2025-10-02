@@ -184,8 +184,8 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    # kv_cache_size = 351104 # granite 3.2
-    kv_cache_size = 407984 # llama 70b (4 gpu)
+    kv_cache_size = 351104 # granite 3.2
+    # kv_cache_size = 407984 # llama 70b (4 gpu)
     # kv_cache_size = 912688 # mistral large (8 gpu)
     cache_percentage = 1.0
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
@@ -321,5 +321,5 @@ async def main_poisson():
 ###################################################################
 
 if __name__ == '__main__':
-    # asyncio.run(main())
-    asyncio.run(main_poisson())
+    asyncio.run(main())
+    # asyncio.run(main_poisson())
