@@ -263,7 +263,7 @@ async def main_poisson():
             random_prompts.append(prompt_tokens)
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
-    LAMBDA = lambdas[3] # max 3 for now, max 11
+    LAMBDA = lambdas[2] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
@@ -315,11 +315,11 @@ async def main_poisson():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps.txt", manually_timed_eval_latencies=eval_latencies)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_async_poisson_{LAMBDA}rps_mistral.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 ###################################################################
 
 if __name__ == '__main__':
-    asyncio.run(main())
-    # asyncio.run(main_poisson())
+    # asyncio.run(main())
+    asyncio.run(main_poisson())
