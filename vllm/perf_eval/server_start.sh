@@ -32,15 +32,15 @@ export VLLM_LOG_LEVEL=debug
 
 
 # ### Start server with random alora, meta-llama/Llama-3.3-70B-Instruct ####
-# vllm serve /nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b \
-#     --tensor-parallel-size 4 \
-#     --port 8000 \
-#     --enable-lora \
-#     --dtype bfloat16 \
-#     --max-lora-rank 64 \
-#     --enable-prefix-caching \
-#     --enable-activated-lora \
-#     --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "/nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b"}' 
+vllm serve /nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b \
+    --tensor-parallel-size 4 \
+    --port 8000 \
+    --enable-lora \
+    --dtype bfloat16 \
+    --max-lora-rank 64 \
+    --enable-prefix-caching \
+    --enable-activated-lora \
+    --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "/nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b"}' 
 
 ## Start server with random lora, meta-llama/Llama-3.3-70B-Instruct ####
 # vllm serve /nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b \
@@ -58,15 +58,15 @@ export VLLM_LOG_LEVEL=debug
 
 
 # ### Start server with random alora, mistralai/Mistral-Large-Instruct-2407 ####
-vllm serve /nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc \
-    --tensor-parallel-size 8 \
-    --port 8000 \
-    --enable-lora \
-    --dtype bfloat16 \
-    --max-lora-rank 64 \
-    --enable-prefix-caching \
-    --enable-activated-lora \
-    --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "/nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc"}' 
+# vllm serve /nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc \
+#     --tensor-parallel-size 8 \
+#     --port 8000 \
+#     --enable-lora \
+#     --dtype bfloat16 \
+#     --max-lora-rank 64 \
+#     --enable-prefix-caching \
+#     --enable-activated-lora \
+#     --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "/nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc"}' 
 
 ## Start server with random lora, mistralai/Mistral-Large-Instruct-2407 ####
 # vllm serve /nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc \
