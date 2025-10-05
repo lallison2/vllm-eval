@@ -253,15 +253,15 @@ async def main_poisson():
                 "vllm:request_decode_time_seconds",
                 ]
     
-    # # Generate random prompt tokens (run once)
-    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    np.random.seed(420)
-    for p_len in prompt_lens:
-        random_prompts = [gen_rnd_tokens(p_len)]
-        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-            for prompt in random_prompts:
-                line = ','.join(map(str, prompt))
-                f.write(line+'\n')
+    # # # Generate random prompt tokens (run once)
+    # prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    # np.random.seed(420)
+    # for p_len in prompt_lens:
+    #     random_prompts = [gen_rnd_tokens(p_len)]
+    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+    #         for prompt in random_prompts:
+    #             line = ','.join(map(str, prompt))
+    #             f.write(line+'\n')
 
     random_prompts = []
     current_prompt_len = 256
@@ -289,8 +289,8 @@ async def main_poisson():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    ADAPTER_NAME = LORA_NAME
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME
 
     # Get starting Prometheus metrics. For async, can only use Prometheus to record metrics for gen + eval
     earlier_stat_vals, earlier_hist_vals = await get_metrics(stats, histograms) 
