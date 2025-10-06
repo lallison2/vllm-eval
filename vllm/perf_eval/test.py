@@ -253,15 +253,15 @@ async def main_poisson():
                 "vllm:request_decode_time_seconds",
                 ]
     
-    # # # Generate random prompt tokens (run once)
-    # prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    # np.random.seed(420)
-    # for p_len in prompt_lens:
-    #     random_prompts = [gen_rnd_tokens(p_len)]
-    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-    #         for prompt in random_prompts:
-    #             line = ','.join(map(str, prompt))
-    #             f.write(line+'\n')
+    # # Generate random prompt tokens (run once)
+    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    np.random.seed(420)
+    for p_len in prompt_lens:
+        random_prompts = [gen_rnd_tokens(p_len)]
+        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+            for prompt in random_prompts:
+                line = ','.join(map(str, prompt))
+                f.write(line+'\n')
 
     random_prompts = []
     current_prompt_len = 256
@@ -273,7 +273,7 @@ async def main_poisson():
             random_prompts.append(prompt_tokens)
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
-    LAMBDA = lambdas[11] # max 11
+    LAMBDA = lambdas[0] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
@@ -325,7 +325,7 @@ async def main_poisson():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_async_poisson_{LAMBDA}rps_llama.txt", manually_timed_eval_latencies=eval_latencies)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_async_poisson_{LAMBDA}rps_mistral.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 ###################################################################
