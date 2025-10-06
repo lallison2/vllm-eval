@@ -1273,7 +1273,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Arrival Rate (requests / s)")
+    ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Latency (s)")
     ax.set_title("Average End-to-end Latency Comparison (Evaluation only) (500 requests)")
     ax.legend(fontsize=8, markerscale=1.0)
@@ -1350,7 +1350,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Arrival Rate (requests / s)")
+    ax.set_xlabel("Arrival Rate (rps)")
     ax.set_ylabel("Speedup")
     ax.set_title("Speedup of Average End-to-end Latency (Evaluation only) (LoRA / aLoRA) (500 requests)")
     ax.legend(fontsize=8, markerscale=1.0)
