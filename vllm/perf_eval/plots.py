@@ -57,11 +57,11 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama", path_suffix="_llama")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama", path_suffix="_llama")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral", path_suffix="_mistral")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral", path_suffix="_mistral")
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -167,7 +167,7 @@ if __name__ == '__main__':
     granite_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
     granite_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama", path_suffix="_llama")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
