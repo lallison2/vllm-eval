@@ -148,14 +148,14 @@ async def main():
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 
-    # # # Generate random prompt tokens (run once)
-    # np.random.seed(420)
-    # for p_len in prompt_lens:
-    #     random_prompts = [gen_rnd_tokens(p_len)]
-    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-    #         for prompt in random_prompts:
-    #             line = ','.join(map(str, prompt))
-    #             f.write(line+'\n')
+    # # Generate random prompt tokens (run once)
+    np.random.seed(420)
+    for p_len in prompt_lens:
+        random_prompts = [gen_rnd_tokens(p_len)]
+        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+            for prompt in random_prompts:
+                line = ','.join(map(str, prompt))
+                f.write(line+'\n')
 
     stats = ["vllm:kv_cache_usage",
             "vllm:prefix_cache_queries",
@@ -176,7 +176,7 @@ async def main():
     random_prompts = []
     # current_prompt_len = prompt_lens[9] # max 9
     current_prompt_len = 256
-    current_gen_len = gen_lens[7] # max 7
+    current_gen_len = gen_lens[0] # max 7
     # current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -184,9 +184,9 @@ async def main():
             prompt_tokens = [int(p) for p in prompt_strings]
             random_prompts.append(prompt_tokens)
     
-    kv_cache_size = 351104 # granite 3.2
+    # kv_cache_size = 351104 # granite 3.2
     # kv_cache_size = 407984 # llama 70b (4 gpu)
-    # kv_cache_size = 912688 # mistral large (8 gpu)
+    kv_cache_size = 912688 # mistral large (8 gpu)
     cache_percentage = 1.0
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
@@ -204,8 +204,8 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    ADAPTER_NAME = LORA_NAME
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME
 
     # Call the base model
     base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
@@ -227,11 +227,11 @@ async def main():
     
     # Subtract the metrics from the warmup call
     base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
-    save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_1.txt")
+    save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_1_mistral_trial_2.txt")
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_eval.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_mistral_trial_2.txt")
     base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
-    save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_2.txt")
+    save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2_mistral_trial_2.txt")
     
 ###################################################################
 
@@ -331,5 +331,5 @@ async def main_poisson():
 ###################################################################
 
 if __name__ == '__main__':
-    # asyncio.run(main())
-    asyncio.run(main_poisson())
+    asyncio.run(main())
+    # asyncio.run(main_poisson())
