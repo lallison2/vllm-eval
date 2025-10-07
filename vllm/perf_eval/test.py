@@ -13,9 +13,9 @@ from decimal import Decimal
 import random
 import math
 
-# BASE_NAME = "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"
+BASE_NAME = "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"
 # BASE_NAME = "/nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b"
-BASE_NAME = "/nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc"
+# BASE_NAME = "/nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc"
 
 ALORA_NAME = "random_alora"
 LORA_NAME = "random_lora"
@@ -148,14 +148,14 @@ async def main():
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 
-    # # # Generate random prompt tokens (run once)
-    # np.random.seed(420)
-    # for p_len in prompt_lens:
-    #     random_prompts = [gen_rnd_tokens(p_len)]
-    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-    #         for prompt in random_prompts:
-    #             line = ','.join(map(str, prompt))
-    #             f.write(line+'\n')
+    # # Generate random prompt tokens (run once)
+    np.random.seed(420)
+    for p_len in prompt_lens:
+        random_prompts = [gen_rnd_tokens(p_len)]
+        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+            for prompt in random_prompts:
+                line = ','.join(map(str, prompt))
+                f.write(line+'\n')
 
     stats = ["vllm:kv_cache_usage",
             "vllm:prefix_cache_queries",
@@ -176,7 +176,7 @@ async def main():
     random_prompts = []
     # current_prompt_len = prompt_lens[9] # max 9
     current_prompt_len = 256
-    current_gen_len = gen_lens[1] # max 7
+    current_gen_len = gen_lens[0] # max 7
     # current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
