@@ -149,13 +149,13 @@ async def main():
     gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 
     # # Generate random prompt tokens (run once)
-    np.random.seed(20)
-    for p_len in prompt_lens:
-        random_prompts = [gen_rnd_tokens(p_len)]
-        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-            for prompt in random_prompts:
-                line = ','.join(map(str, prompt))
-                f.write(line+'\n')
+    # np.random.seed(20)
+    # for p_len in prompt_lens:
+    #     random_prompts = [gen_rnd_tokens(p_len)]
+    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+    #         for prompt in random_prompts:
+    #             line = ','.join(map(str, prompt))
+    #             f.write(line+'\n')
 
     stats = ["vllm:kv_cache_usage",
             "vllm:prefix_cache_queries",
@@ -176,7 +176,7 @@ async def main():
     random_prompts = []
     # current_prompt_len = prompt_lens[9] # max 9
     current_prompt_len = 256
-    current_gen_len = gen_lens[2] # max 7
+    current_gen_len = gen_lens[3] # max 7
     # current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
