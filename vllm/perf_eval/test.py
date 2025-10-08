@@ -148,14 +148,14 @@ async def main():
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 
-    # Generate random prompt tokens (run once)
-    np.random.seed(420)
-    for p_len in prompt_lens:
-        random_prompts = [gen_rnd_tokens(p_len)]
-        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-            for prompt in random_prompts:
-                line = ','.join(map(str, prompt))
-                f.write(line+'\n')
+    # # Generate random prompt tokens (run once)
+    # np.random.seed(420)
+    # for p_len in prompt_lens:
+    #     random_prompts = [gen_rnd_tokens(p_len)]
+    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+    #         for prompt in random_prompts:
+    #             line = ','.join(map(str, prompt))
+    #             f.write(line+'\n')
 
     stats = ["vllm:kv_cache_usage",
             "vllm:prefix_cache_queries",
@@ -176,7 +176,7 @@ async def main():
     random_prompts = []
     # current_prompt_len = prompt_lens[9] # max 9
     current_prompt_len = 256
-    current_gen_len = gen_lens[0] # max 7
+    current_gen_len = gen_lens[1] # max 7
     # current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -218,7 +218,7 @@ async def main():
     adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
 
     # Call the base model again
-    base_2_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(adapter_prompts, adapter_generation_tokens)]
+    # base_2_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(adapter_prompts, adapter_generation_tokens)]
 
     base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
     # base_2_generation_tokens = await send(base_2_prompts, ntokens=16, use_adapter_name=BASE_NAME) 
