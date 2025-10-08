@@ -8,16 +8,6 @@ export VLLM_LOG_LEVEL=debug
 # If aLoRA, the invocation string field should exist.
 
 #### Start server with random alora, granite-3.2-8b ####
-# vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
-#     --enable-lora \
-#     --port 8000 \
-#     --dtype bfloat16 \
-#     --max-lora-rank 64 \
-#     --enable-prefix-caching \
-#     --enable-activated-lora \
-#     --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' 
-
-#### Start server with random lora, granite-3.2-8b ####
 vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
     --enable-lora \
     --port 8000 \
@@ -25,7 +15,17 @@ vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b
     --max-lora-rank 64 \
     --enable-prefix-caching \
     --enable-activated-lora \
-    --lora-modules '{"name": "random_lora", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' 
+    --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' 
+
+#### Start server with random lora, granite-3.2-8b ####
+# vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
+#     --enable-lora \
+#     --port 8000 \
+#     --dtype bfloat16 \
+#     --max-lora-rank 64 \
+#     --enable-prefix-caching \
+#     --enable-activated-lora \
+#     --lora-modules '{"name": "random_lora", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' 
 
 
 ###########################################################################
