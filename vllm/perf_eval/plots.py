@@ -54,16 +54,16 @@ if __name__ == '__main__':
 
     target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
 
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     alora_std = []
@@ -208,26 +208,26 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Average Latency (s)")
-    ax.set_title(f"End-to-End Latency Comparison")
+    ax.set_title(f"End-to-End Latency Comparison (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_gen_len-{component}.png")
 
 
     ###############################################
 
     target_metric = "vllm:time_to_first_token_seconds_sum"
 
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
 
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     alora_std = []
@@ -373,25 +373,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Average Latency (s)")
-    ax.set_title(f"Time-to-first-token Latency Comparison")
+    ax.set_title(f"Time-to-first-token Latency Comparison (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_ttft_latency_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_ttft_latency_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:request_queue_time_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     alora_std = []
@@ -536,25 +536,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Average Latency (s)")
-    ax.set_title(f"Request Queue Time Comparison")
+    ax.set_title(f"Request Queue Time Comparison (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_queue_time_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_queue_time_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:request_inference_time_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     alora_std = []
@@ -699,25 +699,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Average Latency (s)")
-    ax.set_title(f"Request Inference Time Comparison")
+    ax.set_title(f"Request Inference Time Comparison (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_inference_time_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_inference_time_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:request_prefill_time_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     alora_std = []
@@ -862,25 +862,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Average Latency (s)")
-    ax.set_title(f"Request Prefill Time Comparison")
+    ax.set_title(f"Request Prefill Time Comparison (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_prefill_time_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_prefill_time_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:request_decode_time_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     alora_std = []
@@ -1025,10 +1025,10 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Average Latency (s)")
-    ax.set_title(f"Request Decode Time Comparison")
+    ax.set_title(f"Request Decode Time Comparison (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_decode_time_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_decode_time_gen_len-{component}.png")
 
     ###############################################
     ###############################################
@@ -1036,16 +1036,16 @@ if __name__ == '__main__':
 
     target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1146,25 +1146,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of End-to-end Latency (LoRA / aLoRA)")
+    ax.set_title(f"Speedup of End-to-end Latency (LoRA / aLoRA) (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:time_to_first_token_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1265,25 +1265,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Time-to-first-token Latency (LoRA / aLoRA)")
+    ax.set_title(f"Speedup of TTFT Latency (LoRA / aLoRA) (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_ttft_latency_speedup_factor_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:request_queue_time_seconds_sum"
 
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1384,25 +1384,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Queue Time (LoRA / aLoRA)")
+    ax.set_title(f"Speedup of Request Queue Time (LoRA / aLoRA) (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_queue_time_speedup_factor_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:request_inference_time_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1503,25 +1503,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Inference Time (LoRA / aLoRA)")
+    ax.set_title(f"Speedup of Request Inference Time (LoRA / aLoRA) (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_inference_time_speedup_factor_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:request_prefill_time_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1622,25 +1622,25 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Speedup of Request Prefill Time (LoRA / aLoRA)")
+    ax.set_title(f"Speedup of Request Prefill Time (LoRA / aLoRA) (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_prefill_time_speedup_factor_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_gen_len-{component}.png")
 
     ###############################################
 
     target_metric = "vllm:request_decode_time_seconds_sum"
     
-    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
     alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1741,10 +1741,10 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length")
     ax.set_ylabel("Speedup")
-    ax.set_title(f"Average Speedup of Request Decode Time (LoRA / aLoRA)")
+    ax.set_title(f"Average Speedup of Request Decode Time (LoRA / aLoRA) (Base-Adapter)")
     ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_decode_time_speedup_factor_gen_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_gen_len-{component}.png")
 
     ###############################################
     ###############################################
@@ -1752,16 +1752,16 @@ if __name__ == '__main__':
 
     # target_metric = "manually_timed_eval_latency_avg"
 
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
 
     # # llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/500_reqs/", path_suffix="_llama")
@@ -1864,22 +1864,22 @@ if __name__ == '__main__':
     # ax.set_title("Average End-to-end Latency Comparison (Evaluation only)")
     # ax.legend(fontsize=8, markerscale=1.0)
 
-    # plt.savefig("plots/base_adapter_base_e2e_latency_gen_len-eval.png")
+    # plt.savefig("plots/base_adapter_e2e_latency_gen_len-eval.png")
 
     # ###############################################
 
     # target_metric = "manually_timed_eval_latency_avg"
 
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/granite_trials/", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
     
 
     # # llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/500_reqs/", path_suffix="_llama")
@@ -1950,4 +1950,4 @@ if __name__ == '__main__':
     # ax.set_title("Speedup of Average End-to-end Latency (Evaluation only) (LoRA / aLoRA)")
     # ax.legend(fontsize=8, markerscale=1.0)
 
-    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-eval.png")
+    # plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_gen_len-eval.png")
