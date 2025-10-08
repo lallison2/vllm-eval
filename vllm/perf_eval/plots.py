@@ -113,7 +113,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#6675A9", alpha=0.8)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
     ax.plot(gen_lens, 
             lora_mean, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
@@ -124,7 +124,7 @@ if __name__ == '__main__':
             markerfacecolor='none',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         granite_alora_metric_vals, 
@@ -278,7 +278,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#6675A9", alpha=0.8)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
     ax.plot(gen_lens, 
             lora_mean, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
@@ -289,7 +289,7 @@ if __name__ == '__main__':
             markerfacecolor='none',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         granite_alora_metric_vals, 
@@ -441,7 +441,9 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#6675A9", alpha=0.8)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
+    print([a + b for a, b in zip(alora_mean, alora_std)])
+    print([a - b for a, b in zip(alora_mean, alora_std)])
     ax.plot(gen_lens, 
             lora_mean, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
@@ -452,7 +454,7 @@ if __name__ == '__main__':
             markerfacecolor='none',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         granite_alora_metric_vals, 
@@ -604,7 +606,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#6675A9", alpha=0.8)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
     ax.plot(gen_lens, 
             lora_mean, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
@@ -615,7 +617,7 @@ if __name__ == '__main__':
             markerfacecolor='none',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         granite_alora_metric_vals, 
@@ -767,7 +769,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#6675A9", alpha=0.8)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
     ax.plot(gen_lens, 
             lora_mean, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
@@ -778,7 +780,7 @@ if __name__ == '__main__':
             markerfacecolor='none',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         granite_alora_metric_vals, 
@@ -930,7 +932,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#6675A9", alpha=0.8)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
     ax.plot(gen_lens, 
             lora_mean, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
@@ -941,7 +943,7 @@ if __name__ == '__main__':
             markerfacecolor='none',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         granite_alora_metric_vals, 
@@ -1092,7 +1094,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
@@ -1211,7 +1213,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
@@ -1330,7 +1332,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
@@ -1449,7 +1451,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
@@ -1568,7 +1570,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
@@ -1687,7 +1689,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#6675A9", alpha=0.4)
+    ax.fill_between(gen_lens, [a + b for a, b in zip(ratio_mean, ratio_std)], [a - b for a, b in zip(ratio_mean, ratio_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(lambdas, 
     #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
