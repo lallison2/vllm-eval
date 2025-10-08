@@ -444,6 +444,8 @@ if __name__ == '__main__':
     ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
     print([a + b for a, b in zip(alora_mean, alora_std)])
     print([a - b for a, b in zip(alora_mean, alora_std)])
+    print(alora_mean)
+    print(alora_std)
     ax.plot(gen_lens, 
             lora_mean, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
