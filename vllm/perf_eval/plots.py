@@ -1978,13 +1978,15 @@ if __name__ == '__main__':
             markeredgecolor='#6675A9',
             )
     
+    current_gen_len = 256
     num_activation_tokens = 4
     num_eot_tokens = 2
     num_eval_tokens = 16
-    batch_size = 351104 // (prompt_lens[9] + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    batch_size = 351104 // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    expected_hits = [(p_len + current_gen_len) * batch_size for p_len in prompt_lens]
     ax.plot(gen_lens, 
-            lora_mean, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            expected_hits, 
+            label='Expected number of cache hits', 
             marker='D', 
             markersize=4,
             linestyle=':',
