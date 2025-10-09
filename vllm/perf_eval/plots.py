@@ -1951,3 +1951,68 @@ if __name__ == '__main__':
     # ax.legend(fontsize=8, markerscale=1.0)
 
     # plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_gen_len-eval.png")
+
+    ###############################################
+    ###############################################
+    ###############################################
+
+    target_metric = "vllm:prefix_cache_hits_total"
+    
+    granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(gen_lens, 
+            granite_alora_metric_vals_trial_1, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    
+    num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
+    num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
+    num_eval_tokens = 16
+    batch_size = 351104 // (prompt_lens[9] + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    ax.plot(gen_lens, 
+            lora_mean, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Average Latency (s)")
+    ax.set_title(f"End-to-End Latency Comparison (Base-Adapter)")
+    ax.legend(fontsize=8, markerscale=1.0)
+
+    plt.savefig(f"plots/base_adapter_e2e_latency_gen_len-{component}.png")
