@@ -1978,12 +1978,12 @@ if __name__ == '__main__':
             markeredgecolor='#84495C',
             )
     
-    current_gen_len = 256
+    current_prompt_len = 256
     num_activation_tokens = 4
     num_eot_tokens = 2
     num_eval_tokens = 16
-    batch_size = 351104 // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
-    expected_hits = [(p_len + current_gen_len) * batch_size for p_len in prompt_lens]
+    batch_size = 351104 // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    expected_hits = [(current_prompt_len + g_len) * batch_size for g_len in gen_lens]
     ax.plot(gen_lens, 
             expected_hits, 
             label='Expected number of cache hits', 
