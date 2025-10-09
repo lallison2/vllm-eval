@@ -1990,7 +1990,7 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle=':',
-            color="#6675A9",
+            color="#979797",
             markerfacecolor='none',
             markeredgecolor='#6675A9',
             )
