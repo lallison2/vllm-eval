@@ -1978,8 +1978,8 @@ if __name__ == '__main__':
             markeredgecolor='#6675A9',
             )
     
-    num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
-    num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
+    num_activation_tokens = 4
+    num_eot_tokens = 2
     num_eval_tokens = 16
     batch_size = 351104 // (prompt_lens[9] + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     ax.plot(gen_lens, 
