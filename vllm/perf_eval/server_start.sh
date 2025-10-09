@@ -9,6 +9,7 @@ export VLLM_LOG_LEVEL=debug
 
 #### Start server with random alora, granite-3.2-8b ####
 vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
+    --tensor-parallel-size 8 \
     --enable-lora \
     --port 8000 \
     --dtype bfloat16 \
@@ -19,6 +20,7 @@ vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b
 
 # #### Start server with random lora, granite-3.2-8b ####
 # vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
+#     --tensor-parallel-size 8 \
 #     --enable-lora \
 #     --port 8000 \
 #     --dtype bfloat16 \
