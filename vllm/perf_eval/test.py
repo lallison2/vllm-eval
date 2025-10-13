@@ -219,17 +219,21 @@ async def main():
     ADAPTER_NAME_4 = LORA_NAME + "_4"
     ADAPTER_NAME_5 = LORA_NAME + "_5"
 
-    # Call the base model
-    base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
-    base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
+    #test
+    _ = await send("this should not get any cache hits", ntokens=0, use_adapter_name=ADAPTER_NAME)
+    _ = await send("this should not get any cache hits", ntokens=0, use_adapter_name=ADAPTER_NAME_2)
 
-    # Call the adapter model(s)
-    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+    # # Call the base model
+    # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
+    # base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
-    adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
-    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
-    print(ADAPTER_NAME_2)
-    adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2) 
+    # # Call the adapter model(s)
+    # adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+
+    # adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
+    # adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
+    # print(ADAPTER_NAME_2)
+    # adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2) 
     # adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3) 
     # adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4) 
     # adapter_5_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_5) 
