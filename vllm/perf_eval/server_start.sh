@@ -88,5 +88,5 @@ vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b
 
 
 # Check that the lora model is listed along with other models.
-curl localhost:8000/v1/models | jq .
+# curl localhost:8000/v1/models | jq .
 

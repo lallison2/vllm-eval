@@ -220,8 +220,8 @@ async def main():
     ADAPTER_NAME_5 = LORA_NAME + "_5"
 
     #test
-    _ = await send(["this should not get any cache hits"], ntokens=0, use_adapter_name=ADAPTER_NAME)
-    _ = await send(["this should not get any cache hits"], ntokens=0, use_adapter_name=ADAPTER_NAME_2)
+    _ = await send([[1, 2, 3, 4, 5]], ntokens=0, use_adapter_name=ADAPTER_NAME)
+    _ = await send([[1, 2, 3, 4, 5]], ntokens=0, use_adapter_name=ADAPTER_NAME_2)
 
     # # Call the base model
     # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
