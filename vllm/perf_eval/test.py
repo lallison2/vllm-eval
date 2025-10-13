@@ -220,8 +220,9 @@ async def main():
     ADAPTER_NAME_5 = LORA_NAME + "_5"
 
     #test
-    _ = await send([[1, 2, 3, 4, 5]], ntokens=0, use_adapter_name=ADAPTER_NAME)
-    _ = await send([[1, 2, 3, 4, 5]], ntokens=0, use_adapter_name=ADAPTER_NAME_2)
+    base_gen = await send([[1, 2, 3, 4, 5]], ntokens=0, use_adapter_name=BASE_NAME)
+    _ = await send([x + y for x,y in zip([[1, 2, 3, 4, 5]], base_gen)], ntokens=0, use_adapter_name=ADAPTER_NAME)
+    _ = await send([x + y for x,y in zip([[1, 2, 3, 4, 5]], base_gen)], ntokens=0, use_adapter_name=ADAPTER_NAME_2)
 
     # # Call the base model
     # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
