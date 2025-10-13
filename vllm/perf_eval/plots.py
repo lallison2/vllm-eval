@@ -1989,7 +1989,7 @@ if __name__ == '__main__':
             )
     
     ax.plot([p_len + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens for p_len in prompt_lens][:8], 
-            granite_alora_metric_vals_prompt_len, 
+            granite_alora_metric_vals_prompt_len[:8], 
             label='Number of cache hits when varying prompt length', 
             marker='D', 
             markersize=4,
