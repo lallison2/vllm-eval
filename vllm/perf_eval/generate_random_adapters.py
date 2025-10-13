@@ -31,23 +31,23 @@ alora_model.save_pretrained(alora_save_path)
 
 #####################################################################
 
-# alora_model.unload()
-# lora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8"
+alora_model.unload()
+lora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_2"
 
-# base_model = AutoModelForCausalLM.from_pretrained(base_model_name, torch_dtype=torch.float16)
-# lora_config = LoraConfig(
-#     r=8,
-#     lora_alpha=16,
-#     lora_dropout=0.05,
-#     target_modules=["q_proj", "v_proj", "k_proj"],
-#     bias="none",
-#     task_type=TaskType.CAUSAL_LM,
-# )
-# lora_model = get_peft_model(base_model, lora_config)
+base_model = AutoModelForCausalLM.from_pretrained(base_model_name, torch_dtype=torch.float16)
+lora_config = LoraConfig(
+    r=8,
+    lora_alpha=16,
+    lora_dropout=0.05,
+    target_modules=["q_proj", "v_proj", "k_proj"],
+    bias="none",
+    task_type=TaskType.CAUSAL_LM,
+)
+lora_model = get_peft_model(base_model, lora_config)
 
-# for name, param in lora_model.named_parameters():
-#     if "lora_A" in name or "lora_B" in name:
-#         param.data = torch.randn_like(param.data) * 0.2
-# print("random lora weights initialized (rank 8)")
+for name, param in lora_model.named_parameters():
+    if "lora_A" in name or "lora_B" in name:
+        param.data = torch.randn_like(param.data) * 0.2
+print("random lora weights initialized (rank 8)")
 
-# lora_model.save_pretrained(lora_save_path)
+lora_model.save_pretrained(lora_save_path)
