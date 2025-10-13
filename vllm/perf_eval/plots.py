@@ -126,7 +126,7 @@ if __name__ == '__main__':
     #         )
     # ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
-    ax.plot(lambdas, 
+    ax.plot(gen_lens, 
             granite_alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
             marker='D', 
@@ -136,7 +136,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(lambdas, 
+    ax.plot(gen_lens, 
             granite_lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
             marker='D', 
