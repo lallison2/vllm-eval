@@ -206,23 +206,23 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    ADAPTER_NAME = LORA_NAME
+    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # ADAPTER_NAME = LORA_NAME
 
-    # ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
-    # ADAPTER_NAME_3 = ALORA_NAME + "_3"
-    # ADAPTER_NAME_4 = ALORA_NAME + "_4"
-    # ADAPTER_NAME_5 = ALORA_NAME + "_5"
+    ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
+    ADAPTER_NAME_3 = ALORA_NAME + "_3"
+    ADAPTER_NAME_4 = ALORA_NAME + "_4"
+    ADAPTER_NAME_5 = ALORA_NAME + "_5"
 
-    ADAPTER_NAME_2 = LORA_NAME + "_2"
-    ADAPTER_NAME_3 = LORA_NAME + "_3"
-    ADAPTER_NAME_4 = LORA_NAME + "_4"
-    ADAPTER_NAME_5 = LORA_NAME + "_5"
+    # ADAPTER_NAME_2 = LORA_NAME + "_2"
+    # ADAPTER_NAME_3 = LORA_NAME + "_3"
+    # ADAPTER_NAME_4 = LORA_NAME + "_4"
+    # ADAPTER_NAME_5 = LORA_NAME + "_5"
 
     #test
     base_gen = await send([[1, 2, 3, 4, 5]], ntokens=0, use_adapter_name=BASE_NAME)
     _ = await send([x + y for x,y in zip([[1, 2, 3, 4, 5]], base_gen)], ntokens=20, use_adapter_name=ADAPTER_NAME)
-    _ = await send([x + y for x,y in zip([[1, 2, 3, 4, 5]], base_gen)], ntokens=20, use_adapter_name=ADAPTER_NAME_2)
+    _ = await send([x + y for x,y in zip([[1, 2, 3, 4, 5]], base_gen)], ntokens=20, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222])
 
     # # Call the base model
     # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
