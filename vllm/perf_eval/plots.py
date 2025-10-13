@@ -2017,7 +2017,7 @@ if __name__ == '__main__':
     )
 
     ax.set_xlabel("Total Sequence Length")
-    ax.set_ylabel("Number of Cache Hits")
+    ax.set_ylabel("Number of Cache Hits Per Request")
     ax.set_title(f"Cache Hit Comparison")
     ax.legend(fontsize=8, markerscale=1.0)
 
