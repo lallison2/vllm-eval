@@ -7,9 +7,9 @@ class ALoraConfig(LoraConfig):
         super().__init__(**kwargs)
         self.invocation_string = invocation_string
 
-torch.manual_seed(10)
+torch.manual_seed(20)
 base_model_name = "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"
-alora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_2"
+alora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_3"
 
 base_model = AutoModelForCausalLM.from_pretrained(base_model_name, torch_dtype=torch.float16)
 alora_config = ALoraConfig(
@@ -33,7 +33,7 @@ alora_model.save_pretrained(alora_save_path)
 #####################################################################
 
 alora_model.unload()
-lora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_2"
+lora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_3"
 
 base_model = AutoModelForCausalLM.from_pretrained(base_model_name, torch_dtype=torch.float16)
 lora_config = LoraConfig(
