@@ -176,7 +176,7 @@ async def main():
     random_prompts = []
     # current_prompt_len = prompt_lens[9] # max 9
     current_prompt_len = 256
-    current_gen_len = gen_lens[4] # max 7
+    current_gen_len = gen_lens[0] # max 7
     # current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -231,26 +231,26 @@ async def main():
     adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4) 
     adapter_5_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_5) 
 
-    # Call the base model again
-    activation_tokens = tokenizer(invocation_string)["input_ids"]
-    base_2_prompts = [x + activation_tokens + y1 + activation_tokens + y2 + activation_tokens + y3 + activation_tokens + y4 + activation_tokens + y5 + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y1,y2,y3,y4,y5 in zip(adapter_prompts, adapter_generation_tokens, adapter_2_generation_tokens, adapter_3_generation_tokens, adapter_4_generation_tokens, adapter_5_generation_tokens)]
+    # # Call the base model again
+    # activation_tokens = tokenizer(invocation_string)["input_ids"]
+    # base_2_prompts = [x + activation_tokens + y1 + activation_tokens + y2 + activation_tokens + y3 + activation_tokens + y4 + activation_tokens + y5 + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y1,y2,y3,y4,y5 in zip(adapter_prompts, adapter_generation_tokens, adapter_2_generation_tokens, adapter_3_generation_tokens, adapter_4_generation_tokens, adapter_5_generation_tokens)]
 
-    base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
-    _ = await send(base_2_prompts, ntokens=16, use_adapter_name=BASE_NAME) 
-    # _ = await send(base_2_prompts_2, ntokens=16, use_adapter_name=BASE_NAME) 
-    # _ = await send(base_2_prompts_3, ntokens=16, use_adapter_name=BASE_NAME) 
-    # _ = await send(base_2_prompts_4, ntokens=16, use_adapter_name=BASE_NAME) 
-    # _ = await send(base_2_prompts_5, ntokens=16, use_adapter_name=BASE_NAME) 
+    # base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
+    # _ = await send(base_2_prompts, ntokens=16, use_adapter_name=BASE_NAME) 
+    # # _ = await send(base_2_prompts_2, ntokens=16, use_adapter_name=BASE_NAME) 
+    # # _ = await send(base_2_prompts_3, ntokens=16, use_adapter_name=BASE_NAME) 
+    # # _ = await send(base_2_prompts_4, ntokens=16, use_adapter_name=BASE_NAME) 
+    # # _ = await send(base_2_prompts_5, ntokens=16, use_adapter_name=BASE_NAME) 
 
-    base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
+    # base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
     
-    # Subtract the metrics from the warmup call
-    base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
-    save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_1_granite_5_adapters.txt")
-    adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_eval_granite_5_adapters.txt")
-    base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
-    save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
+    # # Subtract the metrics from the warmup call
+    # base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
+    # save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_1_granite_5_adapters.txt")
+    # adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
+    # save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_eval_granite_5_adapters.txt")
+    # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
+    # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
     
 ###################################################################
 
