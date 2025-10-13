@@ -15,7 +15,11 @@ vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b
     --max-lora-rank 64 \
     --enable-prefix-caching \
     --enable-activated-lora \
-    --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' 
+    --lora-modules '{"name": "random_alora", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+    '{"name": "random_alora_2", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_2", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+    '{"name": "random_alora_3", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_3", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+    '{"name": "random_alora_4", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_4", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+    '{"name": "random_alora_5", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_5", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
 
 #### Start server with random lora, granite-3.2-8b ####
 # vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
@@ -25,7 +29,11 @@ vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b
 #     --max-lora-rank 64 \
 #     --enable-prefix-caching \
 #     --enable-activated-lora \
-#     --lora-modules '{"name": "random_lora", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' 
+#     --lora-modules '{"name": "random_lora", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+#     '{"name": "random_lora_2", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_2", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+#     '{"name": "random_lora_3", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_3", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+#     '{"name": "random_lora_4", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_4", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+#     '{"name": "random_lora_5", "path": "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_5", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
 
 
 ###########################################################################
