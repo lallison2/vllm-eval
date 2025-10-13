@@ -8,7 +8,7 @@ class ALoraConfig(LoraConfig):
         self.invocation_string = invocation_string
 
 base_model_name = "ibm-granite/granite-3.2-8b-instruct"
-alora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32"
+alora_save_path = "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_2"
 
 base_model = AutoModelForCausalLM.from_pretrained(base_model_name, torch_dtype=torch.float16)
 alora_config = ALoraConfig(
