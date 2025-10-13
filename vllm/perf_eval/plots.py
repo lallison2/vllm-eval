@@ -1971,14 +1971,13 @@ if __name__ == '__main__':
     ax.set_xscale('log')
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    
-    current_prompt_len = 256
     num_activation_tokens = 4
     num_eot_tokens = 2
     num_eval_tokens = 16
     
+    gen_len_trial_batch_size = 351104 // (256 + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     ax.plot([256 + g_len + num_eot_tokens + num_activation_tokens + num_eval_tokens for g_len in gen_lens], 
-            granite_alora_metric_vals_gen_len, 
+            [metric / gen_len_trial_batch_size for metric in granite_alora_metric_vals_gen_len], 
             label='Number of cache hits when varying generation length', 
             marker='D', 
             markersize=4,
@@ -1988,8 +1987,9 @@ if __name__ == '__main__':
             markeredgecolor='#A97777',
             )
     
+    prompt_len_trial_batch_size = 351104 // (prompt_lens[9] + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     ax.plot([p_len + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens for p_len in prompt_lens][:8], 
-            granite_alora_metric_vals_prompt_len[:8], 
+            [metric / prompt_len_trial_batch_size for metric in granite_alora_metric_vals_prompt_len[:8]], 
             label='Number of cache hits when varying prompt length', 
             marker='D', 
             markersize=4,
