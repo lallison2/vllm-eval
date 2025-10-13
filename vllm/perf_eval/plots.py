@@ -1995,7 +1995,7 @@ if __name__ == '__main__':
             markersize=4,
             linestyle='-',
             color="#88A9A9",
-            markerfacecolor='88A9A9',
+            markerfacecolor='#88A9A9',
             markeredgecolor='#88A9A9',
             )
     
