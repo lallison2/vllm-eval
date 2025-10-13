@@ -12,14 +12,18 @@ component = "eval"
 
 component_title = {'eval': 'Evaluation', 'gen_1': 'First Generation', 'gen_2': 'Second Generation'}
 
-def extract_metrics_from_files(target_metric, is_alora=False, path_prefix="", path_suffix="", component=component):
+def extract_metrics_from_files(target_metric, is_alora=False, path_prefix="", path_suffix="", component=component, varying_comp="gen_len"):
     metric_vals = []
-#     for p_len in prompt_lens:
-    for g_len in gen_lens:
-    # for LAMBDA in lambdas:
-        # file_name = path_prefix + f'alora_prompt_len_{p_len}_{component}.txt' if is_alora else path_prefix + f'lora_prompt_len_{p_len}_{component}.txt'
-        file_name = path_prefix + f'alora_gen_len_{g_len}_{component}{path_suffix}.txt' if is_alora else path_prefix + f'lora_gen_len_{g_len}_{component}{path_suffix}.txt'
-        # file_name = path_prefix + f'alora_async_poisson_{LAMBDA}rps{path_suffix}.txt' if is_alora else path_prefix + f'lora_async_poisson_{LAMBDA}rps{path_suffix}.txt'
+
+    varying_list = gen_lens
+    if varying_comp == "prompt_len":
+        varying_list = prompt_lens
+    elif varying_comp == "async_poisson":
+        varying_list = lambdas
+
+    for value in varying_list:
+        file_name = path_prefix + f'alora_{varying_comp}_{value}_{component}{path_suffix}.txt' if is_alora else path_prefix + f'lora_{varying_comp}_{value}_{component}{path_suffix}.txt'
+        # file_name = path_prefix + f'alora_{varying_comp}_{value}rps{path_suffix}.txt' if is_alora else path_prefix + f'lora_{varying_comp}_{value}rps{path_suffix}.txt'
 
         with open(file_name, 'r') as f:
             for line in f:
@@ -1958,8 +1962,8 @@ if __name__ == '__main__':
 
     target_metric = "vllm:prefix_cache_hits_total"
     
-    granite_alora_metric_vals_gen_len = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
-    granite_alora_metric_vals_prompt_len = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
+    granite_alora_metric_vals_gen_len = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1", varying_comp="gen_len")
+    granite_alora_metric_vals_prompt_len = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", varying_comp="prompt_len")
     
     fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -1972,8 +1976,6 @@ if __name__ == '__main__':
     num_activation_tokens = 4
     num_eot_tokens = 2
     num_eval_tokens = 16
-    batch_size = 351104 // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
-    expected_hits = [(current_prompt_len + g_len) * batch_size for g_len in gen_lens]
     
     ax.plot(256 + gen_lens + num_eot_tokens + num_activation_tokens + num_eval_tokens, 
             granite_alora_metric_vals_gen_len, 
