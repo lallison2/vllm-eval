@@ -207,11 +207,16 @@ async def main():
     ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     # ADAPTER_NAME = LORA_NAME
 
+    ADAPTER_NAME_2 = ALORA_NAME + "_2"
+    ADAPTER_NAME_3 = ALORA_NAME + "_3"
+    ADAPTER_NAME_4 = ALORA_NAME + "_4"
+    ADAPTER_NAME_5 = ALORA_NAME + "_5"
+
     # Call the base model
     base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
     base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
-    # Call the adapter model
+    # Call the adapter model(s)
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
