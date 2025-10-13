@@ -29,11 +29,11 @@ vllm serve /nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b
     --max-lora-rank 64 \
     --enable-prefix-caching \
     --enable-activated-lora \
-    --lora-modules /nobackup/users/lallison/hf_cache/hub/random_lora_r_8 \
-    /nobackup/users/lallison/hf_cache/hub/random_lora_r_8_2 \
-    /nobackup/users/lallison/hf_cache/hub/random_lora_r_8_3 \
-    /nobackup/users/lallison/hf_cache/hub/random_lora_r_8_4 \
-    /nobackup/users/lallison/hf_cache/hub/random_lora_r_8_5
+    --lora-modules random_lora=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8 \
+    random_lora_2=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_2 \
+    random_lora_3=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_3 \
+    random_lora_4=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_4 \
+    random_lora_5=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_5
 
 ###########################################################################
 

@@ -17,8 +17,8 @@ BASE_NAME = "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-
 # BASE_NAME = "/nobackup/users/lallison/hf_cache/models--meta-llama--Llama-3.3-70B-Instruct/snapshots/6f6073b423013f6a7d4d9f39144961bfbfbc386b"
 # BASE_NAME = "/nobackup/users/lallison/hf_cache/models--mistralai--Mistral-Large-Instruct-2407/snapshots/a286006d554cb37a61d13c7ae61bc90cc1d372fc"
 
-ALORA_NAME = "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32"
-LORA_NAME = "/nobackup/users/lallison/hf_cache/hub/random_lora_r_8"
+ALORA_NAME = "random_alora"
+LORA_NAME = "random_lora"
 invocation_string = "<|start_of_role|>certainty<|end_of_role|>"
 
 # Modify OpenAI's API key and API base to use vLLM's API server.
