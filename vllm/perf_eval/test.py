@@ -219,25 +219,19 @@ async def main():
     ADAPTER_NAME_4 = LORA_NAME + "_4"
     ADAPTER_NAME_5 = LORA_NAME + "_5"
 
-    #test
-    base_gen = await send([[1, 2, 3, 4, 5]], ntokens=0, use_adapter_name=BASE_NAME)
-    _ = await send([x + y for x,y in zip([[1, 2, 3, 4, 5]], base_gen)], ntokens=20, use_adapter_name=ADAPTER_NAME)
-    _ = await send([x + y for x,y in zip([[1, 2, 3, 4, 5]], base_gen)], ntokens=20, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222])
+    # Call the base model
+    base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
+    base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
-    # # Call the base model
-    # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
-    # base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
+    # Call the adapter model(s)
+    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
-    # # Call the adapter model(s)
-    # adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
-
-    # adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
-    # adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME) 
-    # print(ADAPTER_NAME_2)
-    # adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2) 
-    # adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3) 
-    # adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4) 
-    # adapter_5_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_5) 
+    adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
+    adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222]) 
+    adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3, custom_inv_tokens=[3, 33, 333, 3333]) 
+    adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4, custom_inv_tokens=[4, 44, 444, 4444]) 
+    adapter_5_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_5, custom_inv_tokens=[5, 55, 555, 5555]) 
 
     # # Call the base model again
     # activation_tokens = tokenizer(invocation_string)["input_ids"]
