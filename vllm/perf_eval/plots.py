@@ -40,8 +40,8 @@ if __name__ == '__main__':
     
     target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", component="gen_1")
-    granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", component="gen_1")
+    granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
+    granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
     
     granite_alora_metric_vals_eval = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
     granite_lora_metric_vals_eval = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
