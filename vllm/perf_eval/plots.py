@@ -38,74 +38,97 @@ def extract_metrics_from_files(target_metric, is_alora=False, path_prefix="", pa
 
 if __name__ == '__main__':
     
-    target_metric = "vllm:e2e_request_latency_seconds_sum"
-    
-    granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
-    granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
-    
-    granite_alora_metric_vals_eval = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
-    granite_lora_metric_vals_eval = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
-
-    granite_alora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
-    granite_lora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
-
-    granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
-    granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
-
     # target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
+    # granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
+    
+    # granite_alora_metric_vals_eval = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
+    # granite_lora_metric_vals_eval = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
 
-    # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
-    # alora_std = []
-    # for i in range(len(alora_mean)):
-    #     std = (granite_alora_metric_vals_trial_1[i] - alora_mean[i]) ** 2
-    #     std += (granite_alora_metric_vals_trial_2[i] - alora_mean[i]) ** 2
-    #     std += (granite_alora_metric_vals_trial_3[i] - alora_mean[i]) ** 2
-    #     std += (granite_alora_metric_vals_trial_4[i] - alora_mean[i]) ** 2
-    #     std += (granite_alora_metric_vals_trial_5[i] - alora_mean[i]) ** 2
-    #     std /= (5 - 1)
-    #     std = np.sqrt(std)
-    #     alora_std.append(std)
-    # lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
-    # lora_std = []
-    # for i in range(len(lora_mean)):
-    #     std = (granite_lora_metric_vals_trial_1[i] - lora_mean[i]) ** 2
-    #     std += (granite_lora_metric_vals_trial_2[i] - lora_mean[i]) ** 2
-    #     std += (granite_lora_metric_vals_trial_3[i] - lora_mean[i]) ** 2
-    #     std += (granite_lora_metric_vals_trial_4[i] - lora_mean[i]) ** 2
-    #     std += (granite_lora_metric_vals_trial_5[i] - lora_mean[i]) ** 2
-    #     std /= (5 - 1)
-    #     std = np.sqrt(std)
-    #     lora_std.append(std)
+    # granite_alora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
+    # granite_lora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
 
-    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/500_reqs/", path_suffix="_llama")
-    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/500_reqs/", path_suffix="_llama")
+    # granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
+    # granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
 
-    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_gen_len/500_reqs/", path_suffix="_mistral")
-    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_gen_len/500_reqs/", path_suffix="_mistral")
+    # # target_metric = "vllm:e2e_request_latency_seconds_sum"
+    
+    # # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    # # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    # # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    # # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_2")
+    # # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    # # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_3")
+    # # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    # # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_4")
+    # # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
+    # # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_5")
 
-    fig, ax = plt.subplots(figsize=(8, 6))
+    # # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
+    # # alora_std = []
+    # # for i in range(len(alora_mean)):
+    # #     std = (granite_alora_metric_vals_trial_1[i] - alora_mean[i]) ** 2
+    # #     std += (granite_alora_metric_vals_trial_2[i] - alora_mean[i]) ** 2
+    # #     std += (granite_alora_metric_vals_trial_3[i] - alora_mean[i]) ** 2
+    # #     std += (granite_alora_metric_vals_trial_4[i] - alora_mean[i]) ** 2
+    # #     std += (granite_alora_metric_vals_trial_5[i] - alora_mean[i]) ** 2
+    # #     std /= (5 - 1)
+    # #     std = np.sqrt(std)
+    # #     alora_std.append(std)
+    # # lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
+    # # lora_std = []
+    # # for i in range(len(lora_mean)):
+    # #     std = (granite_lora_metric_vals_trial_1[i] - lora_mean[i]) ** 2
+    # #     std += (granite_lora_metric_vals_trial_2[i] - lora_mean[i]) ** 2
+    # #     std += (granite_lora_metric_vals_trial_3[i] - lora_mean[i]) ** 2
+    # #     std += (granite_lora_metric_vals_trial_4[i] - lora_mean[i]) ** 2
+    # #     std += (granite_lora_metric_vals_trial_5[i] - lora_mean[i]) ** 2
+    # #     std /= (5 - 1)
+    # #     std = np.sqrt(std)
+    # #     lora_std.append(std)
 
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # # llama_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/500_reqs/", path_suffix="_llama")
+    # # llama_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_gen_len/500_reqs/", path_suffix="_llama")
+
+    # # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_gen_len/500_reqs/", path_suffix="_mistral")
+    # # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_gen_len/500_reqs/", path_suffix="_mistral")
+
+    # fig, ax = plt.subplots(figsize=(8, 6))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # # ax.plot(gen_lens, 
+    # #         alora_mean, 
+    # #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    # #         marker='D', 
+    # #         markersize=4,
+    # #         linestyle='-',
+    # #         color="#6675A9",
+    # #         markerfacecolor='#6675A9',
+    # #         markeredgecolor='#6675A9',
+    # #         )
+    # # ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
+    # # ax.plot(gen_lens, 
+    # #         lora_mean, 
+    # #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    # #         marker='D', 
+    # #         markersize=4,
+    # #         linestyle=':',
+    # #         color="#6675A9",
+    # #         markerfacecolor='none',
+    # #         markeredgecolor='#6675A9',
+    # #         )
+    # # ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
     # ax.plot(gen_lens, 
-    #         alora_mean, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         granite_alora_metric_vals, 
+    #         label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
     #         marker='D', 
     #         markersize=4,
     #         linestyle='-',
@@ -113,10 +136,9 @@ if __name__ == '__main__':
     #         markerfacecolor='#6675A9',
     #         markeredgecolor='#6675A9',
     #         )
-    # ax.fill_between(gen_lens, [a + b for a, b in zip(alora_mean, alora_std)], [a - b for a, b in zip(alora_mean, alora_std)], color="#9AA3FF", alpha=0.4)
     # ax.plot(gen_lens, 
-    #         lora_mean, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         granite_lora_metric_vals, 
+    #         label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
     #         marker='D', 
     #         markersize=4,
     #         linestyle=':',
@@ -124,94 +146,72 @@ if __name__ == '__main__':
     #         markerfacecolor='none',
     #         markeredgecolor='#6675A9',
     #         )
-    # ax.fill_between(gen_lens, [a + b for a, b in zip(lora_mean, lora_std)], [a - b for a, b in zip(lora_mean, lora_std)], color="#9AA3FF", alpha=0.4)
 
-    ax.plot(gen_lens, 
-            granite_alora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(gen_lens, 
-            granite_lora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
-            marker='D', 
-            markersize=4,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='none',
-            markeredgecolor='#6675A9',
-            )
-
-    # ax.plot(lambdas, 
-    #         llama_alora_metric_vals, 
-    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#cdb38f",
-    #         markerfacecolor='#cdb38f',
-    #         markeredgecolor='#cdb38f',
-    #         )
-    # ax.plot(lambdas, 
-    #         llama_lora_metric_vals, 
-    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#f4c5b5",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#f4c5b5',
-    #         )
+    # # ax.plot(lambdas, 
+    # #         llama_alora_metric_vals, 
+    # #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+    # #         marker='D', 
+    # #         markersize=4,
+    # #         linestyle='-',
+    # #         color="#cdb38f",
+    # #         markerfacecolor='#cdb38f',
+    # #         markeredgecolor='#cdb38f',
+    # #         )
+    # # ax.plot(lambdas, 
+    # #         llama_lora_metric_vals, 
+    # #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+    # #         marker='D', 
+    # #         markersize=4,
+    # #         linestyle=':',
+    # #         color="#f4c5b5",
+    # #         markerfacecolor='none',
+    # #         markeredgecolor='#f4c5b5',
+    # #         )
     
-    # ax.plot(lambdas, 
-    #         mistral_alora_metric_vals, 
-    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#77a988",
-    #         markerfacecolor='#77a988',
-    #         markeredgecolor='#77a988',
-    #         )
-    # ax.plot(lambdas, 
-    #         mistral_lora_metric_vals, 
-    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#77a988",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#77a988',
-    #         )
+    # # ax.plot(lambdas, 
+    # #         mistral_alora_metric_vals, 
+    # #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+    # #         marker='D', 
+    # #         markersize=4,
+    # #         linestyle='-',
+    # #         color="#77a988",
+    # #         markerfacecolor='#77a988',
+    # #         markeredgecolor='#77a988',
+    # #         )
+    # # ax.plot(lambdas, 
+    # #         mistral_lora_metric_vals, 
+    # #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+    # #         marker='D', 
+    # #         markersize=4,
+    # #         linestyle=':',
+    # #         color="#77a988",
+    # #         markerfacecolor='none',
+    # #         markeredgecolor='#77a988',
+    # #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
 
-    ax.set_xlabel("Generation Length")
-    ax.set_ylabel("Latency (s)")
-    ax.set_title(f"End-to-End Latency Comparison (Base-Adapter-Base)")
-    ax.legend(fontsize=8, markerscale=1.0)
+    # ax.set_xlabel("Generation Length")
+    # ax.set_ylabel("Latency (s)")
+    # ax.set_title(f"End-to-End Latency Comparison (Base-Adapter-Base)")
+    # ax.legend(fontsize=8, markerscale=1.0)
 
-    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
+    # plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
 
 
 #     ###############################################
@@ -2019,3 +2019,219 @@ if __name__ == '__main__':
 
     # plt.savefig(f"plots/base_adapter_cache_hit-{component}.png")
 
+    #######################################
+    #######################################
+    #######################################
+
+
+    target_metric = "vllm:e2e_request_latency_seconds_sum"
+    
+    granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
+    granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
+    
+    granite_alora_metric_vals_eval = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
+    granite_lora_metric_vals_eval = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
+
+    granite_alora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
+    granite_lora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
+
+    granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
+    granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(gen_lens, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(gen_lens, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Latency (s)")
+    ax.set_title(f"End-to-End Latency Comparison (Base-Adapter-Base)")
+    ax.legend(fontsize=8, markerscale=1.0)
+
+    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
+
+    #######################################
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct (5x adapters)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of End-to-end Latency (Base-Adapter-Base) (LoRA / aLoRA)")
+    ax.legend(fontsize=8, markerscale=1.0)
+
+    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-all.png")
+
+    #######################################
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(gen_lens, 
+            granite_alora_metric_vals_gen_2, 
+            label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(gen_lens, 
+            granite_lora_metric_vals_gen_2, 
+            label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Latency (s)")
+    ax.set_title(f"Second Base Latency Comparison (Base-Adapter-Base)")
+    ax.legend(fontsize=8, markerscale=1.0)
+
+    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-gen_2.png")
+
+    #######################################
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)], 
+            label='ibm-granite/granite-3.2-8b-instruct (5x adapters)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Generation Length")
+    ax.set_ylabel("Speedup")
+    ax.set_title("Speedup of End-to-end Latency (Base-Adapter-Base) (LoRA / aLoRA)")
+    ax.legend(fontsize=8, markerscale=1.0)
+
+    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-gen_2.png")
