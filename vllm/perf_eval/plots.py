@@ -1952,71 +1952,72 @@ if __name__ == '__main__':
 
     # # plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_gen_len-eval.png")
 
-    # ###############################################
-    # ###############################################
-    # ###############################################
+    ###############################################
+    ###############################################
+    ###############################################
 
-    # target_metric = "vllm:prefix_cache_hits_total"
+    target_metric = "vllm:prefix_cache_hits_total"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_gen_len = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1")
+    granite_alora_metric_vals_prompt_len = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/")
     
-    # fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    # ax.plot(gen_lens, 
-    #         granite_alora_metric_vals_trial_1, 
-    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle='-',
-    #         color="#84495C",
-    #         markerfacecolor='#84495C',
-    #         markeredgecolor='#84495C',
-    #         )
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
     
-    # current_prompt_len = 256
-    # num_activation_tokens = 4
-    # num_eot_tokens = 2
-    # num_eval_tokens = 16
-    # batch_size = 351104 // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
-    # expected_hits = [(current_prompt_len + g_len) * batch_size for g_len in gen_lens]
-    # ax.plot(gen_lens, 
-    #         expected_hits, 
-    #         label='Expected number of cache hits', 
-    #         marker='D', 
-    #         markersize=4,
-    #         linestyle=':',
-    #         color="#84495C",
-    #         markerfacecolor='none',
-    #         markeredgecolor='#84495C',
-    #         )
+    current_prompt_len = 256
+    num_activation_tokens = 4
+    num_eot_tokens = 2
+    num_eval_tokens = 16
+    batch_size = 351104 // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    expected_hits = [(current_prompt_len + g_len) * batch_size for g_len in gen_lens]
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-
-    # ax.set_xlabel("Generation Length")
-    # ax.set_ylabel("Number of Cache Hits")
-    # ax.set_title(f"Cache Hit Comparison")
-    # ax.legend(fontsize=8, markerscale=1.0)
-
-    # plt.savefig(f"plots/base_adapter_cache_hit-{component}.png")
-
+    ax.plot(256 + gen_lens + num_eot_tokens + num_activation_tokens + num_eval_tokens, 
+            granite_alora_metric_vals_gen_len, 
+            label='Number of cache hits when varying generation length', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#A97777",
+            markerfacecolor='#A97777',
+            markeredgecolor='#A97777',
+            )
     
+    ax.plot(prompt_lens + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens, 
+            granite_alora_metric_vals_prompt_len, 
+            label='Number of cache hits when varying prompt length', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#88A9A9",
+            markerfacecolor='88A9A9',
+            markeredgecolor='#88A9A9',
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Total Sequence Length")
+    ax.set_ylabel("Number of Cache Hits")
+    ax.set_title(f"Cache Hit Comparison")
+    ax.legend(fontsize=8, markerscale=1.0)
+
+    plt.savefig(f"plots/base_adapter_cache_hit-{component}.png")
+
