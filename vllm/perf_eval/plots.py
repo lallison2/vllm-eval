@@ -1977,7 +1977,7 @@ if __name__ == '__main__':
     num_eot_tokens = 2
     num_eval_tokens = 16
     
-    ax.plot(256 + gen_lens + num_eot_tokens + num_activation_tokens + num_eval_tokens, 
+    ax.plot([256 + g_len + num_eot_tokens + num_activation_tokens + num_eval_tokens for g_len in gen_lens], 
             granite_alora_metric_vals_gen_len, 
             label='Number of cache hits when varying generation length', 
             marker='D', 
@@ -1988,7 +1988,7 @@ if __name__ == '__main__':
             markeredgecolor='#A97777',
             )
     
-    ax.plot(prompt_lens + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens, 
+    ax.plot([p_len + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens for p_len in prompt_lens], 
             granite_alora_metric_vals_prompt_len, 
             label='Number of cache hits when varying prompt length', 
             marker='D', 
