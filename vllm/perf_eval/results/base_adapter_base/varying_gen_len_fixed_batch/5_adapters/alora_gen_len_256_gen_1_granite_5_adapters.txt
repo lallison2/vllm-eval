@@ -46,7 +46,7 @@ vllm:time_to_first_token_seconds_bucket{engine="0",le="640.0",model_name="/nobac
 vllm:time_to_first_token_seconds_bucket{engine="0",le="2560.0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:time_to_first_token_seconds_bucket{engine="0",le="+Inf",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:time_to_first_token_seconds_count{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
-vllm:time_to_first_token_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 3.380956
+vllm:time_to_first_token_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 3.370189
 vllm:time_to_first_token_seconds_created{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:time_per_output_token_seconds_bucket{engine="0",le="0.01",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:time_per_output_token_seconds_bucket{engine="0",le="0.025",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 5354.000000
@@ -69,7 +69,7 @@ vllm:time_per_output_token_seconds_bucket{engine="0",le="40.0",model_name="/noba
 vllm:time_per_output_token_seconds_bucket{engine="0",le="80.0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 5355.000000
 vllm:time_per_output_token_seconds_bucket{engine="0",le="+Inf",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 5355.000000
 vllm:time_per_output_token_seconds_count{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 5355.000000
-vllm:time_per_output_token_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 56.339371
+vllm:time_per_output_token_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 56.225729
 vllm:time_per_output_token_seconds_created{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:e2e_request_latency_seconds_bucket{engine="0",le="0.3",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:e2e_request_latency_seconds_bucket{engine="0",le="0.5",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
@@ -94,7 +94,7 @@ vllm:e2e_request_latency_seconds_bucket{engine="0",le="1920.0",model_name="/noba
 vllm:e2e_request_latency_seconds_bucket{engine="0",le="7680.0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:e2e_request_latency_seconds_bucket{engine="0",le="+Inf",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:e2e_request_latency_seconds_count{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
-vllm:e2e_request_latency_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 59.715176
+vllm:e2e_request_latency_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 59.590961
 vllm:e2e_request_latency_seconds_created{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:request_queue_time_seconds_bucket{engine="0",le="0.3",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_queue_time_seconds_bucket{engine="0",le="0.5",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
@@ -119,7 +119,7 @@ vllm:request_queue_time_seconds_bucket{engine="0",le="1920.0",model_name="/nobac
 vllm:request_queue_time_seconds_bucket{engine="0",le="7680.0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_queue_time_seconds_bucket{engine="0",le="+Inf",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_queue_time_seconds_count{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
-vllm:request_queue_time_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000544
+vllm:request_queue_time_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000552
 vllm:request_queue_time_seconds_created{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:request_inference_time_seconds_bucket{engine="0",le="0.3",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:request_inference_time_seconds_bucket{engine="0",le="0.5",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
@@ -144,7 +144,7 @@ vllm:request_inference_time_seconds_bucket{engine="0",le="1920.0",model_name="/n
 vllm:request_inference_time_seconds_bucket{engine="0",le="7680.0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_inference_time_seconds_bucket{engine="0",le="+Inf",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_inference_time_seconds_count{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
-vllm:request_inference_time_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 59.412943
+vllm:request_inference_time_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 59.291238
 vllm:request_inference_time_seconds_created{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:request_prefill_time_seconds_bucket{engine="0",le="0.3",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_prefill_time_seconds_bucket{engine="0",le="0.5",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
@@ -169,7 +169,7 @@ vllm:request_prefill_time_seconds_bucket{engine="0",le="1920.0",model_name="/nob
 vllm:request_prefill_time_seconds_bucket{engine="0",le="7680.0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_prefill_time_seconds_bucket{engine="0",le="+Inf",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_prefill_time_seconds_count{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
-vllm:request_prefill_time_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 3.073572
+vllm:request_prefill_time_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 3.065509
 vllm:request_prefill_time_seconds_created{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:request_decode_time_seconds_bucket{engine="0",le="0.3",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
 vllm:request_decode_time_seconds_bucket{engine="0",le="0.5",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
@@ -194,5 +194,5 @@ vllm:request_decode_time_seconds_bucket{engine="0",le="1920.0",model_name="/noba
 vllm:request_decode_time_seconds_bucket{engine="0",le="7680.0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_decode_time_seconds_bucket{engine="0",le="+Inf",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
 vllm:request_decode_time_seconds_count{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 21.000000
-vllm:request_decode_time_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 56.339371
+vllm:request_decode_time_seconds_sum{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 56.225729
 vllm:request_decode_time_seconds_created{engine="0",model_name="/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"} 0.000000
