@@ -216,7 +216,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-{component}.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_prompt_len-{component}.png")
 
 
     ###############################################
