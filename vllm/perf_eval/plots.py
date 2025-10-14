@@ -2087,8 +2087,8 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", labelsize=20)
-    ax.set_ylabel("Latency (s)", labelsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
     ax.set_title(f"E2E Latency Comparison (Base-Adapter-Base)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
@@ -2133,8 +2133,8 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", labelsize=20)
-    ax.set_ylabel("Speedup", labelsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
     ax.set_title("E2E Speedup (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
@@ -2192,8 +2192,8 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", labelsize=20)
-    ax.set_ylabel("Latency (s)", labelsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
     ax.set_title(f"Second Base Call Latency Comparison (Base-Adapter-Base)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
@@ -2238,8 +2238,8 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", labelsize=20)
-    ax.set_ylabel("Speedup", labelsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
     ax.set_title("Second Base Call Speedup (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
