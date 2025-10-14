@@ -1961,7 +1961,7 @@ if __name__ == '__main__':
     granite_alora_metric_vals_gen_len = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_gen_len/fixed_batch_size/", path_suffix="_granite_trial_1", varying_comp="gen_len")
     granite_alora_metric_vals_prompt_len = extract_metrics_from_files(target_metric, is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", varying_comp="prompt_len")
     
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(12, 5))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
@@ -1974,7 +1974,7 @@ if __name__ == '__main__':
     gen_len_trial_batch_size = 351104 // (256 + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     ax.plot([256 + g_len + num_eot_tokens + num_activation_tokens + num_eval_tokens for g_len in gen_lens], 
             [metric / gen_len_trial_batch_size for metric in granite_alora_metric_vals_gen_len], 
-            label='Number of cache hits when varying generation length', 
+            label='# of cache hits when varying generation length', 
             marker='D', 
             markersize=8,
             linestyle='-',
@@ -1987,7 +1987,7 @@ if __name__ == '__main__':
     prompt_len_trial_batch_size = 351104 // (prompt_lens[9] + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     ax.plot([p_len + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens for p_len in prompt_lens][:8], 
             [metric / prompt_len_trial_batch_size for metric in granite_alora_metric_vals_prompt_len[:8]], 
-            label='Number of cache hits when varying prompt length', 
+            label='# of cache hits when varying prompt length', 
             marker='D', 
             markersize=8,
             linestyle='-',
@@ -2015,10 +2015,11 @@ if __name__ == '__main__':
     )
 
     ax.set_xlabel("Total Sequence Length", fontsize=24)
-    ax.set_ylabel("Number of Cache Hits Per Request", fontsize=24)
+    ax.set_ylabel("# of Cache Hits Per Request", fontsize=24)
     ax.set_title(f"Cache Hit Comparison", fontsize=24)
     ax.legend(fontsize=20, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
+    plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_cache_hit-{component}.png")
 
