@@ -2015,7 +2015,7 @@ if __name__ == '__main__':
     )
 
     ax.set_xlabel("Total Sequence Length", fontsize=24)
-    ax.set_ylabel("# of Cache Hits Per Request", fontsize=24)
+    ax.set_ylabel("# of Cache Hits / Request", fontsize=22)
     ax.set_title(f"Cache Hit Comparison", fontsize=24)
     ax.legend(fontsize=20, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
