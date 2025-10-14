@@ -110,7 +110,7 @@ if __name__ == '__main__':
     #         alora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     #         lora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle=':',
     #         color="#6675A9",
     #         markerfacecolor='none',
@@ -133,7 +133,7 @@ if __name__ == '__main__':
             granite_alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -143,7 +143,7 @@ if __name__ == '__main__':
             granite_lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#6675A9",
             markerfacecolor='none',
@@ -154,7 +154,7 @@ if __name__ == '__main__':
             llama_alora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#cdb38f",
             markerfacecolor='#cdb38f',
@@ -164,7 +164,7 @@ if __name__ == '__main__':
             llama_lora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#f4c5b5",
             markerfacecolor='none',
@@ -175,7 +175,7 @@ if __name__ == '__main__':
             mistral_alora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -185,7 +185,7 @@ if __name__ == '__main__':
             mistral_lora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#77a988",
             markerfacecolor='none',
@@ -209,11 +209,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"E2E Latency Comparison", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_title(f"E2E Latency Comparison", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-{component}.png")
@@ -280,7 +280,7 @@ if __name__ == '__main__':
     #         alora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -291,7 +291,7 @@ if __name__ == '__main__':
     #         lora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle=':',
     #         color="#6675A9",
     #         markerfacecolor='none',
@@ -303,7 +303,7 @@ if __name__ == '__main__':
             granite_alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -313,7 +313,7 @@ if __name__ == '__main__':
             granite_lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#6675A9",
             markerfacecolor='none',
@@ -324,7 +324,7 @@ if __name__ == '__main__':
             llama_alora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#cdb38f",
             markerfacecolor='#cdb38f',
@@ -334,7 +334,7 @@ if __name__ == '__main__':
             llama_lora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#f4c5b5",
             markerfacecolor='none',
@@ -345,7 +345,7 @@ if __name__ == '__main__':
             mistral_alora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -355,7 +355,7 @@ if __name__ == '__main__':
             mistral_lora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#77a988",
             markerfacecolor='none',
@@ -379,11 +379,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"TTFT Latency Comparison", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_title(f"TTFT Latency Comparison", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_ttft_latency_prompt_len-{component}.png")
@@ -448,7 +448,7 @@ if __name__ == '__main__':
     #         alora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -459,7 +459,7 @@ if __name__ == '__main__':
     #         lora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle=':',
     #         color="#6675A9",
     #         markerfacecolor='none',
@@ -471,7 +471,7 @@ if __name__ == '__main__':
             granite_alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -481,7 +481,7 @@ if __name__ == '__main__':
             granite_lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#6675A9",
             markerfacecolor='none',
@@ -492,7 +492,7 @@ if __name__ == '__main__':
             llama_alora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#cdb38f",
             markerfacecolor='#cdb38f',
@@ -502,7 +502,7 @@ if __name__ == '__main__':
             llama_lora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#f4c5b5",
             markerfacecolor='none',
@@ -513,7 +513,7 @@ if __name__ == '__main__':
             mistral_alora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -523,7 +523,7 @@ if __name__ == '__main__':
             mistral_lora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#77a988",
             markerfacecolor='none',
@@ -547,11 +547,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Queue Time Comparison", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_title(f"Queue Time Comparison", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_queue_time_prompt_len-{component}.png")
@@ -616,7 +616,7 @@ if __name__ == '__main__':
     #         alora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -627,7 +627,7 @@ if __name__ == '__main__':
     #         lora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle=':',
     #         color="#6675A9",
     #         markerfacecolor='none',
@@ -639,7 +639,7 @@ if __name__ == '__main__':
             granite_alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -649,7 +649,7 @@ if __name__ == '__main__':
             granite_lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#6675A9",
             markerfacecolor='none',
@@ -660,7 +660,7 @@ if __name__ == '__main__':
             llama_alora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#cdb38f",
             markerfacecolor='#cdb38f',
@@ -670,7 +670,7 @@ if __name__ == '__main__':
             llama_lora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#f4c5b5",
             markerfacecolor='none',
@@ -681,7 +681,7 @@ if __name__ == '__main__':
             mistral_alora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -691,7 +691,7 @@ if __name__ == '__main__':
             mistral_lora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#77a988",
             markerfacecolor='none',
@@ -715,11 +715,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Inference Time Comparison", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_title(f"Inference Time Comparison", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_inference_time_prompt_len-{component}.png")
@@ -784,7 +784,7 @@ if __name__ == '__main__':
     #         alora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -795,7 +795,7 @@ if __name__ == '__main__':
     #         lora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle=':',
     #         color="#6675A9",
     #         markerfacecolor='none',
@@ -807,7 +807,7 @@ if __name__ == '__main__':
             granite_alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -817,7 +817,7 @@ if __name__ == '__main__':
             granite_lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#6675A9",
             markerfacecolor='none',
@@ -828,7 +828,7 @@ if __name__ == '__main__':
             llama_alora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#cdb38f",
             markerfacecolor='#cdb38f',
@@ -838,7 +838,7 @@ if __name__ == '__main__':
             llama_lora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#f4c5b5",
             markerfacecolor='none',
@@ -849,7 +849,7 @@ if __name__ == '__main__':
             mistral_alora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -859,7 +859,7 @@ if __name__ == '__main__':
             mistral_lora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#77a988",
             markerfacecolor='none',
@@ -883,11 +883,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Prefill Time Comparison", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_title(f"Prefill Time Comparison", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_prefill_time_prompt_len-{component}.png")
@@ -952,7 +952,7 @@ if __name__ == '__main__':
     #         alora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -963,7 +963,7 @@ if __name__ == '__main__':
     #         lora_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle=':',
     #         color="#6675A9",
     #         markerfacecolor='none',
@@ -975,7 +975,7 @@ if __name__ == '__main__':
             granite_alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -985,7 +985,7 @@ if __name__ == '__main__':
             granite_lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#6675A9",
             markerfacecolor='none',
@@ -996,7 +996,7 @@ if __name__ == '__main__':
             llama_alora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#cdb38f",
             markerfacecolor='#cdb38f',
@@ -1006,7 +1006,7 @@ if __name__ == '__main__':
             llama_lora_metric_vals, 
             label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#f4c5b5",
             markerfacecolor='none',
@@ -1017,7 +1017,7 @@ if __name__ == '__main__':
             mistral_alora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -1027,7 +1027,7 @@ if __name__ == '__main__':
             mistral_lora_metric_vals, 
             label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle=':',
             color="#77a988",
             markerfacecolor='none',
@@ -1051,11 +1051,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Decode Time Comparison", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_title(f"Decode Time Comparison", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_decode_time_prompt_len-{component}.png")
@@ -1119,7 +1119,7 @@ if __name__ == '__main__':
     #         ratio_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -1131,7 +1131,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -1142,7 +1142,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
             label='meta-llama/Llama-3.3-70B-Instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
@@ -1153,7 +1153,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
             label='mistralai/Mistral-Large-Instruct-2407', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -1177,11 +1177,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"E2E Speedup (LoRA / aLoRA)", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_title(f"E2E Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_prompt_len-{component}.png")
@@ -1243,7 +1243,7 @@ if __name__ == '__main__':
     #         ratio_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -1255,7 +1255,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -1266,7 +1266,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
             label='meta-llama/Llama-3.3-70B-Instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
@@ -1277,7 +1277,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
             label='mistralai/Mistral-Large-Instruct-2407', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -1301,11 +1301,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"TTFT Speedup (LoRA / aLoRA)", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_title(f"TTFT Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_prompt_len-{component}.png")
@@ -1367,7 +1367,7 @@ if __name__ == '__main__':
     #         ratio_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -1379,7 +1379,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -1390,7 +1390,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
             label='meta-llama/Llama-3.3-70B-Instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
@@ -1401,7 +1401,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
             label='mistralai/Mistral-Large-Instruct-2407', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -1425,11 +1425,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Queue Time Speedup (LoRA / aLoRA)", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_title(f"Queue Time Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_prompt_len-{component}.png")
@@ -1491,7 +1491,7 @@ if __name__ == '__main__':
     #         ratio_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -1503,7 +1503,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -1514,7 +1514,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
             label='meta-llama/Llama-3.3-70B-Instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
@@ -1525,7 +1525,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
             label='mistralai/Mistral-Large-Instruct-2407', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -1549,11 +1549,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Inference Time Speedup (LoRA / aLoRA)", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_title(f"Inference Time Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_prompt_len-{component}.png")
@@ -1615,7 +1615,7 @@ if __name__ == '__main__':
     #         ratio_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -1627,7 +1627,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -1638,7 +1638,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
             label='meta-llama/Llama-3.3-70B-Instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
@@ -1649,7 +1649,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
             label='mistralai/Mistral-Large-Instruct-2407', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -1673,11 +1673,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Prefill Time Speedup (LoRA / aLoRA)", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_title(f"Prefill Time Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_prompt_len-{component}.png")
@@ -1739,7 +1739,7 @@ if __name__ == '__main__':
     #         ratio_mean, 
     #         label='ibm-granite/granite-3.2-8b-instruct', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -1751,7 +1751,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
@@ -1762,7 +1762,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
             label='meta-llama/Llama-3.3-70B-Instruct', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#f4c5b5",
             markerfacecolor='#f4c5b5',
@@ -1773,7 +1773,7 @@ if __name__ == '__main__':
             [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
             label='mistralai/Mistral-Large-Instruct-2407', 
             marker='D', 
-            markersize=8,
+            markersize=4,
             linestyle='-',
             color="#77a988",
             markerfacecolor='#77a988',
@@ -1797,11 +1797,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Decode Time Speedup (LoRA / aLoRA)", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=16)
+    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_title(f"Decode Time Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_prompt_len-{component}.png")
@@ -1843,7 +1843,7 @@ if __name__ == '__main__':
     # #         granite_alora_metric_vals, 
     # #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle='-',
     # #         color="#6675A9",
     # #         markerfacecolor='#6675A9',
@@ -1853,7 +1853,7 @@ if __name__ == '__main__':
     # #         granite_lora_metric_vals, 
     # #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle=':',
     # #         color="#6675A9",
     # #         markerfacecolor='none',
@@ -1864,7 +1864,7 @@ if __name__ == '__main__':
     # #         llama_alora_metric_vals, 
     # #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle='-',
     # #         color="#cdb38f",
     # #         markerfacecolor='#cdb38f',
@@ -1874,7 +1874,7 @@ if __name__ == '__main__':
     # #         llama_lora_metric_vals, 
     # #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle=':',
     # #         color="#f4c5b5",
     # #         markerfacecolor='none',
@@ -1885,7 +1885,7 @@ if __name__ == '__main__':
     # #         mistral_alora_metric_vals, 
     # #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle='-',
     # #         color="#77a988",
     # #         markerfacecolor='#77a988',
@@ -1895,7 +1895,7 @@ if __name__ == '__main__':
     # #         mistral_lora_metric_vals, 
     # #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle=':',
     # #         color="#77a988",
     # #         markerfacecolor='none',
@@ -1922,7 +1922,7 @@ if __name__ == '__main__':
     # # ax.set_xlabel("Prompt Length")
     # # ax.set_ylabel("Latency (s)")
     # # ax.set_title("E2E Latency Comparison (Evaluation only)")
-    # # ax.legend(fontsize=12, markerscale=1.0)
+    # # ax.legend(fontsize=10, markerscale=1.0)
 
     # # plt.savefig("plots/base_adapter_e2e_latency_prompt_len-eval.png")
 
@@ -1959,7 +1959,7 @@ if __name__ == '__main__':
     # #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
     # #         label='ibm-granite/granite-3.2-8b-instruct', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle='-',
     # #         color="#6675A9",
     # #         markerfacecolor='#6675A9',
@@ -1970,7 +1970,7 @@ if __name__ == '__main__':
     # #         [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
     # #         label='meta-llama/Llama-3.3-70B-Instruct', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle='-',
     # #         color="#f4c5b5",
     # #         markerfacecolor='#f4c5b5',
@@ -1981,7 +1981,7 @@ if __name__ == '__main__':
     # #         [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
     # #         label='mistralai/Mistral-Large-Instruct-2407', 
     # #         marker='D', 
-    # #         markersize=8,
+    # #         markersize=4,
     # #         linestyle='-',
     # #         color="#77a988",
     # #         markerfacecolor='#77a988',
@@ -2008,7 +2008,7 @@ if __name__ == '__main__':
     # # ax.set_xlabel("Prompt Length")
     # # ax.set_ylabel("Speedup")
     # # ax.set_title("Speedup of E2E Latency (Evaluation only) (LoRA / aLoRA)")
-    # # ax.legend(fontsize=12, markerscale=1.0)
+    # # ax.legend(fontsize=10, markerscale=1.0)
 
     # # plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_prompt_len-eval.png")
 
@@ -2036,7 +2036,7 @@ if __name__ == '__main__':
     #         [metric / gen_len_trial_batch_size for metric in granite_alora_metric_vals_prompt_len], 
     #         label='# of cache hits when varying Prompt Length', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#A97777",
     #         markerfacecolor='#A97777',
@@ -2049,7 +2049,7 @@ if __name__ == '__main__':
     #         [metric / prompt_len_trial_batch_size for metric in granite_alora_metric_vals_prompt_len[:8]], 
     #         label='# of cache hits when varying prompt length', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#88A9A9",
     #         markerfacecolor='#88A9A9',
@@ -2074,11 +2074,11 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Total Sequence Length", fontsize=20)
+    # ax.set_xlabel("Total Sequence Length", fontsize=16)
     # ax.set_ylabel("# of Cache Hits / Request", fontsize=22)
-    # ax.set_title(f"Cache Hit Comparison", fontsize=20)
-    # ax.legend(fontsize=12, markerscale=1.0)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    # ax.set_title(f"Cache Hit Comparison", fontsize=16)
+    # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
     # plt.tight_layout()
 
     # plt.savefig(f"plots/base_adapter_cache_hit-{component}.png")
@@ -2115,7 +2115,7 @@ if __name__ == '__main__':
     #         granite_alora_metric_vals, 
     #         label='rank-32 aLoRA', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -2126,7 +2126,7 @@ if __name__ == '__main__':
     #         granite_lora_metric_vals, 
     #         label='rank-8 LoRA', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle=':',
     #         color="#6675A9",
     #         markerfacecolor='none',
@@ -2151,11 +2151,11 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Latency (s)", fontsize=20)
-    # ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    # ax.legend(fontsize=20, markerscale=1.0)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    # ax.set_xlabel("Prompt Length", fontsize=16)
+    # ax.set_ylabel("Latency (s)", fontsize=16)
+    # ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=16)
+    # ax.legend(fontsize=16, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
 
     # plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-all.png")
 
@@ -2171,7 +2171,7 @@ if __name__ == '__main__':
     # ax.plot(gen_lens, 
     #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -2196,10 +2196,10 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Speedup", fontsize=20)
-    # ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    # ax.set_xlabel("Prompt Length", fontsize=16)
+    # ax.set_ylabel("Speedup", fontsize=16)
+    # ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=16)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
 
     # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-all.png")
 
@@ -2218,7 +2218,7 @@ if __name__ == '__main__':
     #         granite_alora_metric_vals_gen_2, 
     #         label='rank-32 aLoRA', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -2229,7 +2229,7 @@ if __name__ == '__main__':
     #         granite_lora_metric_vals_gen_2, 
     #         label='rank-8 LoRA', 
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle=':',
     #         color="#6675A9",
     #         markerfacecolor='none',
@@ -2254,11 +2254,11 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Latency (s)", fontsize=20)
-    # ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    # ax.legend(fontsize=20, markerscale=1.0)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    # ax.set_xlabel("Prompt Length", fontsize=16)
+    # ax.set_ylabel("Latency (s)", fontsize=16)
+    # ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=16)
+    # ax.legend(fontsize=16, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
 
     # plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-gen_2.png")
 
@@ -2274,7 +2274,7 @@ if __name__ == '__main__':
     # ax.plot(gen_lens, 
     #         [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)],  
     #         marker='D', 
-    #         markersize=8,
+    #         markersize=4,
     #         linestyle='-',
     #         color="#6675A9",
     #         markerfacecolor='#6675A9',
@@ -2299,9 +2299,9 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Speedup", fontsize=20)
-    # ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    # ax.set_xlabel("Prompt Length", fontsize=16)
+    # ax.set_ylabel("Speedup", fontsize=16)
+    # ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=16)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
 
     # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-gen_2.png")
