@@ -1844,7 +1844,7 @@ if __name__ == '__main__':
 
     ax.plot(lambdas, 
             granite_alora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            label='ibm-granite/granite-3.2-8b-instruct\n(rank-32 aLoRA)', 
             marker='D', 
             markersize=4,
             linestyle='-',
@@ -1854,7 +1854,7 @@ if __name__ == '__main__':
             )
     ax.plot(lambdas, 
             granite_lora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            label='ibm-granite/granite-3.2-8b-instruct\n(rank-8 LoRA)', 
             marker='D', 
             markersize=4,
             linestyle=':',
@@ -1865,7 +1865,7 @@ if __name__ == '__main__':
 
     ax.plot(lambdas, 
             llama_alora_metric_vals, 
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+            label='meta-llama/Llama-3.3-70B-Instruct\n(rank-32 aLoRA)', 
             marker='D', 
             markersize=4,
             linestyle='-',
@@ -1875,7 +1875,7 @@ if __name__ == '__main__':
             )
     ax.plot(lambdas, 
             llama_lora_metric_vals, 
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+            label='meta-llama/Llama-3.3-70B-Instruct\n(rank-8 LoRA)', 
             marker='D', 
             markersize=4,
             linestyle=':',
@@ -1886,7 +1886,7 @@ if __name__ == '__main__':
     
     ax.plot(lambdas, 
             mistral_alora_metric_vals, 
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            label='mistralai/Mistral-Large-Instruct-2407\n(rank-32 aLoRA)', 
             marker='D', 
             markersize=4,
             linestyle='-',
@@ -1896,7 +1896,7 @@ if __name__ == '__main__':
             )
     ax.plot(lambdas, 
             mistral_lora_metric_vals, 
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            label='mistralai/Mistral-Large-Instruct-2407\n(rank-8 LoRA)', 
             marker='D', 
             markersize=4,
             linestyle=':',
