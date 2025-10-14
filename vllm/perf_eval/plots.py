@@ -2051,21 +2051,23 @@ if __name__ == '__main__':
             granite_alora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
             marker='D', 
-            markersize=4,
+            markersize=8,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
+            linewidth=3,
             )
     ax.plot(gen_lens, 
             granite_lora_metric_vals, 
             label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
             marker='D', 
-            markersize=4,
+            markersize=8,
             linestyle=':',
             color="#6675A9",
             markerfacecolor='none',
             markeredgecolor='#6675A9',
+            linewidth=3,
             )
     
     ax.grid(
@@ -2085,11 +2087,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_xlabel("Generation Length", labelsize=20)
+    ax.set_ylabel("Latency (s)", labelsize=20)
     ax.set_title(f"E2E Latency Comparison (Base-Adapter-Base)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=14)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
 
@@ -2106,11 +2108,12 @@ if __name__ == '__main__':
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
             label='ibm-granite/granite-3.2-8b-instruct (5x adapters)', 
             marker='D', 
-            markersize=4,
+            markersize=8,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
+            linewidth=3,
             )
     
     ax.grid(
@@ -2130,11 +2133,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_xlabel("Generation Length", labelsize=20)
+    ax.set_ylabel("Speedup", labelsize=20)
     ax.set_title("E2E Speedup (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=14)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-all.png")
 
@@ -2153,21 +2156,23 @@ if __name__ == '__main__':
             granite_alora_metric_vals_gen_2, 
             label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
             marker='D', 
-            markersize=4,
+            markersize=8,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
+            linewidth=3,
             )
     ax.plot(gen_lens, 
             granite_lora_metric_vals_gen_2, 
             label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
             marker='D', 
-            markersize=4,
+            markersize=8,
             linestyle=':',
             color="#6675A9",
             markerfacecolor='none',
             markeredgecolor='#6675A9',
+            linewidth=3,
             )
     
     ax.grid(
@@ -2187,11 +2192,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_xlabel("Generation Length", labelsize=20)
+    ax.set_ylabel("Latency (s)", labelsize=20)
     ax.set_title(f"Second Base Call Latency Comparison (Base-Adapter-Base)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=14)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-gen_2.png")
 
@@ -2208,11 +2213,12 @@ if __name__ == '__main__':
             [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)], 
             label='ibm-granite/granite-3.2-8b-instruct (5x adapters)', 
             marker='D', 
-            markersize=4,
+            markersize=8,
             linestyle='-',
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
+            linewidth=3,
             )
     
     ax.grid(
@@ -2232,10 +2238,10 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_xlabel("Generation Length", labelsize=20)
+    ax.set_ylabel("Speedup", labelsize=20)
     ax.set_title("Second Base Call Speedup (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=14)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-gen_2.png")
