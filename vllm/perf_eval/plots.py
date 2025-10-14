@@ -5,10 +5,10 @@ prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
 gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000]
 
-component = "eval"
+# component = "eval"
 # component = "gen_1"
 # component = "gen_2"
-# component = "gen+eval"
+component = "gen+eval"
 
 component_title = {'eval': 'Evaluation', 'gen_1': 'First Generation', 'gen_2': 'Second Generation'}
 
@@ -211,7 +211,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"E2E Latency Comparison", fontsize=16)
+    ax.set_title(f"Gen+Eval E2E Latency Comparison (Async)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -381,7 +381,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"TTFT Latency Comparison", fontsize=16)
+    ax.set_title(f"Gen+Eval TTFT Latency Comparison (Async)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -549,7 +549,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Queue Time Comparison", fontsize=16)
+    ax.set_title(f"Gen+Eval Queue Time Comparison (Async)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -717,7 +717,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Inference Time Comparison", fontsize=16)
+    ax.set_title(f"Gen+Eval Inference Time Comparison (Async)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -885,7 +885,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Prefill Time Comparison", fontsize=16)
+    ax.set_title(f"Gen+Eval Prefill Time Comparison (Async)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1053,7 +1053,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Decode Time Comparison", fontsize=16)
+    ax.set_title(f"Gen+Eval Decode Time Comparison (Async)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1179,7 +1179,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"E2E Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.set_title(f"Gen+Eval E2E Speedup (Async) (LoRA / aLoRA)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1303,7 +1303,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"TTFT Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.set_title(f"Gen+Eval TTFT Speedup (Async) (LoRA / aLoRA)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1427,7 +1427,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Queue Time Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.set_title(f"Gen+Eval Queue Time Speedup (Async) (LoRA / aLoRA)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     ax.yaxis.get_offset_text().set_fontsize(16)
@@ -1552,7 +1552,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Inference Time Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.set_title(f"Gen+Eval Inference Time Speedup (Async) (LoRA / aLoRA)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1676,7 +1676,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Prefill Time Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.set_title(f"Gen+Eval Prefill Time Speedup (Async) (LoRA / aLoRA)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1800,7 +1800,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Decode Time Speedup (LoRA / aLoRA)", fontsize=16)
+    ax.set_title(f"Gen+Eval Decode Time Speedup (Async) (LoRA / aLoRA)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1811,207 +1811,215 @@ if __name__ == '__main__':
     # ###############################################
     # ###############################################
 
-    # # target_metric = "manually_timed_eval_latency_avg"
+    target_metric = "manually_timed_eval_latency_avg"
 
-    # # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_1")
-    # # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_1")
-    # # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_2")
-    # # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_2")
-    # # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_3")
-    # # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_3")
-    # # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_4")
-    # # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_4")
-    # # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_5")
-    # # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_5")
     
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
-    # # # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
-    # # # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
-    # # # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
-    # # # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
 
-    # # fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(9, 7))
 
-    # # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # # ax.set_yscale('log')
-    # # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    # # ax.set_xscale('log')
-    # # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # # ax.plot(lambdas, 
-    # #         granite_alora_metric_vals, 
-    # #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle='-',
-    # #         color="#6675A9",
-    # #         markerfacecolor='#6675A9',
-    # #         markeredgecolor='#6675A9',
-    # #         )
-    # # ax.plot(lambdas, 
-    # #         granite_lora_metric_vals, 
-    # #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle=':',
-    # #         color="#6675A9",
-    # #         markerfacecolor='none',
-    # #         markeredgecolor='#6675A9',
-    # #         )
+    ax.plot(lambdas, 
+            granite_alora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
+    ax.plot(lambdas, 
+            granite_lora_metric_vals, 
+            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            )
 
-    # # ax.plot(lambdas, 
-    # #         llama_alora_metric_vals, 
-    # #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle='-',
-    # #         color="#cdb38f",
-    # #         markerfacecolor='#cdb38f',
-    # #         markeredgecolor='#cdb38f',
-    # #         )
-    # # ax.plot(lambdas, 
-    # #         llama_lora_metric_vals, 
-    # #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle=':',
-    # #         color="#cdb38f",
-    # #         markerfacecolor='none',
-    # #         markeredgecolor='#cdb38f',
-    # #         )
+    ax.plot(lambdas, 
+            llama_alora_metric_vals, 
+            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#cdb38f",
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
+            )
+    ax.plot(lambdas, 
+            llama_lora_metric_vals, 
+            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#cdb38f",
+            markerfacecolor='none',
+            markeredgecolor='#cdb38f',
+            )
     
-    # # ax.plot(lambdas, 
-    # #         mistral_alora_metric_vals, 
-    # #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle='-',
-    # #         color="#77a988",
-    # #         markerfacecolor='#77a988',
-    # #         markeredgecolor='#77a988',
-    # #         )
-    # # ax.plot(lambdas, 
-    # #         mistral_lora_metric_vals, 
-    # #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle=':',
-    # #         color="#77a988",
-    # #         markerfacecolor='none',
-    # #         markeredgecolor='#77a988',
-    # #         )
+    ax.plot(lambdas, 
+            mistral_alora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
+    ax.plot(lambdas, 
+            mistral_lora_metric_vals, 
+            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#77a988",
+            markerfacecolor='none',
+            markeredgecolor='#77a988',
+            )
     
-    # # ax.grid(
-    # #     axis='x',
-    # #     which='major',
-    # #     linestyle='-',
-    # #     linewidth=0.5,
-    # #     color='gray',
-    # #     alpha=0.7,
-    # # )
-    # # ax.grid(
-    # #     axis='y',
-    # #     which='major',
-    # #     linestyle='-',
-    # #     linewidth=0.5,
-    # #     color='gray',
-    # #     alpha=0.7,
-    # # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # # ax.set_xlabel("Arrival Rate (rps)")
-    # # ax.set_ylabel("Latency (s)")
-    # # ax.set_title("E2E Latency Comparison (Evaluation only)")
-    # # ax.legend(fontsize=10, markerscale=1.0)
+    ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
+    ax.set_ylabel("Latency (s)", fontsize=16)
+    ax.set_title("Evaluation Latency Comparison (Async)", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
+    plt.tight_layout()
 
-    # # plt.savefig("plots/base_adapter_e2e_latency_arrival_rate-eval.png")
+    plt.savefig("plots/base_adapter_e2e_latency_arrival_rate-eval.png")
 
-    # # ###############################################
+    ###############################################
 
-    # # target_metric = "manually_timed_eval_latency_avg"
+    target_metric = "manually_timed_eval_latency_avg"
 
-    # # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_1")
-    # # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_1")
-    # # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_2")
-    # # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_2")
-    # # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_3")
-    # # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_3")
-    # # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_4")
-    # # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_4")
-    # # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_5")
-    # # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_granite_trial_5")
     
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/")
 
-    # # # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
-    # # # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
+    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
+    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
 
-    # # # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
-    # # # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
+    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_arrival_rate/500_reqs/", path_suffix="_mistral")
 
-    # # fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(9, 7))
 
-    # # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # # ax.set_xscale('log')
-    # # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # # ax.plot(lambdas, 
-    # #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-    # #         label='ibm-granite/granite-3.2-8b-instruct', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle='-',
-    # #         color="#6675A9",
-    # #         markerfacecolor='#6675A9',
-    # #         markeredgecolor='#6675A9',
-    # #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            label='ibm-granite/granite-3.2-8b-instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            )
 
-    # # ax.plot(lambdas, 
-    # #         [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
-    # #         label='meta-llama/Llama-3.3-70B-Instruct', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle='-',
-    # #         color="#cdb38f",
-    # #         markerfacecolor='#cdb38f',
-    # #         markeredgecolor='#cdb38f',
-    # #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
+            label='meta-llama/Llama-3.3-70B-Instruct', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#cdb38f",
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
+            )
     
-    # # ax.plot(lambdas, 
-    # #         [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
-    # #         label='mistralai/Mistral-Large-Instruct-2407', 
-    # #         marker='D', 
-    # #         markersize=4,
-    # #         linestyle='-',
-    # #         color="#77a988",
-    # #         markerfacecolor='#77a988',
-    # #         markeredgecolor='#77a988',
-    # #         )
+    ax.plot(lambdas, 
+            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+            label='mistralai/Mistral-Large-Instruct-2407', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#77a988",
+            markerfacecolor='#77a988',
+            markeredgecolor='#77a988',
+            )
     
-    # # ax.grid(
-    # #     axis='x',
-    # #     which='major',
-    # #     linestyle='-',
-    # #     linewidth=0.5,
-    # #     color='gray',
-    # #     alpha=0.7,
-    # # )
-    # # ax.grid(
-    # #     axis='y',
-    # #     which='major',
-    # #     linestyle='-',
-    # #     linewidth=0.5,
-    # #     color='gray',
-    # #     alpha=0.7,
-    # # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # # ax.set_xlabel("Arrival Rate (rps)")
-    # # ax.set_ylabel("Speedup")
-    # # ax.set_title("Speedup of E2E Latency (Evaluation only) (LoRA / aLoRA)")
-    # # ax.legend(fontsize=10, markerscale=1.0)
+    ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
+    ax.set_ylabel("Speedup", fontsize=16)
+    ax.set_title("Evaluation Speedup (Async) (LoRA / aLoRA)", fontsize=16)
+    ax.legend(fontsize=10, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=16)
+    plt.tight_layout()
 
-    # # plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_arrival_rate-eval.png")
+    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_arrival_rate-eval.png")
 
     ###############################################
     ###############################################
@@ -2199,7 +2207,7 @@ if __name__ == '__main__':
 
     # ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     # ax.set_ylabel("Speedup", fontsize=16)
-    # ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=16)
+    # ax.set_title("E2E Speedup\n(Base-Adapter-Base) (Async) (LoRA / aLoRA)", fontsize=16)
     # ax.tick_params(axis='both', which='major', labelsize=16)
 
     # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_arrival_rate-all.png")
@@ -2302,7 +2310,7 @@ if __name__ == '__main__':
 
     # ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     # ax.set_ylabel("Speedup", fontsize=16)
-    # ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=16)
+    # ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (Async) (LoRA / aLoRA)", fontsize=16)
     # ax.tick_params(axis='both', which='major', labelsize=16)
 
     # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_arrival_rate-gen_2.png")
