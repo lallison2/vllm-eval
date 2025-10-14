@@ -2038,7 +2038,7 @@ if __name__ == '__main__':
     granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
     granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
 
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(9, 7))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -2097,7 +2097,7 @@ if __name__ == '__main__':
 
     #######################################
 
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(9, 7))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
@@ -2143,7 +2143,7 @@ if __name__ == '__main__':
 
     #######################################
 
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(9, 7))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -2202,7 +2202,7 @@ if __name__ == '__main__':
 
     #######################################
 
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(9, 7))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
