@@ -2132,7 +2132,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title("Speedup of E2E (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
+    ax.set_title("E2E Speedup (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=14)
 
@@ -2234,7 +2234,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title("Speedup of Second Base Call Latency (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
+    ax.set_title("Second Base Call Speedup (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
     ax.legend(fontsize=12, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=14)
 
