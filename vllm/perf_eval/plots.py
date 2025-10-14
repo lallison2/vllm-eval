@@ -2049,7 +2049,7 @@ if __name__ == '__main__':
 
     ax.plot(gen_lens, 
             granite_alora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
+            label='5x rank-32 aLoRAs', 
             marker='D', 
             markersize=8,
             linestyle='-',
@@ -2060,7 +2060,7 @@ if __name__ == '__main__':
             )
     ax.plot(gen_lens, 
             granite_lora_metric_vals, 
-            label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
+            label='5x rank-8 LoRAs', 
             marker='D', 
             markersize=8,
             linestyle=':',
@@ -2087,9 +2087,9 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"E2E Latency Comparison (Base-Adapter-Base)", fontsize=18)
+    ax.set_xlabel("Generation Length", fontsize=24)
+    ax.set_ylabel("Latency (s)", fontsize=24)
+    ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=12, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
@@ -2106,7 +2106,6 @@ if __name__ == '__main__':
 
     ax.plot(gen_lens, 
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-            label='ibm-granite/granite-3.2-8b-instruct (5x adapters)', 
             marker='D', 
             markersize=8,
             linestyle='-',
@@ -2133,10 +2132,9 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title("E2E Speedup (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
-    ax.legend(fontsize=12, markerscale=1.0)
+    ax.set_xlabel("Generation Length", fontsize=24)
+    ax.set_ylabel("Speedup", fontsize=24)
+    ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-all.png")
@@ -2154,7 +2152,7 @@ if __name__ == '__main__':
 
     ax.plot(gen_lens, 
             granite_alora_metric_vals_gen_2, 
-            label='ibm-granite/granite-3.2-8b-instruct (5x rank-32 aLoRAs)', 
+            label='5x rank-32 aLoRAs', 
             marker='D', 
             markersize=8,
             linestyle='-',
@@ -2165,7 +2163,7 @@ if __name__ == '__main__':
             )
     ax.plot(gen_lens, 
             granite_lora_metric_vals_gen_2, 
-            label='ibm-granite/granite-3.2-8b-instruct (5x rank-8 LoRAs)', 
+            label='5x rank-8 LoRAs', 
             marker='D', 
             markersize=8,
             linestyle=':',
@@ -2192,9 +2190,9 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Second Base Call Latency Comparison (Base-Adapter-Base)", fontsize=18)
+    ax.set_xlabel("Generation Length", fontsize=24)
+    ax.set_ylabel("Latency (s)", fontsize=24)
+    ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=12, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
@@ -2210,8 +2208,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
     ax.plot(gen_lens, 
-            [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)], 
-            label='ibm-granite/granite-3.2-8b-instruct (5x adapters)', 
+            [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)],  
             marker='D', 
             markersize=8,
             linestyle='-',
@@ -2238,10 +2235,9 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title("Second Base Call Speedup (Base-Adapter-Base) (LoRA / aLoRA)", fontsize=18)
-    ax.legend(fontsize=12, markerscale=1.0)
+    ax.set_xlabel("Generation Length", fontsize=24)
+    ax.set_ylabel("Speedup", fontsize=24)
+    ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-gen_2.png")
