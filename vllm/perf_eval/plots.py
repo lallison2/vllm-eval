@@ -166,9 +166,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle=':',
-            color="#f4c5b5",
+            color="#cdb38f",
             markerfacecolor='none',
-            markeredgecolor='#f4c5b5',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -336,9 +336,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle=':',
-            color="#f4c5b5",
+            color="#cdb38f",
             markerfacecolor='none',
-            markeredgecolor='#f4c5b5',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -504,9 +504,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle=':',
-            color="#f4c5b5",
+            color="#cdb38f",
             markerfacecolor='none',
-            markeredgecolor='#f4c5b5',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -672,9 +672,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle=':',
-            color="#f4c5b5",
+            color="#cdb38f",
             markerfacecolor='none',
-            markeredgecolor='#f4c5b5',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -840,9 +840,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle=':',
-            color="#f4c5b5",
+            color="#cdb38f",
             markerfacecolor='none',
-            markeredgecolor='#f4c5b5',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -1008,9 +1008,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle=':',
-            color="#f4c5b5",
+            color="#cdb38f",
             markerfacecolor='none',
-            markeredgecolor='#f4c5b5',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -1144,9 +1144,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='-',
-            color="#f4c5b5",
-            markerfacecolor='#f4c5b5',
-            markeredgecolor='#f4c5b5',
+            color="#cdb38f",
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -1268,9 +1268,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='-',
-            color="#f4c5b5",
-            markerfacecolor='#f4c5b5',
-            markeredgecolor='#f4c5b5',
+            color="#cdb38f",
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -1392,9 +1392,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='-',
-            color="#f4c5b5",
-            markerfacecolor='#f4c5b5',
-            markeredgecolor='#f4c5b5',
+            color="#cdb38f",
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -1430,6 +1430,7 @@ if __name__ == '__main__':
     ax.set_title(f"Queue Time Speedup (LoRA / aLoRA)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
+    ax.yaxis.get_offset_text().set_fontsize(16)
     plt.tight_layout()
 
     plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_prompt_len-{component}.png")
@@ -1516,9 +1517,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='-',
-            color="#f4c5b5",
-            markerfacecolor='#f4c5b5',
-            markeredgecolor='#f4c5b5',
+            color="#cdb38f",
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -1640,9 +1641,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='-',
-            color="#f4c5b5",
-            markerfacecolor='#f4c5b5',
-            markeredgecolor='#f4c5b5',
+            color="#cdb38f",
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -1764,9 +1765,9 @@ if __name__ == '__main__':
             marker='D', 
             markersize=4,
             linestyle='-',
-            color="#f4c5b5",
-            markerfacecolor='#f4c5b5',
-            markeredgecolor='#f4c5b5',
+            color="#cdb38f",
+            markerfacecolor='#cdb38f',
+            markeredgecolor='#cdb38f',
             )
     
     ax.plot(prompt_lens, 
@@ -1876,9 +1877,9 @@ if __name__ == '__main__':
     # #         marker='D', 
     # #         markersize=4,
     # #         linestyle=':',
-    # #         color="#f4c5b5",
+    # #         color="#cdb38f",
     # #         markerfacecolor='none',
-    # #         markeredgecolor='#f4c5b5',
+    # #         markeredgecolor='#cdb38f',
     # #         )
     
     # # ax.plot(lambdas, 
@@ -1972,9 +1973,9 @@ if __name__ == '__main__':
     # #         marker='D', 
     # #         markersize=4,
     # #         linestyle='-',
-    # #         color="#f4c5b5",
-    # #         markerfacecolor='#f4c5b5',
-    # #         markeredgecolor='#f4c5b5',
+    # #         color="#cdb38f",
+    # #         markerfacecolor='#cdb38f',
+    # #         markeredgecolor='#cdb38f',
     # #         )
     
     # # ax.plot(lambdas, 
