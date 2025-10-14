@@ -2089,8 +2089,8 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length", fontsize=24)
     ax.set_ylabel("Latency (s)", fontsize=24)
-    ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
+    ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=24)
+    ax.legend(fontsize=24, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
@@ -2134,7 +2134,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length", fontsize=24)
     ax.set_ylabel("Speedup", fontsize=24)
-    ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=24)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-all.png")
@@ -2192,8 +2192,8 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length", fontsize=24)
     ax.set_ylabel("Latency (s)", fontsize=24)
-    ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    ax.legend(fontsize=12, markerscale=1.0)
+    ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=24)
+    ax.legend(fontsize=24, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-gen_2.png")
@@ -2237,7 +2237,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Generation Length", fontsize=24)
     ax.set_ylabel("Speedup", fontsize=24)
-    ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=24)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-gen_2.png")
