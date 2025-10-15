@@ -138,17 +138,15 @@ def save_metrics(stats, histograms, adapter_name, file_name, manually_timed_eval
 
 async def main():
 
-    # # Downloading models to hf_cache (run once)
+    # Downloading models to hf_cache (run once)
     # model_name = "meta-llama/Llama-3.3-70B-Instruct"
-    # # model_name = "mistralai/Mistral-Large-Instruct-2407"
-    # tokenizer = AutoTokenizer.from_pretrained(model_name)
-    # model = AutoModel.from_pretrained(model_name)
+    # model_name = "mistralai/Mistral-Large-Instruct-2407"
+    model_name = "ibm-granite/granite-3.2-8b-instruct"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModel.from_pretrained(model_name)
 
-    # # Get invocation tokens to update adapter_config.json for new model
-    # print(tokenizer(invocation_string)["input_ids"])
-
-    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
+    # prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    # gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 
     # # Generate random prompt tokens (run once)
     # np.random.seed(42)
@@ -159,100 +157,100 @@ async def main():
     #             line = ','.join(map(str, prompt))
     #             f.write(line+'\n')
 
-    stats = ["vllm:kv_cache_usage",
-            "vllm:prefix_cache_queries",
-            "vllm:prefix_cache_hits",
-            "vllm:prompt_tokens",
-            ]
+    # stats = ["vllm:kv_cache_usage",
+    #         "vllm:prefix_cache_queries",
+    #         "vllm:prefix_cache_hits",
+    #         "vllm:prompt_tokens",
+    #         ]
 
-    histograms = ["vllm:iteration_tokens_total",
-                "vllm:time_to_first_token_seconds",
-                "vllm:time_per_output_token_seconds",
-                "vllm:e2e_request_latency_seconds",
-                "vllm:request_queue_time_seconds",
-                "vllm:request_inference_time_seconds",
-                "vllm:request_prefill_time_seconds",
-                "vllm:request_decode_time_seconds",
-                ]
+    # histograms = ["vllm:iteration_tokens_total",
+    #             "vllm:time_to_first_token_seconds",
+    #             "vllm:time_per_output_token_seconds",
+    #             "vllm:e2e_request_latency_seconds",
+    #             "vllm:request_queue_time_seconds",
+    #             "vllm:request_inference_time_seconds",
+    #             "vllm:request_prefill_time_seconds",
+    #             "vllm:request_decode_time_seconds",
+    #             ]
     
-    random_prompts = []
-    # current_prompt_len = prompt_lens[9] # max 9
-    current_prompt_len = 256
-    current_gen_len = gen_lens[7] # max 7
-    # current_gen_len = 256
-    with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
-        for line in f:
-            prompt_strings = line.strip().split(',')
-            prompt_tokens = [int(p) for p in prompt_strings]
-            random_prompts.append(prompt_tokens)
+    # random_prompts = []
+    # # current_prompt_len = prompt_lens[9] # max 9
+    # current_prompt_len = 256
+    # current_gen_len = gen_lens[7] # max 7
+    # # current_gen_len = 256
+    # with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
+    #     for line in f:
+    #         prompt_strings = line.strip().split(',')
+    #         prompt_tokens = [int(p) for p in prompt_strings]
+    #         random_prompts.append(prompt_tokens)
     
-    kv_cache_size = 351104 # granite 3.2
-    # kv_cache_size = 407984 # llama 70b (4 gpu)
-    # kv_cache_size = 912688 # mistral large (8 gpu)
-    cache_percentage = 1.0
-    num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
-    num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
-    num_eval_tokens = 16
-    # batch_size = math.floor(kv_cache_size * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
-                                                                 # batch size chosen to saturate GPU memory
-                                                                 # fix batch size based on longest length
-    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + 16 + num_eot_tokens + 16)
-    random.seed(42)
-    for i in range(1, batch_size):
-        random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
+    # kv_cache_size = 351104 # granite 3.2
+    # # kv_cache_size = 407984 # llama 70b (4 gpu)
+    # # kv_cache_size = 912688 # mistral large (8 gpu)
+    # cache_percentage = 1.0
+    # num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
+    # num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
+    # num_eval_tokens = 16
+    # # batch_size = math.floor(kv_cache_size * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    #                                                              # batch size chosen to saturate GPU memory
+    #                                                              # fix batch size based on longest length
+    # batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + 16 + num_eot_tokens + 16)
+    # random.seed(42)
+    # for i in range(1, batch_size):
+    #     random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
-    print("warm up the inference engine")
-    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    print("done warming up!!")
+    # print("warm up the inference engine")
+    # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    # print("done warming up!!")
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    # # ADAPTER_NAME = LORA_NAME
 
-    ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
-    ADAPTER_NAME_3 = ALORA_NAME + "_3"
-    ADAPTER_NAME_4 = ALORA_NAME + "_4"
-    ADAPTER_NAME_5 = ALORA_NAME + "_5"
+    # # ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
+    # # ADAPTER_NAME_3 = ALORA_NAME + "_3"
+    # # ADAPTER_NAME_4 = ALORA_NAME + "_4"
+    # # ADAPTER_NAME_5 = ALORA_NAME + "_5"
 
-    # ADAPTER_NAME_2 = LORA_NAME + "_2"
-    # ADAPTER_NAME_3 = LORA_NAME + "_3"
-    # ADAPTER_NAME_4 = LORA_NAME + "_4"
-    # ADAPTER_NAME_5 = LORA_NAME + "_5"
+    # # ADAPTER_NAME_2 = LORA_NAME + "_2"
+    # # ADAPTER_NAME_3 = LORA_NAME + "_3"
+    # # ADAPTER_NAME_4 = LORA_NAME + "_4"
+    # # ADAPTER_NAME_5 = LORA_NAME + "_5"
 
-    # Call the base model
-    base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
-    base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
+    # # Call the base model
+    # # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
+    # base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
 
-    # Call the adapter model(s)
-    adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+    # # Call the adapter model(s)
+    # adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
-    adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
-    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
-    adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222]) 
-    adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3, custom_inv_tokens=[3, 33, 333, 3333]) 
-    adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4, custom_inv_tokens=[4, 44, 444, 4444]) 
-    adapter_5_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_5, custom_inv_tokens=[5, 55, 555, 5555]) 
+    # adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
+    # adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
+    # # adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222]) 
+    # # adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3, custom_inv_tokens=[3, 33, 333, 3333]) 
+    # # adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4, custom_inv_tokens=[4, 44, 444, 4444]) 
+    # # adapter_5_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_5, custom_inv_tokens=[5, 55, 555, 5555]) 
 
-    # Call the base model again
-    activation_tokens = tokenizer(invocation_string)["input_ids"]
-    base_2_prompts = [x + activation_tokens + y1 + activation_tokens + y2 + activation_tokens + y3 + activation_tokens + y4 + activation_tokens + y5 + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y1,y2,y3,y4,y5 in zip(adapter_prompts, adapter_generation_tokens, adapter_2_generation_tokens, adapter_3_generation_tokens, adapter_4_generation_tokens, adapter_5_generation_tokens)]
+    # # Call the base model again
+    # # activation_tokens = tokenizer(invocation_string)["input_ids"]
+    # # base_2_prompts = [x + activation_tokens + y1 + activation_tokens + y2 + activation_tokens + y3 + activation_tokens + y4 + activation_tokens + y5 + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y1,y2,y3,y4,y5 in zip(adapter_prompts, adapter_generation_tokens, adapter_2_generation_tokens, adapter_3_generation_tokens, adapter_4_generation_tokens, adapter_5_generation_tokens)]
 
-    base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
-    _ = await send(base_2_prompts, ntokens=16, use_adapter_name=BASE_NAME) 
-    # _ = await send(base_2_prompts_2, ntokens=16, use_adapter_name=BASE_NAME) 
-    # _ = await send(base_2_prompts_3, ntokens=16, use_adapter_name=BASE_NAME) 
-    # _ = await send(base_2_prompts_4, ntokens=16, use_adapter_name=BASE_NAME) 
-    # _ = await send(base_2_prompts_5, ntokens=16, use_adapter_name=BASE_NAME) 
+    # base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
+    # # _ = await send(base_2_prompts, ntokens=16, use_adapter_name=BASE_NAME) 
+    # # _ = await send(base_2_prompts_2, ntokens=16, use_adapter_name=BASE_NAME) 
+    # # _ = await send(base_2_prompts_3, ntokens=16, use_adapter_name=BASE_NAME) 
+    # # _ = await send(base_2_prompts_4, ntokens=16, use_adapter_name=BASE_NAME) 
+    # # _ = await send(base_2_prompts_5, ntokens=16, use_adapter_name=BASE_NAME) 
 
-    base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
+    # # base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
     
-    # Subtract the metrics from the warmup call
-    base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
-    save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_1_granite_5_adapters.txt")
-    adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite_5_adapters.txt")
-    base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
-    save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
+    # # Subtract the metrics from the warmup call
+    # # base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
+    # # save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_1_granite_5_adapters.txt")
+    # adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
+    # save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite.txt")
+    # # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
+    # # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
     
 ###################################################################
 
