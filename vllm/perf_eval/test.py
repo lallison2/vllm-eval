@@ -239,7 +239,7 @@ async def main():
     print("eot len: ", len(tokenizer("<|end_of_text|>\n")["input_ids"]))
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
-    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=BASE_NAME)
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
     # adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222]) 
     # adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3, custom_inv_tokens=[3, 33, 333, 3333]) 
     # adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4, custom_inv_tokens=[4, 44, 444, 4444]) 
@@ -311,8 +311,7 @@ async def main_poisson():
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
     LAMBDA = lambdas[7] # max 11
-    # TOTAL_REQUESTS = 500 # reasonably large value
-    TOTAL_REQUESTS = 100
+    TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
