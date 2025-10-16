@@ -291,14 +291,14 @@ async def main_poisson():
                 ]
     
     # # Generate random prompt tokens (run once)
-    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    np.random.seed(420)
-    for p_len in prompt_lens:
-        random_prompts = [gen_rnd_tokens(p_len)]
-        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-            for prompt in random_prompts:
-                line = ','.join(map(str, prompt))
-                f.write(line+'\n')
+    # prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    # np.random.seed(420)
+    # for p_len in prompt_lens:
+    #     random_prompts = [gen_rnd_tokens(p_len)]
+    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+    #         for prompt in random_prompts:
+    #             line = ','.join(map(str, prompt))
+    #             f.write(line+'\n')
 
     random_prompts = []
     current_prompt_len = 1024
@@ -310,14 +310,14 @@ async def main_poisson():
             random_prompts.append(prompt_tokens)
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
-    LAMBDA = lambdas[6] # max 11
+    LAMBDA = lambdas[4] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
     # generate inter-arrival times according to poisson dist
-    np.random.seed(42)
+    np.random.seed(300)
     inter_arrival_times = np.random.exponential(1 / LAMBDA, size=TOTAL_REQUESTS)
     print(f"max interarrival time: {max(inter_arrival_times)}")
 
@@ -350,23 +350,23 @@ async def main_poisson():
             # Call the base model
             base_generation_tokens = await send(prompts, ntokens=gen_len + num_eot_tokens, use_adapter_name=BASE_NAME)
 
-            # Call the adapter model
-            adapter_prompts = [x + y[:gen_len] + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
-            adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
+            # # Call the adapter model
+            # adapter_prompts = [x + y[:gen_len] + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
+            # adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
 
-            return eval_latency
+            # return eval_latency
         
         task = asyncio.create_task(gen_eval_send(prompts=[random_prompts[i]], gen_len=current_gen_len, eval_len=16))
         tasks.append(task)
 
-    eval_latencies = await asyncio.gather(*tasks) # wait until all requests have finished
+    # eval_latencies = await asyncio.gather(*tasks) # wait until all requests have finished
 
-    # Get current Prometheus metrics
-    adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
+    # # Get current Prometheus metrics
+    # adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
     
-    # Subtract the metrics from the warmup call
-    final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps_prompt_len_1024.txt", manually_timed_eval_latencies=eval_latencies)
+    # # Subtract the metrics from the warmup call
+    # final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
+    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps_prompt_len_1024.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 ###################################################################
