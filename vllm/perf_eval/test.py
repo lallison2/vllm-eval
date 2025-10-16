@@ -61,6 +61,8 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None, manually_time=Fals
     if ntokens > 0:
         if manually_time:
             start = time.perf_counter()
+
+        print(f"sending request with {len(full_prompt_tokens[0])} tokens")
         completion = await client.completions.create(
             model = model,
             prompt = full_prompt_tokens,
@@ -68,6 +70,7 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None, manually_time=Fals
             extra_body = {
                 "min_tokens" : ntokens
             })
+        
         if manually_time:
             end = time.perf_counter()
             manually_measured_latency = end - start
@@ -221,14 +224,12 @@ async def main():
     # Call the base model
     # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
     base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME)
-    print(len(random_prompts[0]))
 
     # Call the adapter model(s)
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
     adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
-    print(len(adapter_prompts[0]))
     # adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222]) 
     # adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3, custom_inv_tokens=[3, 33, 333, 3333]) 
     # adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4, custom_inv_tokens=[4, 44, 444, 4444]) 
