@@ -62,7 +62,7 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None, manually_time=Fals
         if manually_time:
             start = time.perf_counter()
 
-        print(f"sending request with {len(full_prompt_tokens[0])} tokens")
+        # print(f"sending request with {len(full_prompt_tokens[0])} tokens")
         completion = await client.completions.create(
             model = model,
             prompt = full_prompt_tokens,
