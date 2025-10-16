@@ -227,6 +227,10 @@ async def main():
 
     # Call the adapter model(s)
     adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
+    print("random prompt len: ", len(random_prompts[0]))
+    print("response len: ", len(base_generation_tokens[0]))
+    print("eot len: ", len(tokenizer("<|end_of_text|>\n")["input_ids"]))
+    print("total adapter prompt len: ", len(adapter_prompts[0]))
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
     adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
