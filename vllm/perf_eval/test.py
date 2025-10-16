@@ -312,7 +312,7 @@ async def main_poisson():
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
     LAMBDA = lambdas[4] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
-    random.seed(50)
+    random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
@@ -347,8 +347,9 @@ async def main_poisson():
 
             num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
 
-            # Call the base model
-            base_generation_tokens = await send(prompts, ntokens=gen_len + num_eot_tokens, use_adapter_name=BASE_NAME)
+            return
+            # # Call the base model
+            # base_generation_tokens = await send(prompts, ntokens=gen_len + num_eot_tokens, use_adapter_name=BASE_NAME)
 
             # # Call the adapter model
             # adapter_prompts = [x + y[:gen_len] + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
