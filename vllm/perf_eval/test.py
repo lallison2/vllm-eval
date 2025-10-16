@@ -312,7 +312,7 @@ async def main_poisson():
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
     LAMBDA = lambdas[4] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
-    random.seed(42)
+    random.seed(50)
     for i in range(1, TOTAL_REQUESTS):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
@@ -322,10 +322,10 @@ async def main_poisson():
     print(f"max interarrival time: {max(inter_arrival_times)}")
 
     np.random.seed(100)
-    # print("warm up the inference engine")
-    # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    # print("done warming up!!")
+    print("warm up the inference engine")
+    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    print("done warming up!!")
     
     # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     ADAPTER_NAME = LORA_NAME
