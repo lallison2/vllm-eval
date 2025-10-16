@@ -301,7 +301,7 @@ async def main_poisson():
     #             f.write(line+'\n')
 
     random_prompts = []
-    current_prompt_len = 256
+    current_prompt_len = 1024
     current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -310,7 +310,7 @@ async def main_poisson():
             random_prompts.append(prompt_tokens)
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
-    LAMBDA = lambdas[11] # max 11
+    LAMBDA = lambdas[0] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(42)
     for i in range(1, TOTAL_REQUESTS):
@@ -343,11 +343,14 @@ async def main_poisson():
 
             Returns: Latency of evaluation task (manually timed using time.perf_counter())
             """
+
+            num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
+
             # Call the base model
-            base_generation_tokens = await send(prompts, ntokens=gen_len, use_adapter_name=BASE_NAME)
+            base_generation_tokens = await send(prompts, ntokens=gen_len + num_eot_tokens, use_adapter_name=BASE_NAME)
 
             # Call the adapter model
-            adapter_prompts = [x + y + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
+            adapter_prompts = [x + y[:gen_len] + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
             adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
 
             return eval_latency
@@ -362,11 +365,11 @@ async def main_poisson():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps_mistral.txt", manually_timed_eval_latencies=eval_latencies)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps_prompt_len_1024.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 ###################################################################
 
 if __name__ == '__main__':
-    asyncio.run(main())
-    # asyncio.run(main_poisson())
+    # asyncio.run(main())
+    asyncio.run(main_poisson())
