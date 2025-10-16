@@ -181,7 +181,7 @@ async def main():
     # current_prompt_len = prompt_lens[3] # max 9
     # current_gen_len = 256
 
-    current_gen_len = gen_lens[7] # max 7
+    current_gen_len = gen_lens[3] # max 7
     current_prompt_len = 256
 
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
@@ -197,11 +197,13 @@ async def main():
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
+
     # batch_size = math.floor(kv_cache_size * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
-    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
-    # batch_size = 1
+    # batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    batch_size = 1
+    
     random.seed(42)
     for i in range(1, batch_size):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
@@ -234,7 +236,6 @@ async def main():
     print("random prompt len: ", len(random_prompts[0]))
     print("response len: ", len(base_generation_tokens[0]))
     print("eot len: ", len(tokenizer("<|end_of_text|>\n")["input_ids"]))
-    print("total adapter prompt len: ", len(adapter_prompts[0]))
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
     adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
