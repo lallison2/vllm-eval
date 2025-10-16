@@ -203,7 +203,7 @@ async def main():
                                                                  # fix batch size based on longest length
     # batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     batch_size = 1
-    
+
     random.seed(42)
     for i in range(1, batch_size):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
@@ -238,7 +238,7 @@ async def main():
     print("eot len: ", len(tokenizer("<|end_of_text|>\n")["input_ids"]))
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
-    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
+    adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=BASE_NAME)
     # adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222]) 
     # adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3, custom_inv_tokens=[3, 33, 333, 3333]) 
     # adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4, custom_inv_tokens=[4, 44, 444, 4444]) 
@@ -263,7 +263,7 @@ async def main():
 
 
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite_base-base.txt")
     # save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_eval_granite_batchsize1.txt")
 
     # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
