@@ -28,8 +28,8 @@ vllm serve /home/lallison/.cache/huggingface/hub/models--ibm-granite--granite-3.
     --dtype bfloat16 \
     --max-lora-rank 64 \
     --enable-prefix-caching \
-    --lora-modules random_lora=/home/lallison/vllm-eval/vllm/perf_eval/random_lora_r_8_granite \
-    --enable-activated-lora 
+    --enable-activated-lora \
+    --lora-modules random_lora=/home/lallison/vllm-eval/vllm/perf_eval/random_lora_r_8_granite
     # \ random_lora_2=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_2 \
     # random_lora_3=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_3 \
     # random_lora_4=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_4 \
