@@ -148,14 +148,14 @@ async def main():
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
     gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 
-    # # Generate random prompt tokens (run once)
-    # np.random.seed(42)
-    # for p_len in prompt_lens:
-    #     random_prompts = [gen_rnd_tokens(p_len)]
-    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-    #         for prompt in random_prompts:
-    #             line = ','.join(map(str, prompt))
-    #             f.write(line+'\n')
+    # Generate random prompt tokens (run once)
+    np.random.seed(42)
+    for p_len in prompt_lens:
+        random_prompts = [gen_rnd_tokens(p_len)]
+        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+            for prompt in random_prompts:
+                line = ','.join(map(str, prompt))
+                f.write(line+'\n')
 
     stats = ["vllm:kv_cache_usage",
             "vllm:prefix_cache_queries",
@@ -251,8 +251,8 @@ async def main():
 
 
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    # save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite_batchsize1-5.txt")
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_eval_granite_batchsize1-2.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite_batchsize1-5.txt")
+    # save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_eval_granite_batchsize1-2.txt")
 
     # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
     # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
