@@ -310,7 +310,7 @@ async def main_poisson():
             random_prompts.append(prompt_tokens)
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
-    LAMBDA = lambdas[5] # max 11
+    LAMBDA = lambdas[4] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(15)
     np.random.seed(100)
