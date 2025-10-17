@@ -313,15 +313,18 @@ async def main_poisson():
     LAMBDA = lambdas[4] # max 11
     TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(15)
+    np.random.seed(100)
     for i in range(1, TOTAL_REQUESTS):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
     # generate inter-arrival times according to poisson dist
+    random.seed(45)
     np.random.seed(300)
     inter_arrival_times = np.random.exponential(1 / LAMBDA, size=TOTAL_REQUESTS)
     print(f"max interarrival time: {max(inter_arrival_times)}")
 
-    np.random.seed(100)
+    random.seed(135)
+    np.random.seed(900)
     print("warm up the inference engine")
     warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
