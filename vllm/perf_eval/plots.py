@@ -5,10 +5,10 @@ prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
 gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384]
 lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000]
 
-component = "eval"
+# component = "eval"
 # component = "gen_1"
 # component = "gen_2"
-# component = "Evaluation"
+component = "gen+eval"
 
 component_title = {'eval': 'Evaluation', 'gen_1': 'First Generation', 'gen_2': 'Second Generation'}
 
@@ -216,7 +216,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_e2e_latency_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_async_poisson-{component}_prompt_len_1024.png")
 
 
     ###############################################
@@ -386,7 +386,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_ttft_latency_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_ttft_latency_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -554,7 +554,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_queue_time_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_queue_time_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -722,7 +722,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_inference_time_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_inference_time_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -890,7 +890,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_prefill_time_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_prefill_time_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -1058,7 +1058,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_decode_time_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_decode_time_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
     ###############################################
@@ -1184,7 +1184,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -1308,7 +1308,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -1433,7 +1433,7 @@ if __name__ == '__main__':
     ax.yaxis.get_offset_text().set_fontsize(16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -1557,7 +1557,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -1681,7 +1681,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
@@ -1805,7 +1805,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_gen_len-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
     ###############################################
@@ -1929,7 +1929,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig("plots/base_adapter_e2e_latency_gen_len-eval.png")
+    plt.savefig("plots/base_adapter_e2e_latency_async_poisson-eval_prompt_len_1024.png")
 
     ###############################################
 
@@ -2019,7 +2019,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_gen_len-eval.png")
+    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_async_poisson-eval_prompt_len_1024.png")
 
     ###############################################
     ###############################################
@@ -2166,7 +2166,7 @@ if __name__ == '__main__':
     # ax.legend(fontsize=16, markerscale=1.0)
     # ax.tick_params(axis='both', which='major', labelsize=16)
 
-    # plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
+    # plt.savefig(f"plots/base_adapter_base_e2e_latency_async_poisson-all.png")
 
     # #######################################
 
@@ -2210,7 +2210,7 @@ if __name__ == '__main__':
     # ax.set_title("E2E Speedup\n(Base-Adapter-Base) (Base-Adapter) (LoRA / aLoRA)", fontsize=16)
     # ax.tick_params(axis='both', which='major', labelsize=16)
 
-    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-all.png")
+    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_async_poisson-all.png")
 
     # #######################################
 
@@ -2269,7 +2269,7 @@ if __name__ == '__main__':
     # ax.legend(fontsize=16, markerscale=1.0)
     # ax.tick_params(axis='both', which='major', labelsize=16)
 
-    # plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-gen_2.png")
+    # plt.savefig(f"plots/base_adapter_base_e2e_latency_async_poisson-gen_2.png")
 
     # #######################################
 
@@ -2313,4 +2313,4 @@ if __name__ == '__main__':
     # ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (Base-Adapter) (LoRA / aLoRA)", fontsize=16)
     # ax.tick_params(axis='both', which='major', labelsize=16)
 
-    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-gen_2.png")
+    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_async_poisson-gen_2.png")
