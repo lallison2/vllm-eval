@@ -324,12 +324,12 @@ async def main_poisson():
     inter_arrival_times = np.random.exponential(1 / LAMBDA, size=TOTAL_REQUESTS)
     print(f"max interarrival time: {max(inter_arrival_times)}")
 
-    random.seed(135)
-    np.random.seed(900)
-    print("warm up the inference engine")
-    warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
-    _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
-    print("done warming up!!")
+    # random.seed(135)
+    # np.random.seed(900)
+    # print("warm up the inference engine")
+    # warmup_prompts = [gen_rnd_tokens(500), gen_rnd_tokens(500)]
+    # _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
+    # print("done warming up!!")
     
     # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     ADAPTER_NAME = LORA_NAME
