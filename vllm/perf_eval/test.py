@@ -301,7 +301,7 @@ async def main_poisson():
     #             f.write(line+'\n')
 
     random_prompts = []
-    current_prompt_len = 1024
+    current_prompt_len = 256
     current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
