@@ -311,11 +311,12 @@ async def main_poisson():
     
     lambdas = [0.5, 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000] # requests per second
     LAMBDA = lambdas[4] # max 11
-    TOTAL_REQUESTS = 200 # reasonably large value
+    TOTAL_REQUESTS = 500 # reasonably large value
     random.seed(15)
     np.random.seed(100)
     for i in range(1, TOTAL_REQUESTS):
         random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
+        random.seed(i)
 
     # generate inter-arrival times according to poisson dist
     random.seed(45)
