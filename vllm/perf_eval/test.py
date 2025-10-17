@@ -355,10 +355,10 @@ async def main_poisson():
             base_generation_tokens = await send(prompts, ntokens=gen_len + num_eot_tokens, use_adapter_name=BASE_NAME)
 
             # Call the adapter model
-            # adapter_prompts = [x + y[:gen_len] + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
-            # adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
+            adapter_prompts = [x + y[:gen_len] + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(prompts, base_generation_tokens)]
+            adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
 
-            # return eval_latency
+            return eval_latency
         
         task = asyncio.create_task(gen_eval_send(prompts=[random_prompts[i]], gen_len=current_gen_len, eval_len=16))
         tasks.append(task)
