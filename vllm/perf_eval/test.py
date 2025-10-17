@@ -301,7 +301,7 @@ async def main_poisson():
     #             f.write(line+'\n')
 
     random_prompts = []
-    current_prompt_len = 256
+    current_prompt_len = 512
     current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -315,8 +315,7 @@ async def main_poisson():
     random.seed(15)
     np.random.seed(100)
     for i in range(1, TOTAL_REQUESTS):
-        # random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
-        random_prompts.append(gen_rnd_tokens(current_prompt_len))
+        random_prompts.append(random.sample(prompt_tokens, k=current_prompt_len)) # shuffle to avoid accidental cache hits
 
     # generate inter-arrival times according to poisson dist
     random.seed(45)
@@ -370,7 +369,7 @@ async def main_poisson():
     
     # Subtract the metrics from the warmup call
     final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps_prompt_len_256.txt", manually_timed_eval_latencies=eval_latencies)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps_prompt_len_512.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 ###################################################################
