@@ -359,6 +359,9 @@ async def main_poisson():
             # adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
 
             # return eval_latency
+
+        if i < 3:
+            print(random_prompts[i])
         
         task = asyncio.create_task(gen_eval_send(prompts=[random_prompts[i]], gen_len=current_gen_len, eval_len=16))
         tasks.append(task)
