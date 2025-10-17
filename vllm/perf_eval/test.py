@@ -301,7 +301,7 @@ async def main_poisson():
     #             f.write(line+'\n')
 
     random_prompts = []
-    current_prompt_len = 512
+    current_prompt_len = 256
     current_gen_len = 256
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -359,21 +359,18 @@ async def main_poisson():
             # adapter_generation_tokens, eval_latency = await send(adapter_prompts, ntokens=eval_len, use_adapter_name=ADAPTER_NAME, manually_time=True) 
 
             # return eval_latency
-
-        if i < 3:
-            print(random_prompts[i])
         
         task = asyncio.create_task(gen_eval_send(prompts=[random_prompts[i]], gen_len=current_gen_len, eval_len=16))
         tasks.append(task)
 
     eval_latencies = await asyncio.gather(*tasks) # wait until all requests have finished
 
-    # # Get current Prometheus metrics
-    # adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
+    # Get current Prometheus metrics
+    adapter_stat_vals, adapter_hist_vals = await get_metrics(stats, histograms)
     
-    # # Subtract the metrics from the warmup call
-    # final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
-    # save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps_prompt_len_1024.txt", manually_timed_eval_latencies=eval_latencies)
+    # Subtract the metrics from the warmup call
+    final_stat_vals, final_hist_vals = subtract_metrics(adapter_stat_vals, adapter_hist_vals, earlier_stat_vals, earlier_hist_vals)
+    save_metrics(final_stat_vals, final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_async_poisson_{LAMBDA}rps_prompt_len_256.txt", manually_timed_eval_latencies=eval_latencies)
 
 
 ###################################################################
