@@ -290,15 +290,15 @@ async def main_poisson():
                 "vllm:request_decode_time_seconds",
                 ]
     
-    # # Generate random prompt tokens (run once)
-    # prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    # np.random.seed(420)
-    # for p_len in prompt_lens:
-    #     random_prompts = [gen_rnd_tokens(p_len)]
-    #     with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
-    #         for prompt in random_prompts:
-    #             line = ','.join(map(str, prompt))
-    #             f.write(line+'\n')
+    # Generate random prompt tokens (run once)
+    prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    np.random.seed(420)
+    for p_len in prompt_lens:
+        random_prompts = [gen_rnd_tokens(p_len)]
+        with open(f"prompts/random_prompt_len_{str(p_len)}.txt", 'w') as f:
+            for prompt in random_prompts:
+                line = ','.join(map(str, prompt))
+                f.write(line+'\n')
 
     random_prompts = []
     current_prompt_len = 1024
