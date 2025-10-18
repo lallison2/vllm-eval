@@ -230,7 +230,7 @@ async def main():
 
     # Call the base model
     # base_start_stat_vals, base_start_hist_vals = await get_metrics(stats, histograms)
-    base_generation_tokens = await send(random_prompts, ntokens=current_gen_len + num_eot_tokens, use_adapter_name=BASE_NAME) # generate extra tokens to ensure that model doesn't stop early
+    base_generation_tokens = await send(random_prompts, ntokens=current_gen_len, use_adapter_name=BASE_NAME) # generate extra tokens to ensure that model doesn't stop early
 
     # Call the adapter model(s)
     adapter_prompts = [x + y[:current_gen_len] + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
