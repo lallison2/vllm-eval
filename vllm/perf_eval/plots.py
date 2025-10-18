@@ -54,16 +54,16 @@ if __name__ == '__main__':
 
     # target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
 
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # alora_std = []
@@ -88,8 +88,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     lora_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -211,28 +211,28 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Latency Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Latency Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_e2e_latency_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_async_poisson-{component}_prompt_len_1024.png")
 
 
     ###############################################
 
     target_metric = "vllm:time_to_first_token_seconds_sum"
 
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
 
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # alora_std = []
@@ -257,8 +257,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     lora_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")    
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")    
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -381,27 +381,27 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation TTFT Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation TTFT Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_ttft_latency_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_ttft_latency_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:request_queue_time_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # alora_std = []
@@ -426,8 +426,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     lora_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -549,27 +549,27 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Queue Time Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Queue Time Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_queue_time_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_queue_time_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:request_inference_time_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # alora_std = []
@@ -594,8 +594,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     lora_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -717,27 +717,27 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Inference Time Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Inference Time Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_inference_time_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_inference_time_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:request_prefill_time_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # alora_std = []
@@ -762,8 +762,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     lora_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -885,27 +885,27 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Prefill Time Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Prefill Time Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_prefill_time_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_prefill_time_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:request_decode_time_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # alora_std = []
@@ -930,8 +930,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     lora_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -1053,12 +1053,12 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Decode Time Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Decode Time Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_decode_time_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_decode_time_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
     ###############################################
@@ -1066,16 +1066,16 @@ if __name__ == '__main__':
 
     target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1099,8 +1099,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     ratio_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -1179,27 +1179,27 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:time_to_first_token_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1223,8 +1223,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     ratio_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -1303,27 +1303,27 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation TTFT Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation TTFT Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:request_queue_time_seconds_sum"
 
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1347,8 +1347,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     ratio_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -1427,28 +1427,28 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Queue Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Queue Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     ax.yaxis.get_offset_text().set_fontsize(16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:request_inference_time_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1472,8 +1472,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     ratio_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -1552,27 +1552,27 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Inference Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Inference Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:request_prefill_time_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1596,8 +1596,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     ratio_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -1676,27 +1676,27 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Prefill Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Prefill Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "vllm:request_decode_time_seconds_sum"
     
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
     # alora_mean = [(granite_alora_metric_vals_trial_1[i] + granite_alora_metric_vals_trial_2[i]+ granite_alora_metric_vals_trial_3[i] + granite_alora_metric_vals_trial_4[i] + granite_alora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_alora_metric_vals_trial_1))]
     # lora_mean = [(granite_lora_metric_vals_trial_1[i] + granite_lora_metric_vals_trial_2[i]+ granite_lora_metric_vals_trial_3[i] + granite_lora_metric_vals_trial_4[i] + granite_lora_metric_vals_trial_5[i]) / 5.0 for i in range(len(granite_lora_metric_vals_trial_1))]
@@ -1720,8 +1720,8 @@ if __name__ == '__main__':
     #     std = np.sqrt(std)
     #     ratio_std.append(std)
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -1800,12 +1800,12 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Decode Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title(f"Evaluation Decode Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_async_poisson-{component}_prompt_len_512.png")
+    plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
 
     ###############################################
     ###############################################
@@ -1813,19 +1813,19 @@ if __name__ == '__main__':
 
     target_metric = "manually_timed_eval_latency_avg"
 
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -1924,30 +1924,30 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title("Evaluation Latency Comparison (Base-Adapter\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title("Evaluation Latency Comparison (Base-Adapter\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig("plots/base_adapter_e2e_latency_async_poisson-eval_prompt_len_512.png")
+    plt.savefig("plots/base_adapter_e2e_latency_async_poisson-eval_prompt_len_1024.png")
 
     ###############################################
 
     target_metric = "manually_timed_eval_latency_avg"
 
-    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_2")
-    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_3")
-    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_4")
-    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
-    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_5")
+    # granite_alora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_lora_metric_vals_trial_1 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_lora_metric_vals_trial_2 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_2")
+    # granite_alora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_lora_metric_vals_trial_3 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_3")
+    # granite_alora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_lora_metric_vals_trial_4 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_4")
+    # granite_alora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
+    # granite_lora_metric_vals_trial_5 = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_5")
     
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/")
@@ -2014,12 +2014,12 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title("Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
+    ax.set_title("Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_async_poisson-eval_prompt_len_512.png")
+    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_async_poisson-eval_prompt_len_1024.png")
 
     ###############################################
     ###############################################
@@ -2027,8 +2027,8 @@ if __name__ == '__main__':
 
     # target_metric = "vllm:prefix_cache_hits_total"
     
-    # granite_alora_metric_vals_gen_len = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512", path_suffix="_granite_trial_1")
-    # granite_alora_metric_vals_prompt_len = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/500_total_requests/", path_suffix="_prompt_len_512")
+    # granite_alora_metric_vals_gen_len = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024", path_suffix="_granite_trial_1")
+    # granite_alora_metric_vals_prompt_len = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/500_total_requests/", path_suffix="_prompt_len_1024")
     
     # fig, ax = plt.subplots(figsize=(12, 5))
 
@@ -2090,7 +2090,7 @@ if __name__ == '__main__':
     # ax.tick_params(axis='both', which='major', labelsize=16)
     # plt.tight_layout()
 
-    # plt.savefig(f"plots/base_adapter_cache_hit-{component}_prompt_len_512.png")
+    # plt.savefig(f"plots/base_adapter_cache_hit-{component}_prompt_len_1024.png")
 
     #######################################
     #######################################
