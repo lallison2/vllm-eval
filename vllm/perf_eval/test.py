@@ -67,7 +67,7 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None, manually_time=Fals
             model = model,
             prompt = full_prompt_tokens,
             max_tokens = ntokens,
-            temperature = 0.5,
+            temperature = 0.1,
             extra_body = {
                 "min_tokens" : ntokens
             })
