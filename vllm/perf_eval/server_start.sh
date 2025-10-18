@@ -8,20 +8,6 @@ export VLLM_LOG_LEVEL=debug
 # If aLoRA, the invocation string field should exist.
 
 # #### Start server with random alora, granite-3.2-8b ####
-# vllm serve /home/lallison/.cache/huggingface/hub/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
-#     --port 8000 \
-#     --dtype bfloat16 \
-#     --enable-prefix-caching \
-#     --max-lora-rank 64 \
-#     --enable-lora \
-#     --enable-activated-lora \
-#     --lora-modules '{"name": "random_alora", "path": "/home/lallison/vllm-eval/vllm/perf_eval/random_alora_r_32_granite", "base_model_name": "/home/lallison/.cache/huggingface/hub/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}'
-#     # \ '{"name": "random_alora_2", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_2", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
-#     # '{"name": "random_alora_3", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_3", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
-#     # '{"name": "random_alora_4", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_4", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
-#     # '{"name": "random_alora_5", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_5", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}'
-
-#### Start server with random lora, granite-3.2-8b ####
 vllm serve /home/lallison/.cache/huggingface/hub/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
     --port 8000 \
     --dtype bfloat16 \
@@ -29,11 +15,25 @@ vllm serve /home/lallison/.cache/huggingface/hub/models--ibm-granite--granite-3.
     --max-lora-rank 64 \
     --enable-lora \
     --enable-activated-lora \
-    --lora-modules random_lora=/home/lallison/vllm-eval/vllm/perf_eval/random_lora_r_8_granite
-    # \ random_lora_2=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_2 \
-    # random_lora_3=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_3 \
-    # random_lora_4=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_4 \
-    # random_lora_5=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_5
+    --lora-modules '{"name": "random_alora", "path": "/home/lallison/vllm-eval/vllm/perf_eval/random_alora_r_32_granite", "base_model_name": "/home/lallison/.cache/huggingface/hub/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}'
+    # \ '{"name": "random_alora_2", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_2", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+    # '{"name": "random_alora_3", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_3", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+    # '{"name": "random_alora_4", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_4", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}' \
+    # '{"name": "random_alora_5", "path": "/nobackup/users/lallison/hf_cache/hub/random_alora_r_32_5", "base_model_name": "/nobackup/users/lallison/hf_cache/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695"}'
+
+#### Start server with random lora, granite-3.2-8b ####
+# vllm serve /home/lallison/.cache/huggingface/hub/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695 \
+#     --port 8000 \
+#     --dtype bfloat16 \
+#     --enable-prefix-caching \
+#     --max-lora-rank 64 \
+#     --enable-lora \
+#     --enable-activated-lora \
+#     --lora-modules random_lora=/home/lallison/vllm-eval/vllm/perf_eval/random_lora_r_8_granite
+#     # \ random_lora_2=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_2 \
+#     # random_lora_3=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_3 \
+#     # random_lora_4=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_4 \
+#     # random_lora_5=/nobackup/users/lallison/hf_cache/hub/random_lora_r_8_5
 
 ###########################################################################
 
