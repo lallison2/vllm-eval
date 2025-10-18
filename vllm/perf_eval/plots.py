@@ -211,7 +211,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Latency Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Latency Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -381,7 +381,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation TTFT Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation TTFT Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -549,7 +549,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Queue Time Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Queue Time Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -717,7 +717,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Inference Time Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Inference Time Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -885,7 +885,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Prefill Time Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Prefill Time Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1053,7 +1053,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Evaluation Decode Time Comparison (Base-Adapter)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Decode Time Comparison (Base-Adapter)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1179,7 +1179,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1303,7 +1303,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation TTFT Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation TTFT Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1427,7 +1427,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Queue Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Queue Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     ax.yaxis.get_offset_text().set_fontsize(16)
@@ -1552,7 +1552,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Inference Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Inference Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1676,7 +1676,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Prefill Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Prefill Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1800,7 +1800,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title(f"Evaluation Decode Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title(f"Evaluation Decode Time Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -1924,7 +1924,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title("Evaluation Latency Comparison (Base-Adapter\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title("Evaluation Latency Comparison (Base-Adapter\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
@@ -2014,7 +2014,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=16)
     ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title("Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 1024)", fontsize=16)
+    ax.set_title("Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)\n(Prompt Length = 512)", fontsize=16)
     ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
