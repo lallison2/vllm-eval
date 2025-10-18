@@ -216,7 +216,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_e2e_latency_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_async_poisson-{component}_prompt_len_512.png")
 
 
     ###############################################
@@ -386,7 +386,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_ttft_latency_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_ttft_latency_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -554,7 +554,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_queue_time_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_queue_time_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -722,7 +722,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_inference_time_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_inference_time_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -890,7 +890,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_prefill_time_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_prefill_time_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -1058,7 +1058,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_decode_time_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_decode_time_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
     ###############################################
@@ -1184,7 +1184,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -1308,7 +1308,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -1433,7 +1433,7 @@ if __name__ == '__main__':
     ax.yaxis.get_offset_text().set_fontsize(16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -1557,7 +1557,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -1681,7 +1681,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
 
@@ -1805,7 +1805,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_async_poisson-{component}_prompt_len_1024.png")
+    plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_async_poisson-{component}_prompt_len_512.png")
 
     ###############################################
     ###############################################
@@ -1929,7 +1929,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig("plots/base_adapter_e2e_latency_async_poisson-eval_prompt_len_1024.png")
+    plt.savefig("plots/base_adapter_e2e_latency_async_poisson-eval_prompt_len_512.png")
 
     ###############################################
 
@@ -2019,7 +2019,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
-    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_async_poisson-eval_prompt_len_1024.png")
+    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_async_poisson-eval_prompt_len_512.png")
 
     ###############################################
     ###############################################
@@ -2090,7 +2090,7 @@ if __name__ == '__main__':
     # ax.tick_params(axis='both', which='major', labelsize=16)
     # plt.tight_layout()
 
-    # plt.savefig(f"plots/base_adapter_cache_hit-{component}_prompt_len_1024.png")
+    # plt.savefig(f"plots/base_adapter_cache_hit-{component}_prompt_len_512.png")
 
     #######################################
     #######################################
