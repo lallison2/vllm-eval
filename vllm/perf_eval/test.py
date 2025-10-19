@@ -182,7 +182,7 @@ async def main():
     # current_prompt_len = prompt_lens[3] # max 9
     # current_gen_len = 256
 
-    current_gen_len = gen_lens[7] # max 7
+    current_gen_len = gen_lens[0] # max 7
     current_prompt_len = 256
 
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
@@ -215,8 +215,8 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    ADAPTER_NAME = LORA_NAME
 
     # ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
     # ADAPTER_NAME_3 = ALORA_NAME + "_3"
@@ -264,7 +264,7 @@ async def main():
 
 
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_eval_granite.txt")
     # save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite_base-base.txt")
     # save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_eval_granite_batchsize1.txt")
 
