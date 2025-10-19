@@ -1,4 +1,5 @@
 {
+  "alora_invocation_tokens": [3, 33, 333, 3333],
   "alpha_pattern": {},
   "auto_mapping": null,
   "base_model_name_or_path": "/home/lallison/.cache/huggingface/hub/models--ibm-granite--granite-3.2-8b-instruct/snapshots/610d8c6ee9c84ce51f6dfd7bc5c0215d95d49695",
