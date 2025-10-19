@@ -182,7 +182,7 @@ async def main():
     # current_prompt_len = prompt_lens[3] # max 9
     # current_gen_len = 256
 
-    current_gen_len = gen_lens[0] # max 7
+    current_gen_len = gen_lens[1] # max 7
     current_prompt_len = 256
 
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
@@ -235,7 +235,7 @@ async def main():
     # Call the adapter model(s)
     adapter_prompts = [x + y[:current_gen_len] + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y in zip(random_prompts, base_generation_tokens)]
     print("random prompt len: ", len(random_prompts[0]))
-    print("response len: ", len(base_generation_tokens[0]))
+    print("response len (potentially + eot): ", len(base_generation_tokens[0]))
     print("eot len: ", len(tokenizer("<|end_of_text|>\n")["input_ids"]))
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
