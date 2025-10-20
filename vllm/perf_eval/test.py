@@ -194,15 +194,15 @@ async def main():
     kv_cache_size = 351104 # granite 3.2
     # kv_cache_size = 407984 # llama 70b (4 gpu)
     # kv_cache_size = 912688 # mistral large (8 gpu)
-    cache_percentage = 0.2
+    cache_percentage = 1.0
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
 
-    # batch_size = math.floor(kv_cache_size * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    batch_size = math.floor(kv_cache_size * cache_percentage) // (prompt_lens[9] + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
-    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    # batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     # batch_size = 1
 
     random.seed(42)
