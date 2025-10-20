@@ -183,7 +183,7 @@ async def main():
     # current_prompt_len = prompt_lens[3] # max 9
     # current_gen_len = 256
 
-    current_gen_len = gen_lens[3] # max 9
+    current_gen_len = gen_lens[0] # max 9
     current_prompt_len = 256
 
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
@@ -200,8 +200,7 @@ async def main():
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
 
-    batch_size = math.floor(kv_cache_size * cache_percentage) // (65536*2 + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
-    # * 5 + num_eot_tokens + 16)
+    batch_size = math.floor(kv_cache_size * cache_percentage) // (65536 + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens * 5 + num_eot_tokens + 16)
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
     # batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
@@ -220,10 +219,10 @@ async def main():
     ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
     # ADAPTER_NAME = LORA_NAME
 
-    # ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
-    # ADAPTER_NAME_3 = ALORA_NAME + "_3"
-    # ADAPTER_NAME_4 = ALORA_NAME + "_4"
-    # ADAPTER_NAME_5 = ALORA_NAME + "_5"
+    ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
+    ADAPTER_NAME_3 = ALORA_NAME + "_3"
+    ADAPTER_NAME_4 = ALORA_NAME + "_4"
+    ADAPTER_NAME_5 = ALORA_NAME + "_5"
 
     # ADAPTER_NAME_2 = LORA_NAME + "_2"
     # ADAPTER_NAME_3 = LORA_NAME + "_3"
@@ -242,29 +241,29 @@ async def main():
 
     adapter_start_stat_vals, adapter_start_hist_vals = await get_metrics(stats, histograms)
     adapter_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME)
-    # adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222]) 
-    # adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3, custom_inv_tokens=[3, 33, 333, 3333]) 
-    # adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4, custom_inv_tokens=[4, 44, 444, 4444]) 
-    # adapter_5_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_5, custom_inv_tokens=[5, 55, 555, 5555]) 
+    adapter_2_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_2, custom_inv_tokens=[2, 22, 222, 2222]) 
+    adapter_3_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_3, custom_inv_tokens=[3, 33, 333, 3333]) 
+    adapter_4_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_4, custom_inv_tokens=[4, 44, 444, 4444]) 
+    adapter_5_generation_tokens = await send(adapter_prompts, ntokens=num_eval_tokens, use_adapter_name=ADAPTER_NAME_5, custom_inv_tokens=[5, 55, 555, 5555]) 
 
-    # # Call the base model again
-    # activation_tokens = tokenizer(invocation_string)["input_ids"]
-    # base_2_prompts = [x + activation_tokens + y1 + activation_tokens + y2 + activation_tokens + y3 + activation_tokens + y4 + activation_tokens + y5 + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y1,y2,y3,y4,y5 in zip(adapter_prompts, adapter_generation_tokens, adapter_2_generation_tokens, adapter_3_generation_tokens, adapter_4_generation_tokens, adapter_5_generation_tokens)]
+    # Call the base model again
+    activation_tokens = tokenizer(invocation_string)["input_ids"]
+    base_2_prompts = [x + activation_tokens + y1 + activation_tokens + y2 + activation_tokens + y3 + activation_tokens + y4 + activation_tokens + y5 + tokenizer("<|end_of_text|>\n")["input_ids"] for x,y1,y2,y3,y4,y5 in zip(adapter_prompts, adapter_generation_tokens, adapter_2_generation_tokens, adapter_3_generation_tokens, adapter_4_generation_tokens, adapter_5_generation_tokens)]
 
     base_2_start_stat_vals, base_2_start_hist_vals = await get_metrics(stats, histograms)
-    # _ = await send(base_2_prompts, ntokens=16, use_adapter_name=BASE_NAME)
+    _ = await send(base_2_prompts, ntokens=16, use_adapter_name=BASE_NAME)
 
-    # base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
+    base_2_end_stat_vals, base_2_end_hist_vals = await get_metrics(stats, histograms)
     
-    # # Subtract the metrics from the warmup call
-    # base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
-    # save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_1_granite_5_adapters.txt")
+    # Subtract the metrics from the warmup call
+    base_1_final_stat_vals, base_1_final_hist_vals = subtract_metrics(adapter_start_stat_vals, adapter_start_hist_vals, base_start_stat_vals, base_start_hist_vals)
+    save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_1_granite_5_adapters.txt")
 
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite_5_adapters.txt")
 
-    # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
-    # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
+    base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
+    save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
     
 ###################################################################
 
