@@ -202,7 +202,7 @@ async def main():
     # batch_size = math.floor(kv_cache_size * cache_percentage) // (prompt_lens[9] + current_gen_len + num_eot_tokens + num_activation_tokens + num_eval_tokens)
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
-    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens + num_eot_tokens + 16)
+    batch_size = math.floor(kv_cache_size * cache_percentage) // (current_prompt_len + gen_lens[7] + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     # batch_size = 1
 
     random.seed(42)
