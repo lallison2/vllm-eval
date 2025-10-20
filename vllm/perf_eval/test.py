@@ -216,8 +216,8 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    ADAPTER_NAME = LORA_NAME
 
     # ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
     # ADAPTER_NAME_3 = ALORA_NAME + "_3"
