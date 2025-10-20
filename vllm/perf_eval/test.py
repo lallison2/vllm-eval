@@ -150,7 +150,7 @@ async def main():
     # model = AutoModel.from_pretrained(model_name)
 
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+    gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768]
 
     # # Generate random prompt tokens (run once)
     # np.random.seed(42)
@@ -182,7 +182,7 @@ async def main():
     # current_prompt_len = prompt_lens[3] # max 9
     # current_gen_len = 256
 
-    current_gen_len = gen_lens[9] # max 7
+    current_gen_len = gen_lens[8] # max 8
     current_prompt_len = 256
 
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
