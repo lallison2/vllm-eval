@@ -183,7 +183,7 @@ async def main():
     # current_prompt_len = prompt_lens[3] # max 9
     # current_gen_len = 256
 
-    current_gen_len = gen_lens[7] # max 8 (didn't do 8 for alora yet)
+    current_gen_len = gen_lens[8] # max 8 (didn't do 8 for alora yet)
     current_prompt_len = 256
 
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
