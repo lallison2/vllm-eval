@@ -194,7 +194,7 @@ async def main():
     kv_cache_size = 351104 # granite 3.2
     # kv_cache_size = 407984 # llama 70b (4 gpu)
     # kv_cache_size = 912688 # mistral large (8 gpu)
-    cache_percentage = 0.25
+    cache_percentage = 0.4
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
@@ -260,7 +260,7 @@ async def main():
 
 
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite_{cache_percentage}cache.txt")
 
     # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
     # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
