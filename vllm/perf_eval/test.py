@@ -68,6 +68,7 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None, manually_time=Fals
             prompt = full_prompt_tokens,
             max_tokens = ntokens,
             temperature = 0.0,
+            timeout=300,
             extra_body = {
                 "min_tokens" : ntokens
             })
@@ -150,7 +151,7 @@ async def main():
     # model = AutoModel.from_pretrained(model_name)
 
     prompt_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
-    gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768]
+    gen_lens = [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
 
     # # Generate random prompt tokens (run once)
     # np.random.seed(42)
@@ -182,7 +183,7 @@ async def main():
     # current_prompt_len = prompt_lens[3] # max 9
     # current_gen_len = 256
 
-    current_gen_len = gen_lens[8] # max 8
+    current_gen_len = gen_lens[9] # max 9
     current_prompt_len = 256
 
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
