@@ -2590,4 +2590,4 @@ if __name__ == '__main__':
     ax.legend(fontsize=16, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=20)
 
-    plt.savefig(f"plots/base_adapter_base_queue_time_speedup_factor_gen_len-gen2.png")
+    plt.savefig(f"plots/base_adapter_base_queue_time_gen_len-gen2.png")
