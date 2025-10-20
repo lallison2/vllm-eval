@@ -68,7 +68,7 @@ async def send(prompt_tokens, ntokens, use_adapter_name=None, manually_time=Fals
             prompt = full_prompt_tokens,
             max_tokens = ntokens,
             temperature = 0.0,
-            timeout=300,
+            timeout=1000,
             extra_body = {
                 "min_tokens" : ntokens
             })
@@ -200,7 +200,7 @@ async def main():
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
 
-    batch_size = math.floor(kv_cache_size * cache_percentage) // (prompt_lens[9] + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
+    batch_size = math.floor(kv_cache_size * cache_percentage) // (65536*2 + 256 + num_eot_tokens + num_activation_tokens + num_eval_tokens)
     # * 5 + num_eot_tokens + 16)
                                                                  # batch size chosen to saturate GPU memory
                                                                  # fix batch size based on longest length
