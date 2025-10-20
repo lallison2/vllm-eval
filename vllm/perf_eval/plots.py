@@ -2527,3 +2527,67 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-eval+gen_2.png")
+
+    #######################################
+
+    target_metric = "vllm:request_queue_time_seconds_sum"
+
+    granite_alora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+    granite_lora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+
+    fig, ax = plt.subplots(figsize=(9, 7))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(gen_lens, 
+            granite_alora_metric_vals_gen_2_queue, 
+            label='rank-32 aLoRA', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    ax.plot(gen_lens, 
+            granite_lora_metric_vals_gen_2_queue, 
+            label='rank-8 LoRA', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"Second Base Call Queue Time Comparison\n(Base-Adapter-Base)", fontsize=20)
+    ax.legend(fontsize=16, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=20)
+
+    plt.savefig(f"plots/base_adapter_base_queue_time_gen_len-gen2.png")
