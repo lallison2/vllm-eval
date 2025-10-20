@@ -2176,6 +2176,7 @@ if __name__ == '__main__':
     ax.set_xscale('log')
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    ax.set_ylim(1.0, 1.2)
 
     ax.plot(gen_lens, 
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
