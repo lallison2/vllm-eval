@@ -180,11 +180,11 @@ async def main():
     
     random_prompts = []
 
-    current_prompt_len = prompt_lens[3] # max 9
-    current_gen_len = 256
+    # current_prompt_len = prompt_lens[3] # max 9
+    # current_gen_len = 256
 
-    # current_gen_len = gen_lens[3] # max 9
-    # current_prompt_len = 256
+    current_gen_len = gen_lens[3] # max 9
+    current_prompt_len = 256
 
     with open(f'prompts/random_prompt_len_{current_prompt_len}.txt', 'r') as f:
         for line in f:
@@ -261,7 +261,7 @@ async def main():
     # save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_1_granite_5_adapters.txt")
 
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_prompt_len_{current_prompt_len}_eval_granite.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_eval_granite.txt")
 
     # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
     # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_gen_len}_gen_2_granite_5_adapters.txt")
