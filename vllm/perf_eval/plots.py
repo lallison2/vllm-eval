@@ -2492,7 +2492,7 @@ if __name__ == '__main__':
     ax.set_ylim(1.0, 1.2)
 
     ax.plot(gen_lens, 
-            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            [a / b for a, b in zip(granite_lora_metric_vals_eval_gen_2, granite_alora_metric_vals_eval_gen_2)], 
             marker='D', 
             markersize=4,
             linestyle='-',
