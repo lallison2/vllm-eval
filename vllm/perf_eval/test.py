@@ -194,7 +194,7 @@ async def main():
     kv_cache_size = 351104 # granite 3.2
     # kv_cache_size = 407984 # llama 70b (4 gpu)
     # kv_cache_size = 912688 # mistral large (8 gpu)
-    cache_percentage = 0.4
+    cache_percentage = 0.3
     num_activation_tokens = len(tokenizer(invocation_string)["input_ids"])
     num_eot_tokens = len(tokenizer("<|end_of_text|>\n")["input_ids"])
     num_eval_tokens = 16
