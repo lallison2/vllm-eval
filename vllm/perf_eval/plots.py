@@ -2160,11 +2160,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=16)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=16, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
 
@@ -2206,10 +2206,10 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=16)
-    ax.tick_params(axis='both', which='major', labelsize=16)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
+    ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-all.png")
 
@@ -2264,11 +2264,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=16)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=16, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-gen_2.png")
 
@@ -2309,10 +2309,10 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=16)
-    ax.tick_params(axis='both', which='major', labelsize=16)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
+    ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-gen_2.png")
 
@@ -2367,11 +2367,11 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Latency (s)", fontsize=16)
-    ax.set_title(f"Adapter Evaluation Latency Comparison\n(Base-Adapter-Base)", fontsize=16)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"Adapter Evaluation Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=16, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-eval.png")
 
@@ -2412,9 +2412,116 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Generation Length", fontsize=16)
-    ax.set_ylabel("Speedup", fontsize=16)
-    ax.set_title("Adapter Evaluation Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=16)
-    ax.tick_params(axis='both', which='major', labelsize=16)
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
+    ax.set_title("Adapter Evaluation Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
     plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-eval.png")
+
+    #######################################
+
+    granite_alora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
+    granite_lora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
+
+    fig, ax = plt.subplots(figsize=(9, 7))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    ax.plot(gen_lens, 
+            granite_alora_metric_vals_eval_gen_2, 
+            label='rank-32 aLoRA', 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    ax.plot(gen_lens, 
+            granite_lora_metric_vals_eval_gen_2, 
+            label='rank-8 LoRA', 
+            marker='D', 
+            markersize=4,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='none',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"Eval + Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    ax.legend(fontsize=16, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=20)
+
+    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-eval+gen2.png")
+
+    #######################################
+
+    fig, ax = plt.subplots(figsize=(9, 7))
+
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    ax.set_ylim(1.0, 1.2)
+
+    ax.plot(gen_lens, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            marker='D', 
+            markersize=4,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+
+    ax.set_xlabel("Generation Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
+    ax.set_title("Eval + Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=20)
+
+    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-eval+gen_2.png")
