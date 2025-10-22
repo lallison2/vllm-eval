@@ -2652,5 +2652,9 @@ if __name__ == '__main__':
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
     ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, -0.35))
+    fig.set_constrained_layout_pads(
+        h_pad=0.1,   # vertical padding in inches
+        hspace=0.15  # spacing between subplots (rows)
+    )
 
     plt.savefig(f"plots/throughput_comparison.png", pad_inches=0.1)
