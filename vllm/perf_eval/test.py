@@ -216,13 +216,13 @@ async def main():
     _ = await send(warmup_prompts, ntokens=250, use_adapter_name=None)
     print("done warming up!!")
     
-    ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
-    # ADAPTER_NAME = LORA_NAME
+    # ADAPTER_NAME = ALORA_NAME # change this to LORA_NAME and load in lora at server startup to test random lora
+    ADAPTER_NAME = LORA_NAME
 
-    ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
-    ADAPTER_NAME_3 = ALORA_NAME + "_3"
-    ADAPTER_NAME_4 = ALORA_NAME + "_4"
-    ADAPTER_NAME_5 = ALORA_NAME + "_5"
+    # ADAPTER_NAME_2 = ALORA_NAME + "_2" # if using multiple adapters
+    # ADAPTER_NAME_3 = ALORA_NAME + "_3"
+    # ADAPTER_NAME_4 = ALORA_NAME + "_4"
+    # ADAPTER_NAME_5 = ALORA_NAME + "_5"
 
     # ADAPTER_NAME_2 = LORA_NAME + "_2"
     # ADAPTER_NAME_3 = LORA_NAME + "_3"
@@ -260,7 +260,7 @@ async def main():
     # save_metrics(base_1_final_stat_vals, base_1_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_prompt_len}_gen_1_granite_5_adapters.txt")
 
     adaptor_final_stat_vals, adaptor_final_hist_vals = subtract_metrics(base_2_start_stat_vals, base_2_start_hist_vals, adapter_start_stat_vals, adapter_start_hist_vals)
-    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_prompt_len}_eval_granite_1_adapters.txt")
+    save_metrics(adaptor_final_stat_vals, adaptor_final_hist_vals, ADAPTER_NAME, file_name=f"results/lora_gen_len_{current_prompt_len}_eval_granite_1_adapters.txt")
 
     # base_2_final_stat_vals, base_2_final_hist_vals = subtract_metrics(base_2_end_stat_vals, base_2_end_hist_vals, base_2_start_stat_vals, base_2_start_hist_vals)
     # save_metrics(base_2_final_stat_vals, base_2_final_hist_vals, ADAPTER_NAME, file_name=f"results/alora_gen_len_{current_prompt_len}_gen_2_granite_5_adapters.txt")
