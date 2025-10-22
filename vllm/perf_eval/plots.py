@@ -2648,10 +2648,10 @@ if __name__ == '__main__':
         multiplier += 1
 
     ax.set_ylabel('Throughput (tokens/s)', fontsize=20)
-    ax.set_title('Throughput Comparison (Prompt Length = 65536)', fontsize=20)
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
     ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, -0.5))
+    fig.suptitle('Throughput Comparison (Prompt Length = 65536)', fontsize=20, y=0.98)
     fig.set_constrained_layout_pads(
         h_pad=0.45,   # vertical padding in inches
         hspace=0.15  # spacing between subplots (rows)
