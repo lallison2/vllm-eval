@@ -2625,8 +2625,8 @@ if __name__ == '__main__':
         'modified vLLM + aLoRA': (granite_alora_metric_vals_tokens[9] / granite_alora_metric_vals_e2e[9], llama_alora_metric_vals_tokens[9] / llama_alora_metric_vals_e2e[9], mistral_alora_metric_vals_tokens[9] / mistral_alora_metric_vals_e2e[9]),
     }
     bar_colors = ['#6675A9', '#cdb38f', '#77a988']
-    fill_order = [True, False]
-    hatch_order = ['/', '/']
+    fill_order = [False, True]
+    hatch_order = ['/', '']
 
     print("lora: ", (granite_lora_metric_vals_tokens[9] / granite_lora_metric_vals_e2e[9], llama_lora_metric_vals_tokens[9] / llama_lora_metric_vals_e2e[9], mistral_lora_metric_vals_tokens[9] / mistral_lora_metric_vals_e2e[9]))
     print("alora: ", (granite_alora_metric_vals_tokens[9] / granite_alora_metric_vals_e2e[9], llama_alora_metric_vals_tokens[9] / llama_alora_metric_vals_e2e[9], mistral_alora_metric_vals_tokens[9] / mistral_alora_metric_vals_e2e[9]))
@@ -2637,9 +2637,13 @@ if __name__ == '__main__':
 
     fig, ax = plt.subplots(figsize=(9, 5))
 
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+
     for attribute, measurement in adapter_type.items():
         offset = width * multiplier
-        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_colors, fill=fill_order[multiplier], hatch=hatch_order[multiplier])
+        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_colors, fill=fill_order[multiplier], hatch=hatch_order[multiplier], edgecolor=bar_colors)
         # ax.bar_label(rects, padding=3)
         multiplier += 1
 
