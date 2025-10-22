@@ -2635,7 +2635,7 @@ if __name__ == '__main__':
     width = 0.25  # the width of the bars
     multiplier = 0
 
-    fig, ax = plt.subplots(figsize=(9, 7), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(9, 5), constrained_layout=True)
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -2651,6 +2651,6 @@ if __name__ == '__main__':
     ax.set_title('Throughput Comparison (Prompt Length = 65536)', fontsize=20)
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
-    ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, -0.2))
+    ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, -0.4))
 
     plt.savefig(f"plots/throughput_comparison.png")
