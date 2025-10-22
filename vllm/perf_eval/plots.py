@@ -2625,6 +2625,8 @@ if __name__ == '__main__':
         'modified vLLM + aLoRA': (granite_alora_metric_vals_tokens[9] / granite_alora_metric_vals_e2e[9], llama_alora_metric_vals_tokens[9] / llama_alora_metric_vals_e2e[9], mistral_alora_metric_vals_tokens[9] / mistral_alora_metric_vals_e2e[9]),
     }
     bar_colors = ['#6675A9', '#cdb38f', '#77a988']
+    fill_order = [True, False]
+    hatch_order = ['/', '/']
 
     print("lora: ", (granite_lora_metric_vals_tokens[9] / granite_lora_metric_vals_e2e[9], llama_lora_metric_vals_tokens[9] / llama_lora_metric_vals_e2e[9], mistral_lora_metric_vals_tokens[9] / mistral_lora_metric_vals_e2e[9]))
     print("alora: ", (granite_alora_metric_vals_tokens[9] / granite_alora_metric_vals_e2e[9], llama_alora_metric_vals_tokens[9] / llama_alora_metric_vals_e2e[9], mistral_alora_metric_vals_tokens[9] / mistral_alora_metric_vals_e2e[9]))
@@ -2633,11 +2635,11 @@ if __name__ == '__main__':
     width = 0.25  # the width of the bars
     multiplier = 0
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(9, 5))
 
     for attribute, measurement in adapter_type.items():
         offset = width * multiplier
-        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_colors)
+        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_colors, fill=fill_order[multiplier], hatch=hatch_order[multiplier])
         # ax.bar_label(rects, padding=3)
         multiplier += 1
 
