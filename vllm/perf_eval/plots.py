@@ -2619,7 +2619,7 @@ if __name__ == '__main__':
     mistral_lora_metric_vals_e2e = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
 
-    models = ('Granite 3.2 8b', 'Llama 3.3 70B', 'Mistral Large 2')
+    models = ('Granite\n3.2 8b', 'Llama\n3.3 70B', 'Mistral\nLarge 2')
     adapter_type = {
         'vanilla vLLM + LoRA': (granite_lora_metric_vals_tokens[9] / granite_lora_metric_vals_e2e[9], llama_lora_metric_vals_tokens[9] / llama_lora_metric_vals_e2e[9], mistral_lora_metric_vals_tokens[9] / mistral_lora_metric_vals_e2e[9]),
         'modified vLLM + aLoRA': (granite_alora_metric_vals_tokens[9] / granite_alora_metric_vals_e2e[9], llama_alora_metric_vals_tokens[9] / llama_alora_metric_vals_e2e[9], mistral_alora_metric_vals_tokens[9] / mistral_alora_metric_vals_e2e[9]),
@@ -2633,12 +2633,12 @@ if __name__ == '__main__':
     width = 0.25  # the width of the bars
     multiplier = 0
 
-    fig, ax = plt.subplots(layout='constrained')
+    fig, ax = plt.subplots(figsize=(9, 7))
 
     for attribute, measurement in adapter_type.items():
         offset = width * multiplier
-        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_colors[multiplier])
-        ax.bar_label(rects, padding=3)
+        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_colors)
+        # ax.bar_label(rects, padding=3)
         multiplier += 1
 
     ax.set_ylabel('Throughput (tokens/s)', fontsize=20)
@@ -2646,5 +2646,6 @@ if __name__ == '__main__':
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
     ax.legend(fontsize=16, markerscale=1.0)
+    plt.tight_layout()
 
     plt.savefig(f"plots/throughput_comparison.png")
