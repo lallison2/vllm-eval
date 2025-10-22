@@ -2646,6 +2646,5 @@ if __name__ == '__main__':
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
     ax.legend(fontsize=16, markerscale=1.0)
-    plt.tight_layout()
 
     plt.savefig(f"plots/throughput_comparison.png")
