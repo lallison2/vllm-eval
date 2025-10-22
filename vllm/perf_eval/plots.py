@@ -2097,497 +2097,555 @@ if __name__ == '__main__':
     #######################################
 
 
+    # target_metric = "vllm:e2e_request_latency_seconds_sum"
+    
+    # granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_1")
+    # granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_1")
+    
+    # granite_alora_metric_vals_eval = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="eval")
+    # granite_lora_metric_vals_eval = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="eval")
+
+    # granite_alora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+    # granite_lora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+
+    # granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
+    # granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(gen_lens, 
+    #         granite_alora_metric_vals, 
+    #         label='rank-32 aLoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    # ax.plot(gen_lens, 
+    #         granite_lora_metric_vals, 
+    #         label='rank-8 LoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='none',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    # ax.legend(fontsize=16, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
+
+    # #######################################
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # ax.set_ylim(1.0, 1.2)
+
+    # ax.plot(gen_lens, 
+    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-all.png")
+
+    # #######################################
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(gen_lens, 
+    #         granite_alora_metric_vals_gen_2, 
+    #         label='rank-32 aLoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    # ax.plot(gen_lens, 
+    #         granite_lora_metric_vals_gen_2, 
+    #         label='rank-8 LoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='none',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    # ax.legend(fontsize=16, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-gen_2.png")
+
+    # #######################################
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # ax.set_ylim(1.0, 22.0)
+
+    # ax.plot(gen_lens, 
+    #         [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)],  
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-gen_2.png")
+
+    # #######################################
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(gen_lens, 
+    #         granite_alora_metric_vals_eval, 
+    #         label='rank-32 aLoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    # ax.plot(gen_lens, 
+    #         granite_lora_metric_vals_eval, 
+    #         label='rank-8 LoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='none',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Adapter Evaluation Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    # ax.legend(fontsize=16, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-eval.png")
+
+    # #######################################
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # ax.set_ylim(1.0, 25.0)
+
+    # ax.plot(gen_lens, 
+    #         [a / b for a, b in zip(granite_lora_metric_vals_eval, granite_alora_metric_vals_eval)],  
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title("Adapter Evaluation Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-eval.png")
+
+    # #######################################
+
+    # granite_alora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
+    # granite_lora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(gen_lens, 
+    #         granite_alora_metric_vals_eval_gen_2, 
+    #         label='rank-32 aLoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    # ax.plot(gen_lens, 
+    #         granite_lora_metric_vals_eval_gen_2, 
+    #         label='rank-8 LoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='none',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Eval + Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    # ax.legend(fontsize=16, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-eval+gen2.png")
+
+    # #######################################
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # ax.set_ylim(1.0, 25.0)
+
+    # ax.plot(gen_lens, 
+    #         [a / b for a, b in zip(granite_lora_metric_vals_eval_gen_2, granite_alora_metric_vals_eval_gen_2)], 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title("Eval + Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-eval+gen_2.png")
+
+    # #######################################
+
+    # target_metric = "vllm:request_queue_time_seconds_sum"
+
+    # granite_alora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+    # granite_lora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+
+    # fig, ax = plt.subplots(figsize=(9, 7))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(gen_lens, 
+    #         granite_alora_metric_vals_gen_2_queue, 
+    #         label='rank-32 aLoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    # ax.plot(gen_lens, 
+    #         granite_lora_metric_vals_gen_2_queue, 
+    #         label='rank-8 LoRA', 
+    #         marker='D', 
+    #         markersize=4,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='none',
+    #         markeredgecolor='#6675A9',
+    #         linewidth=3,
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Generation Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Second Base Call Queue Time Comparison\n(Base-Adapter-Base)", fontsize=20)
+    # ax.legend(fontsize=16, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=20)
+
+    # plt.savefig(f"plots/base_adapter_base_queue_time_gen_len-gen2.png")
+
+    #################################
+    #################################
+    #################################
+
+    target_metric = "vllm:iteration_tokens_total_sum"
+
+    granite_alora_metric_vals_tokens = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    granite_lora_metric_vals_tokens = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+
+    llama_alora_metric_vals_tokens = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    llama_lora_metric_vals_tokens = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    mistral_alora_metric_vals_tokens = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    mistral_lora_metric_vals_tokens = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
     target_metric = "vllm:e2e_request_latency_seconds_sum"
+
+    granite_alora_metric_vals_e2e = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    granite_lora_metric_vals_e2e = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+
+    llama_alora_metric_vals_e2e = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    llama_lora_metric_vals_e2e = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    mistral_alora_metric_vals_e2e = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    mistral_lora_metric_vals_e2e = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
+
+    models = ('Granite 3.2 8b', 'Llama 3.3 70B', 'Mistral Large 2')
+    adapter_type = {
+        'vanilla vLLM + LoRA': (granite_lora_metric_vals_tokens[9] / granite_lora_metric_vals_e2e[9], llama_lora_metric_vals_tokens[9] / llama_lora_metric_vals_e2e[9], mistral_lora_metric_vals_tokens[9] / mistral_lora_metric_vals_e2e[9]),
+        'modified vLLM + aLoRA': (granite_alora_metric_vals_tokens[9] / granite_alora_metric_vals_e2e[9], llama_alora_metric_vals_tokens[9] / llama_alora_metric_vals_e2e[9], mistral_alora_metric_vals_tokens[9] / mistral_alora_metric_vals_e2e[9]),
+    }
+    bar_colors = ['#6675A9', '#cdb38f', '#77a988']
+
+    print("lora: ", (granite_lora_metric_vals_tokens[9] / granite_lora_metric_vals_e2e[9], llama_lora_metric_vals_tokens[9] / llama_lora_metric_vals_e2e[9], mistral_lora_metric_vals_tokens[9] / mistral_lora_metric_vals_e2e[9]))
+    print("alora: ", (granite_alora_metric_vals_tokens[9] / granite_alora_metric_vals_e2e[9], llama_alora_metric_vals_tokens[9] / llama_alora_metric_vals_e2e[9], mistral_alora_metric_vals_tokens[9] / mistral_alora_metric_vals_e2e[9]))
     
-    granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_1")
-    granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_1")
-    
-    granite_alora_metric_vals_eval = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="eval")
-    granite_lora_metric_vals_eval = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="eval")
+    x = np.arange(3)
+    width = 0.25  # the width of the bars
+    multiplier = 0
 
-    granite_alora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
-    granite_lora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+    fig, ax = plt.subplots(layout='constrained')
 
-    granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
-    granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
+    for attribute, measurement in adapter_type.items():
+        offset = width * multiplier
+        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_colors[multiplier])
+        ax.bar_label(rects, padding=3)
+        multiplier += 1
 
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(gen_lens, 
-            granite_alora_metric_vals, 
-            label='rank-32 aLoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    ax.plot(gen_lens, 
-            granite_lora_metric_vals, 
-            label='rank-8 LoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='none',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    ax.set_ylabel('Throughput (tokens/s)', fontsize=20)
+    ax.set_title('Model', fontsize=20)
+    ax.set_xticks(x + width, models)
+    ax.tick_params(axis='both', which='major', labelsize=18)
     ax.legend(fontsize=16, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
+    plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-all.png")
-
-    #######################################
-
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    ax.set_ylim(1.0, 1.2)
-
-    ax.plot(gen_lens, 
-            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    ax.tick_params(axis='both', which='major', labelsize=20)
-
-    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-all.png")
-
-    #######################################
-
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(gen_lens, 
-            granite_alora_metric_vals_gen_2, 
-            label='rank-32 aLoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    ax.plot(gen_lens, 
-            granite_lora_metric_vals_gen_2, 
-            label='rank-8 LoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='none',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    ax.legend(fontsize=16, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
-
-    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-gen_2.png")
-
-    #######################################
-
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    ax.set_ylim(1.0, 22.0)
-
-    ax.plot(gen_lens, 
-            [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)],  
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    ax.tick_params(axis='both', which='major', labelsize=20)
-
-    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-gen_2.png")
-
-    #######################################
-
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(gen_lens, 
-            granite_alora_metric_vals_eval, 
-            label='rank-32 aLoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    ax.plot(gen_lens, 
-            granite_lora_metric_vals_eval, 
-            label='rank-8 LoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='none',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Adapter Evaluation Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    ax.legend(fontsize=16, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
-
-    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-eval.png")
-
-    #######################################
-
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    ax.set_ylim(1.0, 25.0)
-
-    ax.plot(gen_lens, 
-            [a / b for a, b in zip(granite_lora_metric_vals_eval, granite_alora_metric_vals_eval)],  
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title("Adapter Evaluation Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    ax.tick_params(axis='both', which='major', labelsize=20)
-
-    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-eval.png")
-
-    #######################################
-
-    granite_alora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
-    granite_lora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
-
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(gen_lens, 
-            granite_alora_metric_vals_eval_gen_2, 
-            label='rank-32 aLoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    ax.plot(gen_lens, 
-            granite_lora_metric_vals_eval_gen_2, 
-            label='rank-8 LoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='none',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Eval + Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    ax.legend(fontsize=16, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
-
-    plt.savefig(f"plots/base_adapter_base_e2e_latency_gen_len-eval+gen2.png")
-
-    #######################################
-
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    ax.set_ylim(1.0, 25.0)
-
-    ax.plot(gen_lens, 
-            [a / b for a, b in zip(granite_lora_metric_vals_eval_gen_2, granite_alora_metric_vals_eval_gen_2)], 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title("Eval + Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    ax.tick_params(axis='both', which='major', labelsize=20)
-
-    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_gen_len-eval+gen_2.png")
-
-    #######################################
-
-    target_metric = "vllm:request_queue_time_seconds_sum"
-
-    granite_alora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
-    granite_lora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
-
-    fig, ax = plt.subplots(figsize=(9, 7))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(gen_lens, 
-            granite_alora_metric_vals_gen_2_queue, 
-            label='rank-32 aLoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    ax.plot(gen_lens, 
-            granite_lora_metric_vals_gen_2_queue, 
-            label='rank-8 LoRA', 
-            marker='D', 
-            markersize=4,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='none',
-            markeredgecolor='#6675A9',
-            linewidth=3,
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Generation Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Second Base Call Queue Time Comparison\n(Base-Adapter-Base)", fontsize=20)
-    ax.legend(fontsize=16, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=20)
-
-    plt.savefig(f"plots/base_adapter_base_queue_time_gen_len-gen2.png")
+    plt.savefig(f"plots/throughput_comparison.png")
