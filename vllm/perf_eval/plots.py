@@ -2653,11 +2653,12 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=18)
 
     handles, labels = ax.get_legend_handles_labels()
-    new_handle = handles[0].copy()
-    new_handle.set_color('black')
-    new_handle.set_edgecolor('black')
+    handles[0].set_color('black')
+    handles[0].set_edgecolor('black')
+    handles[1].set_color('black')
+    handles[1].set_edgecolor('black')
 
-    ax.legend(handles=[new_handle], labels=labels)
+    ax.legend(handles=handles, labels=labels)
     ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, 1.2))
 
 
