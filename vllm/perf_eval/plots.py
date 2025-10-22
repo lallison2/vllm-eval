@@ -2653,7 +2653,7 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=18)
     ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, -0.5))
     fig.set_constrained_layout_pads(
-        h_pad=0.4,   # vertical padding in inches
+        h_pad=0.45,   # vertical padding in inches
         hspace=0.15  # spacing between subplots (rows)
     )
 
