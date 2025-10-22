@@ -2624,7 +2624,7 @@ if __name__ == '__main__':
         'vanilla vLLM + LoRA': (granite_lora_metric_vals_tokens[9] / granite_lora_metric_vals_e2e[9], llama_lora_metric_vals_tokens[9] / llama_lora_metric_vals_e2e[9], mistral_lora_metric_vals_tokens[9] / mistral_lora_metric_vals_e2e[9]),
         'modified vLLM + aLoRA': (granite_alora_metric_vals_tokens[9] / granite_alora_metric_vals_e2e[9], llama_alora_metric_vals_tokens[9] / llama_alora_metric_vals_e2e[9], mistral_alora_metric_vals_tokens[9] / mistral_alora_metric_vals_e2e[9]),
     }
-    bar_colors = ['#6675A9', '#cdb38f', '#77a988']
+    bar_color = '#A97777'
     fill_order = [False, True]
     hatch_order = ['/', '']
 
@@ -2643,7 +2643,7 @@ if __name__ == '__main__':
 
     for attribute, measurement in adapter_type.items():
         offset = width * multiplier
-        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_colors, fill=fill_order[multiplier], hatch=hatch_order[multiplier], edgecolor=bar_colors)
+        rects = ax.bar(x + offset, measurement, width, label=attribute, color=bar_color, fill=fill_order[multiplier], hatch=hatch_order[multiplier], edgecolor=bar_color)
         # ax.bar_label(rects, padding=3)
         multiplier += 1
 
@@ -2651,14 +2651,6 @@ if __name__ == '__main__':
     ax.set_title('Throughput Comparison (Prompt Length = 65536)', fontsize=20)
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
-
-    handles, labels = ax.get_legend_handles_labels()
-    handles[0].set_color('black')
-    handles[0].set_edgecolor('black')
-    handles[1].set_color('black')
-    handles[1].set_edgecolor('black')
-
-    ax.legend(handles=handles, labels=labels)
     ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, 1.2))
 
 
