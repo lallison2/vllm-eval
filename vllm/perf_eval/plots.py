@@ -2651,7 +2651,16 @@ if __name__ == '__main__':
     ax.set_title('Throughput Comparison (Prompt Length = 65536)', fontsize=20)
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
-    ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(1.5, 0.5))
+
+    handles, labels = ax.get_legend_handles_labels()
+    new_handle = handles[0].copy()
+    new_handle.set_color('black')
+    new_handle.set_edgecolor('black')
+
+    ax.legend(handles=[new_handle], labels=labels)
+    ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, 1.2))
+
+
     plt.tight_layout()
 
     plt.savefig(f"plots/throughput_comparison.png")
