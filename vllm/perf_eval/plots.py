@@ -2635,7 +2635,7 @@ if __name__ == '__main__':
     width = 0.25  # the width of the bars
     multiplier = 0
 
-    fig, ax = plt.subplots(figsize=(9, 6), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(9, 8), constrained_layout=True)
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -2656,8 +2656,8 @@ if __name__ == '__main__':
         bbox_to_anchor=(0.5, -0.35),  # below plots but inside figure
         ncol=2,
         frameon=True,
-        fontsize=16, 
-        markerscale=1.0,
+        fontsize=16, markerscale=1.0,
     )
+    fig.subplots_adjust(bottom=0.1)
 
     plt.savefig(f"plots/throughput_comparison.png")
