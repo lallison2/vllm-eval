@@ -2648,10 +2648,10 @@ if __name__ == '__main__':
         multiplier += 1
 
     ax.set_ylabel('Throughput (tokens/s)', fontsize=20)
-    ax.set_title('Model', fontsize=20)
+    ax.set_title('Throughput Comparison (Prompt Length = 65536)', fontsize=20)
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
-    ax.legend(fontsize=16, markerscale=1.0)
+    ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(1.1, 1.05))
     plt.tight_layout()
 
     plt.savefig(f"plots/throughput_comparison.png")
