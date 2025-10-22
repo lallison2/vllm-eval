@@ -2635,7 +2635,7 @@ if __name__ == '__main__':
     width = 0.25  # the width of the bars
     multiplier = 0
 
-    fig, ax = plt.subplots(figsize=(9, 6), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(9, 5), constrained_layout=True)
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
