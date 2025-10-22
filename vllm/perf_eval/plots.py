@@ -2651,7 +2651,7 @@ if __name__ == '__main__':
     ax.set_title('Throughput Comparison (Prompt Length = 65536)', fontsize=20)
     ax.set_xticks(x + width, models)
     ax.tick_params(axis='both', which='major', labelsize=18)
-    ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.75, 0.0))
+    ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.7, -0.1))
 
 
     plt.tight_layout()
