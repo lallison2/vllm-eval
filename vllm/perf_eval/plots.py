@@ -2654,6 +2654,6 @@ if __name__ == '__main__':
     ax.legend(fontsize=16, markerscale=1.0, bbox_to_anchor=(0.5, -0.15))
 
 
-    plt.tight_layout()
+    # plt.tight_layout()
 
     plt.savefig(f"plots/throughput_comparison.png")
