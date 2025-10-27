@@ -758,7 +758,16 @@ if __name__ == '__main__':
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
+    handles, labels = ax.get_legend_handles_labels()
+
     plt.savefig(f"plots/base_adapter_decode_time_prompt_len-{component}.png")
+
+    # Create a separate legend
+    fig2, ax2 = plt.subplots()
+    ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=1.0, ncol=3)
+    ax2.axis('off')  # Hide axes
+    plt.show()
+    plt.savefig(f"plots/base_adapter_prompt_len-legend.png")
 
     ###############################################
     ###############################################
@@ -1259,10 +1268,10 @@ if __name__ == '__main__':
 
     # Create a separate legend
     fig2, ax2 = plt.subplots()
-    ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=1.0)
+    ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=1.0, ncol=3)
     ax2.axis('off')  # Hide axes
     plt.show()
-    plt.savefig(f"plots/base_adapter_prompt_len-legend.png")
+    plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png")
 
     ##############################################
     ##############################################
