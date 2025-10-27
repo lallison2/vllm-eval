@@ -1380,7 +1380,7 @@ if __name__ == '__main__':
     for line in leg.legend_handles:
         line.set_linewidth(6)
     ax2.axis('off')  # Hide axes
-    plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png", bbox_inches='tight')
+    plt.savefig(f"plots/base_adapter_arrival_rate-legend.png", bbox_inches='tight')
 
     ###############################################
 
@@ -1472,7 +1472,7 @@ if __name__ == '__main__':
     for line in leg.legend_handles:
         line.set_linewidth(6)
     ax2.axis('off')  # Hide axes
-    plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png", bbox_inches='tight')
+    plt.savefig(f"plots/base_adapter_arrival_rate_speedup-legend.png", bbox_inches='tight')
 
     ###############################################
     ###############################################
