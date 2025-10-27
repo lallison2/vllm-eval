@@ -763,10 +763,10 @@ if __name__ == '__main__':
     plt.savefig(f"plots/base_adapter_decode_time_prompt_len-{component}.png")
 
     # Create a separate legend
-    fig2, ax2 = plt.subplots(constrained_layout=True)
+    fig2, ax2 = plt.subplots()
     ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=1.0, ncol=3)
     ax2.axis('off')  # Hide axes
-    plt.savefig(f"plots/base_adapter_prompt_len-legend.png")
+    plt.savefig(f"plots/base_adapter_prompt_len-legend.png", bbox_inches='tight')
 
     ###############################################
     ###############################################
@@ -1266,10 +1266,10 @@ if __name__ == '__main__':
     plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_prompt_len-{component}.png")
 
     # Create a separate legend
-    fig2, ax2 = plt.subplots(constrained_layout=True)
+    fig2, ax2 = plt.subplots()
     ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=1.0, ncol=3)
     ax2.axis('off')  # Hide axes
-    plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png")
+    plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png", bbox_inches='tight')
 
     ##############################################
     ##############################################
