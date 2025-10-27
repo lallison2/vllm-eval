@@ -766,7 +766,7 @@ if __name__ == '__main__':
     fig2, ax2 = plt.subplots()
     ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=1.0, ncol=3)
     ax2.axis('off')  # Hide axes
-    plt.show()
+    plt.tight_layout()
     plt.savefig(f"plots/base_adapter_prompt_len-legend.png")
 
     ###############################################
@@ -1270,7 +1270,7 @@ if __name__ == '__main__':
     fig2, ax2 = plt.subplots()
     ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=1.0, ncol=3)
     ax2.axis('off')  # Hide axes
-    plt.show()
+    plt.tight_layout()
     plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png")
 
     ##############################################
