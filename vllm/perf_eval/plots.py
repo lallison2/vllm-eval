@@ -765,7 +765,7 @@ if __name__ == '__main__':
     # Create a separate legend
     fig2, ax2 = plt.subplots()
     leg = ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=2.0, ncol=3)
-    for line in leg.legendHandles:
+    for line in leg.legend_handles:
         line.set_linewidth(6)
     ax2.axis('off')  # Hide axes
     plt.savefig(f"plots/base_adapter_prompt_len-legend.png", bbox_inches='tight')
@@ -1270,7 +1270,7 @@ if __name__ == '__main__':
     # Create a separate legend
     fig2, ax2 = plt.subplots()
     leg = ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=2.0, ncol=3)
-    for line in leg.legendHandles:
+    for line in leg.legend_handles:
         line.set_linewidth(6)
     ax2.axis('off')  # Hide axes
     plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png", bbox_inches='tight')
