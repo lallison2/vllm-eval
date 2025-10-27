@@ -1457,7 +1457,7 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=20)
     ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title("Evaluation Speedup\n(Async) (LoRA / aLoRA)", fontsize=20)
+    ax.set_title("Evaluation Speedup\n(Async) (LoRA / aLoRA)\nPrompt Length = 512", fontsize=20)
     # ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
