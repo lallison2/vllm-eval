@@ -144,7 +144,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Latency (s)", fontsize=20)
     # ax.set_title(f"Evaluation E2E Latency Comparison\n(Base-Adapter)", fontsize=20)
     # # # ax.legend(fontsize=10, markerscale=1.0)
@@ -261,7 +261,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Latency (s)", fontsize=20)
     # ax.set_title(f"Evaluation TTFT Comparison\n(Base-Adapter)", fontsize=20)
     # # # ax.legend(fontsize=10, markerscale=1.0)
@@ -378,7 +378,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Latency (s)", fontsize=20)
     # ax.set_title(f"Evaluation Queue Time Comparison\n(Base-Adapter)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -495,7 +495,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Latency (s)", fontsize=20)
     # ax.set_title(f"Evaluation Inference Time Comparison\n(Base-Adapter)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -612,7 +612,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Latency (s)", fontsize=20)
     # ax.set_title(f"Evaluation Prefill Time Comparison\n(Base-Adapter)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -729,7 +729,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Latency (s)", fontsize=20)
     # ax.set_title(f"Evaluation Decode Time Comparison\n(Base-Adapter)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -823,7 +823,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Speedup", fontsize=20)
     # ax.set_title(f"Evaluation E2E Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -905,7 +905,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Speedup", fontsize=20)
     # ax.set_title(f"Evaluation TTFT Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -987,7 +987,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Speedup", fontsize=20)
     # ax.set_title(f"Evaluation Queue Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -1070,7 +1070,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Speedup", fontsize=20)
     # ax.set_title(f"Evaluation Inference Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -1152,7 +1152,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Speedup", fontsize=20)
     # ax.set_title(f"Evaluation Prefill Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -1234,7 +1234,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Speedup", fontsize=20)
     # ax.set_title(f"Evaluation Decode Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -1368,7 +1368,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Latency (s)", fontsize=20)
     # ax.set_title("Evaluation Latency Comparison (Base-Adapter", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -1458,7 +1458,7 @@ if __name__ == '__main__':
     #     alpha=0.7,
     # )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_xlabel("Generation Length", fontsize=20)
     # ax.set_ylabel("Speedup", fontsize=20)
     # ax.set_title("Evaluation Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
@@ -1566,7 +1566,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_alora_metric_vals, 
             linewidth=3,
             label='rank-32 aLoRA', 
@@ -1577,7 +1577,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_lora_metric_vals, 
             linewidth=3,
             label='rank-8 LoRA', 
@@ -1606,7 +1606,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Latency (s)", fontsize=20)
     ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=20, markerscale=1.0)
@@ -1624,7 +1624,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
     ax.set_ylim(1.0, 1.2)
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
             linewidth=3,
             marker='D', 
@@ -1652,7 +1652,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Speedup", fontsize=20)
     ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=20)
@@ -1670,7 +1670,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_alora_metric_vals_gen_2, 
             linewidth=3,
             label='rank-32 aLoRA', 
@@ -1681,7 +1681,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_lora_metric_vals_gen_2, 
             linewidth=3,
             label='rank-8 LoRA', 
@@ -1710,7 +1710,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Latency (s)", fontsize=20)
     ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=20, markerscale=1.0)
@@ -1728,7 +1728,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
     ax.set_ylim(1.0, 22.0)
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)],  
             linewidth=3,
             marker='D', 
@@ -1756,7 +1756,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Speedup", fontsize=20)
     ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=20)
@@ -1774,7 +1774,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_alora_metric_vals_eval, 
             linewidth=3,
             label='rank-32 aLoRA', 
@@ -1785,7 +1785,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_lora_metric_vals_eval, 
             linewidth=3,
             label='rank-8 LoRA', 
@@ -1814,7 +1814,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Latency (s)", fontsize=20)
     ax.set_title(f"Adapter Evaluation Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=20, markerscale=1.0)
@@ -1832,7 +1832,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
     ax.set_ylim(1.0, 25.0)
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             [a / b for a, b in zip(granite_lora_metric_vals_eval, granite_alora_metric_vals_eval)],  
             linewidth=3,
             marker='D', 
@@ -1860,7 +1860,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Speedup", fontsize=20)
     ax.set_title("Adapter Evaluation Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=20)
@@ -1881,7 +1881,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_alora_metric_vals_eval_gen_2, 
             linewidth=3,
             label='rank-32 aLoRA', 
@@ -1892,7 +1892,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_lora_metric_vals_eval_gen_2, 
             linewidth=3,
             label='rank-8 LoRA', 
@@ -1921,7 +1921,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Latency (s)", fontsize=20)
     ax.set_title(f"Eval + Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=20, markerscale=1.0)
@@ -1939,7 +1939,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
     ax.set_ylim(1.0, 25.0)
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             [a / b for a, b in zip(granite_lora_metric_vals_eval_gen_2, granite_alora_metric_vals_eval_gen_2)], 
             linewidth=3,
             marker='D', 
@@ -1967,7 +1967,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Speedup", fontsize=20)
     ax.set_title("Eval + Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
     ax.tick_params(axis='both', which='major', labelsize=20)
@@ -1990,7 +1990,7 @@ if __name__ == '__main__':
     ax.xaxis.set_major_locator(LogLocator(base=10.0))
     ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_alora_metric_vals_gen_2_queue, 
             linewidth=3,
             label='rank-32 aLoRA', 
@@ -2001,7 +2001,7 @@ if __name__ == '__main__':
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
-    ax.plot(prompt_lens, 
+    ax.plot(gen_lens,
             granite_lora_metric_vals_gen_2_queue, 
             linewidth=3,
             label='rank-8 LoRA', 
@@ -2030,7 +2030,7 @@ if __name__ == '__main__':
         alpha=0.7,
     )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_xlabel("Generation Length", fontsize=20)
     ax.set_ylabel("Latency (s)", fontsize=20)
     ax.set_title(f"Second Base Call Queue Time Comparison\n(Base-Adapter-Base)", fontsize=20)
     ax.legend(fontsize=20, markerscale=1.0)
