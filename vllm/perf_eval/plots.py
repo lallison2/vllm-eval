@@ -1262,6 +1262,7 @@ if __name__ == '__main__':
     ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=1.0)
     ax2.axis('off')  # Hide axes
     plt.show()
+    plt.savefig(f"plots/base_adapter_prompt_len-legend.png")
 
     ##############################################
     ##############################################
