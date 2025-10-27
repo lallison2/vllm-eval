@@ -38,1220 +38,1220 @@ def extract_metrics_from_files(target_metric, is_alora=False, path_prefix="", co
 
 if __name__ == '__main__':
     
-    target_metric = "vllm:e2e_request_latency_seconds_sum"
+    # target_metric = "vllm:e2e_request_latency_seconds_sum"
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
 
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(8, 8))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens,
-            granite_alora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(prompt_lens,
-            granite_lora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens,
+    #         granite_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+    # ax.plot(prompt_lens,
+    #         granite_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
 
-    ax.plot(prompt_lens, 
-            llama_alora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
-    ax.plot(prompt_lens, 
-            llama_lora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         llama_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         llama_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            mistral_alora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    ax.plot(prompt_lens, 
-            mistral_lora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
+    # ax.plot(prompt_lens, 
+    #         mistral_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         mistral_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Evaluation E2E Latency Comparison\n(Base-Adapter)", fontsize=20)
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Evaluation E2E Latency Comparison\n(Base-Adapter)", fontsize=20)
+    # # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
+
+    # plt.savefig(f"plots/base_adapter_e2e_latency_prompt_len-{component}.png")
+
+    # ###############################################
+
+    # target_metric = "vllm:time_to_first_token_seconds_sum"
+
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")    
+
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
+    # fig, ax = plt.subplots(figsize=(8, 8))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(prompt_lens,
+    #         granite_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+    # ax.plot(prompt_lens,
+    #         granite_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+
+    # ax.plot(prompt_lens, 
+    #         llama_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         llama_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#cdb38f",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#cdb38f',
+    #         )
+    
+    # ax.plot(prompt_lens, 
+    #         mistral_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         mistral_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#77a988",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#77a988',
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Evaluation TTFT Comparison\n(Base-Adapter)", fontsize=20)
+    # # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
+
+    # plt.savefig(f"plots/base_adapter_ttft_latency_prompt_len-{component}.png")
+
+    # ###############################################
+
+    # target_metric = "vllm:request_queue_time_seconds_sum"
+
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
+    # fig, ax = plt.subplots(figsize=(8, 8))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(prompt_lens,
+    #         granite_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+    # ax.plot(prompt_lens,
+    #         granite_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+
+    # ax.plot(prompt_lens, 
+    #         llama_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         llama_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
+    
+    # ax.plot(prompt_lens, 
+    #         mistral_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         mistral_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
+    
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Evaluation Queue Time Comparison\n(Base-Adapter)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_e2e_latency_prompt_len-{component}.png")
+    # plt.savefig(f"plots/base_adapter_queue_time_prompt_len-{component}.png")
 
-    ###############################################
+    # ###############################################
 
-    target_metric = "vllm:time_to_first_token_seconds_sum"
+    # target_metric = "vllm:request_inference_time_seconds_sum"
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")    
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
 
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(8, 8))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens,
-            granite_alora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(prompt_lens,
-            granite_lora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens,
+    #         granite_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+    # ax.plot(prompt_lens,
+    #         granite_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
 
-    ax.plot(prompt_lens, 
-            llama_alora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
-    ax.plot(prompt_lens, 
-            llama_lora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#cdb38f",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         llama_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         llama_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            mistral_alora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    ax.plot(prompt_lens, 
-            mistral_lora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#77a988",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#77a988',
-            )
+    # ax.plot(prompt_lens, 
+    #         mistral_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         mistral_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Evaluation TTFT Comparison\n(Base-Adapter)", fontsize=20)
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Evaluation Inference Time Comparison\n(Base-Adapter)", fontsize=20)
     # # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_ttft_latency_prompt_len-{component}.png")
+    # plt.savefig(f"plots/base_adapter_inference_time_prompt_len-{component}.png")
 
-    ###############################################
+    # ###############################################
 
-    target_metric = "vllm:request_queue_time_seconds_sum"
+    # target_metric = "vllm:request_prefill_time_seconds_sum"
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
 
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(8, 8))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens,
-            granite_alora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(prompt_lens,
-            granite_lora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens,
+    #         granite_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+    # ax.plot(prompt_lens,
+    #         granite_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
 
-    ax.plot(prompt_lens, 
-            llama_alora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
-    ax.plot(prompt_lens, 
-            llama_lora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         llama_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         llama_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            mistral_alora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    ax.plot(prompt_lens, 
-            mistral_lora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
+    # ax.plot(prompt_lens, 
+    #         mistral_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         mistral_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Evaluation Queue Time Comparison\n(Base-Adapter)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Evaluation Prefill Time Comparison\n(Base-Adapter)", fontsize=20)
+    # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_queue_time_prompt_len-{component}.png")
+    # plt.savefig(f"plots/base_adapter_prefill_time_prompt_len-{component}.png")
 
-    ###############################################
+    # ###############################################
 
-    target_metric = "vllm:request_inference_time_seconds_sum"
+    # target_metric = "vllm:request_decode_time_seconds_sum"
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
 
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(8, 8))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_yscale('log')
+    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens,
-            granite_alora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(prompt_lens,
-            granite_lora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens,
+    #         granite_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
+    # ax.plot(prompt_lens,
+    #         granite_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
 
-    ax.plot(prompt_lens, 
-            llama_alora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
-    ax.plot(prompt_lens, 
-            llama_lora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         llama_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         llama_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            mistral_alora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    ax.plot(prompt_lens, 
-            mistral_lora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
+    # ax.plot(prompt_lens, 
+    #         mistral_alora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
+    # ax.plot(prompt_lens, 
+    #         mistral_lora_metric_vals, 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle=':',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
+
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Latency (s)", fontsize=20)
+    # ax.set_title(f"Evaluation Decode Time Comparison\n(Base-Adapter)", fontsize=20)
+    # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
+
+    # handles, labels = ax.get_legend_handles_labels()
+
+    # plt.savefig(f"plots/base_adapter_decode_time_prompt_len-{component}.png")
+
+    # # Create a separate legend
+    # fig2, ax2 = plt.subplots()
+    # leg = ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=2.0, ncol=3)
+    # for line in leg.legend_handles:
+    #     line.set_linewidth(6)
+    # ax2.axis('off')  # Hide axes
+    # plt.savefig(f"plots/base_adapter_prompt_len-legend.png", bbox_inches='tight')
+
+    # ###############################################
+    # ###############################################
+    # ###############################################
+
+    # target_metric = "vllm:e2e_request_latency_seconds_sum"
+
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
+    # fig, ax = plt.subplots(figsize=(8, 8))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(prompt_lens,
+    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Evaluation Inference Time Comparison\n(Base-Adapter)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
-
-    plt.savefig(f"plots/base_adapter_inference_time_prompt_len-{component}.png")
-
-    ###############################################
-
-    target_metric = "vllm:request_prefill_time_seconds_sum"
-
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-
-    fig, ax = plt.subplots(figsize=(8, 8))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(prompt_lens,
-            granite_alora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(prompt_lens,
-            granite_lora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-
-    ax.plot(prompt_lens, 
-            llama_alora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
-    ax.plot(prompt_lens, 
-            llama_lora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            mistral_alora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    ax.plot(prompt_lens, 
-            mistral_lora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)],
+    #         linewidth=3, 
+    #         label='mistralai/Mistral-Large-Instruct-2407', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Evaluation Prefill Time Comparison\n(Base-Adapter)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title(f"Evaluation E2E Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
+    # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_prefill_time_prompt_len-{component}.png")
+    # plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_prompt_len-{component}.png")
 
-    ###############################################
+    # ###############################################
 
-    target_metric = "vllm:request_decode_time_seconds_sum"
+    # target_metric = "vllm:time_to_first_token_seconds_sum"
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
 
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
 
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(8, 8))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_yscale('log')
-    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    ax.plot(prompt_lens,
-            granite_alora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    ax.plot(prompt_lens,
-            granite_lora_metric_vals, 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-
-    ax.plot(prompt_lens, 
-            llama_alora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
-    ax.plot(prompt_lens, 
-            llama_lora_metric_vals, 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens,
+    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
     
-    ax.plot(prompt_lens, 
-            mistral_alora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    ax.plot(prompt_lens, 
-            mistral_lora_metric_vals, 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Latency (s)", fontsize=20)
-    ax.set_title(f"Evaluation Decode Time Comparison\n(Base-Adapter)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
-
-    handles, labels = ax.get_legend_handles_labels()
-
-    plt.savefig(f"plots/base_adapter_decode_time_prompt_len-{component}.png")
-
-    # Create a separate legend
-    fig2, ax2 = plt.subplots()
-    leg = ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=2.0, ncol=3)
-    for line in leg.legend_handles:
-        line.set_linewidth(6)
-    ax2.axis('off')  # Hide axes
-    plt.savefig(f"plots/base_adapter_prompt_len-legend.png", bbox_inches='tight')
-
-    ###############################################
-    ###############################################
-    ###############################################
-
-    target_metric = "vllm:e2e_request_latency_seconds_sum"
-
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-
-    fig, ax = plt.subplots(figsize=(8, 8))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(prompt_lens,
-            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)],
-            linewidth=3, 
-            label='mistralai/Mistral-Large-Instruct-2407', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title(f"Evaluation TTFT Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
+    # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
+
+    # plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_prompt_len-{component}.png")
+
+    # ###############################################
+
+    # target_metric = "vllm:request_queue_time_seconds_sum"
+
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
+    # fig, ax = plt.subplots(figsize=(8, 8))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(prompt_lens,
+    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Evaluation E2E Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
-
-    plt.savefig(f"plots/base_adapter_e2e_latency_speedup_factor_prompt_len-{component}.png")
-
-    ###############################################
-
-    target_metric = "vllm:time_to_first_token_seconds_sum"
-
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-
-    fig, ax = plt.subplots(figsize=(8, 8))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(prompt_lens,
-            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)],
+    #         linewidth=3, 
+    #         label='mistralai/Mistral-Large-Instruct-2407', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title(f"Evaluation Queue Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
+    # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # ax.yaxis.get_offset_text().set_fontsize(16)
+    # plt.tight_layout()
+
+    # plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_prompt_len-{component}.png")
+
+    # ###############################################
+
+    # target_metric = "vllm:request_inference_time_seconds_sum"
+
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
+    # fig, ax = plt.subplots(figsize=(8, 8))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(prompt_lens,
+    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)],
+    #         linewidth=3, 
+    #         label='ibm-granite/granite-3.2-8b-instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Evaluation TTFT Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
-
-    plt.savefig(f"plots/base_adapter_ttft_latency_speedup_factor_prompt_len-{component}.png")
-
-    ###############################################
-
-    target_metric = "vllm:request_queue_time_seconds_sum"
-
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-
-    fig, ax = plt.subplots(figsize=(8, 8))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(prompt_lens,
-            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)],
+    #         linewidth=3, 
+    #         label='mistralai/Mistral-Large-Instruct-2407', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)],
-            linewidth=3, 
-            label='mistralai/Mistral-Large-Instruct-2407', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title(f"Evaluation Inference Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
+    # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
+
+    # plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_prompt_len-{component}.png")
+
+    # ###############################################
+
+    # target_metric = "vllm:request_prefill_time_seconds_sum"
+
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
+    # fig, ax = plt.subplots(figsize=(8, 8))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(prompt_lens,
+    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Evaluation Queue Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    ax.yaxis.get_offset_text().set_fontsize(16)
-    plt.tight_layout()
-
-    plt.savefig(f"plots/base_adapter_queue_time_speedup_factor_prompt_len-{component}.png")
-
-    ###############################################
-
-    target_metric = "vllm:request_inference_time_seconds_sum"
-
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-
-    fig, ax = plt.subplots(figsize=(8, 8))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(prompt_lens,
-            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)],
-            linewidth=3, 
-            label='ibm-granite/granite-3.2-8b-instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)],
-            linewidth=3, 
-            label='mistralai/Mistral-Large-Instruct-2407', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title(f"Evaluation Prefill Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
+    # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
+
+    # plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_prompt_len-{component}.png")
+
+    # ###############################################
+
+    # target_metric = "vllm:request_decode_time_seconds_sum"
+
+    # granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+    # granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
+
+    # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+    # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
+
+    # mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+    # mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
+
+    # fig, ax = plt.subplots(figsize=(8, 8))
+
+    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    # ax.set_xscale('log')
+    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+
+    # ax.plot(prompt_lens,
+    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='ibm-granite/granite-3.2-8b-instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#6675A9",
+    #         markerfacecolor='#6675A9',
+    #         markeredgecolor='#6675A9',
+    #         )
     
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Evaluation Inference Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
-
-    plt.savefig(f"plots/base_adapter_inference_time_speedup_factor_prompt_len-{component}.png")
-
-    ###############################################
-
-    target_metric = "vllm:request_prefill_time_seconds_sum"
-
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-
-    fig, ax = plt.subplots(figsize=(8, 8))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(prompt_lens,
-            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='meta-llama/Llama-3.3-70B-Instruct', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#cdb38f",
+    #         markerfacecolor='#cdb38f',
+    #         markeredgecolor='#cdb38f',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
+    # ax.plot(prompt_lens, 
+    #         [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
+    #         linewidth=3,
+    #         label='mistralai/Mistral-Large-Instruct-2407', 
+    #         marker='D', 
+    #         markersize=6,
+    #         linestyle='-',
+    #         color="#77a988",
+    #         markerfacecolor='#77a988',
+    #         markeredgecolor='#77a988',
+    #         )
     
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
+    # ax.grid(
+    #     axis='x',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
+    # ax.grid(
+    #     axis='y',
+    #     which='major',
+    #     linestyle='-',
+    #     linewidth=0.5,
+    #     color='gray',
+    #     alpha=0.7,
+    # )
 
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Evaluation Prefill Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
+    # ax.set_xlabel("Prompt Length", fontsize=20)
+    # ax.set_ylabel("Speedup", fontsize=20)
+    # ax.set_title(f"Evaluation Decode Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
+    # # ax.legend(fontsize=10, markerscale=1.0)
+    # ax.tick_params(axis='both', which='major', labelsize=16)
+    # plt.tight_layout()
 
-    plt.savefig(f"plots/base_adapter_prefill_time_speedup_factor_prompt_len-{component}.png")
+    # handles, labels = ax.get_legend_handles_labels()
 
-    ###############################################
+    # plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_prompt_len-{component}.png")
 
-    target_metric = "vllm:request_decode_time_seconds_sum"
-
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter/varying_prompt_len/fixed_batch_size/", path_suffix="")
-
-    llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-    llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_prompt_len/")
-
-    mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-    mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
-
-    fig, ax = plt.subplots(figsize=(8, 8))
-
-    from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    ax.set_xscale('log')
-    ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-
-    ax.plot(prompt_lens,
-            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-            linewidth=3,
-            label='ibm-granite/granite-3.2-8b-instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#6675A9",
-            markerfacecolor='#6675A9',
-            markeredgecolor='#6675A9',
-            )
-    
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(llama_lora_metric_vals, llama_alora_metric_vals)], 
-            linewidth=3,
-            label='meta-llama/Llama-3.3-70B-Instruct', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#cdb38f",
-            markerfacecolor='#cdb38f',
-            markeredgecolor='#cdb38f',
-            )
-    
-    ax.plot(prompt_lens, 
-            [a / b for a, b in zip(mistral_lora_metric_vals, mistral_alora_metric_vals)], 
-            linewidth=3,
-            label='mistralai/Mistral-Large-Instruct-2407', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
-            markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    
-    ax.grid(
-        axis='x',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-    ax.grid(
-        axis='y',
-        which='major',
-        linestyle='-',
-        linewidth=0.5,
-        color='gray',
-        alpha=0.7,
-    )
-
-    ax.set_xlabel("Prompt Length", fontsize=20)
-    ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title(f"Evaluation Decode Time Speedup\n(Base-Adapter) (LoRA / aLoRA)", fontsize=20)
-    # ax.legend(fontsize=10, markerscale=1.0)
-    ax.tick_params(axis='both', which='major', labelsize=16)
-    plt.tight_layout()
-
-    handles, labels = ax.get_legend_handles_labels()
-
-    plt.savefig(f"plots/base_adapter_decode_time_speedup_factor_prompt_len-{component}.png")
-
-    # Create a separate legend
-    fig2, ax2 = plt.subplots()
-    leg = ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=2.0, ncol=3)
-    for line in leg.legend_handles:
-        line.set_linewidth(6)
-    ax2.axis('off')  # Hide axes
-    plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png", bbox_inches='tight')
+    # # Create a separate legend
+    # fig2, ax2 = plt.subplots()
+    # leg = ax2.legend(handles, labels, loc='center', fontsize=20, markerscale=2.0, ncol=3)
+    # for line in leg.legend_handles:
+    #     line.set_linewidth(6)
+    # ax2.axis('off')  # Hide axes
+    # plt.savefig(f"plots/base_adapter_prompt_len_speedup-legend.png", bbox_inches='tight')
 
     ##############################################
     ##############################################
@@ -1543,500 +1543,514 @@ if __name__ == '__main__':
     #######################################
 
 
-    # target_metric = "vllm:e2e_request_latency_seconds_sum"
+    target_metric = "vllm:e2e_request_latency_seconds_sum"
     
-    # granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
-    # granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_1")
+    granite_alora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_1")
+    granite_lora_metric_vals_gen_1 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_1")
     
-    # granite_alora_metric_vals_eval = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
-    # granite_lora_metric_vals_eval = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="eval")
+    granite_alora_metric_vals_eval = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="eval")
+    granite_lora_metric_vals_eval = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="eval")
 
-    # granite_alora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
-    # granite_lora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
+    granite_alora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+    granite_lora_metric_vals_gen_2 = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
 
-    # granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
-    # granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
+    granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
+    granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_yscale('log')
-    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(prompt_lens, 
-    #         granite_alora_metric_vals, 
-    #         label='rank-32 aLoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
-    # ax.plot(prompt_lens, 
-    #         granite_lora_metric_vals, 
-    #         label='rank-8 LoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            granite_alora_metric_vals, 
+            linewidth=3,
+            label='rank-32 aLoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    ax.plot(prompt_lens, 
+            granite_lora_metric_vals, 
+            linewidth=3,
+            label='rank-8 LoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Latency (s)", fontsize=20)
-    # ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    # ax.legend(fontsize=20, markerscale=1.0)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"E2E Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    ax.legend(fontsize=20, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-all.png")
+    plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-all.png")
 
-    # #######################################
+    #######################################
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    # ax.set_ylim(1.0, 1.2)
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    ax.set_ylim(1.0, 1.2)
 
-    # ax.plot(prompt_lens, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            [a / b for a, b in zip(granite_lora_metric_vals, granite_alora_metric_vals)], 
+            linewidth=3,
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Speedup", fontsize=20)
-    # ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
+    ax.set_title("E2E Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-all.png")
+    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-all.png")
 
-    # #######################################
+    #######################################
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_yscale('log')
-    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(prompt_lens, 
-    #         granite_alora_metric_vals_gen_2, 
-    #         label='rank-32 aLoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
-    # ax.plot(prompt_lens, 
-    #         granite_lora_metric_vals_gen_2, 
-    #         label='rank-8 LoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            granite_alora_metric_vals_gen_2, 
+            linewidth=3,
+            label='rank-32 aLoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    ax.plot(prompt_lens, 
+            granite_lora_metric_vals_gen_2, 
+            linewidth=3,
+            label='rank-8 LoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Latency (s)", fontsize=20)
-    # ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    # ax.legend(fontsize=20, markerscale=1.0)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    ax.legend(fontsize=20, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-gen_2.png")
+    plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-gen_2.png")
 
-    # #######################################
+    #######################################
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    # ax.set_ylim(1.0, 22.0)
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    ax.set_ylim(1.0, 22.0)
 
-    # ax.plot(prompt_lens, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)],  
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            [a / b for a, b in zip(granite_lora_metric_vals_gen_2, granite_alora_metric_vals_gen_2)],  
+            linewidth=3,
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Speedup", fontsize=20)
-    # ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
+    ax.set_title("Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-gen_2.png")
+    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-gen_2.png")
 
-    # #######################################
+    #######################################
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_yscale('log')
-    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(prompt_lens, 
-    #         granite_alora_metric_vals_eval, 
-    #         label='rank-32 aLoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
-    # ax.plot(prompt_lens, 
-    #         granite_lora_metric_vals_eval, 
-    #         label='rank-8 LoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            granite_alora_metric_vals_eval, 
+            linewidth=3,
+            label='rank-32 aLoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    ax.plot(prompt_lens, 
+            granite_lora_metric_vals_eval, 
+            linewidth=3,
+            label='rank-8 LoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Latency (s)", fontsize=20)
-    # ax.set_title(f"Adapter Evaluation Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    # ax.legend(fontsize=20, markerscale=1.0)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"Adapter Evaluation Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    ax.legend(fontsize=20, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-eval.png")
+    plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-eval.png")
 
-    # #######################################
+    #######################################
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    # ax.set_ylim(1.0, 25.0)
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    ax.set_ylim(1.0, 25.0)
 
-    # ax.plot(prompt_lens, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals_eval, granite_alora_metric_vals_eval)],  
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            [a / b for a, b in zip(granite_lora_metric_vals_eval, granite_alora_metric_vals_eval)],  
+            linewidth=3,
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Speedup", fontsize=20)
-    # ax.set_title("Adapter Evaluation Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
+    ax.set_title("Adapter Evaluation Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-eval.png")
+    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-eval.png")
 
-    # #######################################
+    #######################################
 
-    # granite_alora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
-    # granite_lora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
+    granite_alora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
+    granite_lora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_yscale('log')
-    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(prompt_lens, 
-    #         granite_alora_metric_vals_eval_gen_2, 
-    #         label='rank-32 aLoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
-    # ax.plot(prompt_lens, 
-    #         granite_lora_metric_vals_eval_gen_2, 
-    #         label='rank-8 LoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            granite_alora_metric_vals_eval_gen_2, 
+            linewidth=3,
+            label='rank-32 aLoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    ax.plot(prompt_lens, 
+            granite_lora_metric_vals_eval_gen_2, 
+            linewidth=3,
+            label='rank-8 LoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Latency (s)", fontsize=20)
-    # ax.set_title(f"Eval + Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
-    # ax.legend(fontsize=20, markerscale=1.0)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"Eval + Second Base Call Latency Comparison\n(Base-Adapter-Base)", fontsize=20)
+    ax.legend(fontsize=20, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-eval+gen2.png")
+    plt.savefig(f"plots/base_adapter_base_e2e_latency_prompt_len-eval+gen2.png")
 
-    # #######################################
+    #######################################
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
-    # ax.set_ylim(1.0, 25.0)
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    ax.set_ylim(1.0, 25.0)
 
-    # ax.plot(prompt_lens, 
-    #         [a / b for a, b in zip(granite_lora_metric_vals_eval_gen_2, granite_alora_metric_vals_eval_gen_2)], 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            [a / b for a, b in zip(granite_lora_metric_vals_eval_gen_2, granite_alora_metric_vals_eval_gen_2)], 
+            linewidth=3,
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Speedup", fontsize=20)
-    # ax.set_title("Eval + Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Speedup", fontsize=20)
+    ax.set_title("Eval + Second Base Call Speedup\n(Base-Adapter-Base) (LoRA / aLoRA)", fontsize=20)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-eval+gen_2.png")
+    plt.savefig("plots/base_adapter_base_e2e_latency_speedup_factor_prompt_len-eval+gen_2.png")
 
-    # #######################################
+    #######################################
 
-    # target_metric = "vllm:request_queue_time_seconds_sum"
+    target_metric = "vllm:request_queue_time_seconds_sum"
 
-    # granite_alora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
-    # granite_lora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
+    granite_alora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=True, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
+    granite_lora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="gen_len", is_alora=False, path_prefix="results/base_adapter_base/varying_gen_len_fixed_batch/5_adapters/post-fix/", path_suffix="_granite_5_adapters", component="gen_2")
 
-    # fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
-    # from matplotlib.ticker import LogLocator, LogFormatterMathtext
-    # ax.set_yscale('log')
-    # ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
-    # ax.set_xscale('log')
-    # ax.xaxis.set_major_locator(LogLocator(base=10.0))
-    # ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
+    from matplotlib.ticker import LogLocator, LogFormatterMathtext
+    ax.set_yscale('log')
+    ax.yaxis.set_major_formatter(LogFormatterMathtext(base=10))
+    ax.set_xscale('log')
+    ax.xaxis.set_major_locator(LogLocator(base=10.0))
+    ax.xaxis.set_major_formatter(LogFormatterMathtext(base=10.0))
 
-    # ax.plot(prompt_lens, 
-    #         granite_alora_metric_vals_gen_2_queue, 
-    #         label='rank-32 aLoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle='-',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
-    # ax.plot(prompt_lens, 
-    #         granite_lora_metric_vals_gen_2_queue, 
-    #         label='rank-8 LoRA', 
-    #         marker='D', 
-    #         markersize=6,
-    #         linestyle=':',
-    #         color="#6675A9",
-    #         markerfacecolor='#6675A9',
-    #         markeredgecolor='#6675A9',
-    #         linewidth=3,
-    #         )
+    ax.plot(prompt_lens, 
+            granite_alora_metric_vals_gen_2_queue, 
+            linewidth=3,
+            label='rank-32 aLoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle='-',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
+    ax.plot(prompt_lens, 
+            granite_lora_metric_vals_gen_2_queue, 
+            linewidth=3,
+            label='rank-8 LoRA', 
+            marker='D', 
+            markersize=6,
+            linestyle=':',
+            color="#6675A9",
+            markerfacecolor='#6675A9',
+            markeredgecolor='#6675A9',
+            linewidth=3,
+            )
     
-    # ax.grid(
-    #     axis='x',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
-    # ax.grid(
-    #     axis='y',
-    #     which='major',
-    #     linestyle='-',
-    #     linewidth=0.5,
-    #     color='gray',
-    #     alpha=0.7,
-    # )
+    ax.grid(
+        axis='x',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
+    ax.grid(
+        axis='y',
+        which='major',
+        linestyle='-',
+        linewidth=0.5,
+        color='gray',
+        alpha=0.7,
+    )
 
-    # ax.set_xlabel("Prompt Length", fontsize=20)
-    # ax.set_ylabel("Latency (s)", fontsize=20)
-    # ax.set_title(f"Second Base Call Queue Time Comparison\n(Base-Adapter-Base)", fontsize=20)
-    # ax.legend(fontsize=20, markerscale=1.0)
-    # ax.tick_params(axis='both', which='major', labelsize=20)
+    ax.set_xlabel("Prompt Length", fontsize=20)
+    ax.set_ylabel("Latency (s)", fontsize=20)
+    ax.set_title(f"Second Base Call Queue Time Comparison\n(Base-Adapter-Base)", fontsize=20)
+    ax.legend(fontsize=20, markerscale=1.0)
+    ax.tick_params(axis='both', which='major', labelsize=20)
 
-    # plt.savefig(f"plots/base_adapter_base_queue_time_prompt_len-gen2.png")
+    plt.savefig(f"plots/base_adapter_base_queue_time_prompt_len-gen2.png")
 
     #################################
     #################################
