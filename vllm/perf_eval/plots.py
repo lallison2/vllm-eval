@@ -153,7 +153,6 @@ if __name__ == '__main__':
 
     plt.savefig(f"plots/base_adapter_e2e_latency_prompt_len-{component}.png")
 
-
     ###############################################
 
     target_metric = "vllm:time_to_first_token_seconds_sum"
