@@ -49,7 +49,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -167,7 +167,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -284,7 +284,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -401,7 +401,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -518,7 +518,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -656,7 +656,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_yscale('log')
@@ -775,7 +775,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
@@ -857,7 +857,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
@@ -939,7 +939,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
@@ -1022,7 +1022,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
@@ -1104,7 +1104,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
@@ -1186,7 +1186,7 @@ if __name__ == '__main__':
     mistral_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
     mistral_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/multi_gpu/mistral_large/varying_prompt_len/")
 
-    fig, ax = plt.subplots(figsize=(9, 7))
+    fig, ax = plt.subplots(figsize=(8, 8))
 
     from matplotlib.ticker import LogLocator, LogFormatterMathtext
     ax.set_xscale('log')
@@ -1568,7 +1568,7 @@ if __name__ == '__main__':
     # granite_alora_metric_vals = [a + b + c for a, b, c in zip(granite_alora_metric_vals_gen_1, granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
     # granite_lora_metric_vals = [a + b + c for a, b, c in zip(granite_lora_metric_vals_gen_1, granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_yscale('log')
@@ -1627,7 +1627,7 @@ if __name__ == '__main__':
 
     # #######################################
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_xscale('log')
@@ -1672,7 +1672,7 @@ if __name__ == '__main__':
 
     # #######################################
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_yscale('log')
@@ -1731,7 +1731,7 @@ if __name__ == '__main__':
 
     # #######################################
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_xscale('log')
@@ -1776,7 +1776,7 @@ if __name__ == '__main__':
 
     # #######################################
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_yscale('log')
@@ -1835,7 +1835,7 @@ if __name__ == '__main__':
 
     # #######################################
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_xscale('log')
@@ -1883,7 +1883,7 @@ if __name__ == '__main__':
     # granite_alora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_alora_metric_vals_eval, granite_alora_metric_vals_gen_2)]
     # granite_lora_metric_vals_eval_gen_2 = [b + c for b, c in zip(granite_lora_metric_vals_eval, granite_lora_metric_vals_gen_2)]
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_yscale('log')
@@ -1942,7 +1942,7 @@ if __name__ == '__main__':
 
     # #######################################
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_xscale('log')
@@ -1992,7 +1992,7 @@ if __name__ == '__main__':
     # granite_alora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=True, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
     # granite_lora_metric_vals_gen_2_queue = extract_metrics_from_files(target_metric, varying_comp="prompt_len", is_alora=False, path_prefix="results/base_adapter_base/varying_prompt_len_fixed_batch/5_adapters/", path_suffix="_granite_5_adapters", component="gen_2")
 
-    # fig, ax = plt.subplots(figsize=(9, 7))
+    # fig, ax = plt.subplots(figsize=(8, 8))
 
     # from matplotlib.ticker import LogLocator, LogFormatterMathtext
     # ax.set_yscale('log')
