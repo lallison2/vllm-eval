@@ -77,7 +77,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#6675A9",
-            markerfacecolor='none',
+            markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
 
@@ -100,7 +100,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#cdb38f",
-            markerfacecolor='none',
+            markerfacecolor='#cdb38f',
             markeredgecolor='#cdb38f',
             )
     
@@ -123,7 +123,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#77a988",
-            markerfacecolor='none',
+            markerfacecolor='#77a988',
             markeredgecolor='#77a988',
             )
     
@@ -195,7 +195,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#6675A9",
-            markerfacecolor='none',
+            markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
 
@@ -218,7 +218,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#cdb38f",
-            markerfacecolor='none',
+            markerfacecolor='#6675A9',
             markeredgecolor='#cdb38f',
             )
     
@@ -241,7 +241,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#77a988",
-            markerfacecolor='none',
+            markerfacecolor='#6675A9',
             markeredgecolor='#77a988',
             )
     
@@ -312,7 +312,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#6675A9",
-            markerfacecolor='none',
+            markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
 
@@ -335,7 +335,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#cdb38f",
-            markerfacecolor='none',
+            markerfacecolor='#cdb38f',
             markeredgecolor='#cdb38f',
             )
     
@@ -358,7 +358,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#77a988",
-            markerfacecolor='none',
+            markerfacecolor='#77a988',
             markeredgecolor='#77a988',
             )
     
@@ -429,7 +429,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#6675A9",
-            markerfacecolor='none',
+            markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
 
@@ -452,7 +452,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#cdb38f",
-            markerfacecolor='none',
+            markerfacecolor='#cdb38f',
             markeredgecolor='#cdb38f',
             )
     
@@ -475,7 +475,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#77a988",
-            markerfacecolor='none',
+            markerfacecolor='#77a988',
             markeredgecolor='#77a988',
             )
     
@@ -546,7 +546,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#6675A9",
-            markerfacecolor='none',
+            markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
 
@@ -569,7 +569,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#cdb38f",
-            markerfacecolor='none',
+            markerfacecolor='#cdb38f',
             markeredgecolor='#cdb38f',
             )
     
@@ -592,28 +592,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#77a988",
-            markerfacecolor='none',
-            markeredgecolor='#77a988',
-            )
-    
-    ax.plot(prompt_lens, 
-            mistral_alora_metric_vals, 
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-32 aLoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle='-',
-            color="#77a988",
             markerfacecolor='#77a988',
-            markeredgecolor='#77a988',
-            )
-    ax.plot(prompt_lens, 
-            mistral_lora_metric_vals, 
-            label='mistralai/Mistral-Large-Instruct-2407 (rank-8 LoRA)', 
-            marker='D', 
-            markersize=6,
-            linestyle=':',
-            color="#77a988",
-            markerfacecolor='none',
             markeredgecolor='#77a988',
             )
     
@@ -684,7 +663,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#6675A9",
-            markerfacecolor='none',
+            markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
             )
 
@@ -707,7 +686,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#cdb38f",
-            markerfacecolor='none',
+            markerfacecolor='#cdb38f',
             markeredgecolor='#cdb38f',
             )
     
@@ -730,7 +709,7 @@ if __name__ == '__main__':
             markersize=6,
             linestyle=':',
             color="#77a988",
-            markerfacecolor='none',
+            markerfacecolor='#77a988',
             markeredgecolor='#77a988',
             )
 
@@ -1327,7 +1306,7 @@ if __name__ == '__main__':
     #         markersize=6,
     #         linestyle=':',
     #         color="#6675A9",
-    #         markerfacecolor='none',
+    #         markerfacecolor='#6675A9',
     #         markeredgecolor='#6675A9',
     #         )
 
@@ -1348,7 +1327,7 @@ if __name__ == '__main__':
     # #         markersize=6,
     # #         linestyle=':',
     # #         color="#cdb38f",
-    # #         markerfacecolor='none',
+    # #         markerfacecolor='#6675A9',
     # #         markeredgecolor='#cdb38f',
     # #         )
     
@@ -1369,7 +1348,7 @@ if __name__ == '__main__':
     # #         markersize=6,
     # #         linestyle=':',
     # #         color="#77a988",
-    # #         markerfacecolor='none',
+    # #         markerfacecolor='#6675A9',
     # #         markeredgecolor='#77a988',
     # #         )
     
@@ -1606,7 +1585,7 @@ if __name__ == '__main__':
     #         markersize=6,
     #         linestyle=':',
     #         color="#6675A9",
-    #         markerfacecolor='none',
+    #         markerfacecolor='#6675A9',
     #         markeredgecolor='#6675A9',
     #         linewidth=3,
     #         )
@@ -1710,7 +1689,7 @@ if __name__ == '__main__':
     #         markersize=6,
     #         linestyle=':',
     #         color="#6675A9",
-    #         markerfacecolor='none',
+    #         markerfacecolor='#6675A9',
     #         markeredgecolor='#6675A9',
     #         linewidth=3,
     #         )
@@ -1814,7 +1793,7 @@ if __name__ == '__main__':
     #         markersize=6,
     #         linestyle=':',
     #         color="#6675A9",
-    #         markerfacecolor='none',
+    #         markerfacecolor='#6675A9',
     #         markeredgecolor='#6675A9',
     #         linewidth=3,
     #         )
@@ -1921,7 +1900,7 @@ if __name__ == '__main__':
     #         markersize=6,
     #         linestyle=':',
     #         color="#6675A9",
-    #         markerfacecolor='none',
+    #         markerfacecolor='#6675A9',
     #         markeredgecolor='#6675A9',
     #         linewidth=3,
     #         )
@@ -2030,7 +2009,7 @@ if __name__ == '__main__':
     #         markersize=6,
     #         linestyle=':',
     #         color="#6675A9",
-    #         markerfacecolor='none',
+    #         markerfacecolor='#6675A9',
     #         markeredgecolor='#6675A9',
     #         linewidth=3,
     #         )
