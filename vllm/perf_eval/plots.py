@@ -1576,7 +1576,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     ax.plot(prompt_lens, 
             granite_lora_metric_vals, 
@@ -1588,7 +1587,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
@@ -1635,7 +1633,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
@@ -1683,7 +1680,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     ax.plot(prompt_lens, 
             granite_lora_metric_vals_gen_2, 
@@ -1695,7 +1691,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
@@ -1742,7 +1737,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
@@ -1790,7 +1784,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     ax.plot(prompt_lens, 
             granite_lora_metric_vals_eval, 
@@ -1802,7 +1795,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
@@ -1849,7 +1841,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
@@ -1900,7 +1891,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     ax.plot(prompt_lens, 
             granite_lora_metric_vals_eval_gen_2, 
@@ -1912,7 +1902,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
@@ -1959,7 +1948,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
@@ -2012,7 +2000,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     ax.plot(prompt_lens, 
             granite_lora_metric_vals_gen_2_queue, 
@@ -2024,7 +2011,6 @@ if __name__ == '__main__':
             color="#6675A9",
             markerfacecolor='#6675A9',
             markeredgecolor='#6675A9',
-            linewidth=3,
             )
     
     ax.grid(
