@@ -1386,8 +1386,8 @@ if __name__ == '__main__':
 
     target_metric = "manually_timed_eval_latency_avg"
 
-    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
-    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_512")
+    granite_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
+    granite_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/base_adapter/varying_arrival_rate/500_total_requests/", path_suffix="_prompt_len_1024")
 
     # llama_alora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=True, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
     # llama_lora_metric_vals = extract_metrics_from_files(target_metric, varying_comp="async_poisson", is_alora=False, path_prefix="results/multi_gpu/llama_3.3_70b/varying_arrival_rate/500_reqs/", path_suffix="_llama")
@@ -1457,14 +1457,14 @@ if __name__ == '__main__':
 
     ax.set_xlabel("Arrival Rate (rps)", fontsize=20)
     ax.set_ylabel("Speedup", fontsize=20)
-    ax.set_title("Evaluation Speedup\n(Async) (LoRA / aLoRA)\nPrompt Length = 512", fontsize=20)
+    ax.set_title("Evaluation Speedup\n(Async) (LoRA / aLoRA)\nPrompt Length = 1024", fontsize=20)
     # ax.legend(fontsize=10, markerscale=1.0)
     ax.tick_params(axis='both', which='major', labelsize=16)
     plt.tight_layout()
 
     handles, labels = ax.get_legend_handles_labels()
 
-    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_arrival_rate-eval_prompt_len_512.png")
+    plt.savefig("plots/base_adapter_e2e_latency_speedup_factor_arrival_rate-eval_prompt_len_1024.png")
 
     # # Create a separate legend
     # fig2, ax2 = plt.subplots()
