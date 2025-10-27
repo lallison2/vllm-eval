@@ -12,7 +12,7 @@ component = "eval"
 
 component_title = {'eval': 'Evaluation', 'gen_1': 'First Generation', 'gen_2': 'Second Generation'}
 
-def extract_metrics_from_files(target_metric, is_alora=False, path_prefix="", component=component, varying_comp=""):
+def extract_metrics_from_files(target_metric, is_alora=False, path_prefix="", component=component, varying_comp="", path_suffix=""):
     metric_vals = []
 
     varying_list = gen_lens
